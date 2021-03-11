@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -14,8 +13,17 @@ import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.*;
-import seedu.duke.email.*;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import seedu.duke.email.Email;
+import seedu.duke.email.Archive;
+import seedu.duke.email.Draft;
+import seedu.duke.email.Deleted;
+import seedu.duke.email.Inbox;
+import seedu.duke.email.Junk;
+import seedu.duke.email.Sent;
+
 
 
 public class Storage {
@@ -28,17 +36,9 @@ public class Storage {
 
     }
 
-    public ArrayList<Email> load() {
-        ArrayList<Email> emailList = null;
-        JSONObject accountInfo = null;
-        try {
-            accountInfo = readJson();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        emailList = parse(accountInfo);
+    public ArrayList<Email> load() throws IOException, ParseException {
+        JSONObject accountInfo = readJson();
+        ArrayList<Email> emailList = parse(accountInfo);
         return emailList;
     }
 
@@ -64,11 +64,12 @@ public class Storage {
         ArrayList<Email> allEmails = new ArrayList<>();
         ArrayList<String> emailType = new ArrayList<>();
         for (Object key : jsonObject.keySet()) {
-            if(!key.toString().equals("account") && !key.toString().equals("password"))
-            emailType.add(key.toString());
+            if (!key.toString().equals("account") && !key.toString().equals("password")) {
+                emailType.add(key.toString());
+            }
         }
         System.out.println(emailType);
-        for(String type : emailType) {
+        for (String type : emailType) {
             System.out.println(type);
             JSONArray companyList = (JSONArray) jsonObject.get(type);
             Iterator<JSONObject> iterator = companyList.iterator();
@@ -76,30 +77,39 @@ public class Storage {
                 Map e = iterator.next();
                 switch (type) {
                 case "inbox":
-                    Inbox InboxEmail = new Inbox(e.get("from").toString(), e.get("to").toString(), e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
-                    allEmails.add(InboxEmail);
+                    Inbox inboxEmail = new Inbox(e.get("from").toString(), e.get("to").toString(),
+                            e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
+                    allEmails.add(inboxEmail);
                     break;
                 case "drafts":
-                    Draft draftEmail = new Draft(e.get("from").toString(), e.get("to").toString(), e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
+                    Draft draftEmail = new Draft(e.get("from").toString(), e.get("to").toString(),
+                            e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
                     allEmails.add(draftEmail);
                     break;
                 case "archive":
-                    Archive archiveEmail = new Archive(e.get("from").toString(), e.get("to").toString(), e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
+                    Archive archiveEmail = new Archive(e.get("from").toString(), e.get("to").toString(),
+                            e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
                     allEmails.add(archiveEmail);
                     break;
                 case "sent":
-                    Sent sentEmail = new Sent(e.get("from").toString(), e.get("to").toString(), e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
+                    Sent sentEmail = new Sent(e.get("from").toString(), e.get("to").toString(),
+                            e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
                     allEmails.add(sentEmail);
                     break;
                 case "deleted":
-                    Deleted deletedEmail = new Deleted(e.get("from").toString(), e.get("to").toString(), e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
+                    Deleted deletedEmail = new Deleted(e.get("from").toString(), e.get("to").toString(),
+                            e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
                     allEmails.add(deletedEmail);
                     break;
                 case "junk":
-                    Junk junkEmail = new Junk(e.get("from").toString(), e.get("to").toString(), e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
+                    Junk junkEmail = new Junk(e.get("from").toString(), e.get("to").toString(),
+                            e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
                     allEmails.add(junkEmail);
                     break;
+                default:
+                    break;
                 }
+
             }
         }
         return allEmails;

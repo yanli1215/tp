@@ -18,7 +18,15 @@ public class Duke {
     public Duke(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
-        emails = new EmailManager(storage.load());
+        try {
+            emails = new EmailManager(storage.load());
+        } catch (IOException e) {
+            emails = new EmailManager();
+            e.printStackTrace();
+        } catch (ParseException e) {
+            emails = new EmailManager();
+            e.printStackTrace();
+        }
         p = new Parser();
     }
 

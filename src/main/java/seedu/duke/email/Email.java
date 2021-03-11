@@ -68,7 +68,9 @@ public class Email {
     private String getStatus() {
         return isRead ? "READ" : "UNREAD";
     }
+
     public String toString() {
-        return "[" + getStatus()+ "]" + "\n|| Subject: " + getSubject() + "\n|| From: " + getFrom() + " --> To: " + getTo() +"\n|| Content: " + getContent();
+        return "[" + getStatus() + "]" + "\n|| Subject: " + getSubject() + "\n|| From: " + getFrom() + " --> To: "
+                + getTo() + "\n|| Content: " + getContent();
     }
 }

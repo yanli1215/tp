@@ -16,8 +16,8 @@ public class EmailManager {
     }
 
     public void listAllEmails() {
-        for(int i=0; i< emails.size() ; i++) {
-            System.out.println(i+1 + ". " + emails.get(i));
+        for (int i = 0; i < emails.size(); i++) {
+            System.out.println(i + 1 + ". " + emails.get(i));
             System.out.println("\n");
         }
     }
