@@ -1,9 +1,18 @@
 package seedu.duke;
 
-public class Email {
-    private String from;
-    private String to;
-    private String subject;
-    private String time;
-    private String content;
+abstract class Email {
+    protected String from;
+    protected String to;
+    protected String subject;
+    protected String time;
+    protected String content;
+
+    public Email (String from, String to, String subject, String time, String content) {
+        this.from = from;
+        this.to = to;
+        this.subject = subject;
+        this.time = time;
+        this.content = content;
+    }
+
 }
