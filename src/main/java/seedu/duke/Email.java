@@ -7,7 +7,7 @@ abstract class Email {
     protected String time;
     protected String content;
 
-    public Email (String from, String to, String subject, String time, String content) {
+    public Email(String from, String to, String subject, String time, String content) {
         this.from = from;
         this.to = to;
         this.subject = subject;
