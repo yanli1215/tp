@@ -10,10 +10,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
+import seedu.duke.email.*;
 
 
 public class Storage {
@@ -26,10 +28,24 @@ public class Storage {
 
     }
 
-    public void readJson() {
+    public ArrayList<Email> load() {
+        ArrayList<Email> emailList = null;
+        JSONObject accountInfo = null;
+        try {
+            accountInfo = readJson();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        emailList = parse(accountInfo);
+        return emailList;
+    }
+
+    public JSONObject readJson() throws IOException, ParseException {
         String localDir = System.getProperty("user.dir");
         Path dirPath = Paths.get(localDir, "data");
-        if(!Files.exists(dirPath)) {
+        if (!Files.exists(dirPath)) {
             try {
                 Files.createDirectory(dirPath);
             } catch (IOException e) {
@@ -38,26 +54,57 @@ public class Storage {
         }
 
         JSONParser parser = new JSONParser();
+        Object obj = parser.parse(new FileReader(filePath));
+        JSONObject jsonObject = (JSONObject) obj;
+        return jsonObject;
 
-        try {
-            Object obj = parser.parse(new FileReader(filePath));
+    }
 
-            // A JSON object. Key value pairs are unordered. JSONObject supports java.util.Map interface.
-            JSONObject jsonObject = (JSONObject) obj;
-
-            // A JSON array. JSONObject supports java.util.List interface.
-            JSONArray companyList = (JSONArray) jsonObject.get("inbox");
-
-            // An iterator over a collection. Iterator takes the place of Enumeration in the Java Collections Framework.
-            // Iterators differ from enumerations in two ways:
-            // 1. Iterators allow the caller to remove elements from the underlying collection during the iteration with well-defined semantics.
-            // 2. Method names have been improved.
+    public ArrayList<Email> parse(JSONObject jsonObject) {
+        ArrayList<Email> allEmails = new ArrayList<>();
+        ArrayList<String> emailType = new ArrayList<>();
+        for (Object key : jsonObject.keySet()) {
+            if(!key.toString().equals("account") && !key.toString().equals("password"))
+            emailType.add(key.toString());
+        }
+        System.out.println(emailType);
+        for(String type : emailType) {
+            System.out.println(type);
+            JSONArray companyList = (JSONArray) jsonObject.get(type);
             Iterator<JSONObject> iterator = companyList.iterator();
             while (iterator.hasNext()) {
-                System.out.println(iterator.next());
+                Map e = iterator.next();
+                switch (type) {
+                case "inbox":
+                    Inbox InboxEmail = new Inbox(e.get("from").toString(), e.get("to").toString(), e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
+                    allEmails.add(InboxEmail);
+                    break;
+                case "drafts":
+                    Draft draftEmail = new Draft(e.get("from").toString(), e.get("to").toString(), e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
+                    allEmails.add(draftEmail);
+                    break;
+                case "archive":
+                    Archive archiveEmail = new Archive(e.get("from").toString(), e.get("to").toString(), e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
+                    allEmails.add(archiveEmail);
+                    break;
+                case "sent":
+                    Sent sentEmail = new Sent(e.get("from").toString(), e.get("to").toString(), e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
+                    allEmails.add(sentEmail);
+                    break;
+                case "deleted":
+                    Deleted deletedEmail = new Deleted(e.get("from").toString(), e.get("to").toString(), e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
+                    allEmails.add(deletedEmail);
+                    break;
+                case "junk":
+                    Junk junkEmail = new Junk(e.get("from").toString(), e.get("to").toString(), e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
+                    allEmails.add(junkEmail);
+                    break;
+                }
             }
-        } catch (IOException | ParseException e) {
-            e.printStackTrace();
         }
+        return allEmails;
     }
+
+
+
 }

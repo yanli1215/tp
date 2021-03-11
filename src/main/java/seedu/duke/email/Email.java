@@ -1,4 +1,4 @@
-package seedu.duke;
+package seedu.duke.email;
 
 public class Email {
     private String from;
@@ -6,6 +6,24 @@ public class Email {
     private String subject;
     private String time;
     private String content;
+    private boolean isRead;
+
+    public boolean isRead() {
+        return isRead;
+    }
+
+    public void setRead(boolean read) {
+        isRead = read;
+    }
+
+    public Email(String from, String to, String subject, String time, String content) {
+        this.from = from;
+        this.to = to;
+        this.subject = subject;
+        this.time = time;
+        this.content = content;
+        this.isRead = false;
+    }
 
     public String getFrom() {
         return from;
@@ -47,7 +65,10 @@ public class Email {
         this.content = content;
     }
 
+    private String getStatus() {
+        return isRead ? "READ" : "UNREAD";
+    }
     public String toString() {
-        return "From: " + getFrom() + "To: " + getTo() + "\nSubject: " + getSubject() + "\nContent: " + getContent();
+        return "[" + getStatus()+ "]" + "\n|| Subject: " + getSubject() + "\n|| From: " + getFrom() + " --> To: " + getTo() +"\n|| Content: " + getContent();
     }
 }

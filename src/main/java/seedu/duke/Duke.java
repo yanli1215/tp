@@ -1,5 +1,8 @@
 package seedu.duke;
 
+import org.json.simple.parser.ParseException;
+
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Duke {
@@ -15,18 +18,17 @@ public class Duke {
     public Duke(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
-        //emails = new EmailManager(storage.load());
+        emails = new EmailManager(storage.load());
         p = new Parser();
     }
 
     public void run() {
         ui.showHello();
         while (true) {
-            storage.readJson();
-            String userCommand = ui.getUserInput();
+            emails.listAllEmails();
+            //String userCommand = ui.getUserInput();
             //p.parse(userCommand.trim());
             //p.getCmd().execute(tasks, ui, storage);
-            System.out.println(userCommand);
             break;
         }
     }
