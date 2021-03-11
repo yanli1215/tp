@@ -12,16 +12,13 @@ public class Duke {
     private static Parser parser = new Parser();
 
     public static void main(String[] args) {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
+        String logo = " _________   _____   _____   _____\n"
+                + "|  _   _  | |  _  | |_   _| |  _  |\n"
+                + "| | | | | | | | | |   | |   | | | |\n"
+                + "| | | | | | | |_| |  _| |   | |_| |\n"
+                + "|_| |_| |_| |_____| |___|   |_____|\n";
         System.out.println("Hello from\n" + logo);
-        System.out.println("What is your name?");
-
-        Scanner in = new Scanner(System.in);
-        System.out.println("Hello " + in.nextLine());
+        System.out.println("What can I do for you?");
 
         while (true) {
             String input = ui.getUserInput();
