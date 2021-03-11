@@ -33,10 +33,9 @@ public class Duke {
     public void run() {
         ui.showHello();
         while (true) {
-            emails.listAllEmails();
-            //String userCommand = ui.getUserInput();
-            //p.parse(userCommand.trim());
-            //p.getCmd().execute(tasks, ui, storage);
+            String userCommand = ui.getUserInput();
+            p.parse(userCommand.trim());
+            p.getCmd().execute(emails, ui, storage);
             break;
         }
     }

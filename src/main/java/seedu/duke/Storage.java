@@ -24,15 +24,13 @@ import seedu.duke.email.Inbox;
 import seedu.duke.email.Junk;
 import seedu.duke.email.Sent;
 
-
-
 public class Storage {
     private String fileName;
     private String filePath;
 
     public Storage(String fileName) {
         this.fileName = fileName;
-        this.filePath = System.getProperty("user.dir") + File.separator + fileName;
+        this.filePath = System.getProperty("user.dir") + File.separator + "data" + File.separator + fileName;
 
     }
 
@@ -68,9 +66,7 @@ public class Storage {
                 emailType.add(key.toString());
             }
         }
-        System.out.println(emailType);
         for (String type : emailType) {
-            System.out.println(type);
             JSONArray companyList = (JSONArray) jsonObject.get(type);
             Iterator<JSONObject> iterator = companyList.iterator();
             while (iterator.hasNext()) {
