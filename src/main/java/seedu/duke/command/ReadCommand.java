@@ -25,10 +25,12 @@ public class ReadCommand extends Command {
 
         String indexStr = userInput.replaceAll("read", "").strip();
         int index = Integer.parseInt(indexStr);
+        Email email = listedEmails.get(index - 1);
+        email.setRead(true);
 
-        System.out.println(listedEmails.get(index - 1));
+        System.out.println(email);
         System.out.println();
-
+        
         System.out.println("Enter Command: ");
     }
 }
