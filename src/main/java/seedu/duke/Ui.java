@@ -7,6 +7,12 @@ import java.util.Scanner;
 public class Ui {
     private final Scanner in;
     private final PrintStream out;
+    private static final String logo = " _________   _____   _____   _____\n"
+            + "|  _   _  | |  _  | |_   _| |  _  |\n"
+            + "| | | | | | | | | |   | |   | | | |\n"
+            + "| | | | | | | |_| |  _| |   | |_| |\n"
+            + "|_| |_| |_| |_____| |___|   |_____|\n";
+
 
     public Ui() {
         this(System.in, System.out);
@@ -34,13 +40,11 @@ public class Ui {
         printDivider();
     }
 
-    public void showHello() {
-        String logo = " _________   _____   _____   _____\n"
-                + "|  _   _  | |  _  | |_   _| |  _  |\n"
-                + "| | | | | | | | | |   | |   | | | |\n"
-                + "| | | | | | | |_| |  _| |   | |_| |\n"
-                + "|_| |_| |_| |_____| |___|   |_____|\n";
-        System.out.println("Hello from\n" + logo);
-        System.out.println("What can I do for you?");
+    public void printMenu() {
+        System.out.println("Hello! I'm MojoHR\n" + logo + "What can I do for you?");
+        System.out.println("> Use the keyword \"LIST (type) \" to print the emails by types");
+        System.out.println("> Use the keyword \"HELP\" to print the menu");
+        System.out.println("> Use the keyword \"BYE\" to exit");
+        System.out.println("Enter your command: ");
     }
 }

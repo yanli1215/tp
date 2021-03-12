@@ -2,6 +2,7 @@ package seedu.duke;
 
 import seedu.duke.command.Command;
 import seedu.duke.command.ExitCommand;
+import seedu.duke.command.HelpCommand;
 import seedu.duke.command.ListCommand;
 
 public class Parser {
@@ -18,11 +19,12 @@ public class Parser {
     public void parse(String userInputString) {
         if (userInputString.equalsIgnoreCase("LIST")) {
             cmd =  new ListCommand(userInputString);
-        } else if (userInputString.equalsIgnoreCase("exit")) {
+        } else if (userInputString.equalsIgnoreCase("BYE")) {
             cmd =  new ExitCommand(userInputString);
+        } else if (userInputString.equalsIgnoreCase("HELP")){
+            cmd = new HelpCommand(userInputString);
         } else {
             cmd = null;
         }
-
     }
 }
