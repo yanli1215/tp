@@ -1,6 +1,10 @@
 package seedu.duke;
 
-import seedu.duke.command.*;
+import seedu.duke.command.Command;
+import seedu.duke.command.ExitCommand;
+import seedu.duke.command.HelpCommand;
+import seedu.duke.command.ListCommand;
+import seedu.duke.command.ReadCommand;
 import seedu.duke.email.Email;
 
 import java.util.ArrayList;
@@ -38,6 +42,7 @@ public class Parser {
         case ("sent"):
             emailsToPrint = emailManager.getSentEmails();
             break;
+        default:
         }
         return emailsToPrint;
     }

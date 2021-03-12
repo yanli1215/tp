@@ -17,8 +17,8 @@ public class ReadCommand extends Command {
         ArrayList<Email> listedEmails = EmailManager.getListedEmailsList();
 
         if (listedEmails == null) {
-            String feedback = "You have to list emails first" + System.lineSeparator() +
-                    "=> list emails" + System.lineSeparator();
+            String feedback = "You have to list emails first" + System.lineSeparator()
+                    + "=> list emails" + System.lineSeparator();
             ui.printFeedback(feedback);
             return;
         }
@@ -30,7 +30,7 @@ public class ReadCommand extends Command {
 
         System.out.println(email);
         System.out.println();
-        
+
         System.out.println("Enter Command: ");
     }
 }

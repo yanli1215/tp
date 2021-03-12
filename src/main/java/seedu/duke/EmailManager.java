@@ -1,6 +1,12 @@
 package seedu.duke;
 
-import seedu.duke.email.*;
+import seedu.duke.email.Archive;
+import seedu.duke.email.Deleted;
+import seedu.duke.email.Draft;
+import seedu.duke.email.Email;
+import seedu.duke.email.Inbox;
+import seedu.duke.email.Junk;
+import seedu.duke.email.Sent;
 
 import java.util.ArrayList;
 
