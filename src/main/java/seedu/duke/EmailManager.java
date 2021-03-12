@@ -16,9 +16,9 @@ public class EmailManager {
         this.emailsList = new ArrayList<>();
     }
 
-    public void printEmailByType(ArrayList emailTypeToPrint) {
+    public void printEmailByType(ArrayList<Email> emailTypeToPrint) {
         for (int i = 0; i < emailTypeToPrint.size(); i++) {
-            System.out.println(i + 1 + ". " + emailTypeToPrint.get(i));
+            System.out.println(i + 1 + ". " + emailTypeToPrint.get(i).getShortDescription());
             System.out.println("\n");
         }
         listedEmailsList = emailTypeToPrint;
