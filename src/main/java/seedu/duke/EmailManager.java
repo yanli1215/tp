@@ -20,5 +20,6 @@ public class EmailManager {
             System.out.println(i + 1 + ". " + emails.get(i));
             System.out.println("\n");
         }
+        System.out.println("Enter Command: ");
     }
 }
