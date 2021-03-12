@@ -1,8 +1,28 @@
 package seedu.duke;
 
+import seedu.duke.command.Command;
+import seedu.duke.command.ExitCommand;
+import seedu.duke.command.ListCommand;
+
 public class Parser {
-    public String[] parseCommand(String input) {
-        String[] splitted = input.split(" ", 2);
-        return (splitted.length == 2) ?  splitted : (new String[]{splitted[0], ""});
+    private Command cmd;
+
+    public Command getCmd() {
+        return cmd;
+    }
+
+    public Parser() {
+        cmd = null;
+    }
+
+    public void parse(String userInputString) {
+        if (userInputString.equalsIgnoreCase("LIST")) {
+            cmd =  new ListCommand(userInputString);
+        } else if (userInputString.equalsIgnoreCase("exit")) {
+            cmd =  new ExitCommand(userInputString);
+        } else {
+            cmd = null;
+        }
+
     }
 }
