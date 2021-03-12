@@ -1,9 +1,11 @@
 package seedu.duke.command;
 
 import seedu.duke.EmailManager;
+import seedu.duke.Parser;
 import seedu.duke.Storage;
 import seedu.duke.Ui;
-import seedu.duke.email.Email;
+
+import java.util.ArrayList;
 
 public class ListCommand extends Command {
     public ListCommand(String s) {
@@ -11,6 +13,7 @@ public class ListCommand extends Command {
     }
 
     public void execute(EmailManager emails, Ui ui, Storage storage) {
-        emails.listAllEmails();
+        ArrayList emailTypeToPrint = Parser.getTypeToList(super.getUserInput());
+        emails.printEmailByType(emailTypeToPrint);
     }
 }
