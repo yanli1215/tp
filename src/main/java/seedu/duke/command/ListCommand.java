@@ -12,6 +12,7 @@ public class ListCommand extends Command {
         super(s);
     }
 
+    @Override
     public void execute(EmailManager emails, Ui ui, Storage storage) {
         ArrayList emailTypeToPrint = Parser.getTypeToList(super.getUserInput());
         emails.printEmailByType(emailTypeToPrint);
