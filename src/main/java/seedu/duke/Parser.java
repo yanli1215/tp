@@ -1,9 +1,6 @@
 package seedu.duke;
 
-import seedu.duke.command.Command;
-import seedu.duke.command.ExitCommand;
-import seedu.duke.command.HelpCommand;
-import seedu.duke.command.ListCommand;
+import seedu.duke.command.*;
 import seedu.duke.email.Email;
 
 import java.util.ArrayList;
@@ -56,6 +53,8 @@ public class Parser {
             cmd = new ExitCommand(userInputString);
         } else if (userInputString.equalsIgnoreCase("HELP")) {
             cmd = new HelpCommand(userInputString);
+        } else if (userInputString.toLowerCase().contains("read")) {
+            cmd = new ReadCommand(userInputString);
         } else {
             cmd = null;
         }

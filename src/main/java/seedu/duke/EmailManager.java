@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class EmailManager {
     private static ArrayList<Email> emailsList = new ArrayList<>();
-
+    private static ArrayList<Email> listedEmailsList = null;
 
     public EmailManager(ArrayList<Email> emailsList) {
         this.emailsList = emailsList;
@@ -21,6 +21,7 @@ public class EmailManager {
             System.out.println(i + 1 + ". " + emailTypeToPrint.get(i));
             System.out.println("\n");
         }
+        listedEmailsList = emailTypeToPrint;
         System.out.println("Enter Command: ");
     }
 
@@ -86,5 +87,9 @@ public class EmailManager {
 
     public static ArrayList<Email> getAllEmails() {
         return emailsList;
+    }
+
+    public static ArrayList<Email> getListedEmailsList() {
+        return listedEmailsList;
     }
 }
