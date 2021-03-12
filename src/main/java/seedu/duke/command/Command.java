@@ -20,7 +20,5 @@ public abstract class Command {
         userInput = s;
     }
 
-    public void execute(EmailManager tasks, Ui ui, Storage storage) {
-
-    }
+    public abstract void execute(EmailManager tasks, Ui ui, Storage storage);
 }
