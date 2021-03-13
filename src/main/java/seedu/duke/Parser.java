@@ -1,8 +1,9 @@
 package seedu.duke;
 
-import seedu.duke.command.Command;
-import seedu.duke.command.ExitCommand;
-import seedu.duke.command.ListCommand;
+import seedu.duke.command.*;
+import seedu.duke.email.Archive;
+
+import java.util.Locale;
 
 public class Parser {
     private Command cmd;
@@ -16,13 +17,37 @@ public class Parser {
     }
 
     public void parse(String userInputString) {
-        if (userInputString.equalsIgnoreCase("LIST")) {
-            cmd =  new ListCommand(userInputString);
-        } else if (userInputString.equalsIgnoreCase("exit")) {
-            cmd =  new ExitCommand(userInputString);
-        } else {
+        String[] cmdArg = userInputString.split(" ");
+        String cmdType = cmdArg[0].trim().toLowerCase();
+        //String args = cmdArg[1];
+
+        switch (cmdType) {
+        case "delete":
+            cmd = prepareDelete(cmdArg);
+            break;
+        case "archive":
+            cmd = prepareArchive(cmdArg);
+            break;
+        case "list":
+            cmd = new ListCommand(userInputString);
+            break;
+        case "exit":
+            cmd = new ExitCommand();
+            break;
+        default:
             cmd = null;
         }
 
+    }
+
+    public DeleteCommand prepareDelete(String[] cmdArg) {
+        String args = cmdArg[1].trim();
+        int IndexShow = Integer.parseInt(args);
+        return new DeleteCommand(IndexShow);
+    }
+    public ArchiveCommand prepareArchive(String[] cmdArg) {
+        String args = cmdArg[1].trim();
+        int IndexShow = Integer.parseInt(args);
+        return new ArchiveCommand(IndexShow);
     }
 }

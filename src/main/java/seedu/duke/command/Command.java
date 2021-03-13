@@ -5,19 +5,22 @@ import seedu.duke.Storage;
 import seedu.duke.Ui;
 import seedu.duke.email.Email;
 
-public abstract class Command {
-    protected String userInput;
+public abstract class Command<T> {
+    protected T argument;
 
-    public String getUserInput() {
-        return userInput;
+    public Command(T s) {
+        argument = s;
+    }
+    public Command() {
+        argument = null;
     }
 
-    public void setUserInput(String userInput) {
-        this.userInput = userInput;
+    public T getUserInput() {
+        return argument;
     }
 
-    public Command(String s) {
-        userInput = s;
+    public void setUserInput(T userInput) {
+        this.argument = userInput;
     }
 
     public void execute(EmailManager tasks, Ui ui, Storage storage) {

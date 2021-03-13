@@ -36,7 +36,6 @@ public class Duke {
             String userCommand = ui.getUserInput();
             p.parse(userCommand.trim());
             p.getCmd().execute(emails, ui, storage);
-            break;
         }
     }
 
