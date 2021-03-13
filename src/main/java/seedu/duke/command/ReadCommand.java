@@ -1,9 +1,11 @@
 package seedu.duke.command;
 
 import seedu.duke.EmailManager;
+import seedu.duke.Parser;
 import seedu.duke.Storage;
 import seedu.duke.Ui;
 import seedu.duke.email.Email;
+import seedu.duke.exceptions.InvalidIndexException;
 
 import java.util.ArrayList;
 
@@ -22,13 +24,19 @@ public class ReadCommand extends Command {
             ui.printFeedback(feedback);
             return;
         }
+        try {
+            int index = Parser.extractIndex(userInput);
+            if (index <= 0 || index > listedEmails.size()) {
+                throw new InvalidIndexException();
+            }
+            Email email = listedEmails.get(index - 1);
+            email.setRead(true);
 
-        String indexStr = userInput.replaceAll("read", "").strip();
-        int index = Integer.parseInt(indexStr);
-        Email email = listedEmails.get(index - 1);
-        email.setRead(true);
+            System.out.println(email);
+            System.out.println();
+        } catch (InvalidIndexException e) {
+            e.showErrorMessage("READ");
+        }
 
-        System.out.println(email);
-        System.out.println();
     }
 }
