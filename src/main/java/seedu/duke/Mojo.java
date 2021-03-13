@@ -4,7 +4,7 @@ import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 
-public class Duke {
+public class Mojo {
     /**
      * Main entry-point for the java.duke.Duke application.
      */
@@ -14,7 +14,7 @@ public class Duke {
     private static Parser p;
     private Storage storage;
 
-    public Duke(String filePath) {
+    public Mojo(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
         try {
@@ -43,7 +43,7 @@ public class Duke {
     }
 
     public static void main(String[] args) {
-        new Duke("test.json").run();
+        new Mojo("test.json").run();
     }
 }
 
