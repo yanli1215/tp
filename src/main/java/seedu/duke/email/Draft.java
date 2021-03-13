@@ -6,7 +6,7 @@ public class Draft extends Email {
     }
 
     @Override
-    public String toString() {
-        return "[Draft]" + super.toString();
+    public String getShortDescription() {
+        return "[Draft]" + super.getShortDescription();
     }
 }

@@ -8,4 +8,6 @@ What can I do for you?
 > Use the keyword "LIST (type) " to print the emails by types
 > Use the keyword "HELP" to print the menu
 > Use the keyword "BYE" to exit
-Enter your command:
+____________________________________________________________
+Enter Command:
+____________________________________________________________

@@ -8,8 +8,8 @@ public class Junk extends Email {
     }
 
     @Override
-    public String toString() {
-        return "[Junk]" + super.toString();
+    public String getShortDescription() {
+        return "[Junk]" + super.getShortDescription();
     }
 
 }

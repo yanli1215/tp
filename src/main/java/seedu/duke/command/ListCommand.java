@@ -14,7 +14,13 @@ public class ListCommand extends Command {
 
     @Override
     public void execute(EmailManager emails, Ui ui, Storage storage) {
-        ArrayList emailTypeToPrint = Parser.getTypeToList(super.getUserInput());
-        emails.printEmailByType(emailTypeToPrint);
+        try {
+            ArrayList emailTypeToPrint = Parser.getTypeToList(userInput);
+            emails.printEmailByType(emailTypeToPrint);
+        } catch (NullPointerException e1) {
+            Ui.showInvalidListTypeMessage();
+        }
+
+
     }
 }

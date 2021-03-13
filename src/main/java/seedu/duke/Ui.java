@@ -24,10 +24,13 @@ public class Ui {
     }
 
     public String getUserInput() {
+        printDivider();
+        System.out.println("Enter Command:");
         String inputLine = in.nextLine();
         while (inputLine.trim().isEmpty()) {
             inputLine = in.nextLine();
         }
+        printDivider();
         return inputLine;
     }
 
@@ -45,6 +48,18 @@ public class Ui {
         System.out.println("> Use the keyword \"LIST (type) \" to print the emails by types");
         System.out.println("> Use the keyword \"HELP\" to print the menu");
         System.out.println("> Use the keyword \"BYE\" to exit");
-        System.out.println("Enter your command: ");
+    }
+
+    public static void showInvalidIdMessage(String type) {
+        System.out.println("OOPS!!! The Email ID that you " + type + " is invalid.");
+    }
+
+    public void showMessageForInvalidCommandInput() {
+        System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(!");
+    }
+
+    public static void showInvalidListTypeMessage() {
+        System.out.println("OOPS!!! The Email type that you enter is invalid.");
+        System.out.println("It must be one of: [emails, inbox, archive, deleted, draft, junk, sent]");
     }
 }

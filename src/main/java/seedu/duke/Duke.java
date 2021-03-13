@@ -34,7 +34,11 @@ public class Duke {
         while (true) {
             String userCommand = ui.getUserInput();
             p.parse(userCommand.trim());
-            p.getCmd().execute(emails, ui, storage);
+            try {
+                p.getCmd().execute(emails, ui, storage);
+            } catch (NullPointerException e) {
+                ui.showMessageForInvalidCommandInput();
+            }
         }
     }
 

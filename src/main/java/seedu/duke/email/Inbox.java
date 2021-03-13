@@ -8,8 +8,8 @@ public class Inbox extends Email {
     }
 
     @Override
-    public String toString() {
-        return "[Inbox]" + super.toString();
+    public String getShortDescription() {
+        return "[Inbox]" + super.getShortDescription();
     }
 
 }

@@ -6,7 +6,7 @@ public class Archive extends Email {
     }
 
     @Override
-    public String toString() {
-        return "[Archive]" + super.toString();
+    public String getShortDescription() {
+        return "[Archive]" + super.getShortDescription();
     }
 }

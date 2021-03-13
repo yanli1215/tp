@@ -22,13 +22,22 @@ public class EmailManager {
         this.emailsList = new ArrayList<>();
     }
 
+
+    public int getNumofEmails() {
+        return emailsList.size();
+    }
+
+    public void listAllEmails() {
+        for (int i = 0; i < emailsList.size(); i++) {
+            System.out.println(i + 1 + ". " + emailsList.get(i));
+        }
+    }
+
     public void printEmailByType(ArrayList<Email> emailTypeToPrint) {
         for (int i = 0; i < emailTypeToPrint.size(); i++) {
             System.out.println(i + 1 + ". " + emailTypeToPrint.get(i).getShortDescription());
-            System.out.println("\n");
         }
         listedEmailsList = emailTypeToPrint;
-        System.out.println("Enter Command: ");
     }
 
     public static ArrayList<Email> getArchivedEmails() {
@@ -98,4 +107,21 @@ public class EmailManager {
     public static ArrayList<Email> getListedEmailsList() {
         return listedEmailsList;
     }
+
+    public void deleteEmail(Email e) {
+        emailsList.remove(e);
+    }
+
+    public void addToDeleted(Email e) {
+        Deleted email = new Deleted(e.getFrom(), e.getTo(), e.getSubject(), e.getTime(), e.getContent());
+        emailsList.add(email);
+    }
+
+    public void addToArchive(Email e) {
+        Archive email = new Archive(e.getFrom(), e.getTo(), e.getSubject(), e.getTime(), e.getContent());
+        emailsList.add(email);
+    }
+
+
+
 }

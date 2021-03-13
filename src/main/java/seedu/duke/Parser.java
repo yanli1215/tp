@@ -1,25 +1,64 @@
 package seedu.duke;
 
+import seedu.duke.command.ArchiveCommand;
 import seedu.duke.command.Command;
-import seedu.duke.command.ExitCommand;
 import seedu.duke.command.HelpCommand;
 import seedu.duke.command.ListCommand;
+import seedu.duke.command.ExitCommand;
 import seedu.duke.command.ReadCommand;
+import seedu.duke.command.DeleteCommand;
 import seedu.duke.email.Email;
+import seedu.duke.email.Archive;
+import seedu.duke.exceptions.InvalidIndexException;
 
 import java.util.ArrayList;
 
 public class Parser {
-    private Command cmd;
     private static EmailManager emailManager;
+    private Command cmd;
 
     public Parser() {
         cmd = null;
     }
 
+    public Command getCmd() {
+        return cmd;
+    }
+
+    public void parse(String userInputString) {
+        if (userInputString.toLowerCase().matches("^(list)[ ].*$")) {
+            cmd = new ListCommand(userInputString);
+        } else if (userInputString.equalsIgnoreCase("bye")) {
+            cmd = new ExitCommand(userInputString);
+        } else if (userInputString.equalsIgnoreCase("help")) {
+            cmd = new HelpCommand(userInputString);
+        } else if (userInputString.toLowerCase().matches("^(read)[ ].*$")) {
+            cmd = new ReadCommand(userInputString);
+        } else if (userInputString.toLowerCase().matches("^(delete)[ ].*$")) {
+            cmd = new DeleteCommand(userInputString);
+        } else if (userInputString.toLowerCase().matches("^(delete)[ ].*$")) {
+            cmd = new ArchiveCommand(userInputString);
+        } else {
+            cmd = null;
+        }
+    }
+
+    public static int extractIndex(String userInput) throws InvalidIndexException {
+        try {
+            String[] cmdArg = userInput.split(" ");
+            String args = cmdArg[1].trim();
+            int indexShow = Integer.parseInt(args);
+            return indexShow;
+        } catch (NumberFormatException e) {
+            throw new InvalidIndexException();
+        }
+
+    }
+
+
     public static ArrayList<Email> getTypeToList(String userInput) {
         String emailType = userInput.replaceAll("list", "").strip();
-        ArrayList emailsToPrint = null;
+        ArrayList<Email> emailsToPrint = null;
         switch (emailType) {
         case ("emails"):
             emailsToPrint = emailManager.getAllEmails();
@@ -45,23 +84,5 @@ public class Parser {
         default:
         }
         return emailsToPrint;
-    }
-
-    public Command getCmd() {
-        return cmd;
-    }
-
-    public void parse(String userInputString) {
-        if (userInputString.toLowerCase().contains("list")) {
-            cmd = new ListCommand(userInputString);
-        } else if (userInputString.equalsIgnoreCase("BYE")) {
-            cmd = new ExitCommand(userInputString);
-        } else if (userInputString.equalsIgnoreCase("HELP")) {
-            cmd = new HelpCommand(userInputString);
-        } else if (userInputString.toLowerCase().contains("read")) {
-            cmd = new ReadCommand(userInputString);
-        } else {
-            cmd = null;
-        }
     }
 }

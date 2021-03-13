@@ -8,8 +8,8 @@ public class Sent extends Email {
     }
 
     @Override
-    public String toString() {
-        return "[Sent]" + super.toString();
+    public String getShortDescription() {
+        return "[Sent]" + super.getShortDescription();
     }
 
 }
