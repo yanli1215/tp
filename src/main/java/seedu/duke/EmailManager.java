@@ -1,12 +1,18 @@
 package seedu.duke;
 
-import seedu.duke.email.*;
+import seedu.duke.email.Archive;
+import seedu.duke.email.Deleted;
+import seedu.duke.email.Draft;
+import seedu.duke.email.Email;
+import seedu.duke.email.Inbox;
+import seedu.duke.email.Junk;
+import seedu.duke.email.Sent;
 
 import java.util.ArrayList;
 
 public class EmailManager {
     private static ArrayList<Email> emailsList = new ArrayList<>();
-
+    private static ArrayList<Email> listedEmailsList = null;
 
     public EmailManager(ArrayList<Email> emailsList) {
         this.emailsList = emailsList;
@@ -16,11 +22,12 @@ public class EmailManager {
         this.emailsList = new ArrayList<>();
     }
 
-    public void printEmailByType(ArrayList emailTypeToPrint) {
+    public void printEmailByType(ArrayList<Email> emailTypeToPrint) {
         for (int i = 0; i < emailTypeToPrint.size(); i++) {
-            System.out.println(i + 1 + ". " + emailTypeToPrint.get(i));
+            System.out.println(i + 1 + ". " + emailTypeToPrint.get(i).getShortDescription());
             System.out.println("\n");
         }
+        listedEmailsList = emailTypeToPrint;
         System.out.println("Enter Command: ");
     }
 
@@ -86,5 +93,9 @@ public class EmailManager {
 
     public static ArrayList<Email> getAllEmails() {
         return emailsList;
+    }
+
+    public static ArrayList<Email> getListedEmailsList() {
+        return listedEmailsList;
     }
 }
