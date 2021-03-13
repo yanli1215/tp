@@ -25,7 +25,7 @@ public class Ui {
 
     public String getUserInput() {
         printDivider();
-        System.out.println("Enter Command: ");
+        System.out.println("Enter Command:");
         String inputLine = in.nextLine();
         while (inputLine.trim().isEmpty()) {
             inputLine = in.nextLine();
