@@ -6,8 +6,8 @@ public class Deleted extends Email {
     }
 
     @Override
-    public String toString() {
-        return "[Deleted]" + super.toString();
+    public String getShortDescription() {
+        return "[Deleted]" + super.getShortDescription();
     }
 
 }

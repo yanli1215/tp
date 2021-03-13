@@ -2,13 +2,11 @@ package seedu.duke.exceptions;
 
 import seedu.duke.Ui;
 
-public class InvalidIndexException extends Exception{
-    public InvalidIndexException(String commandType) {
-        super(commandType);
+public class InvalidIndexException extends Exception {
+    public InvalidIndexException() {
     }
 
-    @Override
-    public void showErrorMessage(Ui ui) {
-        ui.showInvalidIDMessage();
+    public void showErrorMessage(String type) {
+        Ui.showInvalidIdMessage(type);
     }
 }

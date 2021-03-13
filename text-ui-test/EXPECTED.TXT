@@ -1,8 +1,11 @@
-Hello from
+Hello! I'm MojoHR
  _________   _____   _____   _____
 |  _   _  | |  _  | |_   _| |  _  |
 | | | | | | | | | |   | |   | | | |
 | | | | | | | |_| |  _| |   | |_| |
 |_| |_| |_| |_____| |___|   |_____|
-
 What can I do for you?
+> Use the keyword "LIST (type) " to print the emails by types
+> Use the keyword "HELP" to print the menu
+> Use the keyword "BYE" to exit
+Enter your command:

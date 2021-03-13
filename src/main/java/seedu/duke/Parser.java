@@ -1,53 +1,88 @@
 package seedu.duke;
 
-import seedu.duke.command.*;
+import seedu.duke.command.ArchiveCommand;
+import seedu.duke.command.Command;
+import seedu.duke.command.HelpCommand;
+import seedu.duke.command.ListCommand;
+import seedu.duke.command.ExitCommand;
+import seedu.duke.command.ReadCommand;
+import seedu.duke.command.DeleteCommand;
+import seedu.duke.email.Email;
 import seedu.duke.email.Archive;
+import seedu.duke.exceptions.InvalidIndexException;
 
-import java.util.Locale;
+import java.util.ArrayList;
 
 public class Parser {
+    private static EmailManager emailManager;
     private Command cmd;
-
-    public Command getCmd() {
-        return cmd;
-    }
 
     public Parser() {
         cmd = null;
     }
 
-    public void parse(String userInputString) {
-        String[] cmdArg = userInputString.split(" ");
-        String cmdType = cmdArg[0].trim().toLowerCase();
-        //String args = cmdArg[1];
+    public Command getCmd() {
+        return cmd;
+    }
 
-        switch (cmdType) {
-        case "delete":
-            cmd = prepareDelete(cmdArg);
-            break;
-        case "archive":
-            cmd = prepareArchive(cmdArg);
-            break;
-        case "list":
+    public void parse(String userInputString) {
+        if (userInputString.toLowerCase().matches("^(list)[ ].*$")) {
             cmd = new ListCommand(userInputString);
-            break;
-        case "exit":
-            cmd = new ExitCommand();
-            break;
-        default:
+        } else if (userInputString.equalsIgnoreCase("bye")) {
+            cmd = new ExitCommand(userInputString);
+        } else if (userInputString.equalsIgnoreCase("help")) {
+            cmd = new HelpCommand(userInputString);
+        } else if (userInputString.toLowerCase().matches("^(read)[ ].*$")) {
+            cmd = new ReadCommand(userInputString);
+        } else if (userInputString.toLowerCase().matches("^(delete)[ ].*$")) {
+            cmd = new DeleteCommand(userInputString);
+        } else if (userInputString.toLowerCase().matches("^(delete)[ ].*$")) {
+            cmd = new ArchiveCommand(userInputString);
+        } else {
             cmd = null;
+        }
+    }
+
+    public static int extractIndex(String userInput) throws InvalidIndexException {
+        try {
+            String[] cmdArg = userInput.split(" ");
+            String args = cmdArg[1].trim();
+            int indexShow = Integer.parseInt(args);
+            return indexShow;
+        } catch (NumberFormatException e) {
+            throw new InvalidIndexException();
         }
 
     }
 
-    public DeleteCommand prepareDelete(String[] cmdArg) {
-        String args = cmdArg[1].trim();
-        int IndexShow = Integer.parseInt(args);
-        return new DeleteCommand(IndexShow);
-    }
-    public ArchiveCommand prepareArchive(String[] cmdArg) {
-        String args = cmdArg[1].trim();
-        int IndexShow = Integer.parseInt(args);
-        return new ArchiveCommand(IndexShow);
+
+    public static ArrayList<Email> getTypeToList(String userInput) {
+        String emailType = userInput.replaceAll("list", "").strip();
+        ArrayList<Email> emailsToPrint = null;
+        switch (emailType) {
+        case ("emails"):
+            emailsToPrint = emailManager.getAllEmails();
+            break;
+        case ("archive"):
+            emailsToPrint = emailManager.getArchivedEmails();
+            break;
+        case ("deleted"):
+            emailsToPrint = emailManager.getDeletedEmails();
+            break;
+        case ("draft"):
+            emailsToPrint = emailManager.getDraftEmails();
+            break;
+        case ("inbox"):
+            emailsToPrint = emailManager.getInboxEmails();
+            break;
+        case ("junk"):
+            emailsToPrint = emailManager.getJunkEmails();
+            break;
+        case ("sent"):
+            emailsToPrint = emailManager.getSentEmails();
+            break;
+        default:
+        }
+        return emailsToPrint;
     }
 }

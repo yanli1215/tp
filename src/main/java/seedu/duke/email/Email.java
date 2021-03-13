@@ -70,7 +70,11 @@ public class Email {
     }
 
     public String toString() {
+        return getShortDescription() + "\n|| Content: " + getContent();
+    }
+
+    public String getShortDescription() {
         return "[" + getStatus() + "]" + "\n|| Subject: " + getSubject() + "\n|| From: " + getFrom() + " --> To: "
-                + getTo() + "\n|| Content: " + getContent();
+                + getTo();
     }
 }

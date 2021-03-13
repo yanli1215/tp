@@ -3,7 +3,6 @@ package seedu.duke;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 public class Duke {
     /**
@@ -31,11 +30,15 @@ public class Duke {
     }
 
     public void run() {
-        ui.showHello();
+        ui.printMenu();
         while (true) {
             String userCommand = ui.getUserInput();
             p.parse(userCommand.trim());
-            p.getCmd().execute(emails, ui, storage);
+            try {
+                p.getCmd().execute(emails, ui, storage);
+            } catch (NullPointerException e) {
+                ui.showMessageForInvalidCommandInput();
+            }
         }
     }
 
