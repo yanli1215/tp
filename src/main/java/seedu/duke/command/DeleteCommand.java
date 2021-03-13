@@ -43,7 +43,7 @@ public class DeleteCommand extends Command {
             e.showErrorMessage("DELETE");
         }
 
-        //ui.showDeleteResult(deletedEmail, emails.getNumofEmails());
+        //ui.showDeleteResult(deletedEmail, emails.getNumOfEmails());
     }
 
 }

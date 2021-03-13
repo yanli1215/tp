@@ -34,8 +34,29 @@ public class Ui {
         return inputLine;
     }
 
+    public void printComposeUI() {
+        printDivider();
+        System.out.println("Please enter the details below in the correct order:");
+        System.out.println("To:");
+        System.out.println("Subject:");
+        System.out.println("Content:");
+        printDivider();
+    }
+
     private void printDivider() {
         System.out.println("____________________________________________________________");
+    }
+
+    public void printEmailDraft(String time) {
+        printDivider();
+        System.out.println("Email saved to draft " + "at " + time);
+        printDivider();
+    }
+
+    public void printEmailSent(String to, String time) {
+        printDivider();
+        System.out.println("Email successfully sent to: " + to + " at " + time);
+        printDivider();
     }
 
     public void printFeedback(String feedback) {

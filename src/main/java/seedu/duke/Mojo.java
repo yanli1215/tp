@@ -11,7 +11,7 @@ public class Mojo {
 
     private static Ui ui;
     private static EmailManager emails;
-    private static Parser p;
+    private static Parser parser;
     private Storage storage;
 
     public Mojo(String filePath) {
@@ -26,16 +26,16 @@ public class Mojo {
             emails = new EmailManager();
             e.printStackTrace();
         }
-        p = new Parser();
+        parser = new Parser();
     }
 
     public void run() {
         ui.printMenu();
         while (true) {
             String userCommand = ui.getUserInput();
-            p.parse(userCommand.trim());
+            parser.parse(userCommand.trim());
             try {
-                p.getCmd().execute(emails, ui, storage);
+                parser.getCmd().execute(emails, ui, storage);
             } catch (NullPointerException e) {
                 ui.showMessageForInvalidCommandInput();
             }

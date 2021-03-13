@@ -23,7 +23,7 @@ public class EmailManager {
     }
 
 
-    public int getNumofEmails() {
+    public int getNumOfEmails() {
         return emailsList.size();
     }
 
