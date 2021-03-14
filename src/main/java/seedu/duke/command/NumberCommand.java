@@ -6,13 +6,13 @@ import seedu.duke.Ui;
 import seedu.duke.exceptions.InvalidInputException;
 
 public class NumberCommand extends Command {
+    private static final int STARTINDEXOFEMAILTYPE = 7;
     public NumberCommand(String s) {
         super(s);
     }
 
     public void execute(EmailManager emails, Ui ui, Storage storage) {
         try {
-            int STARTINDEXOFEMAILTYPE = 7;
             String emailType = this.getUserInput().toLowerCase().substring(STARTINDEXOFEMAILTYPE);
             int totalEmails = 0;
 
