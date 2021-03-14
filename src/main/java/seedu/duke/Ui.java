@@ -1,5 +1,7 @@
 package seedu.duke;
 
+import seedu.duke.email.Email;
+
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
@@ -47,15 +49,15 @@ public class Ui {
         System.out.println("____________________________________________________________");
     }
 
-    public void printEmailDraft(String time) {
+    public void printEmailDraft(Email email) {
         printDivider();
-        System.out.println("Email saved to draft " + "at " + time);
+        System.out.println("Email saved to draft " + "at " + email.getTime());
         printDivider();
     }
 
-    public void printEmailSent(String to, String time) {
+    public void printEmailSent(Email email) {
         printDivider();
-        System.out.println("Email successfully sent to: " + to + " at " + time);
+        System.out.println("Email successfully sent to: " + email.getTo() + " at " + email.getTime());
         printDivider();
     }
 

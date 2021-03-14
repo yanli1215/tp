@@ -9,6 +9,7 @@ import seedu.duke.EmailManager;
 import seedu.duke.Storage;
 import seedu.duke.Ui;
 import seedu.duke.email.Draft;
+import seedu.duke.email.Email;
 
 public class ComposeCommand extends Command {
 
@@ -30,8 +31,8 @@ public class ComposeCommand extends Command {
             }
             String userEmail = "12312@gmail.com";
             String time = String.valueOf(LocalDateTime.now());
-            new Draft(userEmail, to, subject, time, content);
-            ui.printEmailDraft(time);
+            Email draftEmail = new Draft(userEmail, to, subject, time, content);
+            ui.printEmailDraft(draftEmail);
         } catch (NullPointerException e) {
             System.out.println("Draft not saved due to missing line");
         }
