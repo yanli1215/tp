@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import seedu.duke.email.Email;
 import seedu.duke.email.Sent;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SendCommandTest {
     @Test
