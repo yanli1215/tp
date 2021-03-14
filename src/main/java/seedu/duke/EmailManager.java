@@ -27,6 +27,66 @@ public class EmailManager {
         return emailsList.size();
     }
 
+    public int getNumOfArchiveEmails() {
+        int numberOfEmails = 0;
+        for (Email email : emailsList) {
+            if (email instanceof Archive) {
+                numberOfEmails++;
+            }
+        }
+        return numberOfEmails;
+    }
+
+    public int getNumOfDeletedEmails() {
+        int numberOfEmails = 0;
+        for (Email email : emailsList) {
+            if (email instanceof Deleted) {
+                numberOfEmails++;
+            }
+        }
+        return numberOfEmails;
+    }
+
+    public int getNumOfDraftEmails() {
+        int numberOfEmails = 0;
+        for (Email email : emailsList) {
+            if (email instanceof Draft) {
+                numberOfEmails++;
+            }
+        }
+        return numberOfEmails;
+    }
+
+    public int getNumOfInboxEmails() {
+        int numberOfEmails = 0;
+        for (Email email : emailsList) {
+            if (email instanceof Inbox) {
+                numberOfEmails++;
+            }
+        }
+        return numberOfEmails;
+    }
+
+    public int getNumOfJunkEmails() {
+        int numberOfEmails = 0;
+        for (Email email : emailsList) {
+            if (email instanceof Junk) {
+                numberOfEmails++;
+            }
+        }
+        return numberOfEmails;
+    }
+
+    public int getNumOfSentEmails() {
+        int numberOfEmails = 0;
+        for (Email email : emailsList) {
+            if (email instanceof Sent) {
+                numberOfEmails++;
+            }
+        }
+        return numberOfEmails;
+    }
+
     public void listAllEmails() {
         for (int i = 0; i < emailsList.size(); i++) {
             System.out.println(i + 1 + ". " + emailsList.get(i));
@@ -118,7 +178,7 @@ public class EmailManager {
     }
 
     public void addToSent(Email e) {
-        Deleted email = new Deleted(e.getFrom(), e.getTo(), e.getSubject(), e.getTime(), e.getContent());
+        Sent email = new Sent(e.getFrom(), e.getTo(), e.getSubject(), e.getTime(), e.getContent());
         emailsList.add(email);
     }
 
