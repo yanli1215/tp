@@ -1,6 +1,15 @@
 package seedu.duke;
 
-import seedu.duke.command.*;
+import seedu.duke.command.ArchiveCommand;
+import seedu.duke.command.Command;
+import seedu.duke.command.ComposeCommand;
+import seedu.duke.command.DeleteCommand;
+import seedu.duke.command.ExitCommand;
+import seedu.duke.command.HelpCommand;
+import seedu.duke.command.ListCommand;
+import seedu.duke.command.NumberCommand;
+import seedu.duke.command.ReadCommand;
+import seedu.duke.command.SendCommand;
 import seedu.duke.email.Email;
 import seedu.duke.email.Archive;
 import seedu.duke.exceptions.InvalidIndexException;
