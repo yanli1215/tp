@@ -1,6 +1,14 @@
 package seedu.duke;
 
-import seedu.duke.command.*;
+import seedu.duke.command.ArchiveCommand;
+import seedu.duke.command.Command;
+import seedu.duke.command.ComposeCommand;
+import seedu.duke.command.DeleteCommand;
+import seedu.duke.command.ExitCommand;
+import seedu.duke.command.HelpCommand;
+import seedu.duke.command.ListCommand;
+import seedu.duke.command.ReadCommand;
+import seedu.duke.command.SendCommand;
 import seedu.duke.email.Email;
 import seedu.duke.email.Archive;
 import seedu.duke.exceptions.InvalidIndexException;
@@ -34,6 +42,8 @@ public class Parser {
             cmd = new ArchiveCommand(userInputString);
         } else if (userInputString.equalsIgnoreCase(("compose"))) {
             cmd = new ComposeCommand((userInputString));
+        } else if (userInputString.toLowerCase().matches("^(send)[ ].*$")) {
+            cmd = new SendCommand(userInputString);
         } else {
             cmd = null;
         }

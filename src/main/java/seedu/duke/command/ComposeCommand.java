@@ -30,7 +30,7 @@ public class ComposeCommand extends Command {
             }
             String userEmail = "12312@gmail.com";
             String time = String.valueOf(LocalDateTime.now());
-            new Draft (userEmail, to, subject, time, content);
+            new Draft(userEmail, to, subject, time, content);
             ui.printEmailDraft(time);
         } catch (NullPointerException e) {
             System.out.println("Draft not saved due to missing line");
