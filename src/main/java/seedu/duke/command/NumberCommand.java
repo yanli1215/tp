@@ -7,6 +7,7 @@ import seedu.duke.exceptions.InvalidInputException;
 
 public class NumberCommand extends Command {
     private static final int STARTINDEXOFEMAILTYPE = 7;
+    
     public NumberCommand(String s) {
         super(s);
     }
