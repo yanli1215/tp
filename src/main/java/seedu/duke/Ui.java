@@ -69,6 +69,10 @@ public class Ui {
     public void printMenu() {
         System.out.println("Hello! I'm MojoHR\n" + logo + "What can I do for you?");
         System.out.println("> Use the keyword \"LIST (type) \" to print the emails by types");
+        System.out.println("> Use the keyword \"READ (index) \" to open the selected email");
+        System.out.println("> Use the keyword \"SEND (recipient's email address) (subject) (body) \" to send email");
+        System.out.println("> Use the keyword \"DELETE (index) \" to delete the selected email");
+        System.out.println("> Use the keyword \"ARCHIVE (index) \" to move the selected email to the archive folder");
         System.out.println("> Use the keyword \"HELP\" to print the menu");
         System.out.println("> Use the keyword \"BYE\" to exit");
     }
