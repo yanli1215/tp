@@ -4,17 +4,17 @@ import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 
-public class Duke {
+public class Mojo {
     /**
      * Main entry-point for the java.duke.Duke application.
      */
 
     private static Ui ui;
     private static EmailManager emails;
-    private static Parser p;
+    private static Parser parser;
     private Storage storage;
 
-    public Duke(String filePath) {
+    public Mojo(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
         try {
@@ -26,16 +26,16 @@ public class Duke {
             emails = new EmailManager();
             e.printStackTrace();
         }
-        p = new Parser();
+        parser = new Parser();
     }
 
     public void run() {
         ui.printMenu();
         while (true) {
             String userCommand = ui.getUserInput();
-            p.parse(userCommand.trim());
+            parser.parse(userCommand.trim());
             try {
-                p.getCmd().execute(emails, ui, storage);
+                parser.getCmd().execute(emails, ui, storage);
             } catch (NullPointerException e) {
                 ui.showMessageForInvalidCommandInput();
             }
@@ -43,7 +43,7 @@ public class Duke {
     }
 
     public static void main(String[] args) {
-        new Duke("test.json").run();
+        new Mojo("test.json").run();
     }
 }
 

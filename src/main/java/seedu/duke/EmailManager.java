@@ -23,7 +23,7 @@ public class EmailManager {
     }
 
 
-    public int getNumofEmails() {
+    public int getNumOfEmails() {
         return emailsList.size();
     }
 
@@ -117,11 +117,15 @@ public class EmailManager {
         emailsList.add(email);
     }
 
+    public void addToSent(Email e) {
+        Deleted email = new Deleted(e.getFrom(), e.getTo(), e.getSubject(), e.getTime(), e.getContent());
+        emailsList.add(email);
+    }
+
     public void addToArchive(Email e) {
         Archive email = new Archive(e.getFrom(), e.getTo(), e.getSubject(), e.getTime(), e.getContent());
         emailsList.add(email);
     }
-
 
 
 }
