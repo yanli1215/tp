@@ -77,6 +77,12 @@ public class Ui {
         System.out.println("> Use the keyword \"BYE\" to exit");
     }
 
+    public void printNumberOfEmails(int totalEmails, String emailType) {
+        printDivider();
+        System.out.println("You have a total of " + totalEmails + " " + emailType.toUpperCase() + " emails");
+        printDivider();
+    }
+
     public static void showInvalidIdMessage(String type) {
         System.out.println("OOPS!!! The Email ID that you " + type + " is invalid.");
     }
@@ -89,4 +95,5 @@ public class Ui {
         System.out.println("OOPS!!! The Email type that you enter is invalid.");
         System.out.println("It must be one of: [emails, inbox, archive, deleted, draft, junk, sent]");
     }
+
 }

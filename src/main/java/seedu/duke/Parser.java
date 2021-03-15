@@ -7,6 +7,7 @@ import seedu.duke.command.DeleteCommand;
 import seedu.duke.command.ExitCommand;
 import seedu.duke.command.HelpCommand;
 import seedu.duke.command.ListCommand;
+import seedu.duke.command.NumberCommand;
 import seedu.duke.command.ReadCommand;
 import seedu.duke.command.SendCommand;
 import seedu.duke.email.Email;
@@ -44,6 +45,8 @@ public class Parser {
             cmd = new ComposeCommand((userInputString));
         } else if (userInputString.toLowerCase().matches("^(send)[ ].*$")) {
             cmd = new SendCommand(userInputString);
+        } else if (userInputString.toLowerCase().startsWith("number")) {
+            cmd = new NumberCommand(userInputString);
         } else {
             cmd = null;
         }

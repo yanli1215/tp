@@ -19,13 +19,14 @@ public class ComposeCommand extends Command {
 
     public void execute(EmailManager tasks, Ui ui, Storage storage) {
         try {
-            Scanner in = null;
+            Scanner in = new Scanner(System.in);
             ui.printComposeUI();
+            in.nextLine();
             String to = in.nextLine();
             String subject = in.nextLine();
             String inputContent = in.nextLine();
             String content = inputContent + "\n";
-            while (inputContent != null) { //user unable to change contents of previous lines
+            while (!inputContent.startsWith("end")) { //user unable to change contents of previous lines
                 content += inputContent + "\n";
                 inputContent = in.nextLine();
             }
