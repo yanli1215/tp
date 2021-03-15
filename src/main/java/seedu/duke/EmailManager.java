@@ -14,6 +14,10 @@ public class EmailManager {
     private static ArrayList<Email> emailsList = new ArrayList<>();
     private static ArrayList<Email> listedEmailsList = null;
 
+    public static void setListedEmailsList(ArrayList<Email> listedEmailsList) {
+        EmailManager.listedEmailsList = listedEmailsList;
+    }
+
     public EmailManager(ArrayList<Email> emailsList) {
         this.emailsList = emailsList;
     }
