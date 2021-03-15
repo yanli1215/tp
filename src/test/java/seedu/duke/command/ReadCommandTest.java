@@ -36,10 +36,10 @@ public class ReadCommandTest {
     void execute_validIndex_success() {
         new ReadCommand("read 1").execute(emailManager, ui, storage);
 
-        Assertions.assertEquals("[Inbox][READ]\n" +
-                        "|| Subject: S1\n" +
-                        "|| From: 123@gmail.com --> To: 456@gmail.com\n" +
-                        "|| Content: C1",
+        Assertions.assertEquals("[Inbox][READ]\n"
+                        + "|| Subject: S1\n"
+                        + "|| From: 123@gmail.com --> To: 456@gmail.com\n"
+                        + "|| Content: C1",
                 outputStreamCaptor.toString().trim());
     }
 
