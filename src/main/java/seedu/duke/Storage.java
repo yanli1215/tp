@@ -34,6 +34,12 @@ public class Storage {
 
     }
 
+    public Storage() {
+        this.fileName = null;
+        this.filePath = null;
+
+    }
+
     public ArrayList<Email> load() throws IOException, ParseException {
         JSONObject accountInfo = readJson();
         ArrayList<Email> emailList = parse(accountInfo);
