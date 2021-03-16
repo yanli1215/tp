@@ -27,7 +27,7 @@ public class NumberCommand extends Command {
             case ("draft"):
                 totalEmails = emails.getNumOfDraftEmails();
                 break;
-            case ("email"): //list number of all emails
+            case ("emails"): //list number of all emails
                 totalEmails = emails.getNumOfEmails();
                 break;
             case ("inbox"):
