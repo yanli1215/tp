@@ -105,7 +105,7 @@ public class ListCommandTest {
     }
 
     @Test
-    void execute_invalidList_message() {
+    void execute_invalid_list_message() {
         new ListCommand("list -1").execute(emailManager, ui, storage);
 
         Assert.assertEquals("OOPS!!! The Email type that you enter is invalid.\n"
