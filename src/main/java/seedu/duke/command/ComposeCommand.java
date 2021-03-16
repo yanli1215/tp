@@ -37,14 +37,6 @@ public class ComposeCommand extends Command {
         } catch (NullPointerException e) {
             System.out.println("Draft not saved due to missing line");
         }
-
-
-        /* JSONObject newEmail = new JSONObject();
-        newEmail.put("from", userEmail);
-        newEmail.put("to", to);
-        newEmail.put("subject", subject);
-        newEmail.put("time", time);
-        newEmail.put("content", content);*/
     }
 
 }
