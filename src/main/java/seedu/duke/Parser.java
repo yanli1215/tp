@@ -39,7 +39,7 @@ public class Parser {
             cmd = new ReadCommand(userInputString);
         } else if (userInputString.toLowerCase().matches("^(delete)[ ].*$")) {
             cmd = new DeleteCommand(userInputString);
-        } else if (userInputString.toLowerCase().matches("^(delete)[ ].*$")) {
+        } else if (userInputString.toLowerCase().matches("^(archive)[ ].*$")) {
             cmd = new ArchiveCommand(userInputString);
         } else if (userInputString.equalsIgnoreCase(("compose"))) {
             cmd = new ComposeCommand((userInputString));
