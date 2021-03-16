@@ -108,7 +108,8 @@ public class ListCommandTest {
     void execute_invalid_list_message() {
         new ListCommand("list -1").execute(emailManager, ui, storage);
 
-        Assert.assertEquals("OOPS!!! The Email type that you enter is invalid.\n"
+        Assert.assertEquals("OOPS!!! The Email type that you enter is invalid."
+                + System.lineSeparator()
                 + "It must be one of: [emails, inbox, archive, deleted, draft, junk, sent]",
                 outputStreamCaptor.toString()
                 .trim());
