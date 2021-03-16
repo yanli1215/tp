@@ -51,7 +51,7 @@ public class NumberCommandTest {
         new NumberCommand("number drafts").execute(emailManager, ui, storage);
 
         String expectedOutput = "OOPS!!! The Email type that you enter is invalid." + System.lineSeparator()
-        + "It must be one of: [emails, inbox, archive, deleted, draft, junk, sent]";
+                + "It must be one of: [emails, inbox, archive, deleted, draft, junk, sent]";
 
         Assert.assertEquals(expectedOutput, outputStreamCaptor.toString()
                 .trim());
