@@ -8,7 +8,14 @@ import org.junit.jupiter.api.Test;
 import seedu.duke.EmailManager;
 import seedu.duke.Storage;
 import seedu.duke.Ui;
-import seedu.duke.email.*;
+import seedu.duke.email.Archive;
+import seedu.duke.email.Deleted;
+import seedu.duke.email.Draft;
+import seedu.duke.email.Email;
+import seedu.duke.email.Inbox;
+import seedu.duke.email.Junk;
+import seedu.duke.email.Sent;
+
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -101,8 +108,9 @@ public class ListCommandTest {
     void execute_invalidList_message() {
         new ListCommand("list -1").execute(emailManager, ui, storage);
 
-        Assert.assertEquals("OOPS!!! The Email type that you enter is invalid.\n" +
-                "It must be one of: [emails, inbox, archive, deleted, draft, junk, sent]", outputStreamCaptor.toString()
+        Assert.assertEquals("OOPS!!! The Email type that you enter is invalid.\n"
+                + "It must be one of: [emails, inbox, archive, deleted, draft, junk, sent]",
+                outputStreamCaptor.toString()
                 .trim());
     }
 
