@@ -66,7 +66,7 @@ public class Parser {
 
 
     public static ArrayList<Email> getTypeToList(String userInput) {
-        String emailType = userInput.replaceAll("list", "").strip();
+        String emailType = userInput.replaceAll("list", "");
         ArrayList<Email> emailsToPrint = null;
         switch (emailType) {
         case ("emails"):
