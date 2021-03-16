@@ -31,9 +31,9 @@ public class ArchiveCommand extends Command {
                 throw new InvalidIndexException();
             }
             Email archivedEmail = listedEmails.get(index - 1);
-            emails.deleteEmail(archivedEmail);
             if (!(archivedEmail instanceof Archive)) {
-                emails.addToDeleted(archivedEmail);
+                emails.deleteEmail(archivedEmail);
+                emails.addToArchive(archivedEmail);
                 System.out.println("Move this email to archive folder");
             } else {
                 System.out.println("This email is already in archive folder");

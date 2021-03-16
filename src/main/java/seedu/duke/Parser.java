@@ -39,7 +39,7 @@ public class Parser {
             cmd = new ReadCommand(userInputString);
         } else if (userInputString.toLowerCase().matches("^(delete)[ ].*$")) {
             cmd = new DeleteCommand(userInputString);
-        } else if (userInputString.toLowerCase().matches("^(delete)[ ].*$")) {
+        } else if (userInputString.toLowerCase().matches("^(archive)[ ].*$")) {
             cmd = new ArchiveCommand(userInputString);
         } else if (userInputString.equalsIgnoreCase(("compose"))) {
             cmd = new ComposeCommand((userInputString));
@@ -54,7 +54,7 @@ public class Parser {
 
     public static int extractIndex(String userInput) throws InvalidIndexException {
         try {
-            String[] cmdArg = userInput.split(" ");
+            String[] cmdArg = userInput.split(" ", 2);
             String args = cmdArg[1].trim();
             int indexShow = Integer.parseInt(args);
             return indexShow;
