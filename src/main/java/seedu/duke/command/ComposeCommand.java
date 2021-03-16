@@ -17,11 +17,10 @@ public class ComposeCommand extends Command {
         super(s);
     }
 
-    public void execute(EmailManager tasks, Ui ui, Storage storage) {
+    public void execute(EmailManager emails, Ui ui, Storage storage) {
         try {
             Scanner in = new Scanner(System.in);
             ui.printComposeUI();
-            in.nextLine();
             String to = in.nextLine();
             String subject = in.nextLine();
             String inputContent = in.nextLine();
@@ -33,6 +32,7 @@ public class ComposeCommand extends Command {
             String userEmail = "12312@gmail.com";
             String time = String.valueOf(LocalDateTime.now());
             Email draftEmail = new Draft(userEmail, to, subject, time, content);
+            emails.addToDraft(draftEmail);
             ui.printEmailDraft(draftEmail);
         } catch (NullPointerException e) {
             System.out.println("Draft not saved due to missing line");

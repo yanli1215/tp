@@ -70,7 +70,8 @@ public class Ui {
         System.out.println("Hello! I'm MojoHR\n" + logo + "What can I do for you?");
         System.out.println("> Use the keyword \"LIST (type) \" to print the emails by types");
         System.out.println("> Use the keyword \"READ (index) \" to open the selected email");
-        System.out.println("> Use the keyword \"SEND (index) \" to send email");
+        System.out.println("> Use the keyword \"COMPOSE \" to create a draft email");
+        System.out.println("> Use the keyword \"SEND (index of draft) \" to send email in the draft folder");
         System.out.println("> Use the keyword \"DELETE (index) \" to delete the selected email");
         System.out.println("> Use the keyword \"ARCHIVE (index) \" to move the selected email to the archive folder");
         System.out.println("> Use the keyword \"HELP\" to print the menu");

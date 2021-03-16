@@ -191,5 +191,9 @@ public class EmailManager {
         emailsList.add(email);
     }
 
+    public void addToDraft(Email e) {
+        Draft email = new Draft(e.getFrom(), e.getTo(), e.getSubject(), e.getTime(), e.getContent());
+        emailsList.add(email);
+    }
 
 }
