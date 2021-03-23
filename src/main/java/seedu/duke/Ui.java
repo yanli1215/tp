@@ -42,6 +42,8 @@ public class Ui {
         System.out.println("To:");
         System.out.println("Subject:");
         System.out.println("Content:");
+        System.out.println("You can send to multiple recipents by appending emails with \";\"");
+        System.out.println("e.g: Alice@gmail.com;Bob@gmail.com");
         printDivider();
     }
 
