@@ -17,7 +17,7 @@ public class ListCommand extends Command {
         try {
             ArrayList emailTypeToPrint = Parser.getTypeToList(userInput);
             emails.printEmailByType(emailTypeToPrint);
-        } catch (NullPointerException e1) {
+        } catch (AssertionError e1) {
             Ui.showInvalidListTypeMessage();
         }
 

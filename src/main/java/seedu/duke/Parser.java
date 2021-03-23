@@ -48,7 +48,7 @@ public class Parser {
         } else if (userInputString.toLowerCase().startsWith("number")) {
             cmd = new NumberCommand(userInputString);
         } else {
-            cmd = null;
+            throw new AssertionError(userInputString);
         }
     }
 
@@ -92,6 +92,7 @@ public class Parser {
             emailsToPrint = emailManager.getSentEmails();
             break;
         default:
+            throw new AssertionError(emailType);
         }
         return emailsToPrint;
     }
