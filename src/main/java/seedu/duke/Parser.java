@@ -15,6 +15,7 @@ import seedu.duke.email.Archive;
 import seedu.duke.exceptions.InvalidIndexException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Parser {
     private static EmailManager emailManager;
@@ -61,9 +62,21 @@ public class Parser {
         } catch (NumberFormatException e) {
             throw new InvalidIndexException();
         }
-
     }
 
+    public static int[] extractMultipleIndices(String userInput) throws InvalidIndexException {
+        try {
+            String[] cmdArg = userInput.split(" ", 2);
+            String[] indicesStr = cmdArg[1].split(" ");
+            int[] indices = new int[indicesStr.length];
+            for (int i = 0; i < indicesStr.length; i++) {
+                indices[i] = Integer.parseInt(indicesStr[i].trim());
+            }
+            return indices;
+        } catch (NumberFormatException e) {
+            throw new InvalidIndexException();
+        }
+    }
 
     public static ArrayList<Email> getTypeToList(String userInput) {
         String[] cmdArg = userInput.split(" ", 2);
