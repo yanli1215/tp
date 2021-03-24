@@ -57,8 +57,8 @@ public class ReadCommandTest {
         new ReadCommand("read 1").execute(emailManager, ui, storage);
 
         Assertions.assertEquals("You have to list emails first" + System.lineSeparator()
-                + "=> list emails" + System.lineSeparator()
-                + "____________________________________________________________",
+                        + "=> list emails" + System.lineSeparator()
+                        + "____________________________________________________________",
                 outputStreamCaptor.toString().trim());
     }
 

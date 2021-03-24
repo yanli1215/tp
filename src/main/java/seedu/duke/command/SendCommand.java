@@ -40,7 +40,7 @@ public class SendCommand extends Command {
         }
 
         assert sendEmailList != null;
-        
+
         for (int i = 0; i < sendEmailList.length; i++) {
             Email draftEmail = sendEmailList[i];
             draftEmail.setTime(String.valueOf(LocalDateTime.now()));

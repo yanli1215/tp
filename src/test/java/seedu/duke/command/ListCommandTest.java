@@ -109,10 +109,10 @@ public class ListCommandTest {
         new ListCommand("list -1").execute(emailManager, ui, storage);
 
         Assert.assertEquals("OOPS!!! The Email type that you enter is invalid."
-                + System.lineSeparator()
-                + "It must be one of: [emails, inbox, archive, deleted, draft, junk, sent]",
+                        + System.lineSeparator()
+                        + "It must be one of: [emails, inbox, archive, deleted, draft, junk, sent]",
                 outputStreamCaptor.toString()
-                .trim());
+                        .trim());
     }
 
     @AfterEach

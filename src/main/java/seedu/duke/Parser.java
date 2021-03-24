@@ -110,9 +110,11 @@ public class Parser {
     }
 
     /**
-     * Converts a string containing
-     * @param nextLine
-     * @return
+     * Converts a string containing multiple recipients to
+     * a list of recipients
+     *
+     * @param recipientsString String containing multiple recipients
+     * @return list of recipients
      */
     public static ArrayList<String> parseRecipients(String recipientsString) {
         return (ArrayList<String>) Arrays.asList(recipientsString.trim().split(";"));
