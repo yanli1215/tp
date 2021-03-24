@@ -20,7 +20,7 @@ public class ReadCommand extends Command {
 
         if (listedEmails == null) {
             String feedback = "You have to list emails first" + System.lineSeparator()
-                    + "=> list emails" + System.lineSeparator();
+                    + "=> list emails";
             ui.printFeedback(feedback);
             return;
         }
