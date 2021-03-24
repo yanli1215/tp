@@ -79,17 +79,20 @@ public class Storage {
                 Map e = iterator.next();
                 switch (type) {
                 case "inbox":
-                    Inbox inboxEmail = new Inbox(e.get("from").toString(), Parser.parseRecipients(e.get("to").toString()),
+                    Inbox inboxEmail = new Inbox(e.get("from").toString(),
+                            Parser.parseRecipients(e.get("to").toString()),
                             e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
                     allEmails.add(inboxEmail);
                     break;
                 case "drafts":
-                    Draft draftEmail = new Draft(e.get("from").toString(), Parser.parseRecipients(e.get("to").toString()),
+                    Draft draftEmail = new Draft(e.get("from").toString(),
+                            Parser.parseRecipients(e.get("to").toString()),
                             e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
                     allEmails.add(draftEmail);
                     break;
                 case "archive":
-                    Archive archiveEmail = new Archive(e.get("from").toString(), Parser.parseRecipients(e.get("to").toString()),
+                    Archive archiveEmail = new Archive(e.get("from").toString(),
+                            Parser.parseRecipients(e.get("to").toString()),
                             e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
                     allEmails.add(archiveEmail);
                     break;
@@ -99,7 +102,8 @@ public class Storage {
                     allEmails.add(sentEmail);
                     break;
                 case "deleted":
-                    Deleted deletedEmail = new Deleted(e.get("from").toString(), Parser.parseRecipients(e.get("to").toString()),
+                    Deleted deletedEmail = new Deleted(e.get("from").toString(),
+                            Parser.parseRecipients(e.get("to").toString()),
                             e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
                     allEmails.add(deletedEmail);
                     break;

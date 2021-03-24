@@ -107,7 +107,7 @@ public class Parser {
 
     /**
      * Converts a string containing multiple recipients to
-     * a list of recipients
+     * a list of recipients.
      *
      * @param recipientsString String containing multiple recipients
      * @return list of recipients

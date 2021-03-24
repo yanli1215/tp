@@ -34,7 +34,7 @@ public class Email {
 
     /**
      * Overloaded constructor, able to take in a single recipient and convert it
-     * to a list of 1 recipient
+     * to a list of 1 recipient.
      *
      * @param from    Person that sends the email
      * @param to      Person that receives the email
