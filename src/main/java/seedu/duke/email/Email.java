@@ -14,13 +14,7 @@ public class Email {
     private boolean isRead;
     private ArrayList<String> tags;
 
-    private static final String[] availableTags = {"Important",
-            "Family",
-            "Friends",
-            "School",
-            "Work",
-            "Travels"
-    };
+    private static final String[] availableTags = {"Important", "Family", "Friends", "School", "Work", "Travels"};
 
     public Email(String from, ArrayList<String> to, String subject, String time, String content) {
         this.from = from;
