@@ -108,4 +108,13 @@ public class Parser {
         }
         return emailsToPrint;
     }
+
+    /**
+     * Converts a string containing
+     * @param nextLine
+     * @return
+     */
+    public static ArrayList<String> parseRecipients(String recipientsString) {
+        return (ArrayList<String>) Arrays.asList(recipientsString.trim().split(";"));
+    }
 }
