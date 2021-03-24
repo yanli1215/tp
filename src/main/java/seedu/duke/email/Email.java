@@ -1,5 +1,7 @@
 package seedu.duke.email;
 
+import seedu.duke.exceptions.InvalidIndexException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -10,6 +12,15 @@ public class Email {
     private String time;
     private String content;
     private boolean isRead;
+    private ArrayList<String> tags;
+
+    private static final String[] availableTags = {"Important",
+            "Family",
+            "Friends",
+            "School",
+            "Work",
+            "Travels"
+    };
 
     public Email(String from, ArrayList<String> to, String subject, String time, String content) {
         this.from = from;
@@ -18,6 +29,7 @@ public class Email {
         this.time = time;
         this.content = content;
         this.isRead = false;
+        this.tags = new ArrayList<>();
     }
 
     /**
@@ -31,10 +43,7 @@ public class Email {
      * @param content Message in the email
      */
     public Email(String from, String to, String subject, String time, String content) {
-        this(from, new ArrayList<>(), subject, time, content);
-        ArrayList<String> toList = new ArrayList<>();
-        toList.add(to);
-        setTo(toList);
+        this(from, new ArrayList<>(Arrays.asList(new String[]{to})), subject, time, content);
     }
 
     public boolean isRead() {
@@ -95,7 +104,27 @@ public class Email {
 
     public String getShortDescription() {
         return "[" + getStatus() + "]" + "\n|| Subject: " + getSubject() + "\n|| From: " + getFrom() + " --> To: "
-                + getTo();
+                + getTo() + "\n|| Tags: " + tags.toString();
     }
 
+    public ArrayList<String> getTags() {
+        return tags;
+    }
+
+    public static String[] getAvailableTags() {
+        return availableTags;
+    }
+
+    public ArrayList<String> setTags(int[] indices) throws InvalidIndexException {
+        tags = new ArrayList<>();
+        try {
+            for (int i = 0; i < indices.length; i++) {
+                tags.add(availableTags[indices[i] - 1]);
+            }
+        } catch (IndexOutOfBoundsException e) {
+            throw new InvalidIndexException();
+        }
+
+        return tags;
+    }
 }

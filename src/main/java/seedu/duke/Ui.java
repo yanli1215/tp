@@ -76,6 +76,7 @@ public class Ui {
         System.out.println("> Use the keyword \"SEND (index of draft) \" to send email in the draft folder");
         System.out.println("> Use the keyword \"DELETE (index) \" to delete the selected email");
         System.out.println("> Use the keyword \"ARCHIVE (index) \" to move the selected email to the archive folder");
+        System.out.println("> Use the keyword \"TAG (index)\" to select the email for tagging labels");
         System.out.println("> Use the keyword \"HELP\" to print the menu");
         System.out.println("> Use the keyword \"BYE\" to exit");
     }
@@ -99,4 +100,23 @@ public class Ui {
         System.out.println("It must be one of: [emails, inbox, archive, deleted, draft, junk, sent]");
     }
 
+    public String printTag() {
+        String[] tags = Email.getAvailableTags();
+
+        System.out.println("These are te available tags: ");
+        for (int i = 0; i < tags.length; i++) {
+            System.out.println(i + 1 + ". " + tags[i]);
+        }
+
+        System.out.println("Select the indices of the tag you want to add.");
+        System.out.println("e.g. Type \"1 2 6\" to add the tags Important, Family, Travels");
+        printDivider();
+
+        String inputLine = in.nextLine();
+        while (inputLine.trim().isEmpty()) {
+            inputLine = in.nextLine();
+        }
+        printDivider();
+        return inputLine;
+    }
 }

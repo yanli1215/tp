@@ -1,15 +1,6 @@
 package seedu.duke;
 
-import seedu.duke.command.ArchiveCommand;
-import seedu.duke.command.Command;
-import seedu.duke.command.ComposeCommand;
-import seedu.duke.command.DeleteCommand;
-import seedu.duke.command.ExitCommand;
-import seedu.duke.command.HelpCommand;
-import seedu.duke.command.ListCommand;
-import seedu.duke.command.NumberCommand;
-import seedu.duke.command.ReadCommand;
-import seedu.duke.command.SendCommand;
+import seedu.duke.command.*;
 import seedu.duke.email.Email;
 import seedu.duke.email.Archive;
 import seedu.duke.exceptions.InvalidIndexException;
@@ -46,6 +37,8 @@ public class Parser {
             cmd = new ComposeCommand((userInputString));
         } else if (userInputString.toLowerCase().matches("^(send)[ ].*$")) {
             cmd = new SendCommand(userInputString);
+        } else if (userInputString.toLowerCase().matches("^(tag)[ ].*$")) {
+            cmd = new TagCommand(userInputString);
         } else if (userInputString.toLowerCase().startsWith("number")) {
             cmd = new NumberCommand(userInputString);
         } else {
@@ -64,10 +57,13 @@ public class Parser {
         }
     }
 
+    public static String removeCommand(String userInput){
+        return userInput.split(" ", 2)[1];
+    }
+
     public static int[] extractMultipleIndices(String userInput) throws InvalidIndexException {
         try {
-            String[] cmdArg = userInput.split(" ", 2);
-            String[] indicesStr = cmdArg[1].split(" ");
+            String[] indicesStr = userInput.split(" ");
             int[] indices = new int[indicesStr.length];
             for (int i = 0; i < indicesStr.length; i++) {
                 indices[i] = Integer.parseInt(indicesStr[i].trim());
@@ -117,6 +113,6 @@ public class Parser {
      * @return list of recipients
      */
     public static ArrayList<String> parseRecipients(String recipientsString) {
-        return (ArrayList<String>) Arrays.asList(recipientsString.trim().split(";"));
+        return new ArrayList<>(Arrays.asList(recipientsString.trim().split(";")));
     }
 }

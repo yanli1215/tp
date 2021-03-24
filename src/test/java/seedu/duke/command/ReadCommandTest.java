@@ -39,7 +39,9 @@ public class ReadCommandTest {
         Assertions.assertEquals("[Inbox][READ]\n"
                         + "|| Subject: S1\n"
                         + "|| From: 123@gmail.com --> To: [456@gmail.com]\n"
-                        + "|| Content: C1",
+                        + "|| Tags: []\n"
+                        + "|| Content: C1" + System.lineSeparator()
+                        + "____________________________________________________________",
                 outputStreamCaptor.toString().trim());
     }
 

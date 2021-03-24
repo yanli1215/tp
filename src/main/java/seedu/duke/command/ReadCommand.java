@@ -31,9 +31,7 @@ public class ReadCommand extends Command {
             }
             Email email = listedEmails.get(index - 1);
             email.setRead(true);
-
-            System.out.println(email);
-            System.out.println();
+            ui.printFeedback(email.toString());
         } catch (InvalidIndexException e) {
             e.showErrorMessage("READ");
         }

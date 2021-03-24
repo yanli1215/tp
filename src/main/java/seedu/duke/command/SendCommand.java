@@ -27,7 +27,8 @@ public class SendCommand extends Command {
         Email[] sendEmailList = null;
 
         try {
-            int[] indices = Parser.extractMultipleIndices(userInput);
+            String args = Parser.removeCommand(userInput);
+            int[] indices = Parser.extractMultipleIndices(args);
             sendEmailList = new Email[indices.length];
             for (int i = 0; i < indices.length; i++) {
                 if (indices[i] <= 0 || indices[i] > draftedEmails.size()) {
@@ -41,8 +42,7 @@ public class SendCommand extends Command {
 
         assert sendEmailList != null;
 
-        for (int i = 0; i < sendEmailList.length; i++) {
-            Email draftEmail = sendEmailList[i];
+        for (Email draftEmail : sendEmailList) {
             draftEmail.setTime(String.valueOf(LocalDateTime.now()));
             emails.deleteEmail(draftEmail);
             emails.addToSent(draftEmail);
