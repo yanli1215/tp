@@ -8,11 +8,10 @@ public class Mojo {
     /**
      * Main entry-point for the java.duke.Duke application.
      */
-
     private static Ui ui;
     private static EmailManager emails;
     private static Parser parser;
-    private Storage storage;
+    private static Storage storage;
 
     public Mojo(String filePath) {
         ui = new Ui();
@@ -47,7 +46,9 @@ public class Mojo {
         LoginManager loginManager = new LoginManager(loginInfoFileManager);
         LoginController lc = new LoginController(loginManager);
         LoginInfo providedLoginInfo = lc.run();
-        new Mojo("test.json").run();
+        String userId  = providedLoginInfo.getUserId();
+        new Mojo(userId + ".json").run();
+
     }
 }
 

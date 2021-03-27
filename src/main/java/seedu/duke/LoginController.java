@@ -6,6 +6,7 @@ package seedu.duke;
 public class LoginController {
     private final LoginManager loginManager;
     private LoginUi loginUi;
+    private static LoginInfo loginInfo;
 
 
     public LoginController(LoginManager loginManager) {

@@ -9,6 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.json.simple.JSONArray;
@@ -39,6 +40,20 @@ public class Storage {
         this.filePath = null;
 
     }
+
+   /* public void getListOfJsonFiles(){
+        List<String> listOfJsonFiles = new ArrayList<String>();
+        String localDir = System.getProperty("user.dir");
+        Path dirPath = Paths.get(localDir, "data");
+        File dir = new File(String.valueOf(dirPath));
+        for (File file : dir.listFiles()) {
+            if (file.getName().endsWith((".json"))) {
+                listOfJsonFiles.add(file.getName());
+            }
+        }
+        System.out.println(listOfJsonFiles);
+    }*/
+
 
     public ArrayList<Email> load() throws IOException, ParseException {
         JSONObject accountInfo = readJson();
