@@ -108,6 +108,7 @@ public class Ui {
         System.out.println("> Use the keyword \"FIND (keyword) \" to find the  email by keywords");
         System.out.println("> Use the keyword \"ARCHIVE (index) \" to move the selected email to the archive folder");
         System.out.println("> Use the keyword \"TAG (index)\" to select the email for tagging labels");
+        System.out.println("> Use the keyword \"RESET\" to reset the your account password");
         System.out.println("> Use the keyword \"HELP\" to print the menu");
         System.out.println("> Use the keyword \"BYE\" to exit");
     }
