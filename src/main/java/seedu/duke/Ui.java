@@ -44,17 +44,29 @@ public class Ui {
         printDivider();
     }
 
+    public void printEditEmail() {
+        System.out.println("What would you like to edit? It must be one of [to, subject, content]." );
+    }
+
     private void printDivider() {
         System.out.println("____________________________________________________________");
     }
 
-    public void printEmailDraft(Email email) {
+    public void printEmailDrafted(Email email) {
         printDivider();
         System.out.println("Email saved to draft " + "at " + email.getTime());
     }
 
     public void printEmailSent(Email email) {
         System.out.println("Email successfully sent to: " + email.getTo() + " at " + email.getTime());
+    }
+
+    public void printEmailsSorted(String sortType) {
+        System.out.println("Emails are sorted according to " + sortType);
+    }
+
+    public void printEmailEdited(String editType) {
+        System.out.println("Email \"" + editType + "\" successfully edited." );
     }
 
     public void printFeedback(String feedback) {
@@ -104,13 +116,5 @@ public class Ui {
     public static void showMessageForEmptySortType() {
         System.out.println("OOPS!!! The sort type is empty.");
         System.out.println("Please enter one of: [sender, time] after \"sort\".");
-    }
-
-    public void showMessageForSortingCompleted(String sortType) {
-        System.out.println("Emails are sorted according to " + sortType);
-    }
-
-    public void showMessageForEditCompleted(String editType) {
-        System.out.println("Email \"" + editType + "\" successfully edited." );
     }
 }

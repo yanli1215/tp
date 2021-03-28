@@ -23,7 +23,7 @@ public class SortCommand extends Command {
             } else {
                 throw new InvalidTypeException();
             }
-            ui.showMessageForSortingCompleted(sortType);
+            ui.printEmailsSorted(sortType);
         } catch (InvalidTypeException e) {
             ui.showMessageForInvalidSortTypeInput();
         } catch (StringIndexOutOfBoundsException e) {

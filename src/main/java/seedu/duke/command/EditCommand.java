@@ -33,12 +33,11 @@ public class EditCommand extends Command {
             }
 
             Email draftEmail = draftedEmails.get(index - 1);
-            String feedback = "What would you like to edit? It must be one of [to, subject, content].";
-            ui.printFeedback(feedback);
+            ui.printEditEmail();
             Scanner in = new Scanner(System.in);
             String editType = in.nextLine().trim();
             processEditCommand(draftEmail, in, editType);
-            ui.showMessageForEditCompleted(editType);
+            ui.printEmailEdited(editType);
         } catch (InvalidIndexException e) {
             e.showErrorMessage("EDIT");
         } catch (InvalidTypeException e) {
