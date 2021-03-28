@@ -75,6 +75,6 @@ public class Email {
 
     public String getShortDescription() {
         return "[" + getStatus() + "]" + "\n|| Subject: " + getSubject() + "\n|| From: " + getFrom() + " --> To: "
-                + getTo();
+                + getTo() + "\n|| Time: " + getTime();
     }
 }

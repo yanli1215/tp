@@ -8,7 +8,10 @@ import seedu.duke.email.Inbox;
 import seedu.duke.email.Junk;
 import seedu.duke.email.Sent;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class EmailManager {
     private static ArrayList<Email> emailsList = new ArrayList<>();
@@ -106,6 +109,28 @@ public class EmailManager {
             System.out.println(i + 1 + ". " + emailTypeToPrint.get(i).getShortDescription());
         }
         listedEmailsList = emailTypeToPrint;
+    }
+
+    public void sortBySender() {
+        emailsList.sort(new typeSenderSortingComparator());
+    }
+
+    static class typeSenderSortingComparator implements Comparator<Email> {
+        @Override
+        public int compare(Email email1, Email email2) {
+            return email1.getFrom().compareTo(email2.getFrom());
+        }
+    }
+
+    public void sortByTime() {
+        emailsList.sort(new typeTimeSortingComparator());
+    }
+
+    static class typeTimeSortingComparator implements Comparator<Email> {
+        @Override
+        public int compare(Email email1, Email email2) {
+            return email1.getTime().compareTo(email2.getTime());
+        }
     }
 
     public static ArrayList<Email> getArchivedEmails() {

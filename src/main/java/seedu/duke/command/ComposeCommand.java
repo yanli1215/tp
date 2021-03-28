@@ -30,7 +30,7 @@ public class ComposeCommand extends Command {
                 inputContent = in.nextLine();
             }
             String userEmail = "12312@gmail.com";
-            String time = String.valueOf(LocalDateTime.now());
+            String time = String.valueOf(LocalDateTime.now().withNano(0));
             Email draftEmail = new Draft(userEmail, to, subject, time, content);
             emails.addToDraft(draftEmail);
             ui.printEmailDraft(draftEmail);

@@ -37,7 +37,6 @@ public class Ui {
     }
 
     public void printComposeUI() {
-        printDivider();
         System.out.println("Please enter the details below in the correct order:");
         System.out.println("To:");
         System.out.println("Subject:");
@@ -52,13 +51,10 @@ public class Ui {
     public void printEmailDraft(Email email) {
         printDivider();
         System.out.println("Email saved to draft " + "at " + email.getTime());
-        printDivider();
     }
 
     public void printEmailSent(Email email) {
-        printDivider();
         System.out.println("Email successfully sent to: " + email.getTo() + " at " + email.getTime());
-        printDivider();
     }
 
     public void printFeedback(String feedback) {
@@ -79,9 +75,7 @@ public class Ui {
     }
 
     public void printNumberOfEmails(int totalEmails, String emailType) {
-        printDivider();
         System.out.println("You have a total of " + totalEmails + " " + emailType.toUpperCase() + " emails");
-        printDivider();
     }
 
     public static void showInvalidIdMessage(String type) {
@@ -97,4 +91,17 @@ public class Ui {
         System.out.println("It must be one of: [emails, inbox, archive, deleted, draft, junk, sent]");
     }
 
+    public static void showMessageForInvalidSortTypeInput() {
+        System.out.println("OOPS!!! The type that you enter is invalid.");
+        System.out.println("It must be one of: [sender, time]");
+    }
+
+    public static void showMessageForEmptySortType() {
+        System.out.println("OOPS!!! The sort type is empty.");
+        System.out.println("Please enter one of: [sender, time] after \"sort\".");
+    }
+
+    public void showMessageForSortingCompleted(String sortType) {
+        System.out.println("Emails are sorted according to " + sortType);
+    }
 }
