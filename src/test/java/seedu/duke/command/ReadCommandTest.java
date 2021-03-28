@@ -38,16 +38,29 @@ public class ReadCommandTest {
 
         Assertions.assertEquals("[Inbox][READ]\n"
                         + "|| Subject: S1\n"
-                        + "|| From: 123@gmail.com --> To: 456@gmail.com\n"
-                        + "|| Content: C1",
+                        + "|| From: 123@gmail.com --> To: [456@gmail.com]\n"
+                        + "|| Tags: []\n"
+                        + "|| Content: C1" + System.lineSeparator()
+                        + "____________________________________________________________",
                 outputStreamCaptor.toString().trim());
     }
 
     @Test
     void execute_invalidIndex_message() {
-        new ArchiveCommand("read -1").execute(emailManager, ui, storage);
+        new ReadCommand("read -1").execute(emailManager, ui, storage);
 
-        Assertions.assertEquals("OOPS!!! The Email ID that you ARCHIVE is invalid.",
+        Assertions.assertEquals("OOPS!!! The Email ID that you READ is invalid.",
+                outputStreamCaptor.toString().trim());
+    }
+
+    @Test
+    void execute_nullList_message() {
+        emailManager.setListedEmailsList(null);
+        new ReadCommand("read 1").execute(emailManager, ui, storage);
+
+        Assertions.assertEquals("You have to list emails first" + System.lineSeparator()
+                        + "=> list emails" + System.lineSeparator()
+                        + "____________________________________________________________",
                 outputStreamCaptor.toString().trim());
     }
 
