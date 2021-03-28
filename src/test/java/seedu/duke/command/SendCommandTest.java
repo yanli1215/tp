@@ -19,7 +19,7 @@ class SendCommandTest {
         Email sentEmail = new Sent(from, to, subject, time, content);
 
         assertEquals(sentEmail.getFrom(), from);
-        assertEquals(sentEmail.getTo(), to);
+        assertEquals(sentEmail.getTo().toString(), "[" + to + "]");
         assertEquals(sentEmail.getSubject(), subject);
         assertEquals(sentEmail.getTime(), time);
         assertEquals(sentEmail.getContent(), content);

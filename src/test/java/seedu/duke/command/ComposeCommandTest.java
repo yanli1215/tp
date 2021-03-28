@@ -43,7 +43,7 @@ public class ComposeCommandTest {
         Email draftEmail = new Draft(from, to, subject, time, content);
 
         assertEquals(draftEmail.getFrom(), from);
-        assertEquals(draftEmail.getTo(), to);
+        assertEquals(draftEmail.getTo().toString(), "[" + to + "]");
         assertEquals(draftEmail.getSubject(), subject);
         assertEquals(draftEmail.getTime(), time);
         assertEquals(draftEmail.getContent(), content);
