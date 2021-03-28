@@ -45,7 +45,7 @@ public class Ui {
     }
 
     public void printEditEmail() {
-        System.out.println("What would you like to edit? It must be one of [to, subject, content]." );
+        System.out.println("What would you like to edit? It must be one of [to, subject, content].");
     }
 
     private void printDivider() {
@@ -66,7 +66,7 @@ public class Ui {
     }
 
     public void printEmailEdited(String editType) {
-        System.out.println("Email \"" + editType + "\" successfully edited." );
+        System.out.println("Email \"" + editType + "\" successfully edited.");
     }
 
     public void printFeedback(String feedback) {
