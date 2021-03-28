@@ -1,14 +1,13 @@
 package seedu.duke.command;
 
-import seedu.duke.EmailManager;
-import seedu.duke.Parser;
-import seedu.duke.Storage;
-import seedu.duke.Ui;
+import seedu.duke.email.EmailManager;
+import seedu.duke.Utilities.Parser;
+import seedu.duke.Utilities.Storage;
+import seedu.duke.Utilities.Ui;
 import seedu.duke.email.Email;
 import seedu.duke.exceptions.InvalidIndexException;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class TagCommand extends Command {
 

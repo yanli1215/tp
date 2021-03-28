@@ -1,6 +1,14 @@
 package seedu.duke;
 
 import org.json.simple.parser.ParseException;
+import seedu.duke.Login.LoginController;
+import seedu.duke.Login.LoginInfo;
+import seedu.duke.Login.LoginInfoFileManager;
+import seedu.duke.Login.LoginManager;
+import seedu.duke.Utilities.Parser;
+import seedu.duke.Utilities.Storage;
+import seedu.duke.Utilities.Ui;
+import seedu.duke.email.EmailManager;
 
 import java.io.IOException;
 

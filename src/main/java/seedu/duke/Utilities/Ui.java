@@ -1,4 +1,4 @@
-package seedu.duke;
+package seedu.duke.Utilities;
 
 import seedu.duke.email.Email;
 
@@ -28,8 +28,6 @@ public class Ui {
         this.in = new Scanner(in);
         this.out = out;
     }
-
-
 
     public String getUserInput() {
         printDivider();

@@ -1,4 +1,4 @@
-package seedu.duke;
+package seedu.duke.Login;
 
 public class LoginInfo {
     private String userId;
