@@ -11,7 +11,7 @@ public class Mojo {
     private static Ui ui;
     private static EmailManager emails;
     private static Parser parser;
-    private static Storage storage;
+    private Storage storage;
 
     public Mojo(String filePath) {
         ui = new Ui();

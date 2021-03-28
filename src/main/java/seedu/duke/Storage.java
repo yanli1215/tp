@@ -41,24 +41,15 @@ public class Storage {
 
     }
 
-   /* public void getListOfJsonFiles(){
-        List<String> listOfJsonFiles = new ArrayList<String>();
-        String localDir = System.getProperty("user.dir");
-        Path dirPath = Paths.get(localDir, "data");
-        File dir = new File(String.valueOf(dirPath));
-        for (File file : dir.listFiles()) {
-            if (file.getName().endsWith((".json"))) {
-                listOfJsonFiles.add(file.getName());
-            }
-        }
-        System.out.println(listOfJsonFiles);
-    }*/
-
-
     public ArrayList<Email> load() throws IOException, ParseException {
-        JSONObject accountInfo = readJson();
-        ArrayList<Email> emailList = parse(accountInfo);
-        return emailList;
+        try {
+            JSONObject accountInfo = readJson();
+            ArrayList<Email> emailList = parse(accountInfo);
+            return emailList;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public JSONObject readJson() throws IOException, ParseException {
