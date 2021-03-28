@@ -96,6 +96,11 @@ public class Ui {
         System.out.println("It must be one of: [sender, time]");
     }
 
+    public static void showMessageForInvalidEditTypeInput() {
+        System.out.println("OOPS!!! The type that you enter is invalid.");
+        System.out.println("It must be one of: [to, subject, content]");
+    }
+
     public static void showMessageForEmptySortType() {
         System.out.println("OOPS!!! The sort type is empty.");
         System.out.println("Please enter one of: [sender, time] after \"sort\".");
@@ -103,5 +108,9 @@ public class Ui {
 
     public void showMessageForSortingCompleted(String sortType) {
         System.out.println("Emails are sorted according to " + sortType);
+    }
+
+    public void showMessageForEditCompleted(String editType) {
+        System.out.println("Email \"" + editType + "\" successfully edited." );
     }
 }

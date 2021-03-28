@@ -40,6 +40,8 @@ public class Parser {
             cmd = new NumberCommand(userInputString);
         } else if (userInputString.toLowerCase().startsWith("sort")) {
             cmd = new SortCommand(userInputString);
+        } else if (userInputString.toLowerCase().matches("^(edit)[ ].*$")) {
+            cmd = new EditCommand(userInputString);
         } else {
             cmd = null;
         }
