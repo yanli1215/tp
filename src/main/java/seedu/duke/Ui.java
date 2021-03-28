@@ -15,6 +15,9 @@ public class Ui {
             + "| | | | | | | |_| |  _| |   | |_| |\n"
             + "|_| |_| |_| |_____| |___|   |_____|\n";
 
+    private static final String oldPassword= "Please enter your old password:";
+    private static final String newPassword= "Please enter your new password:";
+
 
     public Ui() {
         this(System.in, System.out);
@@ -24,6 +27,8 @@ public class Ui {
         this.in = new Scanner(in);
         this.out = out;
     }
+
+
 
     public String getUserInput() {
         printDivider();
@@ -35,6 +40,22 @@ public class Ui {
         printDivider();
         return inputLine;
     }
+
+    public String getResetPsw(String type) {
+        if (type == "new") {
+            System.out.println(newPassword);
+        }
+
+        if (type == "old") {
+            System.out.println(oldPassword);
+        }
+        String inputLine = in.nextLine();
+        while (inputLine.trim().isEmpty()) {
+            inputLine = in.nextLine();
+        }
+        return inputLine;
+    }
+
 
     public void printComposeUI() {
         printDivider();
@@ -73,6 +94,7 @@ public class Ui {
         System.out.println("> Use the keyword \"COMPOSE \" to create a draft email");
         System.out.println("> Use the keyword \"SEND (index of draft) \" to send email in the draft folder");
         System.out.println("> Use the keyword \"DELETE (index) \" to delete the selected email");
+        System.out.println("> Use the keyword \"FIND (keyword) \" to find the  email by keywords");
         System.out.println("> Use the keyword \"ARCHIVE (index) \" to move the selected email to the archive folder");
         System.out.println("> Use the keyword \"HELP\" to print the menu");
         System.out.println("> Use the keyword \"BYE\" to exit");
