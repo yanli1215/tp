@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Ui {
     private final Scanner in;
     private final PrintStream out;
-    private final String ERROR_DIVIDER_LINE = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+    private final String errorLine = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
     private static final String logo = " _________   _____   _____   _____\n"
             + "|  _   _  | |  _  | |_   _| |  _  |\n"
             + "| | | | | | | | | |   | |   | | | |\n"
@@ -99,12 +99,12 @@ public class Ui {
     }
 
     public void printErrorMessage(String... messages) {
-        System.out.println(ERROR_DIVIDER_LINE);
+        System.out.println(errorLine);
         System.out.println("Error Message: ");
         for (String message : messages) {
             System.out.println(message);
         }
-        System.out.println(ERROR_DIVIDER_LINE);
+        System.out.println(errorLine);
         System.out.println("Enter next command: ");
     }
 
