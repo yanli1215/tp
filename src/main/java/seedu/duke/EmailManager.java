@@ -110,10 +110,10 @@ public class EmailManager {
     }
 
     public void sortBySender() {
-        emailsList.sort(new typeSenderSortingComparator());
+        emailsList.sort(new TypeSenderSortingComparator());
     }
 
-    static class typeSenderSortingComparator implements Comparator<Email> {
+    static class TypeSenderSortingComparator implements Comparator<Email> {
         @Override
         public int compare(Email email1, Email email2) {
             return email1.getFrom().compareTo(email2.getFrom());
@@ -121,10 +121,10 @@ public class EmailManager {
     }
 
     public void sortByTime() {
-        emailsList.sort(new typeTimeSortingComparator());
+        emailsList.sort(new TypeTimeSortingComparator());
     }
 
-    static class typeTimeSortingComparator implements Comparator<Email> {
+    static class TypeTimeSortingComparator implements Comparator<Email> {
         @Override
         public int compare(Email email1, Email email2) {
             return email1.getTime().compareTo(email2.getTime());
