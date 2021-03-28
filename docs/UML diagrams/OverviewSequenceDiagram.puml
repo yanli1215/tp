@@ -1,0 +1,54 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+activate Mojo
+
+box Overview
+participant "Mojo" as Mojo
+participant ":Storage" as Storage
+participant ":EmailManager" as EmailManager
+participant ":Ui" as Ui
+participant ":Parser" as Parser
+participant "command:Command" as command
+end box
+
+Mojo -> Storage: load()
+activate Storage
+Storage --> Mojo: emailList
+deactivate Storage
+
+create EmailManager
+Mojo -> EmailManager: emailList
+activate EmailManager
+EmailManager --> Mojo
+deactivate EmailManager
+
+loop
+Mojo -> Ui: printMenu()
+activate Ui
+Ui --> Mojo
+deactivate Ui
+
+Mojo -> Ui: getUserInput()
+activate Ui
+Ui --> Mojo: userCommand
+deactivate Ui
+
+Mojo -> Parser: parse(userCommand)
+activate Parser
+create command
+Parser -> command: userCommand
+activate command
+command --> Parser
+deactivate command
+Parser --> Mojo: command
+deactivate Parser
+
+Mojo -> command: execute(EmailManager, Ui, Storage)
+activate command
+command --> Mojo
+deactivate command
+destroy command
+end loop
+
+@enduml

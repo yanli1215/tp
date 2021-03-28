@@ -1,0 +1,98 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package commands <<rectangle>>{
+class Command
+class ArchiveCommand
+class ComposeCommand
+class DeleteCommand
+class EditCommand
+class ExitCommand
+class FindCommand
+class HelpCommand
+class ListCommand
+class NumberCommand
+class ReadCommand
+class ResetCommand
+class SendCommand
+class SortCommand
+class TagCommand
+}
+
+Main ---> Command: executes
+ArchiveCommand -down-|> Command
+ComposeCommand -down--|> Command
+DeleteCommand -down---|> Command
+EditCommand -down---|> Command
+ExitCommand -down--|> Command
+FindCommand -down-|> Command
+HelpCommand -left-|> Command
+ListCommand -right-|> Command
+NumberCommand -up-|> Command
+ReadCommand -up--|> Command
+ResetCommand -up---|> Command
+SendCommand -up---|> Command
+SortCommand -up--|> Command
+TagCommand -up-|> Command
+
+Command ....|> Ui: prints with
+Command ...|> Storage: updates
+Command ..|> EmailManager: updates
+
+class ArchiveCommand{
+
+}
+
+class ComposeCommand{
+
+}
+
+class DeleteCommand{
+
+}
+
+class EditCommand{
+
+}
+
+class ExitCommand{
+
+}
+
+class FindCommand{
+
+}
+
+class HelpCommand{
+
+}
+
+class ListCommand{
+
+}
+
+class NumberCommand{
+
+}
+
+class ReadCommand{
+
+}
+
+class ResetCommand{
+
+}
+
+class SendCommand{
+
+}
+
+class SortCommand{
+
+}
+
+class TagCommand{
+
+}
+
+@enduml
