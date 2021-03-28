@@ -1,9 +1,12 @@
 package seedu.duke;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import seedu.duke.email.*;
+
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -11,37 +14,32 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
-import seedu.duke.email.Email;
-import seedu.duke.email.Archive;
-import seedu.duke.email.Draft;
-import seedu.duke.email.Deleted;
-import seedu.duke.email.Inbox;
-import seedu.duke.email.Junk;
-import seedu.duke.email.Sent;
-
 public class Storage {
     private String fileName;
     private String filePath;
+    private String pwd;
+
+    public String getPwd() {
+        return pwd;
+    }
 
     public Storage(String fileName) {
         this.fileName = fileName;
         this.filePath = System.getProperty("user.dir") + File.separator + "data" + File.separator + fileName;
+        this.pwd = null;
 
     }
 
     public Storage() {
         this.fileName = null;
         this.filePath = null;
+        this.pwd = null;
 
     }
 
     public ArrayList<Email> load() throws IOException, ParseException {
         JSONObject accountInfo = readJson();
+        pwd = getPassword(accountInfo);
         ArrayList<Email> emailList = parse(accountInfo);
         return emailList;
     }
@@ -117,6 +115,34 @@ public class Storage {
         return allEmails;
     }
 
+    public String getPassword(JSONObject jsonObject) {
+        return (String) jsonObject.get("password");
+    }
+
+    public void changePWD(String newPassword) {
+        pwd = newPassword;
+        try {
+            // read the json file
+            FileReader reader = new FileReader(filePath);
+
+            JSONParser jsonParser = new JSONParser();
+            JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);
+            jsonObject.put("password", newPassword);
+
+            FileWriter file = new FileWriter(filePath);
+            file.write(jsonObject.toJSONString());
+            file.flush();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        } catch (NullPointerException ex) {
+            ex.printStackTrace();
+        }
+
+    }
 
 
 }

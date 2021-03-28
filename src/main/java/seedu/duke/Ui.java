@@ -66,7 +66,7 @@ public class Ui {
         printDivider();
     }
 
-    private void printDivider() {
+    public void printDivider() {
         System.out.println("____________________________________________________________");
     }
 

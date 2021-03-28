@@ -27,6 +27,8 @@ public class Parser {
             cmd = new ExitCommand(userInputString);
         } else if (userInputString.equalsIgnoreCase("help")) {
             cmd = new HelpCommand(userInputString);
+        } else if (userInputString.equalsIgnoreCase("reset")) {
+            cmd = new ResetCommand(userInputString);
         } else if (userInputString.toLowerCase().matches("^(read)[ ].*$")) {
             cmd = new ReadCommand(userInputString);
         } else if (userInputString.toLowerCase().matches("^(delete)[ ].*$")) {
