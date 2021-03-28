@@ -1,7 +1,5 @@
 package seedu.duke.command;
 
-import org.json.simple.JSONObject;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.time.LocalDateTime;
@@ -32,10 +30,10 @@ public class ComposeCommand extends Command {
                 inputContent = in.nextLine();
             }
             String userEmail = "12312@gmail.com";
-            String time = String.valueOf(LocalDateTime.now());
+            String time = String.valueOf(LocalDateTime.now().withNano(0));
             Email draftEmail = new Draft(userEmail, to, subject, time, content);
             emails.addToDraft(draftEmail);
-            ui.printEmailDraft(draftEmail);
+            ui.printEmailDrafted(draftEmail);
         } catch (NullPointerException e) {
             System.out.println("Draft not saved due to missing line");
         }

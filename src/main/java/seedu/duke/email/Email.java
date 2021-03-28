@@ -98,6 +98,9 @@ public class Email {
 
     public String getShortDescription() {
         return "[" + getStatus() + "]" + "\n|| Subject: " + getSubject() + "\n|| From: " + getFrom() + " --> To: "
+<<<<<<< HEAD
+                + getTo() + "\n|| Time: " + getTime();
+=======
                 + getTo() + "\n|| Tags: " + tags.toString();
     }
 
@@ -120,5 +123,6 @@ public class Email {
         }
 
         return tags;
+>>>>>>> master
     }
 }

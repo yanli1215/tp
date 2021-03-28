@@ -14,7 +14,7 @@ public class NumberCommand extends Command {
 
     public void execute(EmailManager emails, Ui ui, Storage storage) {
         try {
-            String emailType = this.getUserInput().toLowerCase().substring(STARTINDEXOFEMAILTYPE);
+            String emailType = this.getUserInput().toLowerCase().substring(STARTINDEXOFEMAILTYPE).trim();
             int totalEmails = 0;
 
             switch (emailType) {

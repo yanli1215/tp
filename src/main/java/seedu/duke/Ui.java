@@ -37,7 +37,6 @@ public class Ui {
     }
 
     public void printComposeUI() {
-        printDivider();
         System.out.println("Please enter the details below in the correct order:");
         System.out.println("To:");
         System.out.println("Subject:");
@@ -47,20 +46,29 @@ public class Ui {
         printDivider();
     }
 
+    public void printEditEmail() {
+        System.out.println("What would you like to edit? It must be one of [to, subject, content].");
+    }
+
     private void printDivider() {
         System.out.println("____________________________________________________________");
     }
 
-    public void printEmailDraft(Email email) {
+    public void printEmailDrafted(Email email) {
         printDivider();
         System.out.println("Email saved to draft " + "at " + email.getTime());
-        printDivider();
     }
 
     public void printEmailSent(Email email) {
-        printDivider();
         System.out.println("Email successfully sent to: " + email.getTo() + " at " + email.getTime());
-        printDivider();
+    }
+
+    public void printEmailsSorted(String sortType) {
+        System.out.println("Emails are sorted according to " + sortType);
+    }
+
+    public void printEmailEdited(String editType) {
+        System.out.println("Email \"" + editType + "\" successfully edited.");
     }
 
     public void printFeedback(String feedback) {
@@ -82,9 +90,7 @@ public class Ui {
     }
 
     public void printNumberOfEmails(int totalEmails, String emailType) {
-        printDivider();
         System.out.println("You have a total of " + totalEmails + " " + emailType.toUpperCase() + " emails");
-        printDivider();
     }
 
     public static void showInvalidIdMessage(String type) {
@@ -98,6 +104,25 @@ public class Ui {
     public static void showInvalidListTypeMessage() {
         System.out.println("OOPS!!! The Email type that you enter is invalid.");
         System.out.println("It must be one of: [emails, inbox, archive, deleted, draft, junk, sent]");
+    }
+    
+    public static void showMessageForInvalidSortTypeInput() {
+        System.out.println("OOPS!!! The type that you enter is invalid.");
+        System.out.println("It must be one of: [sender, time]");
+    }
+
+    public static void showMessageForInvalidEditTypeInput() {
+        System.out.println("OOPS!!! The type that you enter is invalid.");
+        System.out.println("It must be one of: [to, subject, content]");
+    }
+
+    public static void showMessageForEmptySortType() {
+        System.out.println("OOPS!!! The sort type is empty.");
+        System.out.println("Please enter one of: [sender, time] after \"sort\".");
+    }
+
+    public void showMessageForIndexOutOfBoundsException() {
+        System.out.println("OOPS!!! The index entered is invalid.");
     }
 
     public String printTag() {

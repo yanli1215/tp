@@ -4,12 +4,14 @@ import seedu.duke.command.ArchiveCommand;
 import seedu.duke.command.Command;
 import seedu.duke.command.ComposeCommand;
 import seedu.duke.command.DeleteCommand;
+import seedu.duke.command.EditCommand;
 import seedu.duke.command.ExitCommand;
 import seedu.duke.command.HelpCommand;
 import seedu.duke.command.ListCommand;
 import seedu.duke.command.NumberCommand;
 import seedu.duke.command.ReadCommand;
 import seedu.duke.command.SendCommand;
+import seedu.duke.command.SortCommand;
 import seedu.duke.command.TagCommand;
 import seedu.duke.email.Email;
 import seedu.duke.email.Archive;
@@ -51,6 +53,10 @@ public class Parser {
             cmd = new TagCommand(userInputString);
         } else if (userInputString.toLowerCase().startsWith("number")) {
             cmd = new NumberCommand(userInputString);
+        } else if (userInputString.toLowerCase().startsWith("sort")) {
+            cmd = new SortCommand(userInputString);
+        } else if (userInputString.toLowerCase().matches("^(edit)[ ].*$")) {
+            cmd = new EditCommand(userInputString);
         } else {
             cmd = null;
         }
