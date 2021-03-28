@@ -8,9 +8,7 @@ import seedu.duke.email.Inbox;
 import seedu.duke.email.Junk;
 import seedu.duke.email.Sent;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 
 public class EmailManager {

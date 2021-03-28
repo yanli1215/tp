@@ -5,6 +5,7 @@ import seedu.duke.EmailManager;
 import seedu.duke.Parser;
 import seedu.duke.Storage;
 import seedu.duke.Ui;
+import seedu.duke.email.Draft;
 import seedu.duke.email.Email;
 import seedu.duke.exceptions.InvalidIndexException;
 
@@ -19,6 +20,14 @@ public class EditCommand extends Command {
 
     @Override
     public void execute(EmailManager emails, Ui ui, Storage storage) {
+        ArrayList<Email> listedEmails = EmailManager.getListedEmailsList();
+        if (listedEmails == null || !(listedEmails.get(0) instanceof Draft)) {
+            String feedback = "You have to list DRAFT emails first" + System.lineSeparator()
+                    + "=> list draft" + System.lineSeparator();
+            ui.printFeedback(feedback);
+            return;
+        }
+
         ArrayList<Email> draftedEmails = EmailManager.getDraftEmails();
         if (draftedEmails.isEmpty()) {
             String feedback = "You have no emails to edit.";
@@ -42,6 +51,8 @@ public class EditCommand extends Command {
             e.showErrorMessage("EDIT");
         } catch (InvalidTypeException e) {
             ui.showMessageForInvalidEditTypeInput();
+        } catch (IndexOutOfBoundsException e) {
+            ui.showMessageForIndexOutOfBoundsException();
         }
     }
 

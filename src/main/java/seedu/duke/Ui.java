@@ -117,4 +117,8 @@ public class Ui {
         System.out.println("OOPS!!! The sort type is empty.");
         System.out.println("Please enter one of: [sender, time] after \"sort\".");
     }
+
+    public void showMessageForIndexOutOfBoundsException() {
+        System.out.println("OOPS!!! The index entered is invalid.");
+    }
 }
