@@ -8,6 +8,7 @@ import seedu.duke.command.EditCommand;
 import seedu.duke.command.ExitCommand;
 import seedu.duke.command.HelpCommand;
 import seedu.duke.command.ListCommand;
+import seedu.duke.command.FindCommand;
 import seedu.duke.command.NumberCommand;
 import seedu.duke.command.ReadCommand;
 import seedu.duke.command.SendCommand;
@@ -25,7 +26,6 @@ import java.util.Arrays;
 
 
 public class Parser {
-    private static EmailManager emailManager;
     private Command cmd;
 
     public Parser() {
@@ -106,7 +106,7 @@ public class Parser {
     }
 
 
-    public static ArrayList<Email> getTypeToList(String userInput) {
+    public static ArrayList<Email> getTypeToList(EmailManager emailManager, String userInput) {
         String[] cmdArg = userInput.split(" ", 2);
         String emailType = cmdArg[1].trim();
         ArrayList<Email> emailsToPrint = null;

@@ -4,6 +4,7 @@ import seedu.duke.EmailManager;
 import seedu.duke.Parser;
 import seedu.duke.Storage;
 import seedu.duke.Ui;
+import seedu.duke.email.Email;
 
 import java.util.ArrayList;
 
@@ -15,7 +16,7 @@ public class ListCommand extends Command {
     @Override
     public void execute(EmailManager emails, Ui ui, Storage storage) {
         try {
-            ArrayList emailTypeToPrint = Parser.getTypeToList(userInput);
+            ArrayList<Email> emailTypeToPrint = Parser.getTypeToList(emails, userInput);
             emails.printEmailByType(emailTypeToPrint);
         } catch (AssertionError e1) {
             Ui.showInvalidListTypeMessage();

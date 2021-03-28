@@ -1,11 +1,14 @@
 package seedu.duke;
 
+import seedu.duke.exceptions.WrongLoginInfoException;
+
 /**
  * This class is responsible for the login process.
  */
 public class LoginController {
     private final LoginManager loginManager;
     private LoginUi loginUi;
+    private static LoginInfo loginInfo;
 
 
     public LoginController(LoginManager loginManager) {
@@ -16,7 +19,11 @@ public class LoginController {
     public LoginInfo run() {
         LoginInfo providedLoginInfo;
         providedLoginInfo = loginUi.getLoginInfo();
-        loginManager.verifyLoginInfo(providedLoginInfo);
+        try {
+            loginManager.verifyLoginInfo(providedLoginInfo);
+        } catch (NullPointerException | WrongLoginInfoException e) {
+            loginUi.printErrorMessage(e.getMessage());
+        }
         return providedLoginInfo;
     }
 }

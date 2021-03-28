@@ -1,5 +1,7 @@
 package seedu.duke;
 
+import seedu.duke.exceptions.WrongLoginInfoException;
+
 import java.util.ArrayList;
 
 /**
@@ -13,12 +15,13 @@ public class LoginManager {
         this.loginInfoFileManager = loginInfoFileManager;
     }
 
-    public void verifyLoginInfo(LoginInfo providedLoginInfo) {
+    public void verifyLoginInfo(LoginInfo providedLoginInfo) throws WrongLoginInfoException {
         ArrayList<LoginInfo> loginInfoList = loginInfoFileManager.retrieveLoginInfoList();
         for (LoginInfo loginInfo: loginInfoList) {
             if (loginInfo.equals(providedLoginInfo)) {
                 return;
             }
         }
+        throw new WrongLoginInfoException();
     }
 }
