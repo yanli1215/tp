@@ -50,7 +50,8 @@ public class ListCommandTest {
 
         Assertions.assertEquals("1. [Archive][UNREAD]\n"
                         + "|| Subject: S1\n"
-                        + "|| From: 123@gmail.com --> To: 456@gmail.com",
+                        + "|| From: 123@gmail.com --> To: [456@gmail.com]\n"
+                        + "|| Tags: []",
                 outputStreamCaptor.toString().trim());
     }
 
@@ -60,7 +61,8 @@ public class ListCommandTest {
 
         Assertions.assertEquals("1. [Deleted][UNREAD]\n"
                         + "|| Subject: S2\n"
-                        + "|| From: 123@gmail.com --> To: 456@gmail.com",
+                        + "|| From: 123@gmail.com --> To: [456@gmail.com]\n"
+                        + "|| Tags: []",
                 outputStreamCaptor.toString().trim());
     }
 
@@ -70,7 +72,8 @@ public class ListCommandTest {
 
         Assertions.assertEquals("1. [Draft][UNREAD]\n"
                         + "|| Subject: S3\n"
-                        + "|| From: 123@gmail.com --> To: 456@gmail.com",
+                        + "|| From: 123@gmail.com --> To: [456@gmail.com]\n"
+                        + "|| Tags: []",
                 outputStreamCaptor.toString().trim());
     }
 
@@ -80,7 +83,8 @@ public class ListCommandTest {
 
         Assertions.assertEquals("1. [Inbox][UNREAD]\n"
                         + "|| Subject: S4\n"
-                        + "|| From: 123@gmail.com --> To: 456@gmail.com",
+                        + "|| From: 123@gmail.com --> To: [456@gmail.com]\n"
+                        + "|| Tags: []",
                 outputStreamCaptor.toString().trim());
     }
 
@@ -90,7 +94,8 @@ public class ListCommandTest {
 
         Assertions.assertEquals("1. [Junk][UNREAD]\n"
                         + "|| Subject: S5\n"
-                        + "|| From: 123@gmail.com --> To: 456@gmail.com",
+                        + "|| From: 123@gmail.com --> To: [456@gmail.com]\n"
+                        + "|| Tags: []",
                 outputStreamCaptor.toString().trim());
     }
 
@@ -100,7 +105,8 @@ public class ListCommandTest {
 
         Assertions.assertEquals("1. [Sent][UNREAD]\n"
                         + "|| Subject: S6\n"
-                        + "|| From: 123@gmail.com --> To: 456@gmail.com",
+                        + "|| From: 123@gmail.com --> To: [456@gmail.com]\n"
+                        + "|| Tags: []",
                 outputStreamCaptor.toString().trim());
     }
 
@@ -109,10 +115,10 @@ public class ListCommandTest {
         new ListCommand("list -1").execute(emailManager, ui, storage);
 
         Assert.assertEquals("OOPS!!! The Email type that you enter is invalid."
-                + System.lineSeparator()
-                + "It must be one of: [emails, inbox, archive, deleted, draft, junk, sent]",
+                        + System.lineSeparator()
+                        + "It must be one of: [emails, inbox, archive, deleted, draft, junk, sent]",
                 outputStreamCaptor.toString()
-                .trim());
+                        .trim());
     }
 
     @AfterEach
