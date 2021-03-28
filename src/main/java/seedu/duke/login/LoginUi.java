@@ -1,6 +1,6 @@
-package seedu.duke.Login;
+package seedu.duke.login;
 
-import seedu.duke.Utilities.Ui;
+import seedu.duke.utilities.Ui;
 
 import java.util.Scanner;
 

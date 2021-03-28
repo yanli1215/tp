@@ -1,4 +1,4 @@
-package seedu.duke.Login;
+package seedu.duke.login;
 
 import seedu.duke.exceptions.WrongLoginInfoException;
 

@@ -1,4 +1,4 @@
-package seedu.duke.Login;
+package seedu.duke.login;
 
 import java.io.File;
 import java.io.FileNotFoundException;

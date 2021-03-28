@@ -1,12 +1,22 @@
-package seedu.duke.Utilities;
+package seedu.duke.utilities;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import seedu.duke.email.*;
+import seedu.duke.email.Archive;
+import seedu.duke.email.Deleted;
+import seedu.duke.email.Draft;
+import seedu.duke.email.Email;
+import seedu.duke.email.Inbox;
+import seedu.duke.email.Junk;
+import seedu.duke.email.Sent;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -31,7 +41,7 @@ public class Storage {
     public Storage(String fileName, String account) {
         this.fileName = fileName;
         this.filePath = System.getProperty("user.dir") + File.separator + "data" + File.separator + fileName;
-        this.pwd = null;
+        this.pwd = "";
         this.emailAccount = account;
 
     }
@@ -135,7 +145,7 @@ public class Storage {
         return (String) jsonObject.get("password");
     }
 
-    public void changePWD(String newPassword) {
+    public void changePwd(String newPassword) {
         pwd = newPassword;
         try {
             FileReader reader = new FileReader(filePath);

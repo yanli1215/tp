@@ -1,8 +1,8 @@
 package seedu.duke.command;
 
 import seedu.duke.email.EmailManager;
-import seedu.duke.Utilities.Storage;
-import seedu.duke.Utilities.Ui;
+import seedu.duke.utilities.Storage;
+import seedu.duke.utilities.Ui;
 import seedu.duke.exceptions.InvalidInputException;
 
 public class NumberCommand extends Command {

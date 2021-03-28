@@ -1,4 +1,4 @@
-package seedu.duke.Utilities;
+package seedu.duke.utilities;
 
 import seedu.duke.email.Email;
 
@@ -16,8 +16,8 @@ public class Ui {
             + "| | | | | | | |_| |  _| |   | |_| |\n"
             + "|_| |_| |_| |_____| |___|   |_____|\n";
 
-    private static final String oldPassword= "Please enter your old password:";
-    private static final String newPassword= "Please enter your new password:";
+    private static final String oldPassword = "Please enter your old password:";
+    private static final String newPassword = "Please enter your new password:";
 
 
     public Ui() {

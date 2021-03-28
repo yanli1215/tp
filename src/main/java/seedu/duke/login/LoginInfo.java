@@ -1,4 +1,4 @@
-package seedu.duke.Login;
+package seedu.duke.login;
 
 public class LoginInfo {
     private String userId;
@@ -22,7 +22,9 @@ public class LoginInfo {
         return userId;
     }
 
-    public String strAddToTxt() { return getUserId() + " | " + getPassword(); }
+    public String strAddToTxt() {
+        return getUserId() + " | " + getPassword();
+    }
 
 
     @Override
