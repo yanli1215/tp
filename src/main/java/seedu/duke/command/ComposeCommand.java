@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.time.LocalDateTime;
 
-import seedu.duke.EmailManager;
-import seedu.duke.Parser;
-import seedu.duke.Storage;
-import seedu.duke.Ui;
+import seedu.duke.email.EmailManager;
+import seedu.duke.Utilities.Parser;
+import seedu.duke.Utilities.Storage;
+import seedu.duke.Utilities.Ui;
 import seedu.duke.email.Draft;
 import seedu.duke.email.Email;
 

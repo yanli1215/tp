@@ -1,9 +1,9 @@
 package seedu.duke.command;
 
 import com.sun.jdi.InvalidTypeException;
-import seedu.duke.EmailManager;
-import seedu.duke.Storage;
-import seedu.duke.Ui;
+import seedu.duke.email.EmailManager;
+import seedu.duke.Utilities.Storage;
+import seedu.duke.Utilities.Ui;
 
 public class SortCommand extends Command {
     private static final int STARTINDEXOFSORTTYPE = 5;

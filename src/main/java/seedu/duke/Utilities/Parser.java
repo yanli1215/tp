@@ -1,4 +1,4 @@
-package seedu.duke;
+package seedu.duke.Utilities;
 
 import seedu.duke.command.ArchiveCommand;
 import seedu.duke.command.Command;
@@ -16,12 +16,11 @@ import seedu.duke.command.SortCommand;
 import seedu.duke.command.TagCommand;
 
 import seedu.duke.email.Email;
-import seedu.duke.email.Archive;
+import seedu.duke.email.EmailManager;
 import seedu.duke.exceptions.InvalidIndexException;
 
 import java.util.ArrayList;
 
-import java.util.Locale;
 import java.util.Arrays;
 
 

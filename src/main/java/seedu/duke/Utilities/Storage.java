@@ -1,4 +1,4 @@
-package seedu.duke;
+package seedu.duke.Utilities;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,7 +9,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.json.simple.JSONArray;
