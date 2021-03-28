@@ -33,10 +33,10 @@ public class Mojo {
         ui.printMenu();
         while (true) {
             String userCommand = ui.getUserInput();
-            parser.parse(userCommand.trim());
             try {
+                parser.parse(userCommand.trim());
                 parser.getCmd().execute(emails, ui, storage);
-            } catch (NullPointerException e) {
+            } catch (AssertionError e) {
                 ui.showMessageForInvalidCommandInput();
             }
         }

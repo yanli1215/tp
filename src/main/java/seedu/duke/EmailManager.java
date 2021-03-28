@@ -11,6 +11,8 @@ import seedu.duke.email.Sent;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+import static java.util.stream.Collectors.toList;
+
 public class EmailManager {
     private static ArrayList<Email> emailsList = new ArrayList<>();
     private static ArrayList<Email> listedEmailsList = null;
@@ -102,7 +104,7 @@ public class EmailManager {
         }
     }
 
-    public void printEmailByType(ArrayList<Email> emailTypeToPrint) {
+    public static void printEmailByType(ArrayList<Email> emailTypeToPrint) {
         for (int i = 0; i < emailTypeToPrint.size(); i++) {
             System.out.println(i + 1 + ". " + emailTypeToPrint.get(i).getShortDescription());
         }
@@ -221,6 +223,13 @@ public class EmailManager {
     public void addToDraft(Email e) {
         Draft email = new Draft(e.getFrom(), e.getTo(), e.getSubject(), e.getTime(), e.getContent());
         emailsList.add(email);
+    }
+
+    public ArrayList<Email> findByString(ArrayList<Email> emails, String filterString) {
+        ArrayList<Email> filteredList = (ArrayList<Email>) emails.stream()
+                .filter((s) -> (s.getContent().toLowerCase().contains(filterString) || s.getSubject().toLowerCase().contains(filterString)))
+                .collect(toList());
+        return filteredList;
     }
 
 }

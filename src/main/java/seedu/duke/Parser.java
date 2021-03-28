@@ -13,12 +13,16 @@ import seedu.duke.command.ReadCommand;
 import seedu.duke.command.SendCommand;
 import seedu.duke.command.SortCommand;
 import seedu.duke.command.TagCommand;
+
 import seedu.duke.email.Email;
 import seedu.duke.email.Archive;
 import seedu.duke.exceptions.InvalidIndexException;
 
 import java.util.ArrayList;
+
+import java.util.Locale;
 import java.util.Arrays;
+
 
 public class Parser {
     private static EmailManager emailManager;
@@ -45,6 +49,8 @@ public class Parser {
             cmd = new DeleteCommand(userInputString);
         } else if (userInputString.toLowerCase().matches("^(archive)[ ].*$")) {
             cmd = new ArchiveCommand(userInputString);
+        } else if (userInputString.toLowerCase().matches("^(find)[ ].*$")) {
+            cmd = new FindCommand(userInputString);
         } else if (userInputString.equalsIgnoreCase(("compose"))) {
             cmd = new ComposeCommand((userInputString));
         } else if (userInputString.toLowerCase().matches("^(send)[ ].*$")) {
@@ -58,7 +64,7 @@ public class Parser {
         } else if (userInputString.toLowerCase().matches("^(edit)[ ].*$")) {
             cmd = new EditCommand(userInputString);
         } else {
-            cmd = null;
+            throw new AssertionError(userInputString);
         }
     }
 
@@ -77,6 +83,15 @@ public class Parser {
         return userInput.split(" ", 2)[1];
     }
 
+
+    public static String extractKeyword(String userInput) {
+        String[] cmdArg = userInput.split(" ", 2);
+        String keyword = cmdArg[1].trim().toLowerCase();
+        return keyword;
+
+    }
+
+
     public static int[] extractMultipleIndices(String userInput) throws InvalidIndexException {
         try {
             String[] indicesStr = userInput.split(" ");
@@ -89,6 +104,7 @@ public class Parser {
             throw new InvalidIndexException();
         }
     }
+
 
     public static ArrayList<Email> getTypeToList(String userInput) {
         String[] cmdArg = userInput.split(" ", 2);
@@ -117,6 +133,7 @@ public class Parser {
             emailsToPrint = emailManager.getSentEmails();
             break;
         default:
+            throw new AssertionError(emailType);
         }
         return emailsToPrint;
     }
