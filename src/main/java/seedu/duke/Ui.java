@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class Ui {
     private final Scanner in;
     private final PrintStream out;
+    private final String errorLine = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
     private static final String logo = " _________   _____   _____   _____\n"
             + "|  _   _  | |  _  | |_   _| |  _  |\n"
             + "| | | | | | | | | |   | |   | | | |\n"
@@ -151,7 +152,6 @@ public class Ui {
 
     public String printTag() {
         String[] tags = Email.getAvailableTags();
-
         System.out.println("These are te available tags: ");
         for (int i = 0; i < tags.length; i++) {
             System.out.println(i + 1 + ". " + tags[i]);
@@ -168,4 +168,15 @@ public class Ui {
         printDivider();
         return inputLine;
     }
+
+    public void printErrorMessage(String... messages) {
+        System.out.println(errorLine);
+        System.out.println("Error Message: ");
+        for (String message : messages) {
+            System.out.println(message);
+        }
+        System.out.println(errorLine);
+        System.out.println("Enter next command: ");
+    }
+
 }

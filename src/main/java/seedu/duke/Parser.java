@@ -1,5 +1,6 @@
 package seedu.duke;
 
+
 import seedu.duke.command.*;
 import seedu.duke.email.Email;
 import seedu.duke.exceptions.InvalidIndexException;
@@ -9,7 +10,6 @@ import java.util.Arrays;
 
 
 public class Parser {
-    private static EmailManager emailManager;
     private Command cmd;
 
     public Parser() {
@@ -90,7 +90,7 @@ public class Parser {
     }
 
 
-    public static ArrayList<Email> getTypeToList(String userInput) {
+    public static ArrayList<Email> getTypeToList(EmailManager emailManager, String userInput) {
         String[] cmdArg = userInput.split(" ", 2);
         String emailType = cmdArg[1].trim();
         ArrayList<Email> emailsToPrint = null;

@@ -12,6 +12,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class Storage {
@@ -38,10 +39,15 @@ public class Storage {
     }
 
     public ArrayList<Email> load() throws IOException, ParseException {
-        JSONObject accountInfo = readJson();
-        pwd = getPassword(accountInfo);
-        ArrayList<Email> emailList = parse(accountInfo);
-        return emailList;
+        try {
+            JSONObject accountInfo = readJson();
+            pwd = getPassword(accountInfo);
+            ArrayList<Email> emailList = parse(accountInfo);
+            return emailList;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public JSONObject readJson() throws IOException, ParseException {
