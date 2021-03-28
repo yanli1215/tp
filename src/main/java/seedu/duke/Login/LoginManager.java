@@ -29,7 +29,7 @@ public class LoginManager {
     public void modifyLoginInfo(LoginInfo newLogInfo) {
         ArrayList<LoginInfo> loginInfoList = loginInfoFileManager.retrieveLoginInfoList();
         for (LoginInfo loginInfo: loginInfoList) {
-            if (loginInfo.getUserId().trim().equals(newLogInfo.getUserId().trim())) {
+            if (loginInfo.getUserId().equals(newLogInfo.getUserId())) {
                 loginInfo.setPassword(newLogInfo.getPassword());
                 break;
             }

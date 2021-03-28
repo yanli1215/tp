@@ -33,7 +33,7 @@ public class LoginInfoFileManager {
             Scanner sc = new Scanner(loginInfoFile);
             while (sc.hasNext()) {
                 String[] lineSplit = sc.nextLine().split("\\|");
-                loginInfoList.add(new LoginInfo(lineSplit[0], lineSplit[1]));
+                loginInfoList.add(new LoginInfo(lineSplit[0].trim(), lineSplit[1].trim()));
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();

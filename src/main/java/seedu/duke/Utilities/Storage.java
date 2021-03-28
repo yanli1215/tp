@@ -138,9 +138,7 @@ public class Storage {
     public void changePWD(String newPassword) {
         pwd = newPassword;
         try {
-            // read the json file
             FileReader reader = new FileReader(filePath);
-
             JSONParser jsonParser = new JSONParser();
             JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);
             jsonObject.put("password", newPassword);
