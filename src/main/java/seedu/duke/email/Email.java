@@ -98,7 +98,7 @@ public class Email {
 
     public String getShortDescription() {
         return "[" + getStatus() + "]" + "\n|| Subject: " + getSubject() + "\n|| From: " + getFrom() + " --> To: "
-                + getTo() + "\n|| Tags: " + tags.toString();
+                + getTo() + "\n|| Time: " + getTime() + "\n|| Tags: " + tags.toString();
     }
 
     public ArrayList<String> getTags() {

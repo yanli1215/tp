@@ -1,8 +1,8 @@
 package seedu.duke.command;
 
-import seedu.duke.EmailManager;
-import seedu.duke.Storage;
-import seedu.duke.Ui;
+import seedu.duke.email.EmailManager;
+import seedu.duke.Utilities.Storage;
+import seedu.duke.Utilities.Ui;
 
 public class HelpCommand extends Command {
 

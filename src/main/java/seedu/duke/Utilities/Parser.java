@@ -1,11 +1,12 @@
-package seedu.duke;
+package seedu.duke.Utilities;
 
 
 import seedu.duke.command.*;
 import seedu.duke.email.Email;
 import seedu.duke.exceptions.InvalidIndexException;
-
 import java.util.ArrayList;
+import seedu.duke.email.EmailManager;
+
 import java.util.Arrays;
 
 

@@ -1,6 +1,6 @@
 package seedu.duke.exceptions;
 
-import seedu.duke.Ui;
+import seedu.duke.Utilities.Ui;
 
 public class InvalidIndexException extends Exception {
     public InvalidIndexException() {

@@ -1,4 +1,4 @@
-package seedu.duke;
+package seedu.duke.Utilities;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -12,7 +12,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 public class Storage {

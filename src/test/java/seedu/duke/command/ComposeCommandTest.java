@@ -3,9 +3,9 @@ package seedu.duke.command;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import seedu.duke.EmailManager;
-import seedu.duke.Storage;
-import seedu.duke.Ui;
+import seedu.duke.email.EmailManager;
+import seedu.duke.Utilities.Storage;
+import seedu.duke.Utilities.Ui;
 import seedu.duke.email.Email;
 import seedu.duke.email.Draft;
 

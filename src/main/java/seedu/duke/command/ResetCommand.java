@@ -1,8 +1,8 @@
 package seedu.duke.command;
 
-import seedu.duke.EmailManager;
-import seedu.duke.Storage;
-import seedu.duke.Ui;
+import seedu.duke.Utilities.Storage;
+import seedu.duke.Utilities.Ui;
+import seedu.duke.email.EmailManager;
 
 public class ResetCommand extends Command {
     public ResetCommand(String s) {
