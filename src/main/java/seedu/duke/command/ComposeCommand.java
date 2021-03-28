@@ -2,10 +2,12 @@ package seedu.duke.command;
 
 import org.json.simple.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.time.LocalDateTime;
 
 import seedu.duke.EmailManager;
+import seedu.duke.Parser;
 import seedu.duke.Storage;
 import seedu.duke.Ui;
 import seedu.duke.email.Draft;
@@ -21,7 +23,7 @@ public class ComposeCommand extends Command {
         try {
             Scanner in = new Scanner(System.in);
             ui.printComposeUI();
-            String to = in.nextLine();
+            ArrayList<String> to = Parser.parseRecipients(in.nextLine());
             String subject = in.nextLine();
             String inputContent = in.nextLine();
             String content = inputContent + "\n";

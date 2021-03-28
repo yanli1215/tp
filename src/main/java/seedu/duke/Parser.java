@@ -10,11 +10,13 @@ import seedu.duke.command.ListCommand;
 import seedu.duke.command.NumberCommand;
 import seedu.duke.command.ReadCommand;
 import seedu.duke.command.SendCommand;
+import seedu.duke.command.TagCommand;
 import seedu.duke.email.Email;
 import seedu.duke.email.Archive;
 import seedu.duke.exceptions.InvalidIndexException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Parser {
     private static EmailManager emailManager;
@@ -45,6 +47,8 @@ public class Parser {
             cmd = new ComposeCommand((userInputString));
         } else if (userInputString.toLowerCase().matches("^(send)[ ].*$")) {
             cmd = new SendCommand(userInputString);
+        } else if (userInputString.toLowerCase().matches("^(tag)[ ].*$")) {
+            cmd = new TagCommand(userInputString);
         } else if (userInputString.toLowerCase().startsWith("number")) {
             cmd = new NumberCommand(userInputString);
         } else {
@@ -61,9 +65,24 @@ public class Parser {
         } catch (NumberFormatException e) {
             throw new InvalidIndexException();
         }
-
     }
 
+    public static String removeCommand(String userInput) {
+        return userInput.split(" ", 2)[1];
+    }
+
+    public static int[] extractMultipleIndices(String userInput) throws InvalidIndexException {
+        try {
+            String[] indicesStr = userInput.split(" ");
+            int[] indices = new int[indicesStr.length];
+            for (int i = 0; i < indicesStr.length; i++) {
+                indices[i] = Integer.parseInt(indicesStr[i].trim());
+            }
+            return indices;
+        } catch (NumberFormatException e) {
+            throw new InvalidIndexException();
+        }
+    }
 
     public static ArrayList<Email> getTypeToList(String userInput) {
         String[] cmdArg = userInput.split(" ", 2);
@@ -94,5 +113,16 @@ public class Parser {
         default:
         }
         return emailsToPrint;
+    }
+
+    /**
+     * Converts a string containing multiple recipients to
+     * a list of recipients.
+     *
+     * @param recipientsString String containing multiple recipients
+     * @return list of recipients
+     */
+    public static ArrayList<String> parseRecipients(String recipientsString) {
+        return new ArrayList<>(Arrays.asList(recipientsString.trim().split(";")));
     }
 }
