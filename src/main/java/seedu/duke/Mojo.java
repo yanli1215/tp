@@ -43,6 +43,10 @@ public class Mojo {
     }
 
     public static void main(String[] args) {
+        LoginInfoFileManager loginInfoFileManager = new LoginInfoFileManager();
+        LoginManager loginManager = new LoginManager(loginInfoFileManager);
+        LoginController lc = new LoginController(loginManager);
+        LoginInfo providedLoginInfo = lc.run();
         new Mojo("test.json").run();
     }
 }
