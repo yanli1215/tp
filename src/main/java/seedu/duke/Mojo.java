@@ -21,9 +21,9 @@ public class Mojo {
     private static Parser parser;
     private Storage storage;
 
-    public Mojo(String filePath) {
+    public Mojo(String filePath, String account) {
         ui = new Ui();
-        storage = new Storage(filePath);
+        storage = new Storage(filePath, account);
         try {
             emails = new EmailManager(storage.load());
         } catch (IOException e) {
@@ -55,7 +55,7 @@ public class Mojo {
         LoginController lc = new LoginController(loginManager);
         LoginInfo providedLoginInfo = lc.run();
         String userId  = providedLoginInfo.getUserId();
-        new Mojo(userId + ".json").run();
+        new Mojo(userId + ".json", userId).run();
 
     }
 }

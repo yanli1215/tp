@@ -18,15 +18,21 @@ public class Storage {
     private String fileName;
     private String filePath;
     private String pwd;
+    private String emailAccount;
+
+    public String getEmailAccount() {
+        return emailAccount;
+    }
 
     public String getPwd() {
         return pwd;
     }
 
-    public Storage(String fileName) {
+    public Storage(String fileName, String account) {
         this.fileName = fileName;
         this.filePath = System.getProperty("user.dir") + File.separator + "data" + File.separator + fileName;
         this.pwd = null;
+        this.emailAccount = account;
 
     }
 
@@ -34,6 +40,7 @@ public class Storage {
         this.fileName = null;
         this.filePath = null;
         this.pwd = null;
+        this.emailAccount = null;
 
     }
 

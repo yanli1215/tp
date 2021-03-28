@@ -41,5 +41,16 @@ public class LoginInfoFileManager {
         return loginInfoList;
     }
 
+    //update user login info
+    public void writeToTxt(ArrayList<LoginInfo> loginInfoList) throws IOException {
+        FileWriter fw = new FileWriter(loginInfoFile, false);
+        for (LoginInfo loginInfo: loginInfoList) {
+            fw.write(loginInfo.strAddToTxt());
+            fw.write("\n");
+        }
+        fw.close();
+    }
+
+
 }
 
