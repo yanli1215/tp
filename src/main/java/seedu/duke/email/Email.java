@@ -64,6 +64,10 @@ public class Email {
         this.to = to;
     }
 
+    public void setTo(String to) {
+        this.to = stringToList(to);
+    }
+
     public String getSubject() {
         return subject;
     }
@@ -120,5 +124,9 @@ public class Email {
         }
 
         return tags;
+    }
+
+    private ArrayList<String> stringToList(String to) {
+        return new ArrayList<String>(Arrays.asList(new String[]{to}));
     }
 }

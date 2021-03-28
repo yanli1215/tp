@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Mojo
+class Ui
+class Parser
+class EmailManager
+class Command
+class Email
+
+Mojo --|> EmailManager
+Mojo --|> Ui
+Mojo --|> Storage
+Mojo --|> Parser
+Mojo --|> Command
+
+Command ..|> EmailManager
+Command ..|> Ui
+Command ..|> Storage
+
+EmailManager --|> Email
+
+@enduml

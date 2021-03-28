@@ -1,0 +1,54 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+box
+participant ":TagCommand" as TagCommand
+participant ":EmailManager" as EmailManager
+participant ":Email" as Email
+participant ":Ui" as Ui
+participant ":Parser" as Parser
+end box
+
+[-> TagCommand
+activate TagCommand
+
+TagCommand -> EmailManager: getListedEmailsList()
+activate EmailManager
+EmailManager --> TagCommand: listedEmails
+deactivate EmailManager
+
+TagCommand -> Parser: extractIndex(userInput)
+activate Parser
+Parser --> TagCommand: index
+deactivate Parser
+
+TagCommand -> Ui: printFeedback(feedback)
+activate Ui
+Ui --> TagCommand
+deactivate Ui
+
+TagCommand -> Ui: printTag()
+activate Ui
+Ui --> TagCommand: input
+deactivate Ui
+
+TagCommand -> Parser: extractMultipleIndices(input)
+activate Parser
+Parser --> TagCommand: indices
+deactivate Parser
+
+TagCommand -> Email: setTags(indices)
+activate Email
+Email --> TagCommand: tags
+deactivate Email
+
+TagCommand -> Ui: printFeedback(feedback)
+activate Ui
+Email --> TagCommand: Ui
+deactivate Ui
+
+[<-- TagCommand
+deactivate TagCommand
+destroy TagCommand
+
+@enduml
