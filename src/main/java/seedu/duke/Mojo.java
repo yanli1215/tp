@@ -1,14 +1,13 @@
 package seedu.duke;
 
 import org.json.simple.parser.ParseException;
+import seedu.duke.email.EmailManager;
 import seedu.duke.login.LoginController;
 import seedu.duke.login.LoginInfo;
 import seedu.duke.login.LoginInfoFileManager;
-import seedu.duke.login.LoginUi;
 import seedu.duke.utilities.Parser;
 import seedu.duke.utilities.Storage;
 import seedu.duke.utilities.Ui;
-import seedu.duke.email.EmailManager;
 
 import java.io.IOException;
 
@@ -22,9 +21,9 @@ public class Mojo {
     private static LoginInfoFileManager loginInfoFileManager;
     private Storage storage;
 
-    public Mojo(String filePath, String account) {
+    public Mojo(String filePath, LoginInfo providedLoginInfo) {
         ui = new Ui();
-        storage = new Storage(filePath, account);
+        storage = new Storage(filePath, providedLoginInfo.getUserId(), providedLoginInfo.getPassword());
         try {
             emails = new EmailManager(storage.load());
         } catch (IOException e) {
@@ -54,7 +53,7 @@ public class Mojo {
         LoginController lc = new LoginController();
         LoginInfo providedLoginInfo = lc.run();
         String userId = providedLoginInfo.getUserId();
-        new Mojo(userId + ".json", userId).run();
+        new Mojo(userId + ".json", providedLoginInfo).run();
 
     }
 }

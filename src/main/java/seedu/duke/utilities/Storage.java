@@ -38,10 +38,10 @@ public class Storage {
         return pwd;
     }
 
-    public Storage(String fileName, String account) {
+    public Storage(String fileName, String account, String pwd) {
         this.fileName = fileName;
         this.filePath = System.getProperty("user.dir") + File.separator + "data" + File.separator + fileName;
-        this.pwd = "";
+        this.pwd = pwd;
         this.emailAccount = account;
     }
 
@@ -144,6 +144,7 @@ public class Storage {
         }
         return allEmails;
     }
+
     private ArrayList<String> getToArrayList(JSONArray toList) {
         ArrayList<String> toArrayList = new ArrayList<>();
         for(int i = 0; i < toList.size(); i++)
@@ -153,6 +154,7 @@ public class Storage {
         }
         return toArrayList;
     }
+
     public String getPassword(JSONObject jsonObject) {
         return (String) jsonObject.get("password");
     }
@@ -237,7 +239,22 @@ public class Storage {
         try {
             file.createNewFile();
             FileWriter fw = new FileWriter(filePath);
-            fw.write("{}");
+            JSONObject js = new JSONObject();
+            JSONArray inboxList = new JSONArray();
+            JSONArray deletedList = new JSONArray();
+            JSONArray junkList = new JSONArray();
+            JSONArray archiveList = new JSONArray();
+            JSONArray sentList = new JSONArray();
+            JSONArray draftList = new JSONArray();
+            js.put("account", emailAccount);
+            js.put("password", pwd);
+            js.put("inbox", inboxList);
+            js.put("deleted", deletedList);
+            js.put("junk", junkList);
+            js.put("archive", archiveList);
+            js.put("sent", sentList);
+            js.put("drafts", draftList);
+            fw.write(js.toJSONString());
             fw.flush();
         } catch (IOException e) {
             e.printStackTrace();
