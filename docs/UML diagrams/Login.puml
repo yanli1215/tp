@@ -44,7 +44,7 @@ login.LoginInfoFileManager "1" <--* "1" login.LoginController
 login.LoginInfoFileManager  -[dotted]-> login.LoginInfo
 
 
-login.LoginManager "1" *--* "1" login.LoginController
+login.LoginManager "1" <--* "1" login.LoginController
 login.LoginManager  -[dotted]-> login.LoginInfo
 
 login.LoginController "1" *--> "1" login.LoginInfo

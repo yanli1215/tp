@@ -11,7 +11,6 @@ import java.util.ArrayList;
 public class LoginManager {
 
     private LoginInfoFileManager loginInfoFileManager;
-    private LoginController loginController;
 
     public LoginManager() {
         loginInfoFileManager = new LoginInfoFileManager();
