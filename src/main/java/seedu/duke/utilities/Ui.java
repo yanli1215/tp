@@ -10,7 +10,7 @@ public class Ui {
     private final Scanner in;
     private final PrintStream out;
     private static final String errorLine = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
-    private static final String logo = " _________   _____   _____   _____\n"
+    public static final String logo = " _________   _____   _____   _____\n"
             + "|  _   _  | |  _  | |_   _| |  _  |\n"
             + "| | | | | | | | | |   | |   | | | |\n"
             + "| | | | | | | |_| |  _| |   | |_| |\n"

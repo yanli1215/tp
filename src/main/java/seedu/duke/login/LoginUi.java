@@ -24,6 +24,29 @@ public class LoginUi extends Ui {
         return loginInfo;
     }
 
+    public LoginInfo getLoginInfo() {
+        LoginController loginController = new LoginController();
+        System.out.println(super.logo);
+        System.out.println("Select either 1 or 2 (use numbers): \n" +
+                "1. Log In \n" +
+                "2. Create a new account" );
+        Scanner sc = new Scanner(System.in);
+        int choice = sc.nextInt();
+        try {
+            switch (choice) {
+            case 1:
+                return getUserInputForLogin();
+            case 2:
+                return loginController.addUser();
+            default:
+                assert false;
+            }
+        }catch (NullPointerException e){
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
     public static LoginInfo getUserInputForLogin(){
         Scanner sc = new Scanner(System.in);
         String userId;
