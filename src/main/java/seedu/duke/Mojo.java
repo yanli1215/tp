@@ -3,8 +3,6 @@ package seedu.duke;
 import org.json.simple.parser.ParseException;
 import seedu.duke.login.LoginController;
 import seedu.duke.login.LoginInfo;
-import seedu.duke.login.LoginInfoFileManager;
-import seedu.duke.login.LoginManager;
 import seedu.duke.utilities.Parser;
 import seedu.duke.utilities.Storage;
 import seedu.duke.utilities.Ui;
@@ -50,11 +48,9 @@ public class Mojo {
     }
 
     public static void main(String[] args) {
-        LoginInfoFileManager loginInfoFileManager = new LoginInfoFileManager();
-        LoginManager loginManager = new LoginManager(loginInfoFileManager);
-        LoginController lc = new LoginController(loginManager);
+        LoginController lc = new LoginController();
         LoginInfo providedLoginInfo = lc.run();
-        String userId  = providedLoginInfo.getUserId();
+        String userId = providedLoginInfo.getUserId();
         new Mojo(userId + ".json", userId).run();
 
     }

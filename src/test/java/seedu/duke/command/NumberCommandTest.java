@@ -38,9 +38,7 @@ public class NumberCommandTest {
     void execute_validType_success() {
         new NumberCommand("number inbox").execute(emailManager, ui, storage);
 
-        String expectedOutput = "____________________________________________________________" + System.lineSeparator()
-                + "You have a total of 1 INBOX emails" + System.lineSeparator()
-                + "____________________________________________________________";
+        String expectedOutput = "You have a total of 1 INBOX emails";
 
         Assert.assertEquals(expectedOutput, outputStreamCaptor.toString()
                 .trim());
@@ -61,9 +59,7 @@ public class NumberCommandTest {
     void execute_emptyFolder_message() {
         new NumberCommand("number deleted").execute(emailManager, ui, storage);
 
-        String expectedOutput = "____________________________________________________________" + System.lineSeparator()
-                + "You have a total of 0 DELETED emails" + System.lineSeparator()
-                + "____________________________________________________________";
+        String expectedOutput = "You have a total of 0 DELETED emails";
 
         Assert.assertEquals(expectedOutput, outputStreamCaptor.toString()
                 .trim());
