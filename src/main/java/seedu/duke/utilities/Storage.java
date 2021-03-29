@@ -100,35 +100,36 @@ public class Storage {
                 switch (type) {
                 case "inbox":
                     Inbox inboxEmail = new Inbox(e.get("from").toString(),
-                            Parser.parseRecipients(e.get("to").toString()),
+                            getToArrayList((JSONArray) e.get("to")),
                             e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
                     allEmails.add(inboxEmail);
                     break;
                 case "drafts":
                     Draft draftEmail = new Draft(e.get("from").toString(),
-                            Parser.parseRecipients(e.get("to").toString()),
+                            getToArrayList((JSONArray) e.get("to")),
                             e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
                     allEmails.add(draftEmail);
                     break;
                 case "archive":
                     Archive archiveEmail = new Archive(e.get("from").toString(),
-                            Parser.parseRecipients(e.get("to").toString()),
+                            getToArrayList((JSONArray) e.get("to")),
                             e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
                     allEmails.add(archiveEmail);
                     break;
                 case "sent":
-                    Sent sentEmail = new Sent(e.get("from").toString(), Parser.parseRecipients(e.get("to").toString()),
+                    Sent sentEmail = new Sent(e.get("from").toString(), getToArrayList((JSONArray) e.get("to")),
                             e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
                     allEmails.add(sentEmail);
                     break;
                 case "deleted":
                     Deleted deletedEmail = new Deleted(e.get("from").toString(),
-                            Parser.parseRecipients(e.get("to").toString()),
+                            getToArrayList((JSONArray) e.get("to")),
                             e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
                     allEmails.add(deletedEmail);
                     break;
                 case "junk":
-                    Junk junkEmail = new Junk(e.get("from").toString(), Parser.parseRecipients(e.get("to").toString()),
+
+                    Junk junkEmail = new Junk(e.get("from").toString(), getToArrayList((JSONArray) e.get("to")),
                             e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
                     allEmails.add(junkEmail);
                     break;
@@ -140,19 +141,81 @@ public class Storage {
         }
         return allEmails;
     }
-
+    private ArrayList<String> getToArrayList(JSONArray toList) {
+        ArrayList<String> toArrayList = new ArrayList<>();
+        for(int i = 0; i < toList.size(); i++)
+        {
+            String to = (String) toList.get(i);
+            toArrayList.add(to);
+        }
+        return toArrayList;
+    }
     public String getPassword(JSONObject jsonObject) {
         return (String) jsonObject.get("password");
     }
 
     public void changePwd(String newPassword) {
         pwd = newPassword;
+        updateEmails("password", newPassword);
+    }
+
+    public void updateAllTypeEmails(ArrayList<Email> emails) {
+        JSONArray inboxList = new JSONArray();
+        JSONArray deletedList = new JSONArray();
+        JSONArray junkList = new JSONArray();
+        JSONArray archiveList = new JSONArray();
+        JSONArray sentList = new JSONArray();
+        JSONArray draftList = new JSONArray();
+
+        for(Email email: emails) {
+            if (email instanceof Inbox) {
+                inboxList.add(createJsonObj(email));
+            }
+            if (email instanceof Deleted) {
+                deletedList.add(createJsonObj(email));
+            }
+            if (email instanceof Junk) {
+                junkList.add(createJsonObj(email));
+            }
+            if (email instanceof Archive) {
+                archiveList.add(createJsonObj(email));
+            }
+            if (email instanceof Sent) {
+                sentList.add(createJsonObj(email));
+            }
+            if (email instanceof Draft) {
+                draftList.add(createJsonObj(email));
+            }
+        }
+        updateEmails("inbox", inboxList);
+        updateEmails("deleted", deletedList);
+        updateEmails("junk", junkList);
+        updateEmails("archive", archiveList);
+        updateEmails("sent", sentList);
+        updateEmails("drafts", draftList);
+    }
+
+    private JSONObject createJsonObj(Email email) {
+        JSONObject emailObj = new JSONObject();
+        JSONArray toList = new JSONArray();
+
+        emailObj.put("subject", email.getSubject());
+        emailObj.put("from", email.getFrom());
+        for(String to: email.getTo()) {
+            toList.add(to);
+        }
+        emailObj.put("to", toList);
+        emailObj.put("time", email.getTime());
+        emailObj.put("content", email.getContent());
+        return emailObj;
+    }
+
+    private <T> void updateEmails(String key, T newValue) {
         try {
             FileReader reader = new FileReader(filePath);
             JSONParser jsonParser = new JSONParser();
             JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);
-            jsonObject.put("password", newPassword);
-
+            jsonObject.put(key, newValue);
             FileWriter file = new FileWriter(filePath);
             file.write(jsonObject.toJSONString());
             file.flush();
