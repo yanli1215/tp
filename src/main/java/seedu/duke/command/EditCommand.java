@@ -60,7 +60,7 @@ public class EditCommand extends Command {
         switch (editType) {
         case "to":
             String to = in.nextLine();
-            //draftEmail.setTo(to);
+            draftEmail.setTo(to);
             break;
         case "subject":
             String subject = in.nextLine();

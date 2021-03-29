@@ -39,6 +39,8 @@ public class DeleteCommand extends Command {
             } else {
                 System.out.println("Move this email from deleted folder");
             }
+            storage.updateAllTypeEmails(emails.getEmailsList());
+
         } catch (InvalidIndexException e) {
             e.showErrorMessage("DELETE");
         }
