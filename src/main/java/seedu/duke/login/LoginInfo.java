@@ -1,7 +1,12 @@
-package seedu.duke.Login;
+package seedu.duke.login;
 
 public class LoginInfo {
     private String userId;
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     private String password;
 
     public LoginInfo(String userId, String password) {
@@ -17,6 +22,11 @@ public class LoginInfo {
         return userId;
     }
 
+    public String strAddToTxt() {
+        return getUserId() + " | " + getPassword();
+    }
+
+
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof LoginInfo) {
@@ -27,4 +37,6 @@ public class LoginInfo {
 
         return false;
     }
+
+
 }

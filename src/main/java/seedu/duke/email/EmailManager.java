@@ -219,7 +219,8 @@ public class EmailManager {
 
     public ArrayList<Email> findByString(ArrayList<Email> emails, String filterString) {
         ArrayList<Email> filteredList = (ArrayList<Email>) emails.stream()
-                .filter((s) -> (s.getContent().toLowerCase().contains(filterString) || s.getSubject().toLowerCase().contains(filterString)))
+                .filter((s) -> (s.getContent().toLowerCase().contains(filterString) || s.getSubject().toLowerCase()
+                        .contains(filterString)))
                 .collect(toList());
         return filteredList;
     }

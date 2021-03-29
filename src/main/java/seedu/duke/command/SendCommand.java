@@ -1,9 +1,9 @@
 package seedu.duke.command;
 
 import seedu.duke.email.EmailManager;
-import seedu.duke.Utilities.Parser;
-import seedu.duke.Utilities.Storage;
-import seedu.duke.Utilities.Ui;
+import seedu.duke.utilities.Parser;
+import seedu.duke.utilities.Storage;
+import seedu.duke.utilities.Ui;
 import seedu.duke.email.Draft;
 import seedu.duke.email.Email;
 import seedu.duke.exceptions.InvalidIndexException;

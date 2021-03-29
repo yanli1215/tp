@@ -1,7 +1,5 @@
 package seedu.duke.email;
 
-import seedu.duke.email.Email;
-
 import java.util.ArrayList;
 
 public class Inbox extends Email {

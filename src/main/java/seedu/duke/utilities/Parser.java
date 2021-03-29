@@ -1,26 +1,25 @@
-package seedu.duke.Utilities;
+package seedu.duke.utilities;
+
 
 import seedu.duke.command.ArchiveCommand;
 import seedu.duke.command.Command;
 import seedu.duke.command.ComposeCommand;
 import seedu.duke.command.DeleteCommand;
-import seedu.duke.command.EditCommand;
 import seedu.duke.command.ExitCommand;
+import seedu.duke.command.FindCommand;
 import seedu.duke.command.HelpCommand;
 import seedu.duke.command.ListCommand;
-import seedu.duke.command.FindCommand;
 import seedu.duke.command.NumberCommand;
 import seedu.duke.command.ReadCommand;
+import seedu.duke.command.ResetCommand;
 import seedu.duke.command.SendCommand;
 import seedu.duke.command.SortCommand;
 import seedu.duke.command.TagCommand;
-
 import seedu.duke.email.Email;
 import seedu.duke.email.EmailManager;
 import seedu.duke.exceptions.InvalidIndexException;
 
 import java.util.ArrayList;
-
 import java.util.Arrays;
 
 
@@ -42,6 +41,8 @@ public class Parser {
             cmd = new ExitCommand(userInputString);
         } else if (userInputString.equalsIgnoreCase("help")) {
             cmd = new HelpCommand(userInputString);
+        } else if (userInputString.equalsIgnoreCase("reset")) {
+            cmd = new ResetCommand(userInputString);
         } else if (userInputString.toLowerCase().matches("^(read)[ ].*$")) {
             cmd = new ReadCommand(userInputString);
         } else if (userInputString.toLowerCase().matches("^(delete)[ ].*$")) {
@@ -60,8 +61,6 @@ public class Parser {
             cmd = new NumberCommand(userInputString);
         } else if (userInputString.toLowerCase().startsWith("sort")) {
             cmd = new SortCommand(userInputString);
-        } else if (userInputString.toLowerCase().matches("^(edit)[ ].*$")) {
-            cmd = new EditCommand(userInputString);
         } else {
             throw new AssertionError(userInputString);
         }
