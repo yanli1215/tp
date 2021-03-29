@@ -50,7 +50,7 @@ public class Mojo {
     public static void main(String[] args) {
         LoginController lc = new LoginController();
         LoginInfo providedLoginInfo = lc.run();
-        String userId  = providedLoginInfo.getUserId();
+        String userId = providedLoginInfo.getUserId();
         new Mojo(userId + ".json", userId).run();
 
     }

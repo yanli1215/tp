@@ -24,7 +24,7 @@ public class LoginInfoFileManager {
             }
         }
 
-        if(!loginInfoFile.exists()){
+        if (!loginInfoFile.exists()) {
             try {
                 loginInfoFile.createNewFile();
             } catch (IOException e) {
@@ -63,7 +63,7 @@ public class LoginInfoFileManager {
     //update user login info
     public void writeToTxt(ArrayList<LoginInfo> loginInfoList) throws IOException {
         FileWriter fw = new FileWriter(loginInfoFile, false);
-        for (LoginInfo loginInfo: loginInfoList) {
+        for (LoginInfo loginInfo : loginInfoList) {
             fw.write(loginInfo.strAddToTxt());
             fw.write("\n");
         }

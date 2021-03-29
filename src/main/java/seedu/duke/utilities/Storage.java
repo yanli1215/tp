@@ -76,13 +76,8 @@ public class Storage {
             }
         }
         File file = new File(filePath);
-        if(!file.exists()){
-            try {
-                file.createNewFile();
-                createJSONFile();
-            } catch (IOException e) {
-                System.err.println("Failed to create directory 'data'!" + e.getMessage());
-            }
+        if (!file.exists()) {
+            createJsonFile(file);
         }
 
         JSONParser parser = new JSONParser();
@@ -175,8 +170,9 @@ public class Storage {
         }
     }
 
-    private void createJSONFile() {
-        try{
+    private void createJsonFile(File file) {
+        try {
+            file.createNewFile();
             FileWriter fw = new FileWriter(filePath);
             fw.write("{}");
             fw.flush();
