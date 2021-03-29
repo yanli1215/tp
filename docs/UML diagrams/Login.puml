@@ -1,20 +1,20 @@
 @startuml
-class seedu.duke.login.LoginUi {
-+ {static} LoginInfo getNewUserLoginInfo()
+class login.LoginUi {
++ LoginInfo getNewUserLoginInfo()
 + LoginInfo getLoginInfo()
-+ {static} LoginInfo getUserInputForLogin()
++ LoginInfo getUserInputForLogin()
 }
-class seedu.duke.login.LoginController {
+class login.LoginController {
 - LoginManager loginManager
 - LoginUi loginUi
-- {static} LoginInfo loginInfo
+- LoginInfo loginInfo
 - LoginInfoFileManager loginInfoFileManager
 + LoginInfo run()
 + void modifyLoginInfo(String,String)
 + LoginInfo addUser()
-+ {static} boolean checkUserIdExists(String)
++ boolean checkUserIdExists(String)
 }
-class seedu.duke.login.LoginInfo {
+class login.LoginInfo {
 - String userId
 - String password
 + void setPassword(String)
@@ -23,18 +23,32 @@ class seedu.duke.login.LoginInfo {
 + String strAddToTxt()
 + boolean equals(Object)
 }
-class seedu.duke.login.LoginInfoFileManager {
+class login.LoginInfoFileManager {
 - File loginInfoFile
 + void addLoginInfoForNewUser(LoginInfo)
 + ArrayList<LoginInfo> retrieveLoginInfoList()
 + void writeToTxt(ArrayList<LoginInfo>)
 }
-class seedu.duke.login.LoginManager {
+class login.LoginManager {
 - LoginInfoFileManager loginInfoFileManager
 - LoginController loginController
 + void verifyLoginInfo(LoginInfo)
 + void modifyLoginInfo(LoginInfo)
 }
 
-seedu.duke.utilities.Ui <|-- seedu.duke.login.LoginUi
+
+utilities.Ui <|-- login.LoginUi
+
+login.LoginInfoFileManager "1" <--* "1" login.LoginManager
+login.LoginInfoFileManager "1" <--* "1" login.LoginController
+login.LoginInfoFileManager  -[dotted]-> login.LoginInfo
+
+
+login.LoginManager "1" *--* "1" login.LoginController
+login.LoginManager  -[dotted]-> login.LoginInfo
+
+login.LoginController "1" *--> "1" login.LoginInfo
+login.LoginController "1" *--* "1" login.LoginUi
+
+login.LoginUi  -[dotted]-> login.LoginInfo
 @enduml
