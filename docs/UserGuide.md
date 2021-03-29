@@ -15,19 +15,166 @@
 
 {Give detailed description of each feature}
 
-### Adding a todo: `todo`
-Adds a new item to the list of todo items.
+### Deleting an email: `delete`
+Delete an email to the junk box or remove an email from junk box forever.
 
-Format: `todo n/TODO_NAME d/DEADLINE`
+Format: `delete INDEX`
 
-* The `DEADLINE` can be in a natural language format.
-* The `TODO_NAME` cannot contain punctuation.  
+* The `INDEX` refers to the index number shown in the displayed email list.
+* The `INDEX` **must be a positive integer** 1, 2, 3, …
+
+* If the displayed email list if not junk emails, move the email at the specified `INDEX` to the junk box. 
+* If the displayed email list is junk emails, remove the email at the specified `INDEX` from the account forever.
+
 
 Example of usage: 
+````
+____________________________________________________________
+Enter Command:
+list inbox
+____________________________________________________________
+1. [Inbox][UNREAD]
+|| Subject: This is subject 1
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T06:30:00
+|| Tags: []
+2. [Inbox][UNREAD]
+|| Subject: This is subject 2
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T07:30:00
+|| Tags: []
+____________________________________________________________
+Enter Command:
+delete 2
+____________________________________________________________
+Move this email to deleted folder
+____________________________________________________________
+Enter Command:
+list deleted
+____________________________________________________________
+1. [Deleted][UNREAD]
+|| Subject: This is subject 2
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T07:30:00
+|| Tags: []
+____________________________________________________________
+````
+### Archiving an email: `archive`
+Archive a not-archived email to the archive box.
 
-`todo n/Write the rest of the User Guide d/next week`
+Format: `archive INDEX`
 
-`todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
+* The `INDEX` refers to the index number shown in the displayed email list.
+* The `INDEX` **must be a positive integer** 1, 2, 3, …
+
+* If the displayed email list if not archived emails, move the email at the specified `INDEX` to the archive box.
+* If the displayed email list is archived emails, no action will be done.
+
+
+Example of usage:
+
+````
+____________________________________________________________
+Enter Command:
+list inbox
+____________________________________________________________
+1. [Inbox][UNREAD]
+|| Subject: This is subject 1
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T06:30:00
+|| Tags: []
+____________________________________________________________
+Enter Command:
+archive 1
+____________________________________________________________
+Move this email to archive folder
+____________________________________________________________
+Enter Command:
+list archive
+____________________________________________________________
+1. [Archive][UNREAD]
+|| Subject: This is subject 6
+|| From: 11312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T11:30:00
+|| Tags: []
+2. [Archive][UNREAD]
+|| Subject: This is subject 1
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T06:30:00
+|| Tags: []
+____________________________________________________________
+````
+
+
+### Finding an email: `find`
+Find emails that contain a certain keyword.
+
+Format: `find KEYWORD`
+
+* The `KEYWORD` refers to the keyword that the email's subject or content should contain.
+* The `KEYWORD` can be any non-empty string.
+* The `KEYWORD` is case-ignored during the find.
+
+
+Example of usage:
+````
+____________________________________________________________
+Enter Command:
+list deleted
+____________________________________________________________
+1. [Deleted][UNREAD]
+|| Subject: This is subject 9
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T14:30:00
+|| Tags: []
+2. [Deleted][UNREAD]
+|| Subject: This is subject 10
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T15:30:00
+|| Tags: []
+____________________________________________________________
+Enter Command:
+find 10
+____________________________________________________________
+1. [Deleted][UNREAD]
+|| Subject: This is subject 10
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T15:30:00
+|| Tags: []
+____________________________________________________________
+````
+
+
+### Resetting the password: `reset`
+Delete an email to the junk box or remove an email from junk box forever.
+
+Format: `reset`
+
+* The program will aks for the old password from user.
+* If the old password is correct, the program will ask for the new  password from user.
+* The number of wrong attempt is 3.
+* If the old password is wrong for 3 times, the program will back to main menu asking for command.
+
+
+
+Example of usage:
+```
+____________________________________________________________
+Enter Command:
+reset
+____________________________________________________________
+Please enter your old password:
+12312
+Sorry your old password is wrong. Please try again!(2 times left!)
+____________________________________________________________
+Please enter your old password:
+5678
+Please enter your new password:
+12315
+Your password has changed successfully!
+____________________________________________________________
+
+```
 
 ## FAQ
 
@@ -39,4 +186,9 @@ Example of usage:
 
 {Give a 'cheat sheet' of commands here}
 
-* Add todo `todo n/TODO_NAME d/DEADLINE`
+* Delete emails to junk box `delete INDEX`
+* Archive emails `archive INDEX`
+* Find emails by keywords `find KEYWORD`
+* Reset the account's password `reset`
+
+
