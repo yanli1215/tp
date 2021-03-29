@@ -16,7 +16,8 @@ public class LoginUi extends Ui {
             Pattern p = Pattern.compile(ePattern);
             Matcher m = p.matcher(loginInfo.getUserId());
             if (!m.find()) {
-                printErrorMessage("Please enter a valid email address!");
+                printErrorMessage("Please enter a valid email address! \n" +
+                        "Email address must have \"@\"");
                 continue;
             }
             break;
@@ -28,6 +29,7 @@ public class LoginUi extends Ui {
         LoginController loginController = new LoginController();
         System.out.println(super.logo);
         System.out.println("Select either 1 or 2 (use numbers): \n" +
+                "[Emails address are case sensitive!]\n" +
                 "1. Log In \n" +
                 "2. Create a new account" );
         Scanner sc = new Scanner(System.in);
