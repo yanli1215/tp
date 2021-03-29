@@ -22,7 +22,7 @@ public class LoginController {
     public LoginInfo run() {
         LoginInfo providedLoginInfo;
         providedLoginInfo = loginUi.getLoginInfo();
-        while(true) {
+        while (true) {
             try {
                 loginManager.verifyLoginInfo(providedLoginInfo);
                 break;
@@ -40,7 +40,7 @@ public class LoginController {
         loginManager.modifyLoginInfo(loginInfo);
     }
 
-    public LoginInfo addUser(){
+    public LoginInfo addUser() {
         LoginInfo loginInfo;
         loginInfo = loginUi.getNewUserLoginInfo();
         if (checkUserIdExists(loginInfo.getUserId())) {

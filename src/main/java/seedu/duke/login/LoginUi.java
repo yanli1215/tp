@@ -12,12 +12,12 @@ public class LoginUi extends Ui {
         LoginInfo loginInfo;
         while (true) {
             loginInfo = getUserInputForLogin();
-            String ePattern = "^(.+)@(.+)$";;
-            Pattern p = Pattern.compile(ePattern);
+            String check = "^(.+)@(.+)$";;
+            Pattern p = Pattern.compile(check);
             Matcher m = p.matcher(loginInfo.getUserId());
             if (!m.find()) {
-                printErrorMessage("Please enter a valid email address! \n" +
-                        "Email address must have \"@\"");
+                printErrorMessage("Please enter a valid email address! \n"
+                        + "Email address must have \"@\"");
                 continue;
             }
             break;
@@ -28,10 +28,10 @@ public class LoginUi extends Ui {
     public LoginInfo getLoginInfo() {
         LoginController loginController = new LoginController();
         System.out.println(super.logo);
-        System.out.println("Select either 1 or 2 (use numbers): \n" +
-                "[Emails address are case sensitive!]\n" +
-                "1. Log In \n" +
-                "2. Create a new account" );
+        System.out.println("Select either 1 or 2 (use numbers): \n"
+                + "[Emails address are case sensitive!]\n"
+                + "1. Log In \n"
+                + "2. Create a new account");
         Scanner sc = new Scanner(System.in);
         int choice = sc.nextInt();
         try {
@@ -43,13 +43,13 @@ public class LoginUi extends Ui {
             default:
                 assert false;
             }
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             System.out.println(e.getMessage());
         }
         return null;
     }
 
-    public LoginInfo getUserInputForLogin(){
+    public LoginInfo getUserInputForLogin() {
         Scanner sc = new Scanner(System.in);
         String userId;
         System.out.println("Enter email address:");
