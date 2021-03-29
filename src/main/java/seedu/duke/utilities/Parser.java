@@ -57,6 +57,8 @@ public class Parser {
             cmd = new SendCommand(userInputString);
         } else if (userInputString.toLowerCase().matches("^(tag)[ ].*$")) {
             cmd = new TagCommand(userInputString);
+        } else if (userInputString.toLowerCase().matches("^(edit)[ ].*$")) {
+            cmd = new TagCommand(userInputString);
         } else if (userInputString.toLowerCase().startsWith("number")) {
             cmd = new NumberCommand(userInputString);
         } else if (userInputString.toLowerCase().startsWith("sort")) {

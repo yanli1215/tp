@@ -12,8 +12,8 @@ public class LoginManager {
 
     private LoginInfoFileManager loginInfoFileManager;
 
-    public LoginManager(LoginInfoFileManager loginInfoFileManager) {
-        this.loginInfoFileManager = loginInfoFileManager;
+    public LoginManager() {
+        loginInfoFileManager = new LoginInfoFileManager();
     }
 
     public void verifyLoginInfo(LoginInfo providedLoginInfo) throws WrongLoginInfoException {
