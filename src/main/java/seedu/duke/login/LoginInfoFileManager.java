@@ -1,4 +1,4 @@
-package seedu.duke;
+package seedu.duke.login;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -33,13 +33,24 @@ public class LoginInfoFileManager {
             Scanner sc = new Scanner(loginInfoFile);
             while (sc.hasNext()) {
                 String[] lineSplit = sc.nextLine().split("\\|");
-                loginInfoList.add(new LoginInfo(lineSplit[0], lineSplit[1]));
+                loginInfoList.add(new LoginInfo(lineSplit[0].trim(), lineSplit[1].trim()));
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         return loginInfoList;
     }
+
+    //update user login info
+    public void writeToTxt(ArrayList<LoginInfo> loginInfoList) throws IOException {
+        FileWriter fw = new FileWriter(loginInfoFile, false);
+        for (LoginInfo loginInfo: loginInfoList) {
+            fw.write(loginInfo.strAddToTxt());
+            fw.write("\n");
+        }
+        fw.close();
+    }
+
 
 }
 

@@ -1,49 +1,63 @@
-package seedu.duke;
+package seedu.duke.utilities;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import seedu.duke.email.Archive;
+import seedu.duke.email.Deleted;
+import seedu.duke.email.Draft;
+import seedu.duke.email.Email;
+import seedu.duke.email.Inbox;
+import seedu.duke.email.Junk;
+import seedu.duke.email.Sent;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
-import seedu.duke.email.Email;
-import seedu.duke.email.Archive;
-import seedu.duke.email.Draft;
-import seedu.duke.email.Deleted;
-import seedu.duke.email.Inbox;
-import seedu.duke.email.Junk;
-import seedu.duke.email.Sent;
 
 public class Storage {
     private String fileName;
     private String filePath;
+    private String pwd;
+    private String emailAccount;
 
-    public Storage(String fileName) {
+    public String getEmailAccount() {
+        return emailAccount;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public Storage(String fileName, String account) {
         this.fileName = fileName;
         this.filePath = System.getProperty("user.dir") + File.separator + "data" + File.separator + fileName;
+        this.pwd = "";
+        this.emailAccount = account;
 
     }
 
     public Storage() {
         this.fileName = null;
         this.filePath = null;
+        this.pwd = null;
+        this.emailAccount = null;
 
     }
 
     public ArrayList<Email> load() throws IOException, ParseException {
         try {
             JSONObject accountInfo = readJson();
+            pwd = getPassword(accountInfo);
             ArrayList<Email> emailList = parse(accountInfo);
             return emailList;
         } catch (FileNotFoundException e) {
@@ -85,32 +99,36 @@ public class Storage {
                 Map e = iterator.next();
                 switch (type) {
                 case "inbox":
-                    Inbox inboxEmail = new Inbox(e.get("from").toString(), e.get("to").toString(),
+                    Inbox inboxEmail = new Inbox(e.get("from").toString(),
+                            Parser.parseRecipients(e.get("to").toString()),
                             e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
                     allEmails.add(inboxEmail);
                     break;
                 case "drafts":
-                    Draft draftEmail = new Draft(e.get("from").toString(), e.get("to").toString(),
+                    Draft draftEmail = new Draft(e.get("from").toString(),
+                            Parser.parseRecipients(e.get("to").toString()),
                             e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
                     allEmails.add(draftEmail);
                     break;
                 case "archive":
-                    Archive archiveEmail = new Archive(e.get("from").toString(), e.get("to").toString(),
+                    Archive archiveEmail = new Archive(e.get("from").toString(),
+                            Parser.parseRecipients(e.get("to").toString()),
                             e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
                     allEmails.add(archiveEmail);
                     break;
                 case "sent":
-                    Sent sentEmail = new Sent(e.get("from").toString(), e.get("to").toString(),
+                    Sent sentEmail = new Sent(e.get("from").toString(), Parser.parseRecipients(e.get("to").toString()),
                             e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
                     allEmails.add(sentEmail);
                     break;
                 case "deleted":
-                    Deleted deletedEmail = new Deleted(e.get("from").toString(), e.get("to").toString(),
+                    Deleted deletedEmail = new Deleted(e.get("from").toString(),
+                            Parser.parseRecipients(e.get("to").toString()),
                             e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
                     allEmails.add(deletedEmail);
                     break;
                 case "junk":
-                    Junk junkEmail = new Junk(e.get("from").toString(), e.get("to").toString(),
+                    Junk junkEmail = new Junk(e.get("from").toString(), Parser.parseRecipients(e.get("to").toString()),
                             e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
                     allEmails.add(junkEmail);
                     break;
@@ -123,6 +141,32 @@ public class Storage {
         return allEmails;
     }
 
+    public String getPassword(JSONObject jsonObject) {
+        return (String) jsonObject.get("password");
+    }
+
+    public void changePwd(String newPassword) {
+        pwd = newPassword;
+        try {
+            FileReader reader = new FileReader(filePath);
+            JSONParser jsonParser = new JSONParser();
+            JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);
+            jsonObject.put("password", newPassword);
+
+            FileWriter file = new FileWriter(filePath);
+            file.write(jsonObject.toJSONString());
+            file.flush();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        } catch (NullPointerException ex) {
+            ex.printStackTrace();
+        }
+
+    }
 
 
 }

@@ -1,9 +1,9 @@
 package seedu.duke.command;
 
-import seedu.duke.EmailManager;
-import seedu.duke.Parser;
-import seedu.duke.Storage;
-import seedu.duke.Ui;
+import seedu.duke.email.EmailManager;
+import seedu.duke.utilities.Parser;
+import seedu.duke.utilities.Storage;
+import seedu.duke.utilities.Ui;
 import seedu.duke.email.Email;
 import seedu.duke.exceptions.InvalidIndexException;
 
@@ -20,7 +20,7 @@ public class ReadCommand extends Command {
 
         if (listedEmails == null) {
             String feedback = "You have to list emails first" + System.lineSeparator()
-                    + "=> list emails" + System.lineSeparator();
+                    + "=> list emails";
             ui.printFeedback(feedback);
             return;
         }
@@ -31,9 +31,7 @@ public class ReadCommand extends Command {
             }
             Email email = listedEmails.get(index - 1);
             email.setRead(true);
-
-            System.out.println(email);
-            System.out.println();
+            ui.printFeedback(email.toString());
         } catch (InvalidIndexException e) {
             e.showErrorMessage("READ");
         }

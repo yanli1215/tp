@@ -1,9 +1,8 @@
 package seedu.duke.command;
 
-import seedu.duke.EmailManager;
-import seedu.duke.Storage;
-import seedu.duke.Ui;
-import seedu.duke.email.Email;
+import seedu.duke.email.EmailManager;
+import seedu.duke.utilities.Storage;
+import seedu.duke.utilities.Ui;
 
 public class ExitCommand extends Command {
     public ExitCommand(String s) {

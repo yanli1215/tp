@@ -3,7 +3,8 @@
 ## Design & implementation
 
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
-
+![Architect class diagram](UML diagrams/OverviewClassDiagram.png)
+![Architect sequence diagram](UML diagrams/OverviewSequenceDiagram.png)
 
 ## Product scope
 ### Target user profile

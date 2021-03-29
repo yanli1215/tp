@@ -1,14 +1,9 @@
-package seedu.duke;
-
-import seedu.duke.email.Archive;
-import seedu.duke.email.Deleted;
-import seedu.duke.email.Draft;
-import seedu.duke.email.Email;
-import seedu.duke.email.Inbox;
-import seedu.duke.email.Junk;
-import seedu.duke.email.Sent;
+package seedu.duke.email;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+
+import static java.util.stream.Collectors.toList;
 
 public class EmailManager {
     private static ArrayList<Email> emailsList = new ArrayList<>();
@@ -101,11 +96,33 @@ public class EmailManager {
         }
     }
 
-    public void printEmailByType(ArrayList<Email> emailTypeToPrint) {
+    public static void printEmailByType(ArrayList<Email> emailTypeToPrint) {
         for (int i = 0; i < emailTypeToPrint.size(); i++) {
             System.out.println(i + 1 + ". " + emailTypeToPrint.get(i).getShortDescription());
         }
         listedEmailsList = emailTypeToPrint;
+    }
+
+    public void sortBySender() {
+        emailsList.sort(new TypeSenderSortingComparator());
+    }
+
+    static class TypeSenderSortingComparator implements Comparator<Email> {
+        @Override
+        public int compare(Email email1, Email email2) {
+            return email1.getFrom().compareTo(email2.getFrom());
+        }
+    }
+
+    public void sortByTime() {
+        emailsList.sort(new TypeTimeSortingComparator());
+    }
+
+    static class TypeTimeSortingComparator implements Comparator<Email> {
+        @Override
+        public int compare(Email email1, Email email2) {
+            return email1.getTime().compareTo(email2.getTime());
+        }
     }
 
     public static ArrayList<Email> getArchivedEmails() {
@@ -198,6 +215,14 @@ public class EmailManager {
     public void addToDraft(Email e) {
         Draft email = new Draft(e.getFrom(), e.getTo(), e.getSubject(), e.getTime(), e.getContent());
         emailsList.add(email);
+    }
+
+    public ArrayList<Email> findByString(ArrayList<Email> emails, String filterString) {
+        ArrayList<Email> filteredList = (ArrayList<Email>) emails.stream()
+                .filter((s) -> (s.getContent().toLowerCase().contains(filterString) || s.getSubject().toLowerCase()
+                        .contains(filterString)))
+                .collect(toList());
+        return filteredList;
     }
 
 }

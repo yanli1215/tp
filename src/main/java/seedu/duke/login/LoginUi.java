@@ -1,6 +1,7 @@
-package seedu.duke;
+package seedu.duke.login;
 
-import java.io.Console;
+import seedu.duke.utilities.Ui;
+
 import java.util.Scanner;
 
 public class LoginUi extends Ui {

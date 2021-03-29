@@ -1,9 +1,10 @@
 package seedu.duke.command;
 
-import seedu.duke.EmailManager;
-import seedu.duke.Parser;
-import seedu.duke.Storage;
-import seedu.duke.Ui;
+import seedu.duke.email.EmailManager;
+import seedu.duke.utilities.Parser;
+import seedu.duke.utilities.Storage;
+import seedu.duke.utilities.Ui;
+import seedu.duke.email.Draft;
 import seedu.duke.email.Email;
 import seedu.duke.exceptions.InvalidIndexException;
 
@@ -16,6 +17,13 @@ public class SendCommand extends Command {
     }
 
     public void execute(EmailManager emails, Ui ui, Storage storage) {
+        ArrayList<Email> listedEmails = EmailManager.getListedEmailsList();
+        if (listedEmails == null || !(listedEmails.get(0) instanceof Draft)) {
+            String feedback = "You have to list DRAFT emails first" + System.lineSeparator()
+                    + "=> list draft" + System.lineSeparator();
+            ui.printFeedback(feedback);
+            return;
+        }
 
         ArrayList<Email> draftedEmails = EmailManager.getDraftEmails();
         if (draftedEmails.isEmpty()) {
@@ -24,18 +32,29 @@ public class SendCommand extends Command {
             return;
         }
 
+        Email[] sendEmailList = null;
+
         try {
-            int index = Parser.extractIndex(userInput);
-            if (index <= 0 || index > draftedEmails.size()) {
-                throw new InvalidIndexException();
+            String args = Parser.removeCommand(userInput);
+            int[] indices = Parser.extractMultipleIndices(args);
+            sendEmailList = new Email[indices.length];
+            for (int i = 0; i < indices.length; i++) {
+                if (indices[i] <= 0 || indices[i] > draftedEmails.size()) {
+                    throw new InvalidIndexException();
+                }
+                sendEmailList[i] = draftedEmails.get(indices[i] - 1);
             }
-            Email draftEmail = draftedEmails.get(index - 1);
+        } catch (InvalidIndexException e) {
+            e.showErrorMessage("SENT");
+        }
+
+        assert sendEmailList != null;
+
+        for (Email draftEmail : sendEmailList) {
             draftEmail.setTime(String.valueOf(LocalDateTime.now()));
             emails.deleteEmail(draftEmail);
             emails.addToSent(draftEmail);
             ui.printEmailSent(draftEmail);
-        } catch (InvalidIndexException e) {
-            e.showErrorMessage("SENT");
         }
     }
 }

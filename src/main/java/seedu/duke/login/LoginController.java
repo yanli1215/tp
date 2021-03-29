@@ -1,4 +1,4 @@
-package seedu.duke;
+package seedu.duke.login;
 
 import seedu.duke.exceptions.WrongLoginInfoException;
 
@@ -16,14 +16,6 @@ public class LoginController {
         this.loginManager = loginManager;
     }
 
-/*    public LoginInfo run() {
-        LoginInfo providedLoginInfo;
-        while (true) {
-            providedLoginInfo = loginUi.getLoginInfo();
-            loginManager.verifyLoginInfo(providedLoginInfo);
-            return providedLoginInfo;
-        }
-    }*/
     public LoginInfo run() {
         LoginInfo providedLoginInfo;
         providedLoginInfo = loginUi.getLoginInfo();
