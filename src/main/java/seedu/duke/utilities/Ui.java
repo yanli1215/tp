@@ -9,8 +9,8 @@ import java.util.Scanner;
 public class Ui {
     private final Scanner in;
     private final PrintStream out;
-    private final String errorLine = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
-    private static final String logo = " _________   _____   _____   _____\n"
+    private static final String errorLine = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+    public static final String logo = " _________   _____   _____   _____\n"
             + "|  _   _  | |  _  | |_   _| |  _  |\n"
             + "| | | | | | | | | |   | |   | | | |\n"
             + "| | | | | | | |_| |  _| |   | |_| |\n"
@@ -167,7 +167,7 @@ public class Ui {
         return inputLine;
     }
 
-    public void printErrorMessage(String... messages) {
+    public static void printErrorMessage(String... messages) {
         System.out.println(errorLine);
         System.out.println("Error Message: ");
         for (String message : messages) {
