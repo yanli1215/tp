@@ -18,10 +18,15 @@ public class LoginController {
     public LoginInfo run() {
         LoginInfo providedLoginInfo;
         providedLoginInfo = loginUi.getLoginInfo();
-        try {
-            loginManager.verifyLoginInfo(providedLoginInfo);
-        } catch (NullPointerException | WrongLoginInfoException e) {
-            loginUi.printErrorMessage(e.getMessage());
+        while(true) {
+
+            try {
+                loginManager.verifyLoginInfo(providedLoginInfo);
+                break;
+            } catch (NullPointerException | WrongLoginInfoException e) {
+                loginUi.printErrorMessage(e.getMessage());
+                providedLoginInfo = loginUi.getLoginInfo();
+            }
         }
         return providedLoginInfo;
     }
