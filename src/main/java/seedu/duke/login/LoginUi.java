@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 public class LoginUi extends Ui {
 
-    public static LoginInfo getNewUserLoginInfo() {
+    public LoginInfo getNewUserLoginInfo() {
         LoginInfo loginInfo;
         while (true) {
             loginInfo = getUserInputForLogin();
@@ -47,7 +47,7 @@ public class LoginUi extends Ui {
         return null;
     }
 
-    public static LoginInfo getUserInputForLogin(){
+    public LoginInfo getUserInputForLogin(){
         Scanner sc = new Scanner(System.in);
         String userId;
         System.out.println("Enter email address:");

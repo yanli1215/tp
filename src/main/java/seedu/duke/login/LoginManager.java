@@ -18,6 +18,7 @@ public class LoginManager {
     }
 
     public void verifyLoginInfo(LoginInfo providedLoginInfo) throws WrongLoginInfoException {
+        loginController = new LoginController();
         ArrayList<LoginInfo> loginInfoList = loginInfoFileManager.retrieveLoginInfoList();
         for (LoginInfo loginInfo: loginInfoList) {
             if (loginInfo.equals(providedLoginInfo)) {

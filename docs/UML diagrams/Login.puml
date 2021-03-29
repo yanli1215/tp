@@ -1,0 +1,40 @@
+@startuml
+class seedu.duke.login.LoginUi {
++ {static} LoginInfo getNewUserLoginInfo()
++ LoginInfo getLoginInfo()
++ {static} LoginInfo getUserInputForLogin()
+}
+class seedu.duke.login.LoginController {
+- LoginManager loginManager
+- LoginUi loginUi
+- {static} LoginInfo loginInfo
+- LoginInfoFileManager loginInfoFileManager
++ LoginInfo run()
++ void modifyLoginInfo(String,String)
++ LoginInfo addUser()
++ {static} boolean checkUserIdExists(String)
+}
+class seedu.duke.login.LoginInfo {
+- String userId
+- String password
++ void setPassword(String)
++ String getPassword()
++ String getUserId()
++ String strAddToTxt()
++ boolean equals(Object)
+}
+class seedu.duke.login.LoginInfoFileManager {
+- File loginInfoFile
++ void addLoginInfoForNewUser(LoginInfo)
++ ArrayList<LoginInfo> retrieveLoginInfoList()
++ void writeToTxt(ArrayList<LoginInfo>)
+}
+class seedu.duke.login.LoginManager {
+- LoginInfoFileManager loginInfoFileManager
+- LoginController loginController
++ void verifyLoginInfo(LoginInfo)
++ void modifyLoginInfo(LoginInfo)
+}
+
+seedu.duke.utilities.Ui <|-- seedu.duke.login.LoginUi
+@enduml
