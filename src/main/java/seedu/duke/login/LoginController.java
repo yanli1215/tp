@@ -6,14 +6,13 @@ import seedu.duke.exceptions.WrongLoginInfoException;
  * This class is responsible for the login process.
  */
 public class LoginController {
-    private final LoginManager loginManager;
+    private LoginManager loginManager;
     private LoginUi loginUi;
     private static LoginInfo loginInfo;
 
-
-    public LoginController(LoginManager loginManager) {
+    public LoginController() {
+        loginManager = new LoginManager();
         loginUi = new LoginUi();
-        this.loginManager = loginManager;
     }
 
     public LoginInfo run() {
@@ -25,5 +24,10 @@ public class LoginController {
             loginUi.printErrorMessage(e.getMessage());
         }
         return providedLoginInfo;
+    }
+
+    public void modifyLoginInfo(String emailAccount, String newPwd) {
+        LoginInfo loginInfo = new LoginInfo(emailAccount, newPwd);
+        loginManager.modifyLoginInfo(loginInfo);
     }
 }

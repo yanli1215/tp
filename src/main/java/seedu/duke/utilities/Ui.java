@@ -174,7 +174,6 @@ public class Ui {
             System.out.println(message);
         }
         System.out.println(errorLine);
-        System.out.println("Enter next command: ");
     }
 
 }

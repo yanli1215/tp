@@ -43,7 +43,6 @@ public class Storage {
         this.filePath = System.getProperty("user.dir") + File.separator + "data" + File.separator + fileName;
         this.pwd = "";
         this.emailAccount = account;
-
     }
 
     public Storage() {
@@ -72,6 +71,15 @@ public class Storage {
         if (!Files.exists(dirPath)) {
             try {
                 Files.createDirectory(dirPath);
+            } catch (IOException e) {
+                System.err.println("Failed to create directory 'data'!" + e.getMessage());
+            }
+        }
+        File file = new File(filePath);
+        if(!file.exists()){
+            try {
+                file.createNewFile();
+                createJSONFile();
             } catch (IOException e) {
                 System.err.println("Failed to create directory 'data'!" + e.getMessage());
             }
@@ -165,8 +173,15 @@ public class Storage {
         } catch (NullPointerException ex) {
             ex.printStackTrace();
         }
-
     }
 
-
+    private void createJSONFile() {
+        try{
+            FileWriter fw = new FileWriter(filePath);
+            fw.write("{}");
+            fw.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
