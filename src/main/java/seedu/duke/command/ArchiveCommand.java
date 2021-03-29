@@ -37,7 +37,7 @@ public class ArchiveCommand extends Command {
             } else {
                 System.out.println("This email is already in archive folder");
             }
-            //ui.showDeleteResult(deletedEmail, emails.getNumofEmails());
+            storage.updateAllTypeEmails(emails.getEmailsList());
         } catch (InvalidIndexException e) {
             e.showErrorMessage("ARCHIVE");
         }
