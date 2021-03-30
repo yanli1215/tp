@@ -1,6 +1,6 @@
 # Developer Guide
 
-## Design & implementation
+## Design
 
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
 ![Architect class diagram](UML diagrams/OverviewClassDiagram.png)
@@ -18,9 +18,27 @@ The Login Component consists of 5 components.
 * <code> LoginInfo </code> The LoginInfo contains the atrributes and methods of each LoginInfo object from a particular user logging into MojoHR application
 * <code> LoginInfoFileManager </code> The LoginInfoFileManager is responsible for the logic that handles the storage and retrieval of login information
 
+## Implementation
+
+### ListCommand 
+There are seven variations of the <code> list </code> command.
+1. List by All email(s)
+2. List by Archived email(s) 
+3. List by Deleted email(s)
+4. List by Draft(s) email(s) 
+5. List by Inbox email(s)
+6. List by Junk email(s)
+7. List by Sent email(s)
+
+blah blah
+
+The sequence diagram shows how the <code> list(type) </code> operation work. 
+
+
 
 
 ## Product scope
+
 ### Target user profile
 
 {Describe the target user profile}
