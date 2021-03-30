@@ -5,6 +5,9 @@ import seedu.duke.email.EmailManager;
 import seedu.duke.utilities.Storage;
 import seedu.duke.utilities.Ui;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class SortCommand extends Command {
     private static final int STARTINDEXOFSORTTYPE = 5;
 
@@ -12,10 +15,16 @@ public class SortCommand extends Command {
         super(s);
     }
 
+    private static Logger LOGGER = Logger.getLogger(SortCommand.class.getName());
+
     public void execute(EmailManager emails, Ui ui, Storage storage) {
+        LOGGER.setLevel(Level.INFO);
+        LOGGER.info("Logger Name: " + LOGGER.getName());
 
         try {
             String sortType = this.getUserInput().toLowerCase().substring(STARTINDEXOFSORTTYPE).trim();
+            LOGGER.config("sortType might not be valid due to constant STARTINDEXOFSORTTYPE");
+            LOGGER.info("sortType interpreted: " + sortType);
             if (sortType.equalsIgnoreCase("sender")) {
                 emails.sortBySender();
             } else if (sortType.equalsIgnoreCase("time")) {
@@ -27,8 +36,10 @@ public class SortCommand extends Command {
             ui.printEmailsSorted(sortType);
         } catch (InvalidTypeException e) {
             ui.showMessageForInvalidSortTypeInput();
+            LOGGER.severe("sortType is wrong.");
         } catch (StringIndexOutOfBoundsException e) {
             ui.showMessageForEmptySortType();
+            LOGGER.severe("sortType is empty.");
         }
     }
 

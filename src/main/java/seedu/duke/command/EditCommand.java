@@ -12,14 +12,22 @@ import seedu.duke.exceptions.InvalidIndexException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class EditCommand extends Command {
+
     public EditCommand(String s) {
         super(s);
     }
 
+    private static Logger LOGGER = Logger.getLogger(EditCommand.class.getName());
+
     @Override
     public void execute(EmailManager emails, Ui ui, Storage storage) {
+        LOGGER.setLevel(Level.INFO);
+        LOGGER.info("Logger Name: " + LOGGER.getName());
+
         ArrayList<Email> listedEmails = EmailManager.getListedEmailsList();
         if (listedEmails == null || !(listedEmails.get(0) instanceof Draft)) {
             String feedback = "You have to list DRAFT emails first" + System.lineSeparator()
@@ -36,7 +44,9 @@ public class EditCommand extends Command {
         }
 
         try {
+            LOGGER.warning("Can cause InvalidIndexException or IndexOutOfBoundsException.");
             int index = Parser.extractIndex(userInput);
+            LOGGER.config("Index: " + index);
             if (index <= 0 || index > draftedEmails.size()) {
                 throw new InvalidIndexException();
             }
@@ -44,16 +54,20 @@ public class EditCommand extends Command {
             Email draftEmail = draftedEmails.get(index - 1);
             ui.printEditEmail();
             Scanner in = new Scanner(System.in);
+            LOGGER.warning("Can cause InvalidEditTypeException");
             String editType = in.nextLine().trim();
             processEditCommand(draftEmail, in, editType);
             storage.updateAllTypeEmails(emails.getEmailsList());
             ui.printEmailEdited(editType);
         } catch (InvalidIndexException e) {
             e.showErrorMessage("EDIT");
+            LOGGER.log(Level.SEVERE, "Exception occurred", e);
         } catch (InvalidTypeException e) {
             ui.showMessageForInvalidEditTypeInput();
+            LOGGER.log(Level.SEVERE, "Exception occurred", e);
         } catch (IndexOutOfBoundsException e) {
             ui.showMessageForIndexOutOfBoundsException();
+            LOGGER.log(Level.SEVERE, "Exception occurred", e);
         }
     }
 

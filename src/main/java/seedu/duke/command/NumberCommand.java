@@ -42,7 +42,7 @@ public class NumberCommand extends Command {
             default:
                 throw new InvalidInputException(); //throw exception
             }
-            assert totalEmails >= 0 : "total emails <0";
+            assert totalEmails >= 0 : "total emails < 0";
             ui.printNumberOfEmails(totalEmails, emailType);
         } catch (InvalidInputException e) {
             Ui.showInvalidListTypeMessage();
