@@ -83,15 +83,6 @@ public class Parser {
         return userInput.split(" ", 2)[1];
     }
 
-
-    public static String extractKeyword(String userInput) {
-        String[] cmdArg = userInput.split(" ", 2);
-        String keyword = cmdArg[1].trim().toLowerCase();
-        return keyword;
-
-    }
-
-
     public static int[] extractMultipleIndices(String userInput) throws InvalidIndexException {
         try {
             String[] indicesStr = userInput.split(" ");
@@ -104,7 +95,6 @@ public class Parser {
             throw new InvalidIndexException();
         }
     }
-
 
     public static ArrayList<Email> getTypeToList(EmailManager emailManager, String userInput) {
         String[] cmdArg = userInput.split(" ", 2);

@@ -30,14 +30,6 @@ public class Storage {
     private String pwd;
     private String emailAccount;
 
-    public String getEmailAccount() {
-        return emailAccount;
-    }
-
-    public String getPwd() {
-        return pwd;
-    }
-
     public Storage(String fileName, String account, String pwd) {
         this.fileName = fileName;
         this.filePath = System.getProperty("user.dir") + File.separator + "data" + File.separator + fileName;
@@ -51,6 +43,14 @@ public class Storage {
         this.pwd = null;
         this.emailAccount = null;
 
+    }
+
+    public String getEmailAccount() {
+        return emailAccount;
+    }
+
+    public String getPwd() {
+        return pwd;
     }
 
     public ArrayList<Email> load() throws IOException, ParseException {
@@ -237,7 +237,6 @@ public class Storage {
     private void createJsonFile(File file) {
         try {
             file.createNewFile();
-            FileWriter fw = new FileWriter(filePath);
             JSONObject js = new JSONObject();
             JSONArray inboxList = new JSONArray();
             JSONArray deletedList = new JSONArray();
@@ -253,6 +252,8 @@ public class Storage {
             js.put("archive", archiveList);
             js.put("sent", sentList);
             js.put("drafts", draftList);
+
+            FileWriter fw = new FileWriter(filePath);
             fw.write(js.toJSONString());
             fw.flush();
         } catch (IOException e) {
