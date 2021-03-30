@@ -27,7 +27,7 @@ public class SortCommand extends Command {
         } catch (InvalidTypeException e) {
             ui.showMessageForInvalidSortTypeInput();
         } catch (StringIndexOutOfBoundsException e) {
-            ui.showMessageForEmptySortType(); //to chg to empty type
+            ui.showMessageForEmptySortType();
         }
     }
 
