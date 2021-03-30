@@ -37,7 +37,7 @@ public class LoginInfoFileManager {
     public void addLoginInfoForNewUser(LoginInfo loginInfo) {
         try {
             FileWriter fw = new FileWriter(loginInfoFile, true);
-            fw.write(loginInfo.getUserId() + "|" + loginInfo.getPassword() + "\n");
+            fw.write(loginInfo.getUserId() + " | " + loginInfo.getPassword() + "\n");
             fw.close();
         } catch (IOException e) {
             e.printStackTrace();
