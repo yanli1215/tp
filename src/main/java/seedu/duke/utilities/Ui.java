@@ -148,7 +148,7 @@ public class Ui {
 
     public String printTag() {
         String[] tags = Email.getAvailableTags();
-        System.out.println("These are te available tags: ");
+        System.out.println("These are the available tags: ");
         for (int i = 0; i < tags.length; i++) {
             System.out.println(i + 1 + ". " + tags[i]);
         }
