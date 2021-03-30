@@ -37,6 +37,21 @@ The Login Component consists of 5 components.
 * <code> LoginInfo </code> The LoginInfo contains the atrributes and methods of each LoginInfo object from a particular user logging into MojoHR application
 * <code> LoginInfoFileManager </code> The LoginInfoFileManager is responsible for the logic that handles the storage and retrieval of login information
 
+### Email Component
+The email component consists of classes that are involved with all the emails
+![Email Component Class Diagram](UML diagrams/EmailClassDiagram.png)
+The **Login Class Diagram** give above shows how the classes in the Email Component interact with each other
+
+The Email Component consists of 8 components.
+* <code> Email </code> is the parent class to the other email classes and contains all the information that is required in an email
+* <code> Archive </code> inherits from Email
+* <code> Deleted </code> inherits from Email
+* <code> Draft </code> inherits from Email
+* <code> Inbox </code> inherits from Email
+* <code> Junk </code> inherits from Email
+* <code> Sent </code> inherits from Email
+* <code> EmailManager </code> is responsible for the logic of retrieving Emails as a whole
+
 ## Implementation
 
 ### ListCommand 
@@ -74,7 +89,35 @@ The sequence diagram shows how the <code> list(type) </code> operation work.
 
 ## Non-Functional Requirements
 
-{Give non-functional requirements}
+### Performance and scalability
+
+* Constraint: Multi-User
+  
+The product allows user to choose to login to different accounts upon start up of software
+
+* Constraint: Typing-Preferred
+
+The software is targeted for user who prefers typing as means of input
+
+### Portability and compatibility
+
+* Constraint: Platform-Independent
+
+The software is runnable on the Windows, Linux, and OS-X platforms.
+
+* Constraint: Java-Version
+
+The software is written and tested in Java 11.
+
+### Reliability, availability, maintainability
+
+### Security
+
+ * Constraint: Non-editable Local Storage File
+
+The local storage file cannot be modified by user directly.
+
+###Usability
 
 ## Glossary
 
