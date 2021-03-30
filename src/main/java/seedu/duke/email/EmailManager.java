@@ -31,7 +31,6 @@ public class EmailManager {
         this.emailsList = new ArrayList<>();
     }
 
-
     public int getNumOfEmails() {
         return emailsList.size();
     }

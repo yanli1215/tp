@@ -22,7 +22,7 @@ public class SortCommand extends Command {
         LOGGER.info("Logger Name: " + LOGGER.getName());
 
         try {
-            String sortType = this.getUserInput().toLowerCase().substring(STARTINDEXOFSORTTYPE).trim();
+            String sortType = this.getUserInput().toLowerCase().trim().substring(STARTINDEXOFSORTTYPE);
             LOGGER.config("sortType might not be valid due to constant STARTINDEXOFSORTTYPE");
             LOGGER.info("sortType interpreted: " + sortType);
             if (sortType.equalsIgnoreCase("sender")) {

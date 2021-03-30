@@ -44,13 +44,11 @@ public class EditCommand extends Command {
         }
 
         try {
-            LOGGER.warning("Can cause InvalidIndexException or IndexOutOfBoundsException.");
+            LOGGER.warning("Can cause InvalidIndexException");
             int index = Parser.extractIndex(userInput);
-            LOGGER.config("Index: " + index);
             if (index <= 0 || index > draftedEmails.size()) {
                 throw new InvalidIndexException();
             }
-
             Email draftEmail = draftedEmails.get(index - 1);
             ui.printEditEmail();
             Scanner in = new Scanner(System.in);
@@ -64,9 +62,6 @@ public class EditCommand extends Command {
             LOGGER.log(Level.SEVERE, "Exception occurred", e);
         } catch (InvalidTypeException e) {
             ui.showMessageForInvalidEditTypeInput();
-            LOGGER.log(Level.SEVERE, "Exception occurred", e);
-        } catch (IndexOutOfBoundsException e) {
-            ui.showMessageForIndexOutOfBoundsException();
             LOGGER.log(Level.SEVERE, "Exception occurred", e);
         }
     }
@@ -84,7 +79,7 @@ public class EditCommand extends Command {
         case "content":
             String inputContent = in.nextLine();
             String content = inputContent + "\n";
-            while (!inputContent.startsWith("end")) { //user unable to change contents of previous lines
+            while (!inputContent.startsWith("/end")) { //user unable to change contents of previous lines
                 content += inputContent + "\n";
                 inputContent = in.nextLine();
             }

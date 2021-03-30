@@ -144,10 +144,6 @@ public class Ui {
         System.out.println("Please enter one of: [sender, time] after \"sort\".");
     }
 
-    public void showMessageForIndexOutOfBoundsException() {
-        System.out.println("OOPS!!! The index entered is invalid.");
-    }
-
     public String printTag() {
         String[] tags = Email.getAvailableTags();
         System.out.println("These are te available tags: ");
