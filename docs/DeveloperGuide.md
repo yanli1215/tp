@@ -3,7 +3,38 @@
 ## Design
 
 ### Architecture
+![Architect class diagram](UML diagrams/OverviewClassDiagram.png)
+The Architecture Diagram above gives an overview of the different components in the application. 
+Details of the individual components are given below.  
 
+Mojo class controls the overall logic for the application. 
+It is responsible for 
+* At app launch: Initializes the components in the correct sequence, and connects them up with each other.
+* At shut down: Shuts down the components and invokes cleanup methods where necessary.
+
+The rest of the App consists of 4 components:
+* Login: Links the user to their account.
+* Email: Stores and manages the user's email.
+* Utilities: Consists of Ui, Storage and Parser helper class. Ui interacts with the user. Storage reads data from, and writes data to the hard disk. Parser parse user's input into instructions that can be understood by the application.
+* Command: In charge of executing the user's request.
+
+For these four components,
+* The Login component exposes its functionality through the LoginController class.
+* The Email component exposes its functionality through the EmailManager class
+* The Utilities component consists of Ui, Storage and Parser classes.
+* The Command component exposes its functionality through different command classes that inherit from a base Command class.
+
+**How the architecture components interact with each other**
+![Architect sequence diagram](Sequence Diagrams/OverviewSequenceDiagram.png)
+The Sequence Diagram above shows how the components interact with each other for a command.
+1. `Mojo` uses the `LoginController` to get the user's userID and password.
+2. `Mojo` sends the user's info to the `Storage`, which will retrieve the existing emails from hard disks.
+3. `Mojo` updates the `EmailManager` with the retrieved emails
+4. `Mojo` gets the user's input from `Ui`
+5. `Mojo` sends the input to `Parser` which then return the respective `Command` class according to user's input
+6. `Mojo` executes the command.
+
+***Due to a limitation of PlantUML, the lifeline did not end at the end of the destroy marker**
 
 ### Utilities Component
 The Utilities component contains the main classes that run the main functions of Mojo.
@@ -18,12 +49,6 @@ The Utilities Component consists for 3 classes.
 * `Storage`: Reads data from, and writes data to, the local disk.
 * `Ui`: Handles the input and output of the application.
 
-
-## implementation
-
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
-![Architect class diagram](UML diagrams/OverviewClassDiagram.png)
-![Architect sequence diagram](UML diagrams/OverviewSequenceDiagram.png)
 
 ### Login Component
 The login component consists of the classes that run the main functions of the Login user Interface
@@ -52,7 +77,16 @@ There are seven variations of the <code> list </code> command.
 The sequence diagram shows how the <code> list(type) </code> operation work. 
 ![ListCommand Sequence Diagram](Sequence Diagrams/ListCommand.png)
 
+### TagCommand
+`TagCommand` allows the user to tag a specific email with the a number of tags.
+1. `TagCommand` first finds out which email the user chose to be tagged by searching through the listedEmailList for the index given.
+2. `TagCommand` will list the available tags that the users will choose from by calling `printTag()` on `Ui`
+3. `TagCommand` then pass the user's input to the `parser` to extract the index
+4. `TagCommand` sets the tag to the email through `EmailManager`
+5. `TagCommand` updates the hard disk through `Storage`.
 
+The sequence diagram shows how the <code> list(type) </code> operation work.
+![Tag Sequence Diagram](Sequence Diagrams/TagSequenceDiagram.png)
 
 
 ## Product scope
