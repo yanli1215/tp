@@ -11,7 +11,6 @@ import java.util.ArrayList;
 public class LoginManager {
 
     private LoginInfoFileManager loginInfoFileManager;
-    private LoginController loginController;
 
     public LoginManager() {
         loginInfoFileManager = new LoginInfoFileManager();
@@ -24,11 +23,7 @@ public class LoginManager {
                 return;
             }
         }
-        if(!loginController.checkUserIdExists(providedLoginInfo.getUserId())) {
-            System.out.println("You already have account. Please Log in instead!");
-        }else {
-            throw new WrongLoginInfoException();
-        }
+        throw new WrongLoginInfoException();
     }
 
     public void modifyLoginInfo(LoginInfo newLogInfo) {
