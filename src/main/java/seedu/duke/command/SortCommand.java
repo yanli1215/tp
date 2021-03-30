@@ -23,6 +23,7 @@ public class SortCommand extends Command {
             } else {
                 throw new InvalidTypeException();
             }
+            storage.updateAllTypeEmails(emails.getEmailsList());
             ui.printEmailsSorted(sortType);
         } catch (InvalidTypeException e) {
             ui.showMessageForInvalidSortTypeInput();

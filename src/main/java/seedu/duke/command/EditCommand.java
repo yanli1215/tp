@@ -46,6 +46,7 @@ public class EditCommand extends Command {
             Scanner in = new Scanner(System.in);
             String editType = in.nextLine().trim();
             processEditCommand(draftEmail, in, editType);
+            storage.updateAllTypeEmails(emails.getEmailsList());
             ui.printEmailEdited(editType);
         } catch (InvalidIndexException e) {
             e.showErrorMessage("EDIT");

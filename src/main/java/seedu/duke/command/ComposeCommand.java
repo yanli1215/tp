@@ -26,14 +26,17 @@ public class ComposeCommand extends Command {
             String subject = in.nextLine();
             String inputContent = in.nextLine();
             String content = inputContent + "\n";
+
             while (!inputContent.startsWith("end")) { //user unable to change contents of previous lines
                 content += inputContent + "\n";
                 inputContent = in.nextLine();
             }
-            String userEmail = "12312@gmail.com";
+
+            String userEmail = storage.getEmailAccount();
             String time = String.valueOf(LocalDateTime.now().withNano(0));
             Email draftEmail = new Draft(userEmail, to, subject, time, content);
             emails.addToDraft(draftEmail);
+            storage.updateAllTypeEmails(emails.getEmailsList());
             ui.printEmailDrafted(draftEmail);
         } catch (NullPointerException e) {
             System.out.println("Draft not saved due to missing line");

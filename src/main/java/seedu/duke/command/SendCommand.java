@@ -56,5 +56,6 @@ public class SendCommand extends Command {
             emails.addToSent(draftEmail);
             ui.printEmailSent(draftEmail);
         }
+        storage.updateAllTypeEmails(emails.getEmailsList());
     }
 }
