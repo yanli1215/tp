@@ -234,13 +234,9 @@ public class Storage {
         }
     }
 
-    /**
-     * create a json file with the skeleton as content for new users
-     */
     private void createJsonFile(File file) {
         try {
             file.createNewFile();
-            FileWriter fw = new FileWriter(filePath);
             JSONObject js = new JSONObject();
             JSONArray inboxList = new JSONArray();
             JSONArray deletedList = new JSONArray();
@@ -256,6 +252,8 @@ public class Storage {
             js.put("archive", archiveList);
             js.put("sent", sentList);
             js.put("drafts", draftList);
+
+            FileWriter fw = new FileWriter(filePath);
             fw.write(js.toJSONString());
             fw.flush();
         } catch (IOException e) {

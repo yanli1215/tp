@@ -1,7 +1,7 @@
 @startuml
 class utilities.Ui {
-- Scanner in
-- PrintStream out
+- in: Scanner
+- out: PrintStream
 + void printDivider()
 + String getUserInput()
 + String getResetPsw()
@@ -26,10 +26,10 @@ class utilities.Ui {
 }
 
 class utilities.Storage {
-- String fileName
-- String filePath
-- String pwd
-- String emailAccount
+- fileName: String
+- filePath: String
+- pwd: String
+- emailAccount: String
 + String getEmailAccount()
 + String getPwd()
 + ArrayList<Email> load()
@@ -45,7 +45,7 @@ class utilities.Storage {
 }
 
 class utilities.Parser {
-- Command cmd
+- cmd: Command
 + Command getCmd()
 + void parse(String userInputString)
 + int extractIndex(String userInput)

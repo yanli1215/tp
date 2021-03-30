@@ -224,7 +224,7 @@ ____________________________________________________________
 
 
 ### Resetting the password: `reset`
-Delete an email to the junk box or remove an email from junk box forever.
+Reset the password for the user's email account.
 
 Format: `reset`
 
