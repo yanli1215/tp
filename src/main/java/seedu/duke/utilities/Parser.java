@@ -98,6 +98,7 @@ public class Parser {
         String[] cmdArg = userInput.split(" ", 2);
         String emailType = cmdArg[1].trim();
         ArrayList<Email> emailsToPrint = null;
+        emailManager.setListedType(emailType);
         switch (emailType) {
         case ("emails"):
             emailsToPrint = emailManager.getAllEmails();

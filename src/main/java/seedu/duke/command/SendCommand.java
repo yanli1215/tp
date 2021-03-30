@@ -17,8 +17,7 @@ public class SendCommand extends Command {
     }
 
     public void execute(EmailManager emails, Ui ui, Storage storage) {
-        ArrayList<Email> listedEmails = EmailManager.getListedEmailsList();
-        if (listedEmails == null || !(listedEmails.get(0) instanceof Draft)) {
+        if (!emails.getListedType().equals("draft")) {
             String feedback = "You have to list DRAFT emails first" + System.lineSeparator()
                     + "=> list draft" + System.lineSeparator();
             ui.printFeedback(feedback);

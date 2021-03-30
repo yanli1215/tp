@@ -28,8 +28,7 @@ public class EditCommand extends Command {
         LOGGER.setLevel(Level.INFO);
         LOGGER.info("Logger Name: " + LOGGER.getName());
 
-        ArrayList<Email> listedEmails = EmailManager.getListedEmailsList();
-        if (listedEmails == null || !(listedEmails.get(0) instanceof Draft)) {
+        if (!emails.getListedType().equals("draft")) {
             String feedback = "You have to list DRAFT emails first" + System.lineSeparator()
                     + "=> list draft" + System.lineSeparator();
             ui.printFeedback(feedback);
