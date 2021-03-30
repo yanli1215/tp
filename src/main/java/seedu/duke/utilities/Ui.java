@@ -10,7 +10,7 @@ public class Ui {
     private final Scanner in;
     private final PrintStream out;
     private static final String errorLine = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
-    public static final String logo = " _________   _____   _____   _____\n"
+    protected static final String logo = " _________   _____   _____   _____\n"
             + "|  _   _  | |  _  | |_   _| |  _  |\n"
             + "| | | | | | | | | |   | |   | | | |\n"
             + "| | | | | | | |_| |  _| |   | |_| |\n"
@@ -55,7 +55,6 @@ public class Ui {
         return inputLine;
     }
 
-
     public void printComposeUI() {
         System.out.println("Please enter the details below in the correct order:");
         System.out.println("To:");
@@ -65,7 +64,6 @@ public class Ui {
         System.out.println("e.g: Alice@gmail.com;Bob@gmail.com");
         printDivider();
     }
-
 
     public void printEditEmail() {
         System.out.println("What would you like to edit? It must be one of [to, subject, content].");

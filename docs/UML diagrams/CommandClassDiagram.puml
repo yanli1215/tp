@@ -40,7 +40,7 @@ Command ...|> Storage: updates
 Command ..|> EmailManager: updates
 
 class ArchiveCommand{
-
++ void execute(EmailManager,Ui,Storage)
 }
 
 class ComposeCommand{
@@ -48,7 +48,7 @@ class ComposeCommand{
 }
 
 class DeleteCommand{
-
++ void execute(EmailManager,Ui,Storage)
 }
 
 class EditCommand{
@@ -60,7 +60,7 @@ class ExitCommand{
 }
 
 class FindCommand{
-
++ void execute(EmailManager,Ui,Storage)
 }
 
 class HelpCommand{
@@ -80,7 +80,7 @@ class ReadCommand{
 }
 
 class ResetCommand{
-
++ void execute(EmailManager,Ui,Storage)
 }
 
 class SendCommand{
