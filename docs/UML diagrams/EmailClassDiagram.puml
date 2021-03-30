@@ -1,0 +1,19 @@
+@startuml
+package Email <<Rectangle>>{
+class Email
+class Archive
+class Deleted
+class Draft
+class EmailManager
+class Inbox
+class Junk
+class Sent
+}
+
+class Email {
+    - from: String
+    - to: String
+    - subject
+}
+
+@enduml
