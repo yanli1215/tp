@@ -2,12 +2,11 @@ package seedu.duke.login;
 
 public class LoginInfo {
     private String userId;
+    private String password;
 
     public void setPassword(String password) {
         this.password = password;
     }
-
-    private String password;
 
     public LoginInfo(String userId, String password) {
         this.userId = userId;
