@@ -6,6 +6,20 @@
 ![Architect class diagram](UML diagrams/OverviewClassDiagram.png)
 ![Architect sequence diagram](UML diagrams/OverviewSequenceDiagram.png)
 
+### Login Component
+The login component consists of the classes that run the main functions of the Login user Interface
+
+The **Login Class Diagram** give above shows how the classes in the Login Component interact with each other
+
+The Login Component consists of 5 components.
+* <code> LoginController </code> The LoginController handles the login process and control logic of the login process.
+* <code> LoginManager </code> The LoginManager provides the logic to verify the user login details
+* <code> LoginUi </code> The LoginUi defines the display and gets input from the user. LoginUi extends the functionality of the Ui class
+* <code> LoginInfo </code> The LoginInfo contains the atrributes and methods of each LoginInfo object from a particular user logging into MojoHR application
+* <code> LoginInfoFileManager </code> The LoginInfoFileManager is responsible for the logic that handles the storage and retrieval of login information
+
+
+
 ## Product scope
 ### Target user profile
 
