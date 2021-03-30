@@ -31,12 +31,13 @@ public class EditCommandTest {
         emails.add(new Draft("testA@gmail.com", "456@gmail.com", "S2", "2020-4-30+01:00", "C2"));
         emails.add(new Draft("testB@gmail.com", "456@gmail.com", "S3", "2019-4-23+03:00", "C3"));
         EmailManager.setEmailsList(emails);
+        emailManager.setListedType("draft");
     }
 
     @Test
-    void execute_Edit_success() {
-        new EditCommand("edit 1").execute(emailManager, ui, storage);
-        String expectedOutput = "What would you like to edit? It must be one of [to, subject, content].";
+    void execute_InvalidIndex_fail() {
+        new EditCommand("edit -1").execute(emailManager, ui, storage);
+        String expectedOutput = "OOPS!!! The Email ID that you EDIT is invalid.";
         Assertions.assertEquals(expectedOutput, outputStreamCaptor.toString()
                 .trim());
     }

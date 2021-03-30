@@ -60,6 +60,7 @@ public class SortCommandTest {
         Assertions.assertEquals(expectedOutput, outputStreamCaptor.toString()
                 .trim());
     }
+
     @Test
     void execute_EmptyType_fail() {
         new SortCommand("sort  ").execute(emailManager, ui, storage);
