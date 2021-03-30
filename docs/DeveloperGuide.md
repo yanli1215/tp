@@ -1,12 +1,62 @@
 # Developer Guide
 
-## Design & implementation
+## Design
+
+### Architecture
+
+
+### Utilities Component
+The Utilities component contains the main classes that run the main functions of Mojo.
+
+![Utility diagram](UML diagrams/Utilities.jpeg)
+
+The Utilities Class Diagram given above shows how the classes in the Utilities component interact with each other and classes from other component.
+
+The Utilities Component consists for 3 classes.
+
+* `Parser`: Breaks down user input into relevant objects.
+* `Storage`: Reads data from, and writes data to, the local disk.
+* `Ui`: Handles the input and output of the application.
+
+
+## implementation
 
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
 ![Architect class diagram](UML diagrams/OverviewClassDiagram.png)
 ![Architect sequence diagram](UML diagrams/OverviewSequenceDiagram.png)
 
+### Login Component
+The login component consists of the classes that run the main functions of the Login user Interface
+![Login Component Class Diagram](UML diagrams/LoginComponentClassDiagram.png)
+The **Login Class Diagram** give above shows how the classes in the Login Component interact with each other
+
+The Login Component consists of 5 components.
+* <code> LoginController </code> The LoginController handles the login process and control logic of the login process.
+* <code> LoginManager </code> The LoginManager provides the logic to verify the user login details
+* <code> LoginUi </code> The LoginUi defines the display and gets input from the user. LoginUi extends the functionality of the Ui class
+* <code> LoginInfo </code> The LoginInfo contains the atrributes and methods of each LoginInfo object from a particular user logging into MojoHR application
+* <code> LoginInfoFileManager </code> The LoginInfoFileManager is responsible for the logic that handles the storage and retrieval of login information
+
+## Implementation
+
+### ListCommand 
+There are seven variations of the <code> list </code> command.
+1. List by All email(s)
+2. List by Archived email(s) 
+3. List by Deleted email(s)
+4. List by Draft(s) email(s) 
+5. List by Inbox email(s)
+6. List by Junk email(s)
+7. List by Sent email(s)
+
+The sequence diagram shows how the <code> list(type) </code> operation work. 
+![ListCommand Sequence Diagram](Sequence Diagrams/ListCommand.png)
+
+
+
+
 ## Product scope
+
 ### Target user profile
 
 {Describe the target user profile}
@@ -31,5 +81,70 @@
 * *glossary item* - Definition
 
 ## Instructions for manual testing
-
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+
+
+### Finding emails by keyword
+Print all emails that contains the keyword, and if there is no email contains the keyword, outputs `No matching emails found.`
+
+Test case: `find subject 10`
+
+Expected: 
+````
+1. [Deleted][UNREAD]
+|| Subject: This is subject 10
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T15:30:00
+|| Tags: []
+````
+
+Test case: `find school`
+
+Expected: `No matching emails found.`
+
+
+##Resetting the password
+Reset the password for the user's email account.
+The program will aks for the old password from user. 
+
+If the old password is correct, the program will ask for the new password from user and outputs`Your password has changed successfully!`
+
+The number of wrong attempt is 3. 
+If the old password is wrong for 3 times, the program will output `Sorry your old password is wrong. Please try again!(0 times left!)` and back to main menu.
+
+###Test case 1: Typing wrong old password for 3 times
+
+Input: `reset`
+
+Expected: `Please enter your old password:`
+
+Input: `12312`
+
+Expected: `Sorry your old password is wrong. Please try again!(2 times left!)`
+
+Input: `12222`
+
+Expected: `Sorry your old password is wrong. Please try again!(1 times left!)`
+
+Input: `12223`
+
+Expected: `Sorry your old password is wrong. Please try again!(0 times left!)`
+
+###Test case 2: Typing old password correctly
+
+Input: `reset`
+
+Expected: `Please enter your old password:`
+
+Input: `5678`
+
+Expected: `Please enter your new password:`
+
+Input: `1234`
+
+Expected: `Your password has changed successfully!`
+
+Then, you can exit the program and use the new password to login.
+
+
+

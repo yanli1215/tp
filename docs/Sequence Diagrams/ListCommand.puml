@@ -1,0 +1,22 @@
+@startuml
+participant Actor
+
+Actor -> ListCommand : execute
+activate ListCommand
+
+ListCommand -> Parser : getTypeToList
+activate Parser
+
+Parser --> ListCommand
+deactivate Parser
+
+ListCommand -> EmailManager : printEmailByType
+activate EmailManager
+
+EmailManager --> ListCommand
+deactivate EmailManager
+
+
+
+return
+@enduml

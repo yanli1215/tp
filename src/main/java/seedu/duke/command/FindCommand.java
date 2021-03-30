@@ -22,9 +22,13 @@ public class FindCommand extends Command {
             return;
         }
 
-        String keyword = Parser.extractKeyword(userInput);
+        String keyword = Parser.removeCommand(userInput).trim().toLowerCase();
         ArrayList<Email> findEmails = emails.findByString(listedEmails, keyword);
-        EmailManager.printEmailByType(findEmails);
+        if (findEmails.size() == 0) {
+            System.out.println("No matching emails found.");
+        } else {
+            EmailManager.printEmailByType(findEmails);
+        }
 
     }
 }

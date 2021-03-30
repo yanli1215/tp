@@ -1,7 +1,20 @@
 package seedu.duke.utilities;
 
-
-import seedu.duke.command.*;
+import seedu.duke.command.ArchiveCommand;
+import seedu.duke.command.Command;
+import seedu.duke.command.ComposeCommand;
+import seedu.duke.command.DeleteCommand;
+import seedu.duke.command.EditCommand;
+import seedu.duke.command.ExitCommand;
+import seedu.duke.command.FindCommand;
+import seedu.duke.command.HelpCommand;
+import seedu.duke.command.ListCommand;
+import seedu.duke.command.NumberCommand;
+import seedu.duke.command.ReadCommand;
+import seedu.duke.command.ResetCommand;
+import seedu.duke.command.SendCommand;
+import seedu.duke.command.SortCommand;
+import seedu.duke.command.TagCommand;
 import seedu.duke.email.Email;
 import seedu.duke.email.EmailManager;
 import seedu.duke.exceptions.InvalidIndexException;
@@ -71,15 +84,6 @@ public class Parser {
         return userInput.split(" ", 2)[1];
     }
 
-
-    public static String extractKeyword(String userInput) {
-        String[] cmdArg = userInput.split(" ", 2);
-        String keyword = cmdArg[1].trim().toLowerCase();
-        return keyword;
-
-    }
-
-
     public static int[] extractMultipleIndices(String userInput) throws InvalidIndexException {
         try {
             String[] indicesStr = userInput.split(" ");
@@ -92,7 +96,6 @@ public class Parser {
             throw new InvalidIndexException();
         }
     }
-
 
     public static ArrayList<Email> getTypeToList(EmailManager emailManager, String userInput) {
         String[] cmdArg = userInput.split(" ", 2);
