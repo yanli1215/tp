@@ -67,8 +67,13 @@ There are seven variations of the <code> list </code> command.
 The sequence diagram shows how the <code> list(type) </code> operation work. 
 ![ListCommand Sequence Diagram](Sequence Diagrams/ListCommand.png)
 
+###ComposeCommand
+When the `compose` command is entered, the software will prompt user to enter the necessary details and save them to draft.
 
+The details needed are receiver email, subject and content. The time the draft was composed would be saved automatically.
 
+The sequence diagram roughly shows how the `compose` operation works.
+![ComposeCommand Sequence Diagram](Sequence Diagrams/ComposeCommand.png)
 
 ## Product scope
 
@@ -148,7 +153,7 @@ Expected: `No matching emails found.`
 
 ##Resetting the password
 Reset the password for the user's email account.
-The program will aks for the old password from user. 
+The program will ask for the old password from user. 
 
 If the old password is correct, the program will ask for the new password from user and outputs`Your password has changed successfully!`
 
@@ -189,5 +194,38 @@ Expected: `Your password has changed successfully!`
 
 Then, you can exit the program and use the new password to login.
 
+##Compose an email
+Compose an email for the user which will be saved into draft upon completion.
+
+The program will ask for Receiver, Subject and Content whereas draft time will be saved automatically
+
+Input: `compose`
+
+Expected:
+```
+Please enter the details below in the correct order  
+To:
+Subject:
+Content:
+You can send to multiple recipents by appending emails with ;
+e.g: Alice@gmail.com;Bob@gmail.com
+```
+
+Input: 
+```
+testing@gmail.com
+testSubject
+Dear Sir,
+
+This is a test content.
+
+regards,
+user
+/end
+```
+
+Expected: `Email saved to draft at 2021-04-01T13:00:00`
+
+The email is saved in draft and ready to be sent.
 
 
