@@ -147,8 +147,7 @@ public class Storage {
 
     private ArrayList<String> getToArrayList(JSONArray toList) {
         ArrayList<String> toArrayList = new ArrayList<>();
-        for(int i = 0; i < toList.size(); i++)
-        {
+        for (int i = 0; i < toList.size(); i++) {
             String to = (String) toList.get(i);
             toArrayList.add(to);
         }
@@ -172,7 +171,7 @@ public class Storage {
         JSONArray sentList = new JSONArray();
         JSONArray draftList = new JSONArray();
 
-        for(Email email: emails) {
+        for (Email email: emails) {
             if (email instanceof Inbox) {
                 inboxList.add(createJsonObj(email));
             }
@@ -206,7 +205,7 @@ public class Storage {
 
         emailObj.put("subject", email.getSubject());
         emailObj.put("from", email.getFrom());
-        for(String to: email.getTo()) {
+        for (String to: email.getTo()) {
             toList.add(to);
         }
         emailObj.put("to", toList);

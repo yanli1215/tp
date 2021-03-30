@@ -64,11 +64,11 @@ class FindCommand{
 }
 
 class HelpCommand{
-
++ void execute(EmailManager,Ui,Storage)
 }
 
 class ListCommand{
-
++ void execute(EmailManager,Ui,Storage)
 }
 
 class NumberCommand{

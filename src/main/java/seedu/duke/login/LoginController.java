@@ -10,18 +10,19 @@ import java.util.Scanner;
 public class LoginController {
     private LoginManager loginManager;
     private LoginUi loginUi;
-    private static LoginInfo loginInfo;
+    private LoginInfo loginInfo;
     private LoginInfoFileManager loginInfoFileManager;
 
     public LoginController() {
         loginManager = new LoginManager();
         loginUi = new LoginUi();
+        loginInfoFileManager = new LoginInfoFileManager();
     }
 
     public LoginInfo run() {
         LoginInfo providedLoginInfo;
         providedLoginInfo = loginUi.getLoginInfo();
-        while(true) {
+        while (true) {
             try {
                 loginManager.verifyLoginInfo(providedLoginInfo);
                 break;
@@ -39,20 +40,19 @@ public class LoginController {
         loginManager.modifyLoginInfo(loginInfo);
     }
 
-    public LoginInfo addUser(){
+    public LoginInfo addUser() {
         LoginInfo loginInfo;
         loginInfo = loginUi.getNewUserLoginInfo();
         if (checkUserIdExists(loginInfo.getUserId())) {
             loginUi.printErrorMessage("You already have an account. Please log in instead!");
             loginUi.getLoginInfo();
         }
-        LoginInfoFileManager loginInfoFileManager = new LoginInfoFileManager();
+
         loginInfoFileManager.addLoginInfoForNewUser(loginInfo);
         return loginInfo;
     }
 
-    public static boolean checkUserIdExists(String userId) {
-        LoginInfoFileManager loginInfoFileManager = new LoginInfoFileManager();
+    public boolean checkUserIdExists(String userId) {
         for (LoginInfo loginInfo: loginInfoFileManager.retrieveLoginInfoList()) {
             if (loginInfo.getUserId().equals(userId)) {
                 return true;
