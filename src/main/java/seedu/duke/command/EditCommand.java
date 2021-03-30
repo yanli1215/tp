@@ -59,7 +59,9 @@ public class EditCommand extends Command {
     private void processEditCommand(Email draftEmail, Scanner in, String editType) throws InvalidTypeException {
         switch (editType) {
         case "to":
-            String to = in.nextLine();
+            System.out.println("You can send to multiple recipents by appending emails with \";\"");
+            System.out.println("e.g: Alice@gmail.com;Bob@gmail.com");
+            ArrayList<String> to = Parser.parseRecipients(in.nextLine());
             draftEmail.setTo(to);
             break;
         case "subject":
