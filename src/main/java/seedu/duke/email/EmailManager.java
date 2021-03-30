@@ -10,6 +10,7 @@ public class EmailManager {
 
     private static ArrayList<Email> emailsList = new ArrayList<>();
     private static ArrayList<Email> listedEmailsList = null;
+    private static String listedType = null;
 
     public static ArrayList<Email> getEmailsList() {
         return emailsList;
@@ -30,7 +31,6 @@ public class EmailManager {
     public EmailManager() {
         this.emailsList = new ArrayList<>();
     }
-
 
     public int getNumOfEmails() {
         return emailsList.size();
@@ -111,6 +111,14 @@ public class EmailManager {
 
     public void sortBySender() {
         emailsList.sort(new TypeSenderSortingComparator());
+    }
+
+    public void setListedType(String emailType) {
+        listedType = emailType;
+    }
+
+    public String getListedType() {
+        return listedType;
     }
 
     static class TypeSenderSortingComparator implements Comparator<Email> {

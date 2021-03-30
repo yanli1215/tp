@@ -126,7 +126,7 @@ public class Ui {
         System.out.println("OOPS!!! The Email type that you enter is invalid.");
         System.out.println("It must be one of: [emails, inbox, archive, deleted, draft, junk, sent]");
     }
-    
+
     public static void showMessageForInvalidSortTypeInput() {
         System.out.println("OOPS!!! The type that you enter is invalid.");
         System.out.println("It must be one of: [sender, time]");
@@ -140,10 +140,6 @@ public class Ui {
     public static void showMessageForEmptySortType() {
         System.out.println("OOPS!!! The sort type is empty.");
         System.out.println("Please enter one of: [sender, time] after \"sort\".");
-    }
-
-    public void showMessageForIndexOutOfBoundsException() {
-        System.out.println("OOPS!!! The index entered is invalid.");
     }
 
     public String printTag() {

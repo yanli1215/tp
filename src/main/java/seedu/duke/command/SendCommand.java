@@ -17,8 +17,7 @@ public class SendCommand extends Command {
     }
 
     public void execute(EmailManager emails, Ui ui, Storage storage) {
-        ArrayList<Email> listedEmails = EmailManager.getListedEmailsList();
-        if (listedEmails == null || !(listedEmails.get(0) instanceof Draft)) {
+        if (!emails.getListedType().equals("draft")) {
             String feedback = "You have to list DRAFT emails first" + System.lineSeparator()
                     + "=> list draft" + System.lineSeparator();
             ui.printFeedback(feedback);
@@ -48,7 +47,7 @@ public class SendCommand extends Command {
             e.showErrorMessage("SENT");
         }
 
-        assert sendEmailList != null;
+        assert sendEmailList != null : "sendEmailList in SendCommand is still null.";
 
         for (Email draftEmail : sendEmailList) {
             draftEmail.setTime(String.valueOf(LocalDateTime.now()));
@@ -56,5 +55,6 @@ public class SendCommand extends Command {
             emails.addToSent(draftEmail);
             ui.printEmailSent(draftEmail);
         }
+        storage.updateAllTypeEmails(emails.getEmailsList());
     }
 }
