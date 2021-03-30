@@ -46,7 +46,6 @@ public class TagCommand extends Command {
         String input = ui.printTag();
 
         try {
-            String args = Parser.removeCommand(userInput);
             int[] indices = Parser.extractMultipleIndices(input);
             ArrayList<String> tags = email.setTags(indices);
             feedback = "You have successfully set the following tags " + tags.toString();

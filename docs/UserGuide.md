@@ -15,6 +15,38 @@
 
 {Give detailed description of each feature}
 
+### opening an email: `read`
+opens an email 
+
+Format: `read INDEX`
+
+* The `INDEX` refers to the index number shown in the displayed email list.
+* The `INDEX` **must be a positive integer** 1, 2, 3, …
+
+Example of usage:
+````
+____________________________________________________________
+Enter Command:
+list inbox
+____________________________________________________________
+1. [Inbox][UNREAD]
+   || Subject: This is subject 1
+   || From: 21312@gmail.com --> To: [12312@gmail.com]
+   || Time: 2021-02-20T06:30:00
+   || Tags: [Important, Work]
+____________________________________________________________
+Enter Command:
+read 1
+____________________________________________________________
+[Inbox][READ]
+|| Subject: This is subject 1
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T06:30:00
+|| Tags: [Important, Work]
+|| Content: Welcome to MOJO HR.
+____________________________________________________________
+````
+
 ### Deleting an email: `delete`
 Delete an email to the junk box or remove an email from junk box forever.
 
@@ -144,6 +176,52 @@ ____________________________________________________________
 ____________________________________________________________
 ````
 
+### tagging an email: `tag`
+Tag an email with labels
+
+Format: `tag INDEX`
+
+* The `INDEX` refers to the index number shown in the displayed email list.
+* The `INDEX` **must be a positive integer** 1, 2, 3, …
+
+Example of usage:
+````
+____________________________________________________________
+Enter Command:
+list inbox
+____________________________________________________________
+1. [Inbox][UNREAD]
+|| Subject: This is subject 1
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T06:30:00
+|| Tags: []
+____________________________________________________________
+Enter Command:
+tag 1
+____________________________________________________________
+You have selected this email:
+[Inbox][UNREAD]
+|| Subject: This is subject 1
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T06:30:00
+|| Tags: []
+____________________________________________________________
+These are the available tags: 
+1. Important
+2. Family
+3. Friends
+4. School
+5. Work
+6. Travels
+Select the indices of the tag you want to add.
+e.g. Type "1 2 6" to add the tags Important, Family, Travels
+____________________________________________________________
+tag 1 5
+____________________________________________________________
+You have successfully set the following tags [Important, Work]
+____________________________________________________________
+````
+
 
 ### Resetting the password: `reset`
 Delete an email to the junk box or remove an email from junk box forever.
@@ -175,6 +253,39 @@ Your password has changed successfully!
 ____________________________________________________________
 
 ```
+
+### Printing the help menu: `help`
+Displays the list of commands and how to use them
+
+Format: `help`
+
+Example of usage:
+```
+____________________________________________________________
+Enter Command:
+help
+____________________________________________________________
+Hello! I'm MojoHR
+ _________   _____   _____   _____
+|  _   _  | |  _  | |_   _| |  _  |
+| | | | | | | | | |   | |   | | | |
+| | | | | | | |_| |  _| |   | |_| |
+|_| |_| |_| |_____| |___|   |_____|
+What can I do for you?
+> Use the keyword "LIST (type) " to print the emails by types
+> Use the keyword "READ (index) " to open the selected email
+> Use the keyword "COMPOSE " to create a draft email
+> Use the keyword "SEND (index of draft) " to send email in the draft folder
+> Use the keyword "DELETE (index) " to delete the selected email
+> Use the keyword "FIND (keyword) " to find the  email by keywords
+> Use the keyword "ARCHIVE (index) " to move the selected email to the archive folder
+> Use the keyword "TAG (index)" to select the email for tagging labels
+> Use the keyword "RESET" to reset the your account password
+> Use the keyword "HELP" to print the menu
+> Use the keyword "BYE" to exit
+____________________________________________________________
+```
+
 
 ## FAQ
 
