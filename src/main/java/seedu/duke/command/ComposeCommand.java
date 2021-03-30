@@ -32,6 +32,7 @@ public class ComposeCommand extends Command {
                 inputContent = in.nextLine();
             }
 
+            assert !content.endsWith("end"): "The word \"end\" is in content";
             String userEmail = storage.getEmailAccount();
             String time = String.valueOf(LocalDateTime.now().withNano(0));
             Email draftEmail = new Draft(userEmail, to, subject, time, content);

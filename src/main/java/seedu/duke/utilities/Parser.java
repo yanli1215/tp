@@ -58,6 +58,7 @@ public class Parser {
     public static int extractIndex(String userInput) throws InvalidIndexException {
         try {
             String[] cmdArg = userInput.split(" ", 2);
+            assert cmdArg.length > 1 : "cmdArg length <= 1";
             String args = cmdArg[1].trim();
             int indexShow = Integer.parseInt(args);
             return indexShow;
