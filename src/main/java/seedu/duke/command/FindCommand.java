@@ -24,7 +24,7 @@ public class FindCommand extends Command {
 
         String keyword = Parser.removeCommand(userInput).trim().toLowerCase();
         ArrayList<Email> findEmails = emails.findByString(listedEmails, keyword);
-        if(findEmails.size() == 0) {
+        if (findEmails.size() == 0) {
             System.out.println("No matching emails found.");
         } else {
             EmailManager.printEmailByType(findEmails);
