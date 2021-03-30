@@ -235,6 +235,9 @@ public class Storage {
         }
     }
 
+    /**
+     * create a json file with the skeleton as content for new users
+     */
     private void createJsonFile(File file) {
         try {
             file.createNewFile();
