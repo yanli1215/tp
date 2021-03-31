@@ -1,0 +1,39 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Actor -> ComposeCommand : execute()
+activate ComposeCommand
+
+ComposeCommand -> Ui : printComposeUi()
+activate Ui
+deactivate Ui
+
+Actor -> ComposeCommand : Input Email Details
+
+ComposeCommand -> Draft : new Draft()
+activate Draft
+deactivate Draft
+
+ComposeCommand -> EmailManager : addToDraft()
+activate EmailManager
+deactivate EmailManager
+
+ComposeCommand -> EmailManager : getEmailList()
+activate EmailManager
+EmailManager ---> ComposeCommand
+deactivate EmailManager
+
+ComposeCommand -> Storage : updateAllTypeEmails()
+activate Storage
+deactivate Storage
+
+ComposeCommand -> Ui : printEmailDrafted()
+activate Ui
+deactivate Ui
+
+
+
+deactivate EmailManager
+@enduml
