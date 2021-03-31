@@ -37,6 +37,21 @@ The Login Component consists of 5 components.
 * <code> LoginInfo </code> The LoginInfo contains the atrributes and methods of each LoginInfo object from a particular user logging into MojoHR application
 * <code> LoginInfoFileManager </code> The LoginInfoFileManager is responsible for the logic that handles the storage and retrieval of login information
 
+### Email Component
+The email component consists of classes that are involved with all the emails
+![Email Component Class Diagram](UML diagrams/EmailClassDiagram.png)
+The **Login Class Diagram** give above shows how the classes in the Email Component interact with each other
+
+The Email Component consists of 8 components.
+* <code> Email </code> is the parent class to the other email classes and contains all the information that is required in an email
+* <code> Archive </code> inherits from Email
+* <code> Deleted </code> inherits from Email
+* <code> Draft </code> inherits from Email
+* <code> Inbox </code> inherits from Email
+* <code> Junk </code> inherits from Email
+* <code> Sent </code> inherits from Email
+* <code> EmailManager </code> is responsible for the logic of retrieving Emails as a whole
+
 ## Implementation
 
 ### ListCommand 
@@ -52,8 +67,13 @@ There are seven variations of the <code> list </code> command.
 The sequence diagram shows how the <code> list(type) </code> operation work. 
 ![ListCommand Sequence Diagram](Sequence Diagrams/ListCommand.png)
 
+###ComposeCommand
+When the `compose` command is entered, the software will prompt user to enter the necessary details and save them to draft.
 
+The details needed are receiver email, subject and content. The time the draft was composed would be saved automatically.
 
+The sequence diagram roughly shows how the `compose` operation works.
+![ComposeCommand Sequence Diagram](Sequence Diagrams/ComposeCommand.png)
 
 ## Product scope
 
@@ -74,7 +94,35 @@ The sequence diagram shows how the <code> list(type) </code> operation work.
 
 ## Non-Functional Requirements
 
-{Give non-functional requirements}
+### Performance and scalability
+
+* Constraint: Multi-User
+  
+The product allows user to choose to login to different accounts upon start up of software
+
+* Constraint: Typing-Preferred
+
+The software is targeted for user who prefers typing as means of input
+
+### Portability and compatibility
+
+* Constraint: Platform-Independent
+
+The software is runnable on the Windows, Linux, and OS-X platforms.
+
+* Constraint: Java-Version
+
+The software is written and tested in Java 11.
+
+### Reliability, availability, maintainability
+
+### Security
+
+ * Constraint: Non-editable Local Storage File
+
+The local storage file cannot be modified by user directly.
+
+###Usability
 
 ## Glossary
 
@@ -105,7 +153,7 @@ Expected: `No matching emails found.`
 
 ##Resetting the password
 Reset the password for the user's email account.
-The program will aks for the old password from user. 
+The program will ask for the old password from user. 
 
 If the old password is correct, the program will ask for the new password from user and outputs`Your password has changed successfully!`
 
@@ -146,5 +194,38 @@ Expected: `Your password has changed successfully!`
 
 Then, you can exit the program and use the new password to login.
 
+##Compose an email
+Compose an email for the user which will be saved into draft upon completion.
+
+The program will ask for Receiver, Subject and Content whereas draft time will be saved automatically
+
+Input: `compose`
+
+Expected:
+```
+Please enter the details below in the correct order  
+To:
+Subject:
+Content:
+You can send to multiple recipents by appending emails with ;
+e.g: Alice@gmail.com;Bob@gmail.com
+```
+
+Input: 
+```
+testing@gmail.com
+testSubject
+Dear Sir,
+
+This is a test content.
+
+regards,
+user
+/end
+```
+
+Expected: `Email saved to draft at 2021-04-01T13:00:00`
+
+The email is saved in draft and ready to be sent.
 
 

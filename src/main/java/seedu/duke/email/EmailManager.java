@@ -96,21 +96,11 @@ public class EmailManager {
         return numberOfEmails;
     }
 
-    public void listAllEmails() {
-        for (int i = 0; i < emailsList.size(); i++) {
-            System.out.println(i + 1 + ". " + emailsList.get(i));
-        }
-    }
-
     public static void printEmailByType(ArrayList<Email> emailTypeToPrint) {
         for (int i = 0; i < emailTypeToPrint.size(); i++) {
             System.out.println(i + 1 + ". " + emailTypeToPrint.get(i).getShortDescription());
         }
         listedEmailsList = emailTypeToPrint;
-    }
-
-    public void sortBySender() {
-        emailsList.sort(new TypeSenderSortingComparator());
     }
 
     public void setListedType(String emailType) {
@@ -121,7 +111,11 @@ public class EmailManager {
         return listedType;
     }
 
-    static class TypeSenderSortingComparator implements Comparator<Email> {
+    public void sortBySender() {
+        emailsList.sort(new TypeSenderSortingComparator());
+    }
+
+    private static class TypeSenderSortingComparator implements Comparator<Email> {
         @Override
         public int compare(Email email1, Email email2) {
             return email1.getFrom().compareTo(email2.getFrom());
@@ -132,7 +126,7 @@ public class EmailManager {
         emailsList.sort(new TypeTimeSortingComparator());
     }
 
-    static class TypeTimeSortingComparator implements Comparator<Email> {
+    private static class TypeTimeSortingComparator implements Comparator<Email> {
         @Override
         public int compare(Email email1, Email email2) {
             return email1.getTime().compareTo(email2.getTime());
