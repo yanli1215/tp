@@ -1,6 +1,9 @@
 @startuml
 'https://plantuml.com/class-diagram
 
+hide circle
+skinparam classAttributeIconSize 0
+
 package commands <<rectangle>>{
 class Command
 class ArchiveCommand
@@ -56,7 +59,7 @@ class EditCommand{
 }
 
 class ExitCommand{
-
++ void execute(EmailManager,Ui,Storage)
 }
 
 class FindCommand{
@@ -76,7 +79,7 @@ class NumberCommand{
 }
 
 class ReadCommand{
-
++ void execute(EmailManager,Ui,Storage)
 }
 
 class ResetCommand{
@@ -92,7 +95,7 @@ class SortCommand{
 }
 
 class TagCommand{
-
++ void execute(EmailManager,Ui,Storage)
 }
 
 @enduml
