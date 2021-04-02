@@ -11,9 +11,120 @@
 1. Ensure that you have Java 11 or above installed.
 1. Down the latest version of `Duke` from [here](http://link.to/duke).
 
-## Features 
+## Login Features
+### Log in to main application: `1`
 
+Format
+`1`
+
+Enter email address: `12312@gmail.com`
+
+Enter password: `5678`
+
+Example of usage:
+```
+ _________   _____   _____   _____
+|  _   _  | |  _  | |_   _| |  _  |
+| | | | | | | | | |   | |   | | | |
+| | | | | | | |_| |  _| |   | |_| |
+|_| |_| |_| |_____| |___|   |_____|
+
+Select either 1 or 2 or 3 (use numbers): 
+[Emails address are case sensitive!]
+1. Log In 
+2. Create a new account
+3. Exit
+Enter choice:
+1
+Enter email address:
+12312@gmail.com
+Enter password:
+5678
+```
+### Register as a new user: `2`
+Format
+`2`
+
+Enter email address: `joey@gmail.com`
+
+Enter password: `joey987`
+
+Example of usage:
+```
+ _________   _____   _____   _____
+|  _   _  | |  _  | |_   _| |  _  |
+| | | | | | | | | |   | |   | | | |
+| | | | | | | |_| |  _| |   | |_| |
+|_| |_| |_| |_____| |___|   |_____|
+
+Select either 1 or 2 or 3 (use numbers): 
+[Emails address are case sensitive!]
+1. Log In 
+2. Create a new account
+3. Exit
+Enter choice: 
+2
+Enter email address:
+joey@gmail.com
+Enter password:
+joey987
+```
+### Exit Application before log in: `3`
+Format
+`3`
+
+Example of usage:
+```
+ _________   _____   _____   _____
+|  _   _  | |  _  | |_   _| |  _  |
+| | | | | | | | | |   | |   | | | |
+| | | | | | | |_| |  _| |   | |_| |
+|_| |_| |_| |_____| |___|   |_____|
+
+Select either 1 or 2 or 3 (use numbers): 
+[Emails address are case sensitive!]
+1. Log In 
+2. Create a new account
+3. Exit
+Enter choice: 
+3
+Logging off... Hope to see you again in MojoHr!
+
+```
+
+## Within Application Features 
 {Give detailed description of each feature}
+
+
+### listing an email: `list`
+list different types of emails
+
+Format: `list TYPE`
+* The `TYPE` refers to the type of emails they you want to display
+* `TYPES` are limited to `list emails`, `list inbox`, `list archive`, `list deleted`, `list draft`, `list junk`, `list sent`
+
+Example of usage
+```____________________________________________________________
+Enter Command:
+list draft
+____________________________________________________________
+1. [Draft][UNREAD]
+|| Subject: This is subject 3
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T08:30:00
+|| Tags: []
+2. [Draft][UNREAD]
+|| Subject: LilySubject
+|| From: 12312@gmail.com --> To: [lily@gmail.com]
+|| Time: 2021-03-30T20:15:06
+|| Tags: []
+3. [Draft][UNREAD]
+|| Subject: testing
+|| From: 12312@gmail.com --> To: [lolita@gmail.com, lolota@gmail.com]
+|| Time: 2021-03-30T22:48:58
+|| Tags: []
+____________________________________________________________
+```
 
 ### opening an email: `read`
 opens an email 
@@ -460,6 +571,21 @@ What can I do for you?
 ____________________________________________________________
 ```
 
+### Exiting the application: `bye`
+Exits the application
+
+Format: `bye`
+
+Example of usage: 
+
+```
+____________________________________________________________
+Enter Command:
+bye 
+____________________________________________________________
+Logging off... Hope to see you again in MojoHr!
+
+```
 
 ## FAQ
 
@@ -470,10 +596,12 @@ ____________________________________________________________
 ## Command Summary
 
 {Give a 'cheat sheet' of commands here}
-
+* List emails by types `list TYPE`
 * Delete emails to junk box `delete INDEX`
 * Archive emails `archive INDEX`
 * Find emails by keywords `find KEYWORD`
 * Reset the account's password `reset`
+* Print help menu `help`
+* Exit application `bye`
 
 
