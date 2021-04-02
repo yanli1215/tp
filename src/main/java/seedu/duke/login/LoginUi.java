@@ -62,6 +62,7 @@ public class LoginUi extends Ui {
                 + "1. Log In \n"
                 + "2. Create a new account\n"
                 + "3. Exit");
+        System.out.println("Enter choice: ");
     }
 
     public LoginInfo getUserInputForLogin() {
