@@ -19,7 +19,7 @@ public class LoginUi extends Ui {
             if (!m.find()) {
                 printErrorMessage("Please enter a valid email address! \n"
                         + "Email address must have \"@\"");
-                continue;
+                getLoginInfo();
             }
             break;
         }
