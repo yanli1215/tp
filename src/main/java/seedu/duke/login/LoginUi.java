@@ -2,6 +2,7 @@ package seedu.duke.login;
 
 import seedu.duke.utilities.Ui;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -27,26 +28,38 @@ public class LoginUi extends Ui {
 
     public LoginInfo getLoginInfo() {
         LoginController loginController = new LoginController();
+        LoginInfo loginInfo = null;
+        printLoginMenu();
+        Scanner sc = new Scanner(System.in);
+        try {
+            int choice = sc.nextInt();
+            switch (choice) {
+            case 1:
+                loginInfo = getUserInputForLogin();
+                break;
+            case 2:
+                loginInfo = loginController.addUser();
+                break;
+            case 3:
+                printGoodBye();
+                System.exit(0);
+                break;
+            default:
+                break;
+            }
+        } catch(InputMismatchException e){
+                printErrorMessage("You need to enter an integer! Please try again!");
+                getLoginInfo();
+        }
+        return loginInfo;
+    }
+    public void printLoginMenu(){
         System.out.println(super.logo);
         System.out.println("Select either 1 or 2 (use numbers): \n"
                 + "[Emails address are case sensitive!]\n"
                 + "1. Log In \n"
-                + "2. Create a new account");
-        Scanner sc = new Scanner(System.in);
-        int choice = sc.nextInt();
-        try {
-            switch (choice) {
-            case 1:
-                return getUserInputForLogin();
-            case 2:
-                return loginController.addUser();
-            default:
-                assert false;
-            }
-        } catch (NullPointerException e) {
-            System.out.println(e.getMessage());
-        }
-        return null;
+                + "2. Create a new account\n"
+                + "3. Exit");
     }
 
     public LoginInfo getUserInputForLogin() {
