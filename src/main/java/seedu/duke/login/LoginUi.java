@@ -18,7 +18,7 @@ public class LoginUi extends Ui {
             Matcher m = p.matcher(loginInfo.getUserId());
             if (!m.find()) {
                 printErrorMessage("Please enter a valid email address! \n"
-                        + "Email address must have \"@\"");
+                        + "Email address must have \"@\" and cannot have empty string in front or behind");
                 getLoginInfo();
             }
             break;
