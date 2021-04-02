@@ -222,6 +222,180 @@ You have successfully set the following tags [Important, Work]
 ____________________________________________________________
 ````
 
+### composing an email: `compose`
+Compose an email which will be saved to draft. The software will prompt user to enter the necessary details.
+
+Format: `compose`
+
+* The program will ask for receiver's email, email subject and content, and user should enter accordingly
+* User must enter `/end` to signify that it is the end of content
+
+Example of usage:
+```
+____________________________________________________________
+Enter Command:
+compose
+____________________________________________________________
+Please enter the details below in the correct order:
+To:
+Subject:
+Content:
+You can send to multiple recipents by appending emails with ";"
+e.g: Alice@gmail.com;Bob@gmail.com
+____________________________________________________________
+test@gmail.com
+testSubject
+Dear Sir,
+
+This is test content.
+
+Regards,
+user
+/end
+____________________________________________________________
+Email saved to draft at 2021-04-02T18:50:14
+____________________________________________________________
+```
+
+### sending an email: `send`
+Sends an email from draft
+
+Format: `send INDEX`
+
+* The `INDEX` refers to the index number of email in the draft list.
+* The `INDEX` **must be a positive integer** 1, 2, 3, …
+* User must `list draft` first before they can send an email
+
+Example of usage:
+```
+____________________________________________________________
+Enter Command:
+list draft
+____________________________________________________________
+1. [Draft][UNREAD]
+|| Subject: LilySubject
+|| From: 12312@gmail.com --> To: [lily@gmail.com]
+|| Time: 2021-03-30T20:15:06
+|| Tags: []
+2. [Draft][UNREAD]
+|| Subject: testing
+|| From: 12312@gmail.com --> To: [lolita@gmail.com, lolota@gmail.com]
+|| Time: 2021-03-30T22:48:58
+|| Tags: []
+3. [Draft][UNREAD]
+|| Subject: testSubject
+|| From: 12312@gmail.com --> To: [test@gmail.com]
+|| Time: 2021-04-02T18:50:14
+|| Tags: []
+4. [Draft][UNREAD]
+|| Subject: 
+|| From: 12312@gmail.com --> To: [no]
+|| Time: 2021-04-02T18:51:07
+|| Tags: []
+____________________________________________________________
+Enter Command:
+send 4
+____________________________________________________________
+Email successfully sent to: [no] at 2021-04-02T19:02:12.724156500
+____________________________________________________________
+```
+
+### Editing an email: `edit`
+Edits an email in draft
+
+Format: `edit INDEX`
+
+* The `INDEX` refers to the index number of email in the draft list.
+* The `INDEX` **must be a positive integer** 1, 2, 3, …
+* User must `list draft` first before they can send an email
+* The program will ask user if they want to edit the receiver's email, subject or content
+* User should enter `to`, `subject`, or `content` when prompted and immediately enter the parts that the user wish to edit
+* If user wants to edit content, remember to enter `/end` to signify that it is the end of content
+
+Example of usage:
+```
+Enter Command:
+list draft
+____________________________________________________________
+1. [Draft][UNREAD]
+|| Subject: LilySubject
+|| From: 12312@gmail.com --> To: [lily@gmail.com]
+|| Time: 2021-03-30T20:15:06
+|| Tags: []
+2. [Draft][UNREAD]
+|| Subject: testing
+|| From: 12312@gmail.com --> To: [lolita@gmail.com, lolota@gmail.com]
+|| Time: 2021-03-30T22:48:58
+|| Tags: []
+3. [Draft][UNREAD]
+|| Subject: testSubject
+|| From: 12312@gmail.com --> To: [test@gmail.com]
+|| Time: 2021-04-02T18:50:14
+|| Tags: []
+____________________________________________________________
+Enter Command:
+edit 1
+____________________________________________________________
+What would you like to edit? It must be one of [to, subject, content].
+to
+test2@gmail.com
+Email "to" successfully edited.
+____________________________________________________________
+```
+
+### count number of email: `number`
+Counts the number of a specific type of email
+
+Format: `number TYPE`
+
+* The `TYPE` refers to the types of email. 
+* Example of `TYPE`: inbox, archive, deleted, draft, junk, sent, and emails. 'Emails' refer to all emails
+
+
+Example of usage:
+```
+Enter Command:
+number draft
+____________________________________________________________
+You have a total of 3 DRAFT emails
+____________________________________________________________
+```
+
+### sorting an email: `sort`
+Sorts email according to time or Lexicographic order of sender's email.
+
+Format: `sort TYPE`
+
+* The `TYPE` refers to the types of sorting methods.
+* Types of sorting methods: sender, time
+
+Example of usage:
+```
+Enter Command:
+sort time
+____________________________________________________________
+Emails are sorted according to time
+____________________________________________________________
+Enter Command:
+list archive
+____________________________________________________________
+1. [Archive][UNREAD]
+|| Subject: This is subject 4
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T09:30:00
+|| Tags: []
+2. [Archive][UNREAD]
+|| Subject: This is subject 5
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T10:30:00
+|| Tags: []
+3. [Archive][UNREAD]
+|| Subject: This is subject 6
+|| From: 11312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T11:30:00
+|| Tags: []
+____________________________________________________________
+```
 
 ### Resetting the password: `reset`
 Reset the password for the user's email account.
