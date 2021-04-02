@@ -57,7 +57,7 @@ public class LoginUi extends Ui {
 
     public void printLoginMenu(){
         System.out.println(super.logo);
-        System.out.println("Select either 1 or 2 (use numbers): \n"
+        System.out.println("Select either 1 or 2 or 3 (use numbers): \n"
                 + "[Emails address are case sensitive!]\n"
                 + "1. Log In \n"
                 + "2. Create a new account\n"
