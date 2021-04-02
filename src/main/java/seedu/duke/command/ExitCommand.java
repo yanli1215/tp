@@ -10,6 +10,7 @@ public class ExitCommand extends Command {
     }
 
     public void execute(EmailManager tasks, Ui ui, Storage storage) {
+        ui.printGoodBye();
         System.exit(0);
     }
 }
