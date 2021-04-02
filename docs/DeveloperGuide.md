@@ -159,7 +159,7 @@ The software is written and tested in Java 11.
 
 The local storage file cannot be modified by user directly.
 
-###Usability
+### Usability
 
 ## Glossary
 
@@ -167,6 +167,75 @@ The local storage file cannot be modified by user directly.
 
 ## Instructions for manual testing
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+
+### Logging into system 
+
+#### 1. Login
+Logs into the system when correct email address and password is provided by the user, when wrong information is given, outputs  
+```
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ Error Message: 
+ Wrong UserID and/or Password. Please try again!
+ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+```
+Test case:
+Enter choice: 1 
+
+Enter email address: `12312@gmail.com`
+
+Enter password: `5678`
+
+Expected:
+```` Hello! I'm MojoHR
+  _________   _____   _____   _____
+ |  _   _  | |  _  | |_   _| |  _  |
+ | | | | | | | | | |   | |   | | | |
+ | | | | | | | |_| |  _| |   | |_| |
+ |_| |_| |_| |_____| |___|   |_____|
+ What can I do for you?
+ > Use the keyword "LIST (type) " to print the emails by types
+ > Use the keyword "READ (index) " to open the selected email
+ > Use the keyword "COMPOSE " to create a draft email
+ > Use the keyword "SEND (index of draft) " to send email in the draft folder
+ > Use the keyword "DELETE (index) " to delete the selected email
+ > Use the keyword "FIND (keyword) " to find the  email by keywords
+ > Use the keyword "ARCHIVE (index) " to move the selected email to the archive folder
+ > Use the keyword "TAG (index)" to select the email for tagging labels
+ > Use the keyword "RESET" to reset the your account password
+ > Use the keyword "HELP" to print the menu
+ > Use the keyword "BYE" to exit
+ ____________________________________________________________
+ Enter Command: 
+````
+
+#### 2. Register New User
+Registers a new user, outputs when information to create account is wrong
+````
+````
+
+Test case:
+
+Enter choice: 2
+
+Enter email address: `mary@gmail.com`
+
+Enter password: `1234`
+
+Expected:
+```
+
+```
+
+#### 3. Exits Application
+Allow the user to exit the system
+
+Enter choice: 3
+
+Expected:
+```
+
+```
+
 
 
 ### Finding emails by keyword
