@@ -15,9 +15,12 @@ public class ResetCommand extends Command {
         while (n > 0) {
             String userInputPwd = ui.getResetPsw("old");
             String oldPwd = storage.getPwd();
+            // if the old password is correct
             if (userInputPwd.trim().equals(oldPwd.trim())) {
                 String newPwd = ui.getResetPsw("new").trim();
+                // change password in user's json file
                 storage.changePwd(newPwd);
+                // update the LoginInfo in the text file
                 LoginController loginController = new LoginController();
                 loginController.modifyLoginInfo(storage.getEmailAccount(), newPwd);
                 System.out.println("Your password has changed successfully!");

@@ -16,7 +16,7 @@ public class TagCommand extends Command {
     }
 
     @Override
-    public void execute(EmailManager tasks, Ui ui, Storage storage) {
+    public void execute(EmailManager emails, Ui ui, Storage storage) {
         ArrayList<Email> listedEmails = EmailManager.getListedEmailsList();
 
         if (listedEmails == null) {
@@ -46,11 +46,11 @@ public class TagCommand extends Command {
         String input = ui.printTag();
 
         try {
-            String args = Parser.removeCommand(userInput);
             int[] indices = Parser.extractMultipleIndices(input);
             ArrayList<String> tags = email.setTags(indices);
             feedback = "You have successfully set the following tags " + tags.toString();
             ui.printFeedback(feedback);
+            storage.updateAllTypeEmails(emails.getEmailsList());
         } catch (InvalidIndexException e) {
             e.showErrorMessage("TAG");
         }

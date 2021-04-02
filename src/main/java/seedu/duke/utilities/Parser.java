@@ -1,10 +1,10 @@
 package seedu.duke.utilities;
 
-
 import seedu.duke.command.ArchiveCommand;
 import seedu.duke.command.Command;
 import seedu.duke.command.ComposeCommand;
 import seedu.duke.command.DeleteCommand;
+import seedu.duke.command.EditCommand;
 import seedu.duke.command.ExitCommand;
 import seedu.duke.command.FindCommand;
 import seedu.duke.command.HelpCommand;
@@ -58,7 +58,7 @@ public class Parser {
         } else if (userInputString.toLowerCase().matches("^(tag)[ ].*$")) {
             cmd = new TagCommand(userInputString);
         } else if (userInputString.toLowerCase().matches("^(edit)[ ].*$")) {
-            cmd = new TagCommand(userInputString);
+            cmd = new EditCommand(userInputString);
         } else if (userInputString.toLowerCase().startsWith("number")) {
             cmd = new NumberCommand(userInputString);
         } else if (userInputString.toLowerCase().startsWith("sort")) {
@@ -71,6 +71,7 @@ public class Parser {
     public static int extractIndex(String userInput) throws InvalidIndexException {
         try {
             String[] cmdArg = userInput.split(" ", 2);
+            assert cmdArg.length > 1 : "cmdArg length <= 1";
             String args = cmdArg[1].trim();
             int indexShow = Integer.parseInt(args);
             return indexShow;
@@ -82,15 +83,6 @@ public class Parser {
     public static String removeCommand(String userInput) {
         return userInput.split(" ", 2)[1];
     }
-
-
-    public static String extractKeyword(String userInput) {
-        String[] cmdArg = userInput.split(" ", 2);
-        String keyword = cmdArg[1].trim().toLowerCase();
-        return keyword;
-
-    }
-
 
     public static int[] extractMultipleIndices(String userInput) throws InvalidIndexException {
         try {
@@ -105,11 +97,11 @@ public class Parser {
         }
     }
 
-
     public static ArrayList<Email> getTypeToList(EmailManager emailManager, String userInput) {
         String[] cmdArg = userInput.split(" ", 2);
         String emailType = cmdArg[1].trim();
         ArrayList<Email> emailsToPrint = null;
+        emailManager.setListedType(emailType);
         switch (emailType) {
         case ("emails"):
             emailsToPrint = emailManager.getAllEmails();

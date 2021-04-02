@@ -12,16 +12,23 @@ import seedu.duke.exceptions.InvalidIndexException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class EditCommand extends Command {
+
     public EditCommand(String s) {
         super(s);
     }
 
+    private static Logger LOGGER = Logger.getLogger(EditCommand.class.getName());
+
     @Override
     public void execute(EmailManager emails, Ui ui, Storage storage) {
-        ArrayList<Email> listedEmails = EmailManager.getListedEmailsList();
-        if (listedEmails == null || !(listedEmails.get(0) instanceof Draft)) {
+        LOGGER.setLevel(Level.INFO);
+        LOGGER.info("Logger Name: " + LOGGER.getName());
+
+        if (!emails.getListedType().equals("draft")) {
             String feedback = "You have to list DRAFT emails first" + System.lineSeparator()
                     + "=> list draft" + System.lineSeparator();
             ui.printFeedback(feedback);
@@ -36,30 +43,32 @@ public class EditCommand extends Command {
         }
 
         try {
+            LOGGER.warning("Can cause InvalidIndexException");
             int index = Parser.extractIndex(userInput);
             if (index <= 0 || index > draftedEmails.size()) {
                 throw new InvalidIndexException();
             }
-
             Email draftEmail = draftedEmails.get(index - 1);
             ui.printEditEmail();
             Scanner in = new Scanner(System.in);
+            LOGGER.warning("Can cause InvalidEditTypeException");
             String editType = in.nextLine().trim();
             processEditCommand(draftEmail, in, editType);
+            storage.updateAllTypeEmails(emails.getEmailsList());
             ui.printEmailEdited(editType);
         } catch (InvalidIndexException e) {
             e.showErrorMessage("EDIT");
+            LOGGER.log(Level.SEVERE, "Exception occurred", e);
         } catch (InvalidTypeException e) {
             ui.showMessageForInvalidEditTypeInput();
-        } catch (IndexOutOfBoundsException e) {
-            ui.showMessageForIndexOutOfBoundsException();
+            LOGGER.log(Level.SEVERE, "Exception occurred", e);
         }
     }
 
     private void processEditCommand(Email draftEmail, Scanner in, String editType) throws InvalidTypeException {
         switch (editType) {
         case "to":
-            String to = in.nextLine();
+            ArrayList<String> to = Parser.parseRecipients(in.nextLine());
             draftEmail.setTo(to);
             break;
         case "subject":
@@ -69,7 +78,7 @@ public class EditCommand extends Command {
         case "content":
             String inputContent = in.nextLine();
             String content = inputContent + "\n";
-            while (!inputContent.startsWith("end")) { //user unable to change contents of previous lines
+            while (!inputContent.startsWith("/end")) { //user unable to change contents of previous lines
                 content += inputContent + "\n";
                 inputContent = in.nextLine();
             }

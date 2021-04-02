@@ -10,6 +10,7 @@ public class EmailManager {
 
     private static ArrayList<Email> emailsList = new ArrayList<>();
     private static ArrayList<Email> listedEmailsList = null;
+    private static String listedType = null;
 
     public static ArrayList<Email> getEmailsList() {
         return emailsList;
@@ -30,7 +31,6 @@ public class EmailManager {
     public EmailManager() {
         this.emailsList = new ArrayList<>();
     }
-
 
     public int getNumOfEmails() {
         return emailsList.size();
@@ -96,12 +96,6 @@ public class EmailManager {
         return numberOfEmails;
     }
 
-    public void listAllEmails() {
-        for (int i = 0; i < emailsList.size(); i++) {
-            System.out.println(i + 1 + ". " + emailsList.get(i));
-        }
-    }
-
     public static void printEmailByType(ArrayList<Email> emailTypeToPrint) {
         for (int i = 0; i < emailTypeToPrint.size(); i++) {
             System.out.println(i + 1 + ". " + emailTypeToPrint.get(i).getShortDescription());
@@ -109,11 +103,19 @@ public class EmailManager {
         listedEmailsList = emailTypeToPrint;
     }
 
+    public void setListedType(String emailType) {
+        listedType = emailType;
+    }
+
+    public String getListedType() {
+        return listedType;
+    }
+
     public void sortBySender() {
         emailsList.sort(new TypeSenderSortingComparator());
     }
 
-    static class TypeSenderSortingComparator implements Comparator<Email> {
+    private static class TypeSenderSortingComparator implements Comparator<Email> {
         @Override
         public int compare(Email email1, Email email2) {
             return email1.getFrom().compareTo(email2.getFrom());
@@ -124,7 +126,7 @@ public class EmailManager {
         emailsList.sort(new TypeTimeSortingComparator());
     }
 
-    static class TypeTimeSortingComparator implements Comparator<Email> {
+    private static class TypeTimeSortingComparator implements Comparator<Email> {
         @Override
         public int compare(Email email1, Email email2) {
             return email1.getTime().compareTo(email2.getTime());

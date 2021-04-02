@@ -30,18 +30,10 @@ public class Storage {
     private String pwd;
     private String emailAccount;
 
-    public String getEmailAccount() {
-        return emailAccount;
-    }
-
-    public String getPwd() {
-        return pwd;
-    }
-
-    public Storage(String fileName, String account) {
+    public Storage(String fileName, String account, String pwd) {
         this.fileName = fileName;
         this.filePath = System.getProperty("user.dir") + File.separator + "data" + File.separator + fileName;
-        this.pwd = "";
+        this.pwd = pwd;
         this.emailAccount = account;
     }
 
@@ -51,6 +43,14 @@ public class Storage {
         this.pwd = null;
         this.emailAccount = null;
 
+    }
+
+    public String getEmailAccount() {
+        return emailAccount;
+    }
+
+    public String getPwd() {
+        return pwd;
     }
 
     public ArrayList<Email> load() throws IOException, ParseException {
@@ -237,8 +237,24 @@ public class Storage {
     private void createJsonFile(File file) {
         try {
             file.createNewFile();
+            JSONObject js = new JSONObject();
+            JSONArray inboxList = new JSONArray();
+            JSONArray deletedList = new JSONArray();
+            JSONArray junkList = new JSONArray();
+            JSONArray archiveList = new JSONArray();
+            JSONArray sentList = new JSONArray();
+            JSONArray draftList = new JSONArray();
+            js.put("account", emailAccount);
+            js.put("password", pwd);
+            js.put("inbox", inboxList);
+            js.put("deleted", deletedList);
+            js.put("junk", junkList);
+            js.put("archive", archiveList);
+            js.put("sent", sentList);
+            js.put("drafts", draftList);
+
             FileWriter fw = new FileWriter(filePath);
-            fw.write("{}");
+            fw.write(js.toJSONString());
             fw.flush();
         } catch (IOException e) {
             e.printStackTrace();
