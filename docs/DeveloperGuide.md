@@ -34,8 +34,6 @@ The sequence diagram shows how the <code> list(type) </code> operation work.
 ![ListCommand Sequence Diagram](Sequence Diagrams/ListCommand.png)
 
 
-
-
 ## Product scope
 
 ### Target user profile
