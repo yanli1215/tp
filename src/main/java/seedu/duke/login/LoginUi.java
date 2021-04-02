@@ -51,8 +51,10 @@ public class LoginUi extends Ui {
                 printErrorMessage("You need to enter an integer! Please try again!");
                 getLoginInfo();
         }
+        assert loginInfo != null: "loginInfo is still null ";
         return loginInfo;
     }
+
     public void printLoginMenu(){
         System.out.println(super.logo);
         System.out.println("Select either 1 or 2 (use numbers): \n"
