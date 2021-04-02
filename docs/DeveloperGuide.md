@@ -171,15 +171,12 @@ The local storage file cannot be modified by user directly.
 ### Logging into system 
 
 #### 1. Login
-Logs into the system when correct email address and password is provided by the user, when wrong information is given, outputs  
-```
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
- Error Message: 
- Wrong UserID and/or Password. Please try again!
- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-```
-Test case:
-Enter choice: 1 
+##### Test case 1.0 : When correct login information is provided
+Logs into the system when correct email address and password is provided by the user
+
+**Test case**:
+
+Enter choice: `1`
 
 Enter email address: `12312@gmail.com`
 
@@ -207,13 +204,30 @@ Expected:
  ____________________________________________________________
  Enter Command: 
 ````
+##### Test case 1.1: When wrong login information is provided
+When wrong email address and password is provided by the user
+
+**Test case**
+
+Enter choice: `1`
+
+Enter email address: `abc`
+
+Enter password: `000`
+
+Expected: 
+```
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ Error Message: 
+ Wrong UserID and/or Password. Please try again!
+ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+```
 
 #### 2. Register New User
-Registers a new user, outputs when information to create account is wrong
-````
-````
+##### Test case 2.0: Correctly registers a user
+Registers a new user, when the formatting provided is correct
 
-Test case:
+**Test case:**
 
 Enter choice: 2
 
@@ -222,20 +236,73 @@ Enter email address: `mary@gmail.com`
 Enter password: `1234`
 
 Expected:
-```
+```` Hello! I'm MojoHR
+  _________   _____   _____   _____
+ |  _   _  | |  _  | |_   _| |  _  |
+ | | | | | | | | | |   | |   | | | |
+ | | | | | | | |_| |  _| |   | |_| |
+ |_| |_| |_| |_____| |___|   |_____|
+ What can I do for you?
+ > Use the keyword "LIST (type) " to print the emails by types
+ > Use the keyword "READ (index) " to open the selected email
+ > Use the keyword "COMPOSE " to create a draft email
+ > Use the keyword "SEND (index of draft) " to send email in the draft folder
+ > Use the keyword "DELETE (index) " to delete the selected email
+ > Use the keyword "FIND (keyword) " to find the  email by keywords
+ > Use the keyword "ARCHIVE (index) " to move the selected email to the archive folder
+ > Use the keyword "TAG (index)" to select the email for tagging labels
+ > Use the keyword "RESET" to reset the your account password
+ > Use the keyword "HELP" to print the menu
+ > Use the keyword "BYE" to exit
+ ____________________________________________________________
+ Enter Command: 
+````
 
-```
+##### Test case 2.1: Incorrect Registration Format provided by a User
+Error message shown, when the formatting provided is not correct
+
+**Test case**
+
+Enter choice: `2`
+
+Enter email address: `hi`
+
+Enter password: `1234`
+
+Expected
+````
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Error Message: 
+Please enter a valid email address! 
+Email address must have "@" and cannot have empty string in front or behind
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+````
 
 #### 3. Exits Application
-Allow the user to exit the system
+##### Test case 3.0: Allow the user to exit the system
+When the correct choice format is chosen, user will be able to exit the system
+
+**Test case**
 
 Enter choice: 3
 
 Expected:
 ```
-
+Logging off... Hope to see you again in MojoHr!
 ```
 
+#### Test case 3.1: Incorrect Choice Format
+When an incorrect format of choice is shown, error message will be displayed
+
+Enter choice: `three`
+
+Expected:
+```
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Error Message: 
+You need to enter an integer! Please try again!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+```
 
 
 ### Finding emails by keyword
