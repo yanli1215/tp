@@ -2,14 +2,17 @@
 
 ## Introduction
 
-{Give a product intro}
+The HR department receives many emails from job seekers. A large portion of their day is spent clearing emails. Thus, our product seeks to allow the user to clear emails more efficiently by streamlining the process. This will reduce the time spent on clearing emails.
 
 ## Quick Start
 
-{Give steps to get started quickly}
-
 1. Ensure that you have Java 11 or above installed.
-1. Down the latest version of `Duke` from [here](http://link.to/duke).
+1. Down the latest version of `MojoHr` from [here](https://github.com/AY2021S2-CS2113-W10-2/tp/releases).
+4. Download the sample test datasets `data.zip` folder from [here](https://github.com/AY2021S2-CS2113-W10-2/tp/releases)
+   and unzip it.
+3. Make sure you put the folder `data` under the same path(folder) of `duke.jar`.
+
+
 
 ## Login Features
 ### Log in to main application: `1`
@@ -93,8 +96,6 @@ Logging off... Hope to see you again in MojoHr!
 ```
 
 ## Within Application Features 
-{Give detailed description of each feature}
-
 
 ### listing an email: `list`
 list different types of emails
@@ -127,7 +128,6 @@ ____________________________________________________________
 ```
 
 ### opening an email: `read`
-opens an email 
 
 Format: `read INDEX`
 
@@ -595,11 +595,14 @@ Logging off... Hope to see you again in MojoHr!
 
 ## Command Summary
 
-{Give a 'cheat sheet' of commands here}
 * List emails by types `list TYPE`
+* Opening an email to see the content `read INDEX`
+* Composing an email: `compose`
+* Sending an email: `send INDEX`
 * Delete emails to junk box `delete INDEX`
-* Archive emails `archive INDEX`
 * Find emails by keywords `find KEYWORD`
+* Archive emails `archive INDEX`
+* Tagging an email: `tag INDEX`
 * Reset the account's password `reset`
 * Print help menu `help`
 * Exit application `bye`
