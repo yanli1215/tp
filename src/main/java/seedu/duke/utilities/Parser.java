@@ -99,7 +99,7 @@ public class Parser {
 
     public static ArrayList<Email> getTypeToList(EmailManager emailManager, String userInput) {
         String[] cmdArg = userInput.split(" ", 2);
-        String emailType = cmdArg[1].trim();
+        String emailType = cmdArg[1].trim().toLowerCase();
         ArrayList<Email> emailsToPrint = null;
         emailManager.setListedType(emailType);
         switch (emailType) {
