@@ -170,4 +170,7 @@ public class Ui {
         System.out.println(errorLine);
     }
 
+    public void printGoodBye(){
+        System.out.println("Logging off... Hope to see you again in MojoHr!");
+    }
 }

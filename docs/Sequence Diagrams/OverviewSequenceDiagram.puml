@@ -10,7 +10,19 @@ participant ":EmailManager" as EmailManager
 participant ":Ui" as Ui
 participant ":Parser" as Parser
 participant "command:Command" as command
+participant ":LoginController" as lc
 end box
+
+Mojo -> lc: run()
+activate lc
+lc -> Mojo: providedLoginInfo
+deactivate lc
+
+create Storage
+Mojo -> Storage: Storage(providedLoginInfo)
+activate Storage
+Storage --> Mojo
+deactivate Storage
 
 Mojo -> Storage: load()
 activate Storage
@@ -18,7 +30,7 @@ Storage --> Mojo: emailList
 deactivate Storage
 
 create EmailManager
-Mojo -> EmailManager: emailList
+Mojo -> EmailManager: EmailManager(emailList)
 activate EmailManager
 EmailManager --> Mojo
 deactivate EmailManager

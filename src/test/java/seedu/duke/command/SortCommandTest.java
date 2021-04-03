@@ -55,8 +55,8 @@ public class SortCommandTest {
     @Test
     void execute_InvalidType_fail() {
         new SortCommand("sort sendy").execute(emailManager, ui, storage);
-        String expectedOutput = "OOPS!!! The type that you enter is invalid." + System.lineSeparator() +
-                "It must be one of: [sender, time]";
+        String expectedOutput = "OOPS!!! The type that you enter is invalid." + System.lineSeparator()
+                + "It must be one of: [sender, time]";
         Assertions.assertEquals(expectedOutput, outputStreamCaptor.toString()
                 .trim());
     }
@@ -64,8 +64,8 @@ public class SortCommandTest {
     @Test
     void execute_EmptyType_fail() {
         new SortCommand("sort  ").execute(emailManager, ui, storage);
-        String expectedOutput = "OOPS!!! The sort type is empty." + System.lineSeparator() +
-                "Please enter one of: [sender, time] after \"sort\".";
+        String expectedOutput = "OOPS!!! The sort type is empty." + System.lineSeparator()
+                + "Please enter one of: [sender, time] after \"sort\".";
         Assertions.assertEquals(expectedOutput, outputStreamCaptor.toString()
                 .trim());
     }
