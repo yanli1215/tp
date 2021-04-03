@@ -191,6 +191,7 @@ Expected:
  |_| |_| |_| |_____| |___|   |_____|
  What can I do for you?
  > Use the keyword "LIST (type) " to print the emails by types
+!!! type must be one of: [emails, inbox, archive, deleted, draft, junk, sent]!!!
  > Use the keyword "READ (index) " to open the selected email
  > Use the keyword "COMPOSE " to create a draft email
  > Use the keyword "SEND (index of draft) " to send email in the draft folder
@@ -244,6 +245,7 @@ Expected:
  |_| |_| |_| |_____| |___|   |_____|
  What can I do for you?
  > Use the keyword "LIST (type) " to print the emails by types
+!!! type must be one of: [emails, inbox, archive, deleted, draft, junk, sent]!!!
  > Use the keyword "READ (index) " to open the selected email
  > Use the keyword "COMPOSE " to create a draft email
  > Use the keyword "SEND (index of draft) " to send email in the draft folder

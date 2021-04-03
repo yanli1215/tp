@@ -102,7 +102,8 @@ list different types of emails
 
 Format: `list TYPE`
 * The `TYPE` refers to the type of emails they you want to display
-* `TYPES` are limited to `list emails`, `list inbox`, `list archive`, `list deleted`, `list draft`, `list junk`, `list sent`
+* `TYPE` are limited to `list emails`, `list inbox`, `list archive`, `list deleted`, `list draft`, `list junk`, `list sent`
+* If you are a new user, you will have to compose some emails, if not email account is empty and `list TYPE` will return be empty 
 
 Example of usage
 ```____________________________________________________________
@@ -558,6 +559,7 @@ Hello! I'm MojoHR
 |_| |_| |_| |_____| |___|   |_____|
 What can I do for you?
 > Use the keyword "LIST (type) " to print the emails by types
+!!! type must be one of: [emails, inbox, archive, deleted, draft, junk, sent]!!!
 > Use the keyword "READ (index) " to open the selected email
 > Use the keyword "COMPOSE " to create a draft email
 > Use the keyword "SEND (index of draft) " to send email in the draft folder
