@@ -18,7 +18,6 @@ public class Mojo {
     private static Ui ui;
     private static EmailManager emails;
     private static Parser parser;
-    private static LoginInfoFileManager loginInfoFileManager;
     private Storage storage;
 
     public Mojo(String filePath, LoginInfo providedLoginInfo) {

@@ -19,6 +19,7 @@ public class LoginManager {
     public void verifyLoginInfo(LoginInfo providedLoginInfo) throws WrongLoginInfoException {
         ArrayList<LoginInfo> loginInfoList = loginInfoFileManager.retrieveLoginInfoList();
         for (LoginInfo loginInfo: loginInfoList) {
+            assert loginInfo != null: "loginInfo is null";
             if (loginInfo.equals(providedLoginInfo)) {
                 return;
             }

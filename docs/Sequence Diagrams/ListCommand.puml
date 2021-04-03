@@ -1,20 +1,24 @@
 @startuml
-participant Actor
+participant " :Actor"
 
-Actor -> ListCommand : execute
-activate ListCommand
+hide footbox
+title Footer removed
 
-ListCommand -> Parser : getTypeToList
-activate Parser
+" :Actor" -> ": ListCommand" : execute( )
+activate ": ListCommand"
 
-Parser --> ListCommand
-deactivate Parser
 
-ListCommand -> EmailManager : printEmailByType
-activate EmailManager
+": ListCommand" -> ": Parser" : getTypeToList( )
+activate ": Parser"
 
-EmailManager --> ListCommand
-deactivate EmailManager
+": Parser" --> ": ListCommand"
+deactivate ": Parser"
+
+": ListCommand" -> ": EmailManager" : printEmailByType( )
+activate ": EmailManager"
+
+": EmailManager" --> ": ListCommand"
+deactivate ": EmailManager"
 
 
 
