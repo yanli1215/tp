@@ -2,20 +2,20 @@
 
 ## Introduction
 
-{Give a product intro}
+The HR department receives many emails from job seekers. A large portion of their day is spent clearing emails. Thus, our product seeks to allow the user to clear emails more efficiently by streamlining the process. This will reduce the time spent on clearing emails.
 
 ## Quick Start
 
-{Give steps to get started quickly}
-
 1. Ensure that you have Java 11 or above installed.
-1. Down the latest version of `Duke` from [here](http://link.to/duke).
+1. Down the latest version of `MojoHr` from [here](https://github.com/AY2021S2-CS2113-W10-2/tp/releases).
+4. Download the sample test datasets `data.zip` folder from [here](https://github.com/AY2021S2-CS2113-W10-2/tp/releases)
+   and unzip it.
+3. Make sure you put the folder `data` under the same path(folder) of `duke.jar`.
+
 
 ## Features 
 
-{Give detailed description of each feature}
-
-### opening an email: `read`
+### Opening an email: `read`
 opens an email 
 
 Format: `read INDEX`
@@ -296,6 +296,7 @@ ____________________________________________________________
 ## Command Summary
 
 {Give a 'cheat sheet' of commands here}
+* Opening an email to see the content `read`
 
 * Delete emails to junk box `delete INDEX`
 * Archive emails `archive INDEX`
