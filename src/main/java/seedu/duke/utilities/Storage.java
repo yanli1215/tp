@@ -53,7 +53,7 @@ public class Storage {
         return pwd;
     }
 
-    public ArrayList<Email> load() throws IOException, ParseException {
+    public ArrayList<Email> load() throws IOException, ParseException, NullPointerException{
         try {
             JSONObject accountInfo = readJson();
             pwd = getPassword(accountInfo);
@@ -64,7 +64,10 @@ public class Storage {
         }
         return null;
     }
-
+    /**
+     *
+     * @throws IOException if failed to create directory 'data'.
+     */
     public JSONObject readJson() throws IOException, ParseException {
         String localDir = System.getProperty("user.dir");
         Path dirPath = Paths.get(localDir, "data");
@@ -87,7 +90,7 @@ public class Storage {
 
     }
 
-    public ArrayList<Email> parse(JSONObject jsonObject) {
+    public ArrayList<Email> parse(JSONObject jsonObject) throws NullPointerException{
         ArrayList<Email> allEmails = new ArrayList<>();
         ArrayList<String> emailType = new ArrayList<>();
         for (Object key : jsonObject.keySet()) {
@@ -98,48 +101,52 @@ public class Storage {
         for (String type : emailType) {
             JSONArray companyList = (JSONArray) jsonObject.get(type);
             Iterator<JSONObject> iterator = companyList.iterator();
-            while (iterator.hasNext()) {
-                Map e = iterator.next();
-                switch (type) {
-                case "inbox":
-                    Inbox inboxEmail = new Inbox(e.get("from").toString(),
-                            getToArrayList((JSONArray) e.get("to")),
-                            e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
-                    allEmails.add(inboxEmail);
-                    break;
-                case "drafts":
-                    Draft draftEmail = new Draft(e.get("from").toString(),
-                            getToArrayList((JSONArray) e.get("to")),
-                            e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
-                    allEmails.add(draftEmail);
-                    break;
-                case "archive":
-                    Archive archiveEmail = new Archive(e.get("from").toString(),
-                            getToArrayList((JSONArray) e.get("to")),
-                            e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
-                    allEmails.add(archiveEmail);
-                    break;
-                case "sent":
-                    Sent sentEmail = new Sent(e.get("from").toString(), getToArrayList((JSONArray) e.get("to")),
-                            e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
-                    allEmails.add(sentEmail);
-                    break;
-                case "deleted":
-                    Deleted deletedEmail = new Deleted(e.get("from").toString(),
-                            getToArrayList((JSONArray) e.get("to")),
-                            e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
-                    allEmails.add(deletedEmail);
-                    break;
-                case "junk":
+            try {
+                while (iterator.hasNext()) {
+                    Map e = iterator.next();
+                    switch (type) {
+                    case "inbox":
+                        Inbox inboxEmail = new Inbox(e.get("from").toString(),
+                                getToArrayList((JSONArray) e.get("to")),
+                                e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
+                        allEmails.add(inboxEmail);
+                        break;
+                    case "drafts":
+                        Draft draftEmail = new Draft(e.get("from").toString(),
+                                getToArrayList((JSONArray) e.get("to")),
+                                e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
+                        allEmails.add(draftEmail);
+                        break;
+                    case "archive":
+                        Archive archiveEmail = new Archive(e.get("from").toString(),
+                                getToArrayList((JSONArray) e.get("to")),
+                                e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
+                        allEmails.add(archiveEmail);
+                        break;
+                    case "sent":
+                        Sent sentEmail = new Sent(e.get("from").toString(), getToArrayList((JSONArray) e.get("to")),
+                                e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
+                        allEmails.add(sentEmail);
+                        break;
+                    case "deleted":
+                        Deleted deletedEmail = new Deleted(e.get("from").toString(),
+                                getToArrayList((JSONArray) e.get("to")),
+                                e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
+                        allEmails.add(deletedEmail);
+                        break;
+                    case "junk":
 
-                    Junk junkEmail = new Junk(e.get("from").toString(), getToArrayList((JSONArray) e.get("to")),
-                            e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
-                    allEmails.add(junkEmail);
-                    break;
-                default:
-                    break;
+                        Junk junkEmail = new Junk(e.get("from").toString(), getToArrayList((JSONArray) e.get("to")),
+                                e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
+                        allEmails.add(junkEmail);
+                        break;
+                    default:
+                        break;
+                    }
+
                 }
-
+            } catch (NullPointerException e) {
+                throw e;
             }
         }
         return allEmails;
