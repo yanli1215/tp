@@ -1,7 +1,5 @@
 package seedu.duke.email;
 
-import seedu.duke.exceptions.InvalidIndexException;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -13,8 +11,6 @@ public class Email {
     private String content;
     private boolean isRead;
     private ArrayList<String> tags;
-
-    private static final String[] availableTags = {"Important", "Family", "Friends", "School", "Work", "Travels"};
 
     public Email(String from, ArrayList<String> to, String subject, String time, String content, boolean isRead) {
         this.from = from;
@@ -91,24 +87,7 @@ public class Email {
         return tags;
     }
 
-    public static String[] getAvailableTags() {
-        return availableTags;
-    }
-
-    public ArrayList<String> setTags(int[] indices) throws InvalidIndexException {
-        tags = new ArrayList<>();
-        try {
-            for (int i = 0; i < indices.length; i++) {
-                tags.add(availableTags[indices[i] - 1]);
-            }
-        } catch (IndexOutOfBoundsException e) {
-            throw new InvalidIndexException();
-        }
-
-        return tags;
-    }
-
-    private static ArrayList<String> stringToList(String to) {
-        return new ArrayList<String>(Arrays.asList(new String[]{to}));
+    public void setTags(ArrayList<String> tags) {
+        this.tags = tags;
     }
 }
