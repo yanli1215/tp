@@ -45,10 +45,12 @@ public class LoginUi extends Ui {
                 System.exit(0);
                 break;
             default:
+                printErrorMessage("You need to enter an integer that is either 1, 2 or 3! Please try again!");
+                getLoginInfo();
                 break;
             }
         } catch(InputMismatchException e){
-                printErrorMessage("You need to enter an integer! Please try again!");
+                printErrorMessage("You need to enter an integer that is either 1, 2 or 3! Please try again!");
                 getLoginInfo();
         }
         assert loginInfo != null: "loginInfo is still null ";

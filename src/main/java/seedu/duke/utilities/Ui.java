@@ -97,7 +97,8 @@ public class Ui {
 
     public void printMenu() {
         System.out.println("Hello! I'm MojoHR\n" + logo + "What can I do for you?");
-        System.out.println("> Use the keyword \"LIST (type) \" to print the emails by types");
+        System.out.println("> Use the keyword \"LIST (type) \" to print the emails by types\n"
+                + "!!! type must be one of: [emails, inbox, archive, deleted, draft, junk, sent]!!!");
         System.out.println("> Use the keyword \"READ (index) \" to open the selected email");
         System.out.println("> Use the keyword \"COMPOSE \" to create a draft email");
         System.out.println("> Use the keyword \"SEND (index of draft) \" to send email in the draft folder");
