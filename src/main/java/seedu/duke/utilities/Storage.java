@@ -268,6 +268,7 @@ public class Storage {
             JSONArray draftList = new JSONArray();
             js.put("account", emailAccount);
             js.put("password", pwd);
+            js.put("read", "x");
             js.put("inbox", inboxList);
             js.put("deleted", deletedList);
             js.put("junk", junkList);
