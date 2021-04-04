@@ -53,7 +53,7 @@ public class Storage {
         return pwd;
     }
 
-    public ArrayList<Email> load() throws IOException, ParseException, NullPointerException{
+    public ArrayList<Email> load() throws IOException, ParseException, NullPointerException {
         try {
             JSONObject accountInfo = readJson();
             pwd = getPassword(accountInfo);
@@ -64,8 +64,8 @@ public class Storage {
         }
         return null;
     }
+
     /**
-     *
      * @throws IOException if failed to create directory 'data'.
      */
     public JSONObject readJson() throws IOException, ParseException {
@@ -90,7 +90,7 @@ public class Storage {
 
     }
 
-    public ArrayList<Email> parse(JSONObject jsonObject) throws NullPointerException{
+    public ArrayList<Email> parse(JSONObject jsonObject) throws NullPointerException {
         ArrayList<Email> allEmails = new ArrayList<>();
         ArrayList<String> emailType = new ArrayList<>();
         for (Object key : jsonObject.keySet()) {
@@ -178,7 +178,7 @@ public class Storage {
         JSONArray sentList = new JSONArray();
         JSONArray draftList = new JSONArray();
 
-        for (Email email: emails) {
+        for (Email email : emails) {
             if (email instanceof Inbox) {
                 inboxList.add(createJsonObj(email));
             }
@@ -212,7 +212,7 @@ public class Storage {
 
         emailObj.put("subject", email.getSubject());
         emailObj.put("from", email.getFrom());
-        for (String to: email.getTo()) {
+        for (String to : email.getTo()) {
             toList.add(to);
         }
         emailObj.put("to", toList);

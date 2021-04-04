@@ -19,7 +19,7 @@ public class Mojo {
     private static Parser parser;
     private Storage storage;
 
-    public Mojo(String filePath, LoginInfo providedLoginInfo) throws NullPointerException{
+    public Mojo(String filePath, LoginInfo providedLoginInfo) throws NullPointerException {
         ui = new Ui();
         storage = new Storage(filePath, providedLoginInfo.getUserId(), providedLoginInfo.getPassword());
         try {
