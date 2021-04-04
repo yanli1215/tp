@@ -7,10 +7,19 @@ The HR department receives many emails from job seekers. A large portion of thei
 ## Quick Start
 
 1. Ensure that you have Java 11 or above installed.
-1. Down the latest version of `MojoHr` from [here](https://github.com/AY2021S2-CS2113-W10-2/tp/releases).
-4. Download the sample test datasets `data.zip` folder from [here](https://github.com/AY2021S2-CS2113-W10-2/tp/releases)
+   
+2. Down the latest version of `MojoHr` from [here](https://github.com/AY2021S2-CS2113-W10-2/tp/releases).
+   
+3. Download the sample test datasets `data.zip` folder from [here](https://github.com/AY2021S2-CS2113-W10-2/tp/releases)
    and unzip it.
-3. Make sure you put the folder `data` under the same path(folder) of `duke.jar`.
+   
+4. Make sure you put the folder `data` under the same path(folder) of `duke.jar`.
+   cd into the folder containing the JAR file
+   
+5. `cd` Locate the file path of the JAR file and data folder that you have downloaded
+   
+6. Run the following command: `java -jar [JAR file name]`
+
 
 
 
