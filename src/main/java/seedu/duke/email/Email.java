@@ -16,28 +16,14 @@ public class Email {
 
     private static final String[] availableTags = {"Important", "Family", "Friends", "School", "Work", "Travels"};
 
-    public Email(String from, ArrayList<String> to, String subject, String time, String content) {
+    public Email(String from, ArrayList<String> to, String subject, String time, String content, boolean isRead) {
         this.from = from;
         this.to = to;
         this.subject = subject;
         this.time = time;
         this.content = content;
-        this.isRead = false;
+        this.isRead = isRead;
         this.tags = new ArrayList<>();
-    }
-
-    /**
-     * Overloaded constructor, able to take in a single recipient and convert it
-     * to a list of 1 recipient.
-     *
-     * @param from    Person that sends the email
-     * @param to      Person that receives the email
-     * @param subject Topic of email
-     * @param time    Time that email was sent
-     * @param content Message in the email
-     */
-    public Email(String from, String to, String subject, String time, String content) {
-        this(from, new ArrayList<>(Arrays.asList(new String[]{to})), subject, time, content);
     }
 
     public boolean isRead() {
@@ -62,10 +48,6 @@ public class Email {
 
     public void setTo(ArrayList<String> to) {
         this.to = to;
-    }
-
-    public void setTo(String to) {
-        this.to = stringToList(to);
     }
 
     public String getSubject() {
@@ -126,7 +108,7 @@ public class Email {
         return tags;
     }
 
-    private ArrayList<String> stringToList(String to) {
+    private static ArrayList<String> stringToList(String to) {
         return new ArrayList<String>(Arrays.asList(new String[]{to}));
     }
 }

@@ -35,15 +35,16 @@ public class ComposeCommandTest {
     public void testComposeConstructor() {
         // action
         String from = "senderEmail.com";
-        String to = "receiverEmail.com";
+        ArrayList<String> to = new ArrayList<>();
+        to.add("receiverEmail.com");
         String subject = "this is Subject";
         String time = "timeComposed";
         String content = "sample line 1" + "\n" + "sample line 2.";
 
-        Email draftEmail = new Draft(from, to, subject, time, content);
+        Email draftEmail = new Draft(from, to, subject, time, content, false);
 
         assertEquals(draftEmail.getFrom(), from);
-        assertEquals(draftEmail.getTo().toString(), "[" + to + "]");
+        assertEquals(draftEmail.getTo(), to);
         assertEquals(draftEmail.getSubject(), subject);
         assertEquals(draftEmail.getTime(), time);
         assertEquals(draftEmail.getContent(), content);

@@ -206,22 +206,22 @@ public class EmailManager {
     }
 
     public void addToDeleted(Email e) {
-        Deleted email = new Deleted(e.getFrom(), e.getTo(), e.getSubject(), e.getTime(), e.getContent());
+        Deleted email = new Deleted(e.getFrom(), e.getTo(), e.getSubject(), e.getTime(), e.getContent(), e.isRead());
         emailsList.add(email);
     }
 
     public void addToSent(Email e) {
-        Sent email = new Sent(e.getFrom(), e.getTo(), e.getSubject(), e.getTime(), e.getContent());
+        Sent email = new Sent(e.getFrom(), e.getTo(), e.getSubject(), e.getTime(), e.getContent(), e.isRead());
         emailsList.add(email);
     }
 
     public void addToArchive(Email e) {
-        Archive email = new Archive(e.getFrom(), e.getTo(), e.getSubject(), e.getTime(), e.getContent());
+        Archive email = new Archive(e.getFrom(), e.getTo(), e.getSubject(), e.getTime(), e.getContent(), e.isRead());
         emailsList.add(email);
     }
 
     public void addToDraft(Email e) {
-        Draft email = new Draft(e.getFrom(), e.getTo(), e.getSubject(), e.getTime(), e.getContent());
+        Draft email = new Draft(e.getFrom(), e.getTo(), e.getSubject(), e.getTime(), e.getContent(), e.isRead());
         emailsList.add(email);
     }
 
