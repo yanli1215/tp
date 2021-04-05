@@ -103,7 +103,7 @@ public class Parser {
         ArrayList<Email> emailsToPrint = null;
         emailManager.setListedType(emailType);
         switch (emailType) {
-        case ("emails"):
+        case ("allemails"):
             emailsToPrint = emailManager.getAllEmails();
             break;
         case ("archive"):

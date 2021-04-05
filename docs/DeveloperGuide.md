@@ -1,4 +1,4 @@
-# Developer Guide
+# MojoHr Developer Guide
 
 ## Design
 
@@ -89,7 +89,8 @@ There are seven variations of the <code> list </code> command.
 6. List by Junk email(s)
 7. List by Sent email(s)
 
-The sequence diagram shows how the <code> list(type) </code> operation work. 
+The sequence diagram shows how the <code>list (type)</code> operation work. 
+
 ![ListCommand Sequence Diagram](Sequence Diagrams/ListCommand.png)
 
 ### TagCommand
@@ -103,7 +104,7 @@ The sequence diagram shows how the <code> list(type) </code> operation work.
 The sequence diagram shows how the <code> list(type) </code> operation work.
 ![Tag Sequence Diagram](Sequence Diagrams/TagSequenceDiagram.png)
 
-###ComposeCommand
+### ComposeCommand
 When the `compose` command is entered, the software will prompt user to enter the necessary details and save them to draft.
 
 The details needed are receiver email, subject and content. The time the draft was composed would be saved automatically.
@@ -120,7 +121,10 @@ The sequence diagram roughly shows how the `compose` operation works.
 
 ### Value proposition
 
-{Describe the value proposition: what problem does it solve?}
+The HR department receives many emails from job seekers. 
+A large portion of their day is spent clearing emails. Thus, our product seeks to allow the user to clear emails more efficiently by streamlining the process. This will reduce the time spent on clearing emails.
+and allow HR personnel to focus on more productive things
+(from clearing emails to classifying important emails).
 
 ## User Stories
 
@@ -198,7 +202,7 @@ Expected:
  |_| |_| |_| |_____| |___|   |_____|
  What can I do for you?
  > Use the keyword "LIST (type) " to print the emails by types
-!!! type must be one of: [emails, inbox, archive, deleted, draft, junk, sent]!!!
+!!! type must be one of: [allemails, inbox, archive, deleted, draft, junk, sent]!!!
  > Use the keyword "READ (index) " to open the selected email
  > Use the keyword "COMPOSE " to create a draft email
  > Use the keyword "SEND (index of draft) " to send email in the draft folder
@@ -252,7 +256,7 @@ Expected:
  |_| |_| |_| |_____| |___|   |_____|
  What can I do for you?
  > Use the keyword "LIST (type) " to print the emails by types
-!!! type must be one of: [emails, inbox, archive, deleted, draft, junk, sent]!!!
+!!! type must be one of: [allemails, inbox, archive, deleted, draft, junk, sent]!!!
  > Use the keyword "READ (index) " to open the selected email
  > Use the keyword "COMPOSE " to create a draft email
  > Use the keyword "SEND (index of draft) " to send email in the draft folder
