@@ -605,9 +605,10 @@ Logging off... Hope to see you again in MojoHr!
 
 ## FAQ
 
-**Q**: How do I transfer my data to another computer? 
+**Q**: How can I send emails to others? 
 
-**A**: {your answer here}
+**A**: Firstly, you should compose an email as a draft. Then, send the draft by `send index`. The email you sent will be
+added to your sent box. However, the email cannot be seen in the inbox of the receiver yet.
 
 ## Command Summary
 
@@ -622,5 +623,19 @@ Logging off... Hope to see you again in MojoHr!
 * Reset the account's password `reset`
 * Print help menu `help`
 * Exit application `bye`
+
+Action | Format, Examples
+--------|------------------
+**list** | `list TYPE` e.g., `list inbox`
+**read** | `read INDEX` e.g., `read 1`
+**compose** | `compose`
+**send** | `send INDEX` e.g., `send 1`
+**delete** | `delete INDEX` e.g., `delete 1`
+**find** | `find KEYWORD` e.g., `find content`
+**archive** | `archive INDEX` e.g., `archive 1`
+**tag** | `tag INDEX` e.g., `tag 1`
+**reset**| `reset`
+**help**| `help`
+**bye**| `bye`
 
 
