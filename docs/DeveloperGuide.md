@@ -89,7 +89,7 @@ There are seven variations of the <code> list </code> command.
 6. List by Junk email(s)
 7. List by Sent email(s)
 
-The sequence diagram shows how the <code> list (type)</code> operation work. 
+The sequence diagram shows how the <code>list (type)</code> operation work. 
 
 ![ListCommand Sequence Diagram](Sequence Diagrams/ListCommand.png)
 
@@ -195,6 +195,7 @@ Expected:
  |_| |_| |_| |_____| |___|   |_____|
  What can I do for you?
  > Use the keyword "LIST (type) " to print the emails by types
+!!! type must be one of: [allemails, inbox, archive, deleted, draft, junk, sent]!!!
  > Use the keyword "READ (index) " to open the selected email
  > Use the keyword "COMPOSE " to create a draft email
  > Use the keyword "SEND (index of draft) " to send email in the draft folder
@@ -248,6 +249,7 @@ Expected:
  |_| |_| |_| |_____| |___|   |_____|
  What can I do for you?
  > Use the keyword "LIST (type) " to print the emails by types
+!!! type must be one of: [allemails, inbox, archive, deleted, draft, junk, sent]!!!
  > Use the keyword "READ (index) " to open the selected email
  > Use the keyword "COMPOSE " to create a draft email
  > Use the keyword "SEND (index of draft) " to send email in the draft folder
