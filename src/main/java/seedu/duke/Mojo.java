@@ -4,7 +4,6 @@ import org.json.simple.parser.ParseException;
 import seedu.duke.email.EmailManager;
 import seedu.duke.login.LoginController;
 import seedu.duke.login.LoginInfo;
-import seedu.duke.login.LoginInfoFileManager;
 import seedu.duke.utilities.Parser;
 import seedu.duke.utilities.Storage;
 import seedu.duke.utilities.Ui;
@@ -20,7 +19,7 @@ public class Mojo {
     private static Parser parser;
     private Storage storage;
 
-    public Mojo(String filePath, LoginInfo providedLoginInfo) {
+    public Mojo(String filePath, LoginInfo providedLoginInfo) throws NullPointerException {
         ui = new Ui();
         storage = new Storage(filePath, providedLoginInfo.getUserId(), providedLoginInfo.getPassword());
         try {
@@ -52,7 +51,11 @@ public class Mojo {
         LoginController lc = new LoginController();
         LoginInfo providedLoginInfo = lc.run();
         String userId = providedLoginInfo.getUserId();
-        new Mojo(userId + ".json", providedLoginInfo).run();
+        try {
+            new Mojo(userId + ".json", providedLoginInfo).run();
+        } catch (NullPointerException e) {
+            System.out.println("The form of your emails in json file is incorrect! Please check your json file.");
+        }
 
     }
 }

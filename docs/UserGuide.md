@@ -2,26 +2,148 @@
 
 ## Introduction
 
-{Give a product intro}
+The HR department receives many emails from job seekers. A large portion of their day is spent clearing emails. Thus, our product seeks to allow the user to clear emails more efficiently by streamlining the process. This will reduce the time spent on clearing emails.
 
 ## Quick Start
 
-{Give steps to get started quickly}
-
 1. Ensure that you have Java 11 or above installed.
-1. Down the latest version of `Duke` from [here](http://link.to/duke).
+   
+2. Download the latest version of `MojoHr` from [here](https://github.com/AY2021S2-CS2113-W10-2/tp/releases).
+   
+3. Download the sample test datasets `data.zip` folder from [here](https://github.com/AY2021S2-CS2113-W10-2/tp/releases)
+   and unzip it.
+   
+4. Make sure you put the folder `data` under the same path(folder) of `duke.jar`.
+   cd into the folder containing the JAR file
+   
+5. `cd` Locate the file path of the JAR file and data folder that you have downloaded
+   
+6. Run the following command: `java -jar [JAR file name]`
 
-## Features 
 
-{Give detailed description of each feature}
+
+
+## Login Features
+### Log in to main application: `1`
+
+Format
+`1`
+
+Enter email address: `12312@gmail.com`
+
+Enter password: `5678`
+
+Example of usage:
+```
+ _________   _____   _____   _____
+|  _   _  | |  _  | |_   _| |  _  |
+| | | | | | | | | |   | |   | | | |
+| | | | | | | |_| |  _| |   | |_| |
+|_| |_| |_| |_____| |___|   |_____|
+
+Select either 1 or 2 or 3 (use numbers): 
+[Emails address are case sensitive!]
+1. Log In 
+2. Create a new account
+3. Exit
+Enter choice:
+1
+Enter email address:
+12312@gmail.com
+Enter password:
+5678
+```
+### Register as a new user: `2`
+Format
+`2`
+
+Enter email address: `joey@gmail.com`
+
+Enter password: `joey987`
+
+Example of usage:
+```
+ _________   _____   _____   _____
+|  _   _  | |  _  | |_   _| |  _  |
+| | | | | | | | | |   | |   | | | |
+| | | | | | | |_| |  _| |   | |_| |
+|_| |_| |_| |_____| |___|   |_____|
+
+Select either 1 or 2 or 3 (use numbers): 
+[Emails address are case sensitive!]
+1. Log In 
+2. Create a new account
+3. Exit
+Enter choice: 
+2
+Enter email address:
+joey@gmail.com
+Enter password:
+joey987
+```
+### Exit Application before log in: `3`
+Format
+`3`
+
+Example of usage:
+```
+ _________   _____   _____   _____
+|  _   _  | |  _  | |_   _| |  _  |
+| | | | | | | | | |   | |   | | | |
+| | | | | | | |_| |  _| |   | |_| |
+|_| |_| |_| |_____| |___|   |_____|
+
+Select either 1 or 2 or 3 (use numbers): 
+[Emails address are case sensitive!]
+1. Log In 
+2. Create a new account
+3. Exit
+Enter choice: 
+3
+Logging off... Hope to see you again in MojoHr!
+
+```
+
+## Within Application Features 
+
+### listing an email: `list`
+list different types of emails
+
+Format: `list TYPE`
+* The `TYPE` refers to the type of emails they you want to display
+* `TYPE` are limited to `list emails`, `list inbox`, `list archive`, `list deleted`, `list draft`, `list junk`, `list sent`
+* If you are a new user, you will have to compose some emails, if not email account is empty and `list TYPE` will return be empty 
+
+Example of usage
+```____________________________________________________________
+Enter Command:
+list draft
+____________________________________________________________
+1. [Draft][UNREAD]
+|| Subject: This is subject 3
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T08:30:00
+|| Tags: []
+2. [Draft][UNREAD]
+|| Subject: LilySubject
+|| From: 12312@gmail.com --> To: [lily@gmail.com]
+|| Time: 2021-03-30T20:15:06
+|| Tags: []
+3. [Draft][UNREAD]
+|| Subject: testing
+|| From: 12312@gmail.com --> To: [lolita@gmail.com, lolota@gmail.com]
+|| Time: 2021-03-30T22:48:58
+|| Tags: []
+____________________________________________________________
+```
 
 ### opening an email: `read`
-opens an email 
 
 Format: `read INDEX`
 
 * The `INDEX` refers to the index number shown in the displayed email list.
 * The `INDEX` **must be a positive integer** 1, 2, 3, …
+* User must `list emails` first before they can read an email.
 
 Example of usage:
 ````
@@ -55,7 +177,7 @@ Format: `delete INDEX`
 * The `INDEX` refers to the index number shown in the displayed email list.
 * The `INDEX` **must be a positive integer** 1, 2, 3, …
 
-* If the displayed email list if not junk emails, move the email at the specified `INDEX` to the junk box. 
+* If the displayed email list is not junk emails, move the email at the specified `INDEX` to the junk box. 
 * If the displayed email list is junk emails, remove the email at the specified `INDEX` from the account forever.
 
 
@@ -99,7 +221,7 @@ Format: `archive INDEX`
 * The `INDEX` refers to the index number shown in the displayed email list.
 * The `INDEX` **must be a positive integer** 1, 2, 3, …
 
-* If the displayed email list if not archived emails, move the email at the specified `INDEX` to the archive box.
+* If the displayed email list is not archived emails, move the email at the specified `INDEX` to the archive box.
 * If the displayed email list is archived emails, no action will be done.
 
 
@@ -179,10 +301,14 @@ ____________________________________________________________
 ### tagging an email: `tag`
 Tag an email with labels
 
-Format: `tag INDEX`
+Format: `tag INDEX TAG1 TAG2 ...`
 
 * The `INDEX` refers to the index number shown in the displayed email list.
-* The `INDEX` **must be a positive integer** 1, 2, 3, …
+* The `INDEX` **must be a positive integer** 1, 2, 3, … 
+* The `TAG#` is a single word label that user wants to add.
+* User can add multiple tags to their email.
+* This command overwrites the old tag(s).
+* User must `list emails` first before they can read an email.
 
 Example of usage:
 ````
@@ -447,6 +573,7 @@ Hello! I'm MojoHR
 |_| |_| |_| |_____| |___|   |_____|
 What can I do for you?
 > Use the keyword "LIST (type) " to print the emails by types
+!!! type must be one of: [emails, inbox, archive, deleted, draft, junk, sent]!!!
 > Use the keyword "READ (index) " to open the selected email
 > Use the keyword "COMPOSE " to create a draft email
 > Use the keyword "SEND (index of draft) " to send email in the draft folder
@@ -460,6 +587,21 @@ What can I do for you?
 ____________________________________________________________
 ```
 
+### Exiting the application: `bye`
+Exits the application
+
+Format: `bye`
+
+Example of usage: 
+
+```
+____________________________________________________________
+Enter Command:
+bye 
+____________________________________________________________
+Logging off... Hope to see you again in MojoHr!
+
+```
 
 ## FAQ
 
@@ -469,11 +611,16 @@ ____________________________________________________________
 
 ## Command Summary
 
-{Give a 'cheat sheet' of commands here}
-
+* List emails by types `list TYPE`
+* Opening an email to see the content `read INDEX`
+* Composing an email: `compose`
+* Sending an email: `send INDEX`
 * Delete emails to junk box `delete INDEX`
-* Archive emails `archive INDEX`
 * Find emails by keywords `find KEYWORD`
+* Archive emails `archive INDEX`
+* Tagging an email: `tag INDEX`
 * Reset the account's password `reset`
+* Print help menu `help`
+* Exit application `bye`
 
 
