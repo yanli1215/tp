@@ -89,7 +89,8 @@ There are seven variations of the <code> list </code> command.
 6. List by Junk email(s)
 7. List by Sent email(s)
 
-The sequence diagram shows how the <code> list(type) </code> operation work. 
+The sequence diagram shows how the <code> list (type)</code> operation work. 
+
 ![ListCommand Sequence Diagram](Sequence Diagrams/ListCommand.png)
 
 ### TagCommand
