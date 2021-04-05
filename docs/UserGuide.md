@@ -609,3 +609,22 @@ Logging off... Hope to see you again in MojoHr!
 * Exit application `bye`
 
 
+| Command             | Example                                                                                                    |
+|---------------------|------------------------------------------------------------------------------------------------------------|
+| **Login**           |   
+|log in               | Enter Choice: `1`  <br/> Email Address: `12321@gmail.com` <br/> Password:`5678` 
+|Register as new user | Enter Choice: `2`  <br/> Email Address: `joey@gmail.com` <br/> Password:`9999`           
+|Log out              | Enter Choice: `3`    
+| **List Command**    |                                                                                                            |
+|emails               | `list emails`
+|inbox                | `list inbox` 
+|archive              | `list archive`  
+|deleted              | `list deleted`   
+|draft                | `list draft`  
+|junk                 | `list junk`  
+|sent                 | `list sent`  
+| **Help Command**    |
+|help                 | `help`
+| **Bye Command**     |
+|bye                  | `bye`       
+       
