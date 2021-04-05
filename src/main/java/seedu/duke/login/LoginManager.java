@@ -18,7 +18,11 @@ public class LoginManager {
 
     public void verifyLoginInfo(LoginInfo providedLoginInfo) throws WrongLoginInfoException {
         ArrayList<LoginInfo> loginInfoList = loginInfoFileManager.retrieveLoginInfoList();
+<<<<<<< HEAD
         for (LoginInfo loginInfo: loginInfoList) {
+=======
+        for (LoginInfo loginInfo : loginInfoList) {
+>>>>>>> bff4bbdcdd5f63268b3718b201aaaca6043912d5
             assert loginInfo != null : "loginInfo is null";
             if (loginInfo.equals(providedLoginInfo)) {
                 return;
@@ -29,7 +33,7 @@ public class LoginManager {
 
     public void modifyLoginInfo(LoginInfo newLogInfo) {
         ArrayList<LoginInfo> loginInfoList = loginInfoFileManager.retrieveLoginInfoList();
-        for (LoginInfo loginInfo: loginInfoList) {
+        for (LoginInfo loginInfo : loginInfoList) {
             if (loginInfo.getUserId().equals(newLogInfo.getUserId())) {
                 loginInfo.setPassword(newLogInfo.getPassword());
                 break;

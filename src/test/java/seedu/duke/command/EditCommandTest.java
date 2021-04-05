@@ -29,9 +29,11 @@ public class EditCommandTest {
     @BeforeEach
     public void setUp() {
         System.setOut(new PrintStream(outputStreamCaptor));
-        emails.add(new Draft("testC@gmail.com", "456@gmail.com", "S1", "2020-4-23+01:00", "C1"));
-        emails.add(new Draft("testA@gmail.com", "456@gmail.com", "S2", "2020-4-30+01:00", "C2"));
-        emails.add(new Draft("testB@gmail.com", "456@gmail.com", "S3", "2019-4-23+03:00", "C3"));
+        ArrayList<String> to = new ArrayList<>();
+        to.add("456@gmail.com");
+        emails.add(new Draft("testC@gmail.com", to, "S1", "2020-4-23+01:00", "C1", false));
+        emails.add(new Draft("testA@gmail.com", to, "S2", "2020-4-30+01:00", "C2", false));
+        emails.add(new Draft("testB@gmail.com", to, "S3", "2019-4-23+03:00", "C3", false));
         EmailManager.setEmailsList(emails);
         emailManager.setListedType("draft");
     }

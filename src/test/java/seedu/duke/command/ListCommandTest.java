@@ -33,13 +33,15 @@ public class ListCommandTest {
     @BeforeEach
     public void setUp() {
         System.setOut(new PrintStream(outputStreamCaptor));
-        emails.add(new Archive("123@gmail.com", "456@gmail.com", "S1", "2012-01-01", "C1"));
-        emails.add(new Deleted("123@gmail.com", "456@gmail.com", "S2", "2012-01-02", "C2"));
-        emails.add(new Email("123@gmail.com", "456@gmail.com", "S0", "2012-01-02", "C2"));
-        emails.add(new Draft("123@gmail.com", "456@gmail.com", "S3", "2012-01-02", "C2"));
-        emails.add(new Inbox("123@gmail.com", "456@gmail.com", "S4", "2012-01-02", "C2"));
-        emails.add(new Junk("123@gmail.com", "456@gmail.com", "S5", "2012-01-02", "C2"));
-        emails.add(new Sent("123@gmail.com", "456@gmail.com", "S6", "2012-01-02", "C2"));
+        ArrayList<String> to = new ArrayList<>();
+        to.add("456@gmail.com");
+        emails.add(new Archive("123@gmail.com", to, "S1", "2012-01-01", "C1", false));
+        emails.add(new Deleted("123@gmail.com", to, "S2", "2012-01-02", "C2", false));
+        emails.add(new Email("123@gmail.com", to, "S0", "2012-01-02", "C2", false));
+        emails.add(new Draft("123@gmail.com", to, "S3", "2012-01-02", "C2", false));
+        emails.add(new Inbox("123@gmail.com", to, "S4", "2012-01-02", "C2", false));
+        emails.add(new Junk("123@gmail.com", to, "S5", "2012-01-02", "C2", false));
+        emails.add(new Sent("123@gmail.com", to, "S6", "2012-01-02", "C2", false));
         emailManager = new EmailManager(emails);
 
     }

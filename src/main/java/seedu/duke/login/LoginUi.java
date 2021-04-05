@@ -14,6 +14,10 @@ public class LoginUi extends Ui {
         while (true) {
             loginInfo = getUserInputForLogin();
             String check = "^(.+)@(.+)$";
+<<<<<<< HEAD
+=======
+            ;
+>>>>>>> bff4bbdcdd5f63268b3718b201aaaca6043912d5
             Pattern p = Pattern.compile(check);
             Matcher m = p.matcher(loginInfo.getUserId());
             if (!m.find()) {
