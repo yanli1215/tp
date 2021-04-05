@@ -122,7 +122,7 @@ public class ListCommandTest {
 
         Assert.assertEquals("OOPS!!! The Email type that you enter is invalid."
                         + System.lineSeparator()
-                        + "It must be one of: [emails, inbox, archive, deleted, draft, junk, sent]",
+                        + "It must be one of: [allemails, inbox, archive, deleted, draft, junk, sent]",
                 outputStreamCaptor.toString()
                         .trim());
     }
