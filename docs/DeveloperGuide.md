@@ -1,4 +1,4 @@
-# Developer Guide
+# MojoHr Developer Guide
 
 ## Design
 
