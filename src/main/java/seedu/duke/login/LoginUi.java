@@ -13,7 +13,8 @@ public class LoginUi extends Ui {
         LoginInfo loginInfo;
         while (true) {
             loginInfo = getUserInputForLogin();
-            String check = "^(.+)@(.+)$";;
+            String check = "^(.+)@(.+)$";
+            ;
             Pattern p = Pattern.compile(check);
             Matcher m = p.matcher(loginInfo.getUserId());
             if (!m.find()) {
@@ -45,17 +46,19 @@ public class LoginUi extends Ui {
                 System.exit(0);
                 break;
             default:
+                printErrorMessage("You need to enter an integer that is either 1, 2 or 3! Please try again!");
+                getLoginInfo();
                 break;
             }
-        } catch(InputMismatchException e){
-                printErrorMessage("You need to enter an integer! Please try again!");
-                getLoginInfo();
+        } catch (InputMismatchException e) {
+            printErrorMessage("You need to enter an integer that is either 1, 2 or 3! Please try again!");
+            getLoginInfo();
         }
-        assert loginInfo != null: "loginInfo is still null ";
+        assert loginInfo != null : "loginInfo is still null ";
         return loginInfo;
     }
 
-    public void printLoginMenu(){
+    public void printLoginMenu() {
         System.out.println(super.logo);
         System.out.println("Select either 1 or 2 or 3 (use numbers): \n"
                 + "[Emails address are case sensitive!]\n"

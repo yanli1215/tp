@@ -6,12 +6,14 @@
       "to":  "12312@gmail.com",
       "subject":  "This is subject 1",
       "time":  "2020-4-23+01:00",
+      "read": "x",
       "content": "This is content for s1."
     },
     {"from": "test@gmail.com",
       "to":  "12312@gmail.com",
       "subject":  "This is subject 2",
       "time":  "2020-4-23+02:00",
+      "read": "x",
       "content": "This is content for s2."
     }
   ],
@@ -20,12 +22,14 @@
       "to":  "12312@gmail.com",
       "subject":  "This is subject 3",
       "time":  "2020-4-23+03:00",
+      "read": "x",
       "content": "This is content for s3."
     },
     {"from": "test@gmail.com",
       "to":  "12312@gmail.com",
       "subject":  "This is subject 4",
       "time":  "2020-4-23+04:00",
+      "read": "x",
       "content": "This is content for s4."
     }
   ],
@@ -34,12 +38,14 @@
       "to":  "12312@gmail.com",
       "subject":  "This is subject 5",
       "time":  "2020-4-23+05:00",
+      "read": "x",
       "content": "This is content for s5."
     },
     {"from": "test@gmail.com",
       "to":  "12312@gmail.com",
       "subject":  "This is subject 6",
       "time":  "2020-4-23+06:00",
+      "read": "x",
       "content": "This is content for s6."
     }
   ],
@@ -48,12 +54,14 @@
       "to":  "12332@gmail.com",
       "subject":  "This is subject 7",
       "time":  "2020-4-23+07:00",
+      "read": "x",
       "content": "This is content for s7."
     },
     {"from": "test@gmail.com",
       "to":  "11111@gmail.com",
       "subject":  "This is subject 8",
       "time":  "2020-4-23+08:00",
+      "read": "x",
       "content": "This is content for s8."
     }
   ],
@@ -62,12 +70,14 @@
       "to":  "12312@gmail.com",
       "subject":  "This is subject 9",
       "time":  "2020-4-23+09:00",
+      "read": "x",
       "content": "This is content for s9."
     },
     {"from": "21312@gmail.com",
       "to":  "12312@gmail.com",
       "subject":  "This is subject 10",
       "time":  "2020-4-23+10:00",
+      "read": "x",
       "content": "This is content for s1. "
     }
   ],
@@ -76,6 +86,7 @@
       "to":  "12312@gmail.com",
       "subject":  "This is subject 11",
       "time":  "2020-4-23+11:00",
+      "read": "x",
       "content": "This is content for s1. "
     }
   ]

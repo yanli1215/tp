@@ -1,13 +1,13 @@
 package seedu.duke.command;
 
+import seedu.duke.email.Email;
 import seedu.duke.email.EmailManager;
-import seedu.duke.utilities.Parser;
+import seedu.duke.exceptions.InvalidIndexException;
 import seedu.duke.utilities.Storage;
 import seedu.duke.utilities.Ui;
-import seedu.duke.email.Email;
-import seedu.duke.exceptions.InvalidIndexException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class TagCommand extends Command {
 
@@ -26,33 +26,31 @@ public class TagCommand extends Command {
             return;
         }
 
-        Email email;
-
         try {
-            int index = Parser.extractIndex(userInput);
+            int index = extractIndex();
             if (index <= 0 || index > listedEmails.size()) {
                 throw new InvalidIndexException();
             }
-            email = listedEmails.get(index - 1);
-        } catch (InvalidIndexException e) {
-            e.showErrorMessage("TAG");
-            return;
-        }
-
-        String feedback = "You have selected this email:" + System.lineSeparator()
-                + email.getShortDescription();
-
-        ui.printFeedback(feedback);
-        String input = ui.printTag();
-
-        try {
-            int[] indices = Parser.extractMultipleIndices(input);
-            ArrayList<String> tags = email.setTags(indices);
-            feedback = "You have successfully set the following tags " + tags.toString();
+            ArrayList<String> tags = extractTags();
+            Email email = listedEmails.get(index - 1);
+            email.setTags(tags);
+            String feedback = "You have successfully set the following tags " + tags.toString();
             ui.printFeedback(feedback);
             storage.updateAllTypeEmails(emails.getEmailsList());
         } catch (InvalidIndexException e) {
             e.showErrorMessage("TAG");
+            return;
         }
+    }
+
+    private ArrayList<String> extractTags() {
+        String[] argList = userInput.split(" ", 3);
+        String[] tags = argList[2].split(" ");
+        return new ArrayList<>(Arrays.asList(tags));
+    }
+
+    private int extractIndex() {
+        String[] argList = userInput.split(" ", 3);
+        return Integer.parseInt(argList[1]);
     }
 }

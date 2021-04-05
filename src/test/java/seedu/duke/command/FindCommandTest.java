@@ -28,9 +28,11 @@ public class FindCommandTest {
     @BeforeEach
     public void setUp() {
         System.setOut(new PrintStream(outputStreamCaptor));
-        emails.add(new Inbox("123@gmail.com", "456@gmail.com", "S1", "2021-02-20T06:30:00", "C1"));
-        emails.add(new Inbox("123@gmail.com", "456@gmail.com", "S2", "2021-02-20T07:30:00", "C2"));
-        emails.add(new Deleted("123@gmail.com", "456@gmail.com", "S3", "2021-02-20T08:30:00", "C3"));
+        ArrayList<String> to = new ArrayList<>();
+        to.add("456@gmail.com");
+        emails.add(new Inbox("123@gmail.com", to, "S1", "2021-02-20T06:30:00", "C1", false));
+        emails.add(new Inbox("123@gmail.com", to, "S2", "2021-02-20T07:30:00", "C2", false));
+        emails.add(new Deleted("123@gmail.com", to, "S3", "2021-02-20T08:30:00", "C3", false));
         emailManager.setListedEmailsList(emails);
 
     }
