@@ -103,7 +103,7 @@ The sequence diagram shows how the <code> list(type) </code> operation work.
 The sequence diagram shows how the <code> list(type) </code> operation work.
 ![Tag Sequence Diagram](Sequence Diagrams/TagSequenceDiagram.png)
 
-###ComposeCommand
+### ComposeCommand
 When the `compose` command is entered, the software will prompt user to enter the necessary details and save them to draft.
 
 The details needed are receiver email, subject and content. The time the draft was composed would be saved automatically.
