@@ -120,7 +120,10 @@ The sequence diagram roughly shows how the `compose` operation works.
 
 ### Value proposition
 
-{Describe the value proposition: what problem does it solve?}
+The HR department receives many emails from job seekers. 
+A large portion of their day is spent clearing emails. Thus, our product seeks to allow the user to clear emails more efficiently by streamlining the process. This will reduce the time spent on clearing emails.
+and allow HR personnel to focus on more productive things
+(from clearing emails to classifying important emails).
 
 ## User Stories
 
