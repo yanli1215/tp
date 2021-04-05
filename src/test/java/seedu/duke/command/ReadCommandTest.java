@@ -26,8 +26,10 @@ public class ReadCommandTest {
     @BeforeEach
     public void setUp() {
         System.setOut(new PrintStream(outputStreamCaptor));
-        emails.add(new Inbox("123@gmail.com", "456@gmail.com", "S1", "2012-01-01", "C1"));
-        emails.add(new Inbox("123@gmail.com", "456@gmail.com", "S2", "2012-01-02", "C2"));
+        ArrayList<String> to = new ArrayList<>();
+        to.add("456@gmail.com");
+        emails.add(new Inbox("123@gmail.com", to, "S1", "2012-01-01", "C1", false));
+        emails.add(new Inbox("123@gmail.com", to, "S2", "2012-01-02", "C2", false));
         emailManager.setListedEmailsList(emails);
 
     }

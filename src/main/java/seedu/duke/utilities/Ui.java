@@ -143,25 +143,6 @@ public class Ui {
         System.out.println("Please enter one of: [sender, time] after \"sort\".");
     }
 
-    public String printTag() {
-        String[] tags = Email.getAvailableTags();
-        System.out.println("These are the available tags: ");
-        for (int i = 0; i < tags.length; i++) {
-            System.out.println(i + 1 + ". " + tags[i]);
-        }
-
-        System.out.println("Select the indices of the tag you want to add.");
-        System.out.println("e.g. Type \"1 2 6\" to add the tags Important, Family, Travels");
-        printDivider();
-
-        String inputLine = in.nextLine();
-        while (inputLine.trim().isEmpty()) {
-            inputLine = in.nextLine();
-        }
-        printDivider();
-        return inputLine;
-    }
-
     public static void printErrorMessage(String... messages) {
         System.out.println(errorLine);
         System.out.println("Error Message: ");
@@ -171,7 +152,7 @@ public class Ui {
         System.out.println(errorLine);
     }
 
-    public void printGoodBye(){
+    public void printGoodBye() {
         System.out.println("Logging off... Hope to see you again in MojoHr!");
     }
 }

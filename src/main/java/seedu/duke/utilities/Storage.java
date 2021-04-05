@@ -53,7 +53,7 @@ public class Storage {
         return pwd;
     }
 
-    public ArrayList<Email> load() throws IOException, ParseException, NullPointerException{
+    public ArrayList<Email> load() throws IOException, ParseException, NullPointerException {
         try {
             JSONObject accountInfo = readJson();
             pwd = getPassword(accountInfo);
@@ -64,10 +64,17 @@ public class Storage {
         }
         return null;
     }
+
     /**
+     * Opens and reads JSON file from the hard disk.
+     * The content of the file is parsed into JSON object
+     * before it is returned.
      *
+     * @return The content parsed as JSON object
      * @throws IOException if failed to create directory 'data'.
+     * @throws ParseException if file is corrupted.
      */
+
     public JSONObject readJson() throws IOException, ParseException {
         String localDir = System.getProperty("user.dir");
         Path dirPath = Paths.get(localDir, "data");
@@ -90,7 +97,7 @@ public class Storage {
 
     }
 
-    public ArrayList<Email> parse(JSONObject jsonObject) throws NullPointerException{
+    public ArrayList<Email> parse(JSONObject jsonObject) throws NullPointerException {
         ArrayList<Email> allEmails = new ArrayList<>();
         ArrayList<String> emailType = new ArrayList<>();
         for (Object key : jsonObject.keySet()) {
@@ -104,46 +111,42 @@ public class Storage {
             try {
                 while (iterator.hasNext()) {
                     Map e = iterator.next();
+                    String from = e.get("from").toString();
+                    ArrayList<String> to = getToArrayList((JSONArray) e.get("to"));
+                    String subject = e.get("subject").toString();
+                    String time = e.get("time").toString();
+                    String content = e.get("content").toString();
+                    boolean isRead = getRead(e.get("read").toString());
+
                     switch (type) {
                     case "inbox":
-                        Inbox inboxEmail = new Inbox(e.get("from").toString(),
-                                getToArrayList((JSONArray) e.get("to")),
-                                e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
+                        Inbox inboxEmail = new Inbox(from, to, subject, time, content, isRead);
                         allEmails.add(inboxEmail);
                         break;
                     case "drafts":
-                        Draft draftEmail = new Draft(e.get("from").toString(),
-                                getToArrayList((JSONArray) e.get("to")),
-                                e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
+                        Draft draftEmail = new Draft(from, to, subject, time, content, isRead);
                         allEmails.add(draftEmail);
                         break;
                     case "archive":
-                        Archive archiveEmail = new Archive(e.get("from").toString(),
-                                getToArrayList((JSONArray) e.get("to")),
-                                e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
+                        Archive archiveEmail = new Archive(from, to, subject, time, content, isRead);
                         allEmails.add(archiveEmail);
                         break;
                     case "sent":
-                        Sent sentEmail = new Sent(e.get("from").toString(), getToArrayList((JSONArray) e.get("to")),
-                                e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
+                        Sent sentEmail = new Sent(from, to, subject, time, content, isRead);
                         allEmails.add(sentEmail);
                         break;
                     case "deleted":
-                        Deleted deletedEmail = new Deleted(e.get("from").toString(),
-                                getToArrayList((JSONArray) e.get("to")),
-                                e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
+                        Deleted deletedEmail = new Deleted(from, to, subject, time, content, isRead);
                         allEmails.add(deletedEmail);
                         break;
                     case "junk":
 
-                        Junk junkEmail = new Junk(e.get("from").toString(), getToArrayList((JSONArray) e.get("to")),
-                                e.get("subject").toString(), e.get("time").toString(), e.get("content").toString());
+                        Junk junkEmail = new Junk(from, to, subject, time, content, isRead);
                         allEmails.add(junkEmail);
                         break;
                     default:
                         break;
                     }
-
                 }
             } catch (NullPointerException e) {
                 throw e;
@@ -159,6 +162,17 @@ public class Storage {
             toArrayList.add(to);
         }
         return toArrayList;
+    }
+
+    private boolean getRead(String readString) {
+        switch (readString) {
+        case "o":
+            return true;
+        case "x":
+            return false;
+        default:
+            throw new NullPointerException();
+        }
     }
 
     public String getPassword(JSONObject jsonObject) {
@@ -178,7 +192,7 @@ public class Storage {
         JSONArray sentList = new JSONArray();
         JSONArray draftList = new JSONArray();
 
-        for (Email email: emails) {
+        for (Email email : emails) {
             if (email instanceof Inbox) {
                 inboxList.add(createJsonObj(email));
             }
@@ -212,7 +226,7 @@ public class Storage {
 
         emailObj.put("subject", email.getSubject());
         emailObj.put("from", email.getFrom());
-        for (String to: email.getTo()) {
+        for (String to : email.getTo()) {
             toList.add(to);
         }
         emailObj.put("to", toList);
@@ -222,6 +236,7 @@ public class Storage {
     }
 
     private <T> void updateEmails(String key, T newValue) {
+
         try {
             FileReader reader = new FileReader(filePath);
             JSONParser jsonParser = new JSONParser();
@@ -253,6 +268,7 @@ public class Storage {
             JSONArray draftList = new JSONArray();
             js.put("account", emailAccount);
             js.put("password", pwd);
+            js.put("read", "x");
             js.put("inbox", inboxList);
             js.put("deleted", deletedList);
             js.put("junk", junkList);

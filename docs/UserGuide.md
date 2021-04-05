@@ -8,7 +8,7 @@ The HR department receives many emails from job seekers. A large portion of thei
 
 1. Ensure that you have Java 11 or above installed.
    
-2. Down the latest version of `MojoHr` from [here](https://github.com/AY2021S2-CS2113-W10-2/tp/releases).
+2. Download the latest version of `MojoHr` from [here](https://github.com/AY2021S2-CS2113-W10-2/tp/releases).
    
 3. Download the sample test datasets `data.zip` folder from [here](https://github.com/AY2021S2-CS2113-W10-2/tp/releases)
    and unzip it.
@@ -143,6 +143,7 @@ Format: `read INDEX`
 
 * The `INDEX` refers to the index number shown in the displayed email list.
 * The `INDEX` **must be a positive integer** 1, 2, 3, …
+* User must `list emails` first before they can read an email.
 
 Example of usage:
 ````
@@ -176,7 +177,7 @@ Format: `delete INDEX`
 * The `INDEX` refers to the index number shown in the displayed email list.
 * The `INDEX` **must be a positive integer** 1, 2, 3, …
 
-* If the displayed email list if not junk emails, move the email at the specified `INDEX` to the junk box. 
+* If the displayed email list is not junk emails, move the email at the specified `INDEX` to the junk box. 
 * If the displayed email list is junk emails, remove the email at the specified `INDEX` from the account forever.
 
 
@@ -220,7 +221,7 @@ Format: `archive INDEX`
 * The `INDEX` refers to the index number shown in the displayed email list.
 * The `INDEX` **must be a positive integer** 1, 2, 3, …
 
-* If the displayed email list if not archived emails, move the email at the specified `INDEX` to the archive box.
+* If the displayed email list is not archived emails, move the email at the specified `INDEX` to the archive box.
 * If the displayed email list is archived emails, no action will be done.
 
 
@@ -300,10 +301,14 @@ ____________________________________________________________
 ### tagging an email: `tag`
 Tag an email with labels
 
-Format: `tag INDEX`
+Format: `tag INDEX TAG1 TAG2 ...`
 
 * The `INDEX` refers to the index number shown in the displayed email list.
-* The `INDEX` **must be a positive integer** 1, 2, 3, …
+* The `INDEX` **must be a positive integer** 1, 2, 3, … 
+* The `TAG#` is a single word label that user wants to add.
+* User can add multiple tags to their email.
+* This command overwrites the old tag(s).
+* User must `list emails` first before they can read an email.
 
 Example of usage:
 ````
