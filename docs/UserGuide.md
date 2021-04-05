@@ -111,8 +111,9 @@ list different types of emails
 
 Format: `list TYPE`
 * The `TYPE` refers to the type of emails they you want to display
-* `TYPE` are limited to `list emails`, `list inbox`, `list archive`, `list deleted`, `list draft`, `list junk`, `list sent`
+* `TYPES` are limited to `list allemails`, `list inbox`, `list archive`, `list deleted`, `list draft`, `list junk`, `list sent`
 * If you are a new user, you will have to compose some emails, if not email account is empty and `list TYPE` will return be empty 
+
 
 Example of usage
 ```____________________________________________________________
@@ -573,7 +574,7 @@ Hello! I'm MojoHR
 |_| |_| |_| |_____| |___|   |_____|
 What can I do for you?
 > Use the keyword "LIST (type) " to print the emails by types
-!!! type must be one of: [emails, inbox, archive, deleted, draft, junk, sent]!!!
+!!! type must be one of: [allemails, inbox, archive, deleted, draft, junk, sent]!!!
 > Use the keyword "READ (index) " to open the selected email
 > Use the keyword "COMPOSE " to create a draft email
 > Use the keyword "SEND (index of draft) " to send email in the draft folder
@@ -624,3 +625,22 @@ Logging off... Hope to see you again in MojoHr!
 * Exit application `bye`
 
 
+| Command             | Example                                                                                                    |
+|---------------------|------------------------------------------------------------------------------------------------------------|
+| **Login**           |   
+|log in               | Enter Choice: `1`  <br/> Email Address: `12321@gmail.com` <br/> Password:`5678` 
+|Register as new user | Enter Choice: `2`  <br/> Email Address: `joey@gmail.com` <br/> Password:`9999`           
+|Log out              | Enter Choice: `3`    
+| **List Command**    |                                                                                                            |
+|emails               | `list emails`
+|inbox                | `list inbox` 
+|archive              | `list archive`  
+|deleted              | `list deleted`   
+|draft                | `list draft`  
+|junk                 | `list junk`  
+|sent                 | `list sent`  
+| **Help Command**    |
+|help                 | `help`
+| **Bye Command**     |
+|bye                  | `bye`       
+       
