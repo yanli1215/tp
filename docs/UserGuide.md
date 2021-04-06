@@ -1,4 +1,4 @@
-# User Guide
+# MojoHR User Guide
 
 ## Introduction
 
