@@ -1,4 +1,29 @@
-# User Guide
+# MojoHr User Guide
+
+## Content Page
+1. [Introduction](#introduction)
+1. [Quick Start](#quick-start)
+1. [Logging in](#logging-in)
+   1. [Log in to Main Application](#log-in-to-main-application-1)
+   1. [Register as a New User](#register-as-a-new-user-2)
+   1. [Exit Application before log in](#exit-application-before-log-in-3)
+1. [Features](#features)
+   1. [Listing an Email](#listing-an-email-list)
+   1. [Opening an Email](#opening-an-email-read)
+   1. [Deleting an Email](#deleting-an-email-delete) 
+   1. [Archiving an Email](#archiving-an-email-archive)
+   1. [Finding an Email](#finding-an-email-find)
+   1. [Tagging an Email](#tagging-an-email-tag)
+   1. [Composing an Email](#composing-an-email-compose)
+   1. [Sending an Email](#sending-an-email-send)
+   1. [Editing an Email](#editing-an-email-edit)
+   1. [Counting Number of Email](#count-number-of-email-number)
+   1. [Sorting an Email](#sorting-an-email-sort)
+   1. [Resetting the Password](#resetting-the-password-reset)
+   1. [Printing the Help Menu](#printing-the-help-menu-help)
+   1. [Exiting the Application](#exiting-the-application-bye)
+1. [FAQ](#faq)
+1. [Command Summary](#command-summary)
 
 ## Introduction
 
@@ -23,7 +48,7 @@ The HR department receives many emails from job seekers. A large portion of thei
 
 
 
-## Login Features
+## Logging in
 ### Log in to main application: `1`
 
 Format
@@ -104,7 +129,7 @@ Logging off... Hope to see you again in MojoHr!
 
 ```
 
-## Within Application Features 
+## Features
 
 ### listing an email: `list`
 list different types of emails
@@ -638,7 +663,11 @@ Logging off... Hope to see you again in MojoHr!
 |deleted              | `list deleted`   
 |draft                | `list draft`  
 |junk                 | `list junk`  
-|sent                 | `list sent`  
+|sent                 | `list sent`
+| **Read Command**    |
+|read                 | `read INDEX`
+| **Tag Command**     |
+|tag                  | `tag INDEX TAG1 TAG2 ...`
 | **Help Command**    |
 |help                 | `help`
 | **Bye Command**     |

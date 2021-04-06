@@ -1,4 +1,5 @@
 @startuml
+
 package Email <<Rectangle>>{
 class Email
 class Archive
