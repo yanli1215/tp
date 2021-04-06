@@ -34,8 +34,7 @@ public class TagCommand extends Command {
             ArrayList<String> tags = extractTags();
             Email email = listedEmails.get(index - 1);
             email.setTags(tags);
-            String feedback = "You have successfully set the following tags " + tags.toString();
-            ui.printFeedback(feedback);
+            System.out.println("You have successfully set the following tags " + tags.toString());
             storage.updateAllTypeEmails(emails.getEmailsList());
         } catch (InvalidIndexException e) {
             e.showErrorMessage("TAG");
