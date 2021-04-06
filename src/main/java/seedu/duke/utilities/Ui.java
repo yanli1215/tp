@@ -120,7 +120,7 @@ public class Ui {
         System.out.println("OOPS!!! The Email ID that you " + type + " is invalid.");
     }
 
-    public void showMessageForInvalidCommandInput() {
+    public void showInvalidCommandInputMessage() {
         System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(!");
     }
 
@@ -155,5 +155,22 @@ public class Ui {
 
     public void printGoodBye() {
         System.out.println("Logging off... Hope to see you again in MojoHr!");
+    }
+
+    public void showMissingInputMessage() {
+        System.out.println("Draft not saved due to missing line");
+    }
+
+    public void showMissingSubjectMessage() {
+        System.out.println("Warning: No subject detected");
+    }
+
+    public void showMissingContentMessage() {
+        System.out.println("Warning: No content detected");
+    }
+
+    public void showInvalidEmailAddressMessage() {
+        System.out.println("Warning: Incomplete email address of invalid email domain.");
+        System.out.println("Supported Email domains are: [gmail.com, yahoo.com, outlook.com, hotmail.com]");
     }
 }
