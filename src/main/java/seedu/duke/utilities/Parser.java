@@ -68,6 +68,20 @@ public class Parser {
         }
     }
 
+    public static boolean checkEmailValidity(String userInput) {
+
+        String email = userInput.trim();
+        if (!(email.endsWith("@outlook.com") || email.endsWith("@hotmail.com") ||
+                email.endsWith("@gmail.com") || email.endsWith("@yahoo.com"))) {
+            return false;
+        }
+        if (email.startsWith("@")) {
+            return false;
+        }
+
+        return true;
+    }
+
     public static int extractIndex(String userInput) throws InvalidIndexException {
         try {
             String[] cmdArg = userInput.split(" ", 2);
