@@ -131,7 +131,14 @@ and allow HR personnel to focus on more productive things
 |Version| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
 |v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
-|v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|
+|v2.0|new user|register an account|log into MojoHR|
+|v2.0|beginner|log into my account|check my emails|
+|v2.0|medium user|edit my drafts|create a new draft and delete the previous one when the draft is wrong|
+|v2.0|medium user|tag emails by self-defined tags|group related emails together and find them easily|
+|v2.0|medium user|sort emails by the sender|find all the emails sent by my supervisor|
+|v2.0|medium user|find emails by keywords|get what email I want more efficiently|
+|v2.0|expert user|send messages in bulk|finish more tasks more quickly|
+|v2.0|expert user|reset the password|change the password to whatever I want|
 
 ## Non-Functional Requirements
 
