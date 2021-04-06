@@ -169,29 +169,31 @@ Format: `read INDEX`
 
 * The `INDEX` refers to the index number shown in the displayed email list.
 * The `INDEX` **must be a positive integer** 1, 2, 3, …
-* User must `list emails` first before they can read an email.
+* User must `list TYPE` first before they can read an email.
 
 Example of usage:
 ````
 ____________________________________________________________
-Enter Command:
-list inbox
-____________________________________________________________
-1. [Inbox][UNREAD]
-   || Subject: This is subject 1
-   || From: 21312@gmail.com --> To: [12312@gmail.com]
-   || Time: 2021-02-20T06:30:00
-   || Tags: [Important, Work]
+1. [Archive][UNREAD]
+|| Subject: This is subject 5
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T10:30:00
+|| Tags: []
+2. [Archive][UNREAD]
+|| Subject: This is subject 6
+|| From: 11312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T11:30:00
+|| Tags: []
 ____________________________________________________________
 Enter Command:
 read 1
 ____________________________________________________________
-[Inbox][READ]
-|| Subject: This is subject 1
+[Archive][READ]
+|| Subject: This is subject 5
 || From: 21312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T06:30:00
-|| Tags: [Important, Work]
-|| Content: Welcome to MOJO HR.
+|| Time: 2021-02-20T10:30:00
+|| Tags: []
+|| Content: This is content for s5.
 ____________________________________________________________
 ````
 
@@ -333,44 +335,30 @@ Format: `tag INDEX TAG1 TAG2 ...`
 * The `INDEX` **must be a positive integer** 1, 2, 3, … 
 * The `TAG#` is a single word label that user wants to add.
 * User can add multiple tags to their email.
-* This command overwrites the old tag(s).
-* User must `list emails` first before they can read an email.
+* This will overwrite the old tag(s).
+* User must `list TYPE` first before they can read an email.
 
 Example of usage:
 ````
 ____________________________________________________________
 Enter Command:
-list inbox
+list draft
 ____________________________________________________________
-1. [Inbox][UNREAD]
-|| Subject: This is subject 1
+1. [Draft][UNREAD]
+|| Subject: This is subject 3
 || From: 21312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T06:30:00
+|| Time: 2021-02-20T08:30:00
+|| Tags: []
+2. [Draft][UNREAD]
+|| Subject: LilySubject
+|| From: 12312@gmail.com --> To: [lily@gmail.com]
+|| Time: 2021-03-30T15:30:09
 || Tags: []
 ____________________________________________________________
 Enter Command:
-tag 1
+tag 1 CS2113 PE
 ____________________________________________________________
-You have selected this email:
-[Inbox][UNREAD]
-|| Subject: This is subject 1
-|| From: 21312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T06:30:00
-|| Tags: []
-____________________________________________________________
-These are the available tags: 
-1. Important
-2. Family
-3. Friends
-4. School
-5. Work
-6. Travels
-Select the indices of the tag you want to add.
-e.g. Type "1 2 6" to add the tags Important, Family, Travels
-____________________________________________________________
-tag 1 5
-____________________________________________________________
-You have successfully set the following tags [Important, Work]
+You have successfully set the following tags [CS2113, PE]
 ____________________________________________________________
 ````
 
