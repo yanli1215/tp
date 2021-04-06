@@ -49,8 +49,16 @@ public class TagCommand extends Command {
         return new ArrayList<>(Arrays.asList(tags));
     }
 
-    private int extractIndex() {
-        String[] argList = userInput.split(" ", 3);
-        return Integer.parseInt(argList[1]);
+    private int extractIndex() throws InvalidIndexException {
+        int index;
+        try{
+            String[] argList = userInput.split(" ", 3);
+            index = Integer.parseInt(argList[1]);
+        }
+        catch (NumberFormatException e){
+            throw new InvalidIndexException();
+        }
+
+        return index;
     }
 }
