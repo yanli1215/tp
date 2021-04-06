@@ -24,6 +24,7 @@ import seedu.duke.login.LoginController;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.TreeSet;
 
 
 public class Parser {
@@ -103,15 +104,21 @@ public class Parser {
 
     public static int[] extractMultipleIndices(String userInput) throws InvalidIndexException {
         try {
+            TreeSet<Integer> set = new TreeSet<>();
             String[] indicesStr = userInput.split(" ");
-            int[] indices = new int[indicesStr.length];
             for (int i = 0; i < indicesStr.length; i++) {
-                indices[i] = Integer.parseInt(indicesStr[i].trim());
+                set.add(Integer.parseInt(indicesStr[i].trim()));
             }
-            return indices;
+            return intSetToArray(set);
         } catch (NumberFormatException e) {
             throw new InvalidIndexException();
         }
+    }
+
+    private static int[] intSetToArray(TreeSet<Integer> set) {
+        return set.stream()
+                .mapToInt(i->i)
+                .toArray();
     }
 
     public static ArrayList<Email> getTypeToList(EmailManager emailManager, String userInput) {
