@@ -51,11 +51,10 @@ public class TagCommand extends Command {
 
     private int extractIndex() throws InvalidIndexException {
         int index;
-        try{
+        try {
             String[] argList = userInput.split(" ", 3);
             index = Integer.parseInt(argList[1]);
-        }
-        catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new InvalidIndexException();
         }
 

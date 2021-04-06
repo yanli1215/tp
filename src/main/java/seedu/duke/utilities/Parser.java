@@ -117,7 +117,7 @@ public class Parser {
 
     private static int[] intSetToArray(TreeSet<Integer> set) {
         return set.stream()
-                .mapToInt(i->i)
+                .mapToInt(i -> i)
                 .toArray();
     }
 
@@ -162,7 +162,8 @@ public class Parser {
      * @param recipientsString String containing multiple recipients
      * @return list of recipients
      */
-    public static ArrayList<String> parseRecipients(String recipientsString) throws InvalidEmailAddressException, EmailNotExistException {
+    public static ArrayList<String> parseRecipients(String recipientsString)
+            throws InvalidEmailAddressException, EmailNotExistException {
         String[] recipients = recipientsString.trim().split(";");
         for (String recipient : recipients) {
             checkRecipientValid(recipient);
@@ -170,13 +171,14 @@ public class Parser {
         return new ArrayList<>(Arrays.asList(recipients));
     }
 
-    private static void checkRecipientValid(String recipient) throws InvalidEmailAddressException, EmailNotExistException {
+    private static void checkRecipientValid(String recipient)
+            throws InvalidEmailAddressException, EmailNotExistException {
         LoginController lc = new LoginController();
         if (!checkEmailValidity(recipient)) {
             throw new InvalidEmailAddressException(recipient);
         }
-        if(!lc.checkUserIdExists(recipient)){
-             throw new EmailNotExistException(recipient);
+        if (!lc.checkUserIdExists(recipient)) {
+            throw new EmailNotExistException(recipient);
         }
     }
 }

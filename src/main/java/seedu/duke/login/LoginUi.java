@@ -51,7 +51,7 @@ public class LoginUi extends Ui {
             }
         } catch (InputMismatchException e) {
             printErrorMessage("You need to enter an integer that is either 1, 2 or 3! Please try again!");
-            getLoginInfo();
+            loginInfo = getLoginInfo();
         }
         assert loginInfo != null : "loginInfo is still null ";
         return loginInfo;
