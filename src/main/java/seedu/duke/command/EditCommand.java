@@ -2,10 +2,11 @@ package seedu.duke.command;
 
 import com.sun.jdi.InvalidTypeException;
 import seedu.duke.email.EmailManager;
+import seedu.duke.exceptions.EmailNotExistException;
+import seedu.duke.exceptions.InvalidEmailAddressException;
 import seedu.duke.utilities.Parser;
 import seedu.duke.utilities.Storage;
 import seedu.duke.utilities.Ui;
-import seedu.duke.email.Draft;
 import seedu.duke.email.Email;
 import seedu.duke.exceptions.InvalidIndexException;
 
@@ -62,10 +63,14 @@ public class EditCommand extends Command {
         } catch (InvalidTypeException e) {
             ui.showMessageForInvalidEditTypeInput();
             LOGGER.log(Level.SEVERE, "Exception occurred", e);
+        } catch (InvalidEmailAddressException | EmailNotExistException e) {
+            System.out.println(e.getMessage());
+            LOGGER.log(Level.SEVERE, "Exception occurred", e);
         }
     }
 
-    private void processEditCommand(Email draftEmail, Scanner in, String editType) throws InvalidTypeException {
+    private void processEditCommand(Email draftEmail, Scanner in, String editType)
+            throws InvalidTypeException, InvalidEmailAddressException, EmailNotExistException {
         switch (editType) {
         case "to":
             ArrayList<String> to = Parser.parseRecipients(in.nextLine());

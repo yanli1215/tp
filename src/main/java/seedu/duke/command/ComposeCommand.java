@@ -8,6 +8,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import seedu.duke.email.EmailManager;
+import seedu.duke.exceptions.EmailNotExistException;
+import seedu.duke.exceptions.InvalidEmailAddressException;
 import seedu.duke.utilities.Parser;
 import seedu.duke.utilities.Storage;
 import seedu.duke.utilities.Ui;
@@ -44,6 +46,8 @@ public class ComposeCommand extends Command {
             ui.printEmailDrafted(draftEmail);
         } catch (NullPointerException e) {
             System.out.println("Draft not saved due to missing line");
+        } catch (InvalidEmailAddressException | EmailNotExistException e) {
+            System.out.println(e.getMessage());
         }
     }
 

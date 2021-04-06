@@ -17,7 +17,10 @@ import seedu.duke.command.SortCommand;
 import seedu.duke.command.TagCommand;
 import seedu.duke.email.Email;
 import seedu.duke.email.EmailManager;
+import seedu.duke.exceptions.EmailNotExistException;
+import seedu.duke.exceptions.InvalidEmailAddressException;
 import seedu.duke.exceptions.InvalidIndexException;
+import seedu.duke.login.LoginController;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -71,8 +74,8 @@ public class Parser {
     public static boolean checkEmailValidity(String userInput) {
 
         String email = userInput.trim();
-        if (!(email.endsWith("@outlook.com") || email.endsWith("@hotmail.com") ||
-                email.endsWith("@gmail.com") || email.endsWith("@yahoo.com"))) {
+        if (!(email.endsWith("@outlook.com") || email.endsWith("@hotmail.com")
+                || email.endsWith("@gmail.com") || email.endsWith("@yahoo.com"))) {
             return false;
         }
         if (email.startsWith("@")) {
@@ -146,12 +149,27 @@ public class Parser {
 
     /**
      * Converts a string containing multiple recipients to
-     * a list of recipients.
+     * a list of recipients. Also ensures that the email
+     * addresses are valid emails.
      *
      * @param recipientsString String containing multiple recipients
      * @return list of recipients
      */
-    public static ArrayList<String> parseRecipients(String recipientsString) {
-        return new ArrayList<>(Arrays.asList(recipientsString.trim().split(";")));
+    public static ArrayList<String> parseRecipients(String recipientsString) throws InvalidEmailAddressException, EmailNotExistException {
+        String[] recipients = recipientsString.trim().split(";");
+        for (String recipient : recipients) {
+            checkRecipientValid(recipient);
+        }
+        return new ArrayList<>(Arrays.asList(recipients));
+    }
+
+    private static void checkRecipientValid(String recipient) throws InvalidEmailAddressException, EmailNotExistException {
+        LoginController lc = new LoginController();
+        if (!checkEmailValidity(recipient)) {
+            throw new InvalidEmailAddressException(recipient);
+        }
+        if(!lc.checkUserIdExists(recipient)){
+             throw new EmailNotExistException(recipient);
+        }
     }
 }
