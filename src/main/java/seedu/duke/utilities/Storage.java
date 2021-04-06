@@ -231,7 +231,7 @@ public class Storage {
         }
         emailObj.put("to", toList);
         emailObj.put("time", email.getTime());
-        emailObj.put("read", email.isRead()?"o":"x");
+        emailObj.put("read", email.isRead() ? "o" : "x");
         emailObj.put("content", email.getContent());
         return emailObj;
     }
