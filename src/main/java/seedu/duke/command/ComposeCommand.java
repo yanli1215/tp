@@ -37,9 +37,9 @@ public class ComposeCommand extends Command {
             String time = String.valueOf(LocalDateTime.now().withNano(0));
             Email draftEmail = new Draft(userEmail, to, subject, time, content, false);
             emails.addToDraft(draftEmail);
-            checkEmailValidity(to, ui);
-            checkSubjectValidity(subject, ui);
-            checkContentValidity(content, ui);
+            checkEmailValidity(to);
+            checkSubjectValidity(subject);
+            checkContentValidity(content);
             storage.updateAllTypeEmails(emails.getEmailsList());
             ui.printEmailDrafted(draftEmail);
         } catch (NullPointerException e) {
@@ -47,21 +47,21 @@ public class ComposeCommand extends Command {
         }
     }
 
-    private void checkSubjectValidity(String subject, Ui ui) {
+    private void checkSubjectValidity(String subject) {
         if (subject.isBlank()) {
-            ui.showMissingSubjectMessage();
+            Ui.showMissingSubjectMessage();
         }
     }
 
-    private void checkContentValidity(String content, Ui ui) {
+    private void checkContentValidity(String content) {
         if (content.isBlank()) {
-            ui.showMissingContentMessage();
+            Ui.showMissingContentMessage();
         }
     }
 
-    private void checkEmailValidity(ArrayList<String> to, Ui ui) {
+    private void checkEmailValidity(ArrayList<String> to) {
         if (!Parser.checkEmailsValidity(to)) {
-            ui.showInvalidEmailAddressMessage();
+           Ui.showInvalidEmailAddressMessage();
         }
     }
 

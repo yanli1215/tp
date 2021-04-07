@@ -157,19 +157,19 @@ public class Ui {
         System.out.println("Logging off... Hope to see you again in MojoHr!");
     }
 
-    public void showMissingInputMessage() {
+    public static void showMissingInputMessage() {
         System.out.println("Draft not saved due to missing line");
     }
 
-    public void showMissingSubjectMessage() {
+    public static void showMissingSubjectMessage() {
         System.out.println("Warning: No subject detected");
     }
 
-    public void showMissingContentMessage() {
+    public static void showMissingContentMessage() {
         System.out.println("Warning: No content detected");
     }
 
-    public void showInvalidEmailAddressMessage() {
+    public static void showInvalidEmailAddressMessage() {
         System.out.println("Warning: Incomplete email address of invalid email domain.");
         System.out.println("Supported Email domains are: [gmail.com, yahoo.com, outlook.com, hotmail.com]");
     }
