@@ -62,6 +62,9 @@ public class SendCommand extends Command {
                 ui.printEmailSent(draftEmail);
             } catch (InvalidEmailAddressException | EmailNotExistException e) {
                 System.out.println(e.getMessage());
+                System.out.println("This email is not sent:");
+                System.out.println(draftEmail.getShortDescription());
+                System.out.println("");
             }
         }
         storage.updateAllTypeEmails(emails.getEmailsList());

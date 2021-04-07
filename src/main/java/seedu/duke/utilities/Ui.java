@@ -62,7 +62,7 @@ public class Ui {
         System.out.println("Content:");
         System.out.println("You can send to multiple recipents by appending emails with \";\"");
         System.out.println("e.g: Alice@gmail.com;Bob@gmail.com");
-        System.out.println("You should end content by typing \"/end\"");
+        System.out.println("You should end content by typing \"/end\" in a newline");
         printDivider();
     }
 
@@ -170,7 +170,7 @@ public class Ui {
     }
 
     public static void showInvalidEmailAddressMessage() {
-        System.out.println("Warning: Incomplete email address of invalid email domain.");
+        System.out.println("Warning: Incomplete email address or invalid email domain.");
         System.out.println("Supported Email domains are: [gmail.com, yahoo.com, outlook.com, hotmail.com]");
     }
 }
