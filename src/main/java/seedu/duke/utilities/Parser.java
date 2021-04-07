@@ -17,10 +17,14 @@ import seedu.duke.command.SortCommand;
 import seedu.duke.command.TagCommand;
 import seedu.duke.email.Email;
 import seedu.duke.email.EmailManager;
+import seedu.duke.exceptions.EmailNotExistException;
+import seedu.duke.exceptions.InvalidEmailAddressException;
 import seedu.duke.exceptions.InvalidIndexException;
+import seedu.duke.login.LoginController;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.TreeSet;
 
 
 public class Parser {
@@ -115,15 +119,21 @@ public class Parser {
 
     public static int[] extractMultipleIndices(String userInput) throws InvalidIndexException {
         try {
+            TreeSet<Integer> set = new TreeSet<>();
             String[] indicesStr = userInput.split(" ");
-            int[] indices = new int[indicesStr.length];
             for (int i = 0; i < indicesStr.length; i++) {
-                indices[i] = Integer.parseInt(indicesStr[i].trim());
+                set.add(Integer.parseInt(indicesStr[i].trim()));
             }
-            return indices;
+            return intSetToArray(set);
         } catch (NumberFormatException e) {
             throw new InvalidIndexException();
         }
+    }
+
+    private static int[] intSetToArray(TreeSet<Integer> set) {
+        return set.stream()
+                .mapToInt(i -> i)
+                .toArray();
     }
 
     public static ArrayList<Email> getTypeToList(EmailManager emailManager, String userInput) {
@@ -159,9 +169,11 @@ public class Parser {
         return emailsToPrint;
     }
 
+
     /**
      * Converts a string containing multiple recipients to
-     * a list of recipients.
+     * a list of recipients. Also ensures that the email
+     * addresses are valid emails.
      *
      * @param recipientsString String containing multiple recipients
      * @return list of recipients

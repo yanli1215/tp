@@ -34,8 +34,7 @@ public class TagCommand extends Command {
             ArrayList<String> tags = extractTags();
             Email email = listedEmails.get(index - 1);
             email.setTags(tags);
-            String feedback = "You have successfully set the following tags " + tags.toString();
-            ui.printFeedback(feedback);
+            System.out.println("You have successfully set the following tags " + tags.toString());
             storage.updateAllTypeEmails(emails.getEmailsList());
         } catch (InvalidIndexException e) {
             e.showErrorMessage("TAG");
@@ -49,8 +48,15 @@ public class TagCommand extends Command {
         return new ArrayList<>(Arrays.asList(tags));
     }
 
-    private int extractIndex() {
-        String[] argList = userInput.split(" ", 3);
-        return Integer.parseInt(argList[1]);
+    private int extractIndex() throws InvalidIndexException {
+        int index;
+        try {
+            String[] argList = userInput.split(" ", 3);
+            index = Integer.parseInt(argList[1]);
+        } catch (NumberFormatException e) {
+            throw new InvalidIndexException();
+        }
+
+        return index;
     }
 }

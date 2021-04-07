@@ -102,11 +102,11 @@ public class Ui {
                 + "!!! type must be one of: [allemails, inbox, archive, deleted, draft, junk, sent]!!!");
         System.out.println("> Use the keyword \"READ (index) \" to open the selected email");
         System.out.println("> Use the keyword \"COMPOSE \" to create a draft email");
-        System.out.println("> Use the keyword \"SEND (index of draft) \" to send email in the draft folder");
+        System.out.println("> Use the keyword \"SEND (index) \" to send email in the draft folder");
         System.out.println("> Use the keyword \"DELETE (index) \" to delete the selected email");
         System.out.println("> Use the keyword \"FIND (keyword) \" to find the  email by keywords");
         System.out.println("> Use the keyword \"ARCHIVE (index) \" to move the selected email to the archive folder");
-        System.out.println("> Use the keyword \"TAG (index)\" to select the email for tagging labels");
+        System.out.println("> Use the keyword \"TAG (index) (tag1) (tag2)...\" to select the email for tagging labels");
         System.out.println("> Use the keyword \"RESET\" to reset the your account password");
         System.out.println("> Use the keyword \"HELP\" to print the menu");
         System.out.println("> Use the keyword \"BYE\" to exit");

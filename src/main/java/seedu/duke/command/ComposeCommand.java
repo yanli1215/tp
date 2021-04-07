@@ -11,7 +11,6 @@ import seedu.duke.utilities.Storage;
 import seedu.duke.utilities.Ui;
 import seedu.duke.email.Draft;
 import seedu.duke.email.Email;
-import seedu.duke.exceptions.InvalidEmailException;
 
 public class ComposeCommand extends Command {
 
@@ -64,5 +63,4 @@ public class ComposeCommand extends Command {
             Ui.showInvalidEmailAddressMessage();
         }
     }
-
 }

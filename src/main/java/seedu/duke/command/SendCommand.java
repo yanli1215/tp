@@ -1,10 +1,12 @@
 package seedu.duke.command;
 
 import seedu.duke.email.EmailManager;
+import seedu.duke.exceptions.EmailNotExistException;
+import seedu.duke.exceptions.InvalidEmailAddressException;
+import seedu.duke.login.LoginController;
 import seedu.duke.utilities.Parser;
 import seedu.duke.utilities.Storage;
 import seedu.duke.utilities.Ui;
-import seedu.duke.email.Draft;
 import seedu.duke.email.Email;
 import seedu.duke.exceptions.InvalidIndexException;
 
@@ -50,11 +52,43 @@ public class SendCommand extends Command {
         assert sendEmailList != null : "sendEmailList in SendCommand is still null.";
 
         for (Email draftEmail : sendEmailList) {
-            draftEmail.setTime(String.valueOf(LocalDateTime.now().withNano(0)));
-            emails.deleteEmail(draftEmail);
-            emails.addToSent(draftEmail);
-            ui.printEmailSent(draftEmail);
+            try {
+                checkRecipientsValidity(draftEmail);
+                checkSubjectValidity(draftEmail.getSubject());
+                checkContentValidity(draftEmail.getContent());
+                draftEmail.setTime(String.valueOf(LocalDateTime.now().withNano(0)));
+                emails.deleteEmail(draftEmail);
+                emails.addToSent(draftEmail);
+                ui.printEmailSent(draftEmail);
+            } catch (InvalidEmailAddressException | EmailNotExistException e) {
+                System.out.println(e.getMessage());
+            }
         }
         storage.updateAllTypeEmails(emails.getEmailsList());
+    }
+
+    private void checkRecipientsValidity(Email draftEmail)
+            throws InvalidEmailAddressException, EmailNotExistException {
+        LoginController lc = new LoginController();
+        for (String recipient : draftEmail.getTo()) {
+            if (!Parser.checkEmailValidity(recipient)) {
+                throw new InvalidEmailAddressException(recipient);
+            }
+            if (!lc.checkUserIdExists(recipient)) {
+                throw new EmailNotExistException(recipient);
+            }
+        }
+    }
+
+    private void checkSubjectValidity(String subject) {
+        if (subject.isBlank()) {
+            Ui.showMissingSubjectMessage();
+        }
+    }
+
+    private void checkContentValidity(String content) {
+        if (content.isBlank()) {
+            Ui.showMissingContentMessage();
+        }
     }
 }
