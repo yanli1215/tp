@@ -61,7 +61,7 @@ public class ComposeCommand extends Command {
 
     private void checkEmailValidity(ArrayList<String> to) {
         if (!Parser.checkEmailsValidity(to)) {
-           Ui.showInvalidEmailAddressMessage();
+            Ui.showInvalidEmailAddressMessage();
         }
     }
 

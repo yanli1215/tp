@@ -53,7 +53,7 @@ public class EditCommand extends Command {
             Scanner in = new Scanner(System.in);
             LOGGER.warning("Can cause InvalidEditTypeException");
             String editType = in.nextLine().trim();
-            processEditCommand(draftEmail, in, editType, emails);
+            processEditCommand(draftEmail, in, editType);
             storage.updateAllTypeEmails(emails.getEmailsList());
             ui.printEmailEdited(editType);
         } catch (InvalidIndexException e) {
@@ -65,7 +65,7 @@ public class EditCommand extends Command {
         }
     }
 
-    private void processEditCommand(Email draftEmail, Scanner in, String editType, EmailManager emailManager) throws InvalidTypeException {
+    private void processEditCommand(Email draftEmail, Scanner in, String editType) throws InvalidTypeException {
         switch (editType) {
         case "to":
             ArrayList<String> to = Parser.parseRecipients(in.nextLine());
