@@ -62,7 +62,7 @@ public class Ui {
         System.out.println("Content:");
         System.out.println("You can send to multiple recipents by appending emails with \";\"");
         System.out.println("e.g: Alice@gmail.com;Bob@gmail.com");
-        System.out.println("You should end content by typing \"/end\"");
+        System.out.println("You should end content by typing \"/end\" in a newline");
         printDivider();
     }
 
@@ -120,7 +120,7 @@ public class Ui {
         System.out.println("OOPS!!! The Email ID that you " + type + " is invalid.");
     }
 
-    public void showMessageForInvalidCommandInput() {
+    public void showInvalidCommandInputMessage() {
         System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(!");
     }
 
@@ -155,5 +155,22 @@ public class Ui {
 
     public void printGoodBye() {
         System.out.println("Logging off... Hope to see you again in MojoHr!");
+    }
+
+    public static void showMissingInputMessage() {
+        System.out.println("Draft not saved due to missing line");
+    }
+
+    public static void showMissingSubjectMessage() {
+        System.out.println("Warning: No subject detected");
+    }
+
+    public static void showMissingContentMessage() {
+        System.out.println("Warning: No content detected");
+    }
+
+    public static void showInvalidEmailAddressMessage() {
+        System.out.println("Warning: Incomplete email address or invalid email domain.");
+        System.out.println("Supported Email domains are: [gmail.com, yahoo.com, outlook.com, hotmail.com]");
     }
 }

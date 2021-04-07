@@ -63,31 +63,30 @@ public class EditCommand extends Command {
         } catch (InvalidTypeException e) {
             ui.showMessageForInvalidEditTypeInput();
             LOGGER.log(Level.SEVERE, "Exception occurred", e);
-        } catch (InvalidEmailAddressException | EmailNotExistException e) {
-            System.out.println(e.getMessage());
-            LOGGER.log(Level.SEVERE, "Exception occurred", e);
         }
     }
 
-    private void processEditCommand(Email draftEmail, Scanner in, String editType)
-            throws InvalidTypeException, InvalidEmailAddressException, EmailNotExistException {
+    private void processEditCommand(Email draftEmail, Scanner in, String editType) throws InvalidTypeException {
         switch (editType) {
         case "to":
             ArrayList<String> to = Parser.parseRecipients(in.nextLine());
             draftEmail.setTo(to);
+            checkEmailValidity(to);
             break;
         case "subject":
             String subject = in.nextLine();
             draftEmail.setSubject(subject);
+            checkSubjectValidity(subject);
             break;
         case "content":
             String inputContent = in.nextLine();
             String content = inputContent + "\n";
-            while (!inputContent.startsWith("/end")) { //user unable to change contents of previous lines
+            while (!inputContent.startsWith("/end")) {
                 content += inputContent + "\n";
                 inputContent = in.nextLine();
             }
             draftEmail.setContent(content);
+            checkContentValidity(content);
             break;
         default:
             throw new InvalidTypeException();
@@ -95,5 +94,23 @@ public class EditCommand extends Command {
 
         String time = String.valueOf(LocalDateTime.now().withNano(0));
         draftEmail.setTime(time);
+    }
+
+    private void checkSubjectValidity(String subject) {
+        if (subject.isBlank()) {
+            Ui.showMissingSubjectMessage();
+        }
+    }
+
+    private void checkContentValidity(String content) {
+        if (content.isBlank()) {
+            Ui.showMissingContentMessage();
+        }
+    }
+
+    private void checkEmailValidity(ArrayList<String> to) {
+        if (!Parser.checkEmailsValidity(to)) {
+            Ui.showInvalidEmailAddressMessage();
+        }
     }
 }

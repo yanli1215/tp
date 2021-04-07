@@ -86,6 +86,21 @@ public class Parser {
         return true;
     }
 
+    public static boolean checkEmailsValidity(ArrayList<String> emails) {
+
+        for (String email : emails) {
+            if (!(email.endsWith("@outlook.com") || email.endsWith("@hotmail.com")
+                    || email.endsWith("@gmail.com") || email.endsWith("@yahoo.com"))) {
+                return false;
+            }
+            if (email.startsWith("@")) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public static int extractIndex(String userInput) throws InvalidIndexException {
         try {
             String[] cmdArg = userInput.split(" ", 2);
@@ -154,6 +169,7 @@ public class Parser {
         return emailsToPrint;
     }
 
+
     /**
      * Converts a string containing multiple recipients to
      * a list of recipients. Also ensures that the email
@@ -162,23 +178,7 @@ public class Parser {
      * @param recipientsString String containing multiple recipients
      * @return list of recipients
      */
-    public static ArrayList<String> parseRecipients(String recipientsString)
-            throws InvalidEmailAddressException, EmailNotExistException {
-        String[] recipients = recipientsString.trim().split(";");
-        for (String recipient : recipients) {
-            checkRecipientValid(recipient);
-        }
-        return new ArrayList<>(Arrays.asList(recipients));
-    }
-
-    private static void checkRecipientValid(String recipient)
-            throws InvalidEmailAddressException, EmailNotExistException {
-        LoginController lc = new LoginController();
-        if (!checkEmailValidity(recipient)) {
-            throw new InvalidEmailAddressException(recipient);
-        }
-        if (!lc.checkUserIdExists(recipient)) {
-            throw new EmailNotExistException(recipient);
-        }
+    public static ArrayList<String> parseRecipients(String recipientsString) {
+        return new ArrayList<>(Arrays.asList(recipientsString.trim().split(";")));
     }
 }

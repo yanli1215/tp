@@ -71,7 +71,7 @@ public class Storage {
      * before it is returned.
      *
      * @return The content parsed as JSON object
-     * @throws IOException if failed to create directory 'data'.
+     * @throws IOException    if failed to create directory 'data'.
      * @throws ParseException if file is corrupted.
      */
     public JSONObject readJson() throws IOException, ParseException {
