@@ -89,8 +89,8 @@ public class Parser {
     public static boolean checkEmailsValidity(ArrayList<String> emails) {
 
         for (String email : emails) {
-            if (!(email.endsWith("@outlook.com") || email.endsWith("@hotmail.com") ||
-                    email.endsWith("@gmail.com") || email.endsWith("@yahoo.com"))) {
+            if (!(email.endsWith("@outlook.com") || email.endsWith("@hotmail.com")
+                    || email.endsWith("@gmail.com") || email.endsWith("@yahoo.com"))) {
                 return false;
             }
             if (email.startsWith("@")) {
