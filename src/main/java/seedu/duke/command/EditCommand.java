@@ -80,7 +80,7 @@ public class EditCommand extends Command {
         case "content":
             String inputContent = in.nextLine();
             String content = inputContent + "\n";
-            while (!inputContent.startsWith("/end")) { //user unable to change contents of previous lines
+            while (!inputContent.startsWith("/end")) {
                 content += inputContent + "\n";
                 inputContent = in.nextLine();
             }

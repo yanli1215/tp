@@ -50,7 +50,7 @@ public class SendCommand extends Command {
         assert sendEmailList != null : "sendEmailList in SendCommand is still null.";
 
         for (Email draftEmail : sendEmailList) {
-            draftEmail.setTime(String.valueOf(LocalDateTime.now()));
+            draftEmail.setTime(String.valueOf(LocalDateTime.now().withNano(0)));
             emails.deleteEmail(draftEmail);
             emails.addToSent(draftEmail);
             ui.printEmailSent(draftEmail);
