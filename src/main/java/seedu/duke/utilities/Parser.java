@@ -101,6 +101,19 @@ public class Parser {
         return true;
     }
 
+    public static boolean loginCheckEmailsValidity(String email) {
+        if (!(email.endsWith("@outlook.com") || email.endsWith("@hotmail.com")
+                || email.endsWith("@gmail.com") || email.endsWith("@yahoo.com"))) {
+            Ui.showInvalidEmailAddressMessage();
+            return false;
+        }
+        if (email.startsWith("@")) {
+            Ui.showInvalidEmailAddressMessage();
+            return false;
+        }
+        return true;
+    }
+
     public static int extractIndex(String userInput) throws InvalidIndexException {
         try {
             String[] cmdArg = userInput.split(" ", 2);
