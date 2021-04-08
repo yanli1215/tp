@@ -1,25 +1,20 @@
 package seedu.duke.login;
 
 import seedu.duke.utilities.Ui;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import static seedu.duke.utilities.Parser.loginCheckEmailsValidity;
 
 public class LoginUi extends Ui {
 
     public LoginInfo getNewUserLoginInfo() {
+        Boolean loginMatch;
         LoginInfo loginInfo;
         while (true) {
             loginInfo = getUserInputForLogin();
-            String check = "^(.+)@(.+)$";
-            Pattern p = Pattern.compile(check);
-            Matcher m = p.matcher(loginInfo.getUserId());
-            if (!m.find()) {
-                printErrorMessage("Please enter a valid email address! \n"
-                        + "Email address must have \"@\" and cannot have empty string in front or behind");
-                getLoginInfo();
+            loginMatch = loginCheckEmailsValidity(loginInfo.getUserId());
+            if (loginMatch == false) {
+                continue;
             }
             break;
         }
@@ -71,9 +66,9 @@ public class LoginUi extends Ui {
         Scanner sc = new Scanner(System.in);
         String userId;
         System.out.println("Enter email address:");
-        userId = sc.next();
+        userId = sc.nextLine();
         System.out.println("Enter password:");
-        String password = sc.next();
+        String password = sc.nextLine();
         return new LoginInfo(userId, password);
     }
 }
