@@ -72,20 +72,31 @@ public class Parser {
         }
     }
 
-    public static boolean checkEmailValidity(String userInput) {
-
-        String email = userInput.trim();
-        if (!(email.endsWith("@outlook.com") || email.endsWith("@hotmail.com")
-                || email.endsWith("@gmail.com") || email.endsWith("@yahoo.com"))) {
+    /**
+     * Checks if a single email address is valid
+     *
+     * @param email
+     * @return validity of email
+     */
+    public static boolean checkEmailValidity(String email) {
+        String trimmedEmail = email.trim();
+        if (!(trimmedEmail.endsWith("@outlook.com") || trimmedEmail.endsWith("@hotmail.com")
+                || trimmedEmail.endsWith("@gmail.com") || trimmedEmail.endsWith("@yahoo.com"))) {
             return false;
         }
-        if (email.startsWith("@")) {
+        if (trimmedEmail.startsWith("@")) {
             return false;
         }
 
         return true;
     }
 
+    /**
+     * Checks if the arraylist of email addresses are valid
+     *
+     * @param emails ArrayList<String> containing multiple email addresses
+     * @return validity of email
+     */
     public static boolean checkEmailsValidity(ArrayList<String> emails) {
 
         for (String email : emails) {
