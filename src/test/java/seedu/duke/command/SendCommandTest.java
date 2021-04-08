@@ -26,7 +26,9 @@ class SendCommandTest {
     private Ui ui = new Ui();
     private Storage storage = new Storage();
     private ArrayList<String> to = new ArrayList<>();
-    private Email email1, email2, email3;
+    private Email email1;
+    private Email email2;
+    private Email email3;
 
     @BeforeEach
     public void setUp() {
