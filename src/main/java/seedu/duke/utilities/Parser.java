@@ -92,7 +92,7 @@ public class Parser {
     }
 
     /**
-     * Checks if the arraylist of email addresses are valid
+     * Checks if the arraylist of email addresses are valid.
      *
      * @param emails ArrayList of String containing multiple email addresses
      * @return validity of email
