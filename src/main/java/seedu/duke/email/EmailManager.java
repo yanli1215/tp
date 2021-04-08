@@ -113,7 +113,7 @@ public class EmailManager {
 
     /**
      * Sort emails in overall email list according to
-     * lexicographic order of sender's email address
+     * lexicographic order of sender's email address.
      */
     public void sortBySender() {
         emailsList.sort(new TypeSenderSortingComparator());
@@ -129,7 +129,7 @@ public class EmailManager {
     /**
      * Sort emails in overall email list according to
      * time received/drafted/sent where the newest are
-     * top in the list
+     * top in the list.
      */
     public void sortByTime() {
         emailsList.sort(new TypeTimeSortingComparator());

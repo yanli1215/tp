@@ -73,9 +73,9 @@ public class Parser {
     }
 
     /**
-     * Checks if a single email address is valid
+     * Checks if a single email address is valid.
      *
-     * @param email
+     * @param email String containing email address of recipient
      * @return validity of email
      */
     public static boolean checkEmailValidity(String email) {
@@ -94,7 +94,7 @@ public class Parser {
     /**
      * Checks if the arraylist of email addresses are valid
      *
-     * @param emails ArrayList<String> containing multiple email addresses
+     * @param emails ArrayList of String containing multiple email addresses
      * @return validity of email
      */
     public static boolean checkEmailsValidity(ArrayList<String> emails) {
