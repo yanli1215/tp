@@ -49,6 +49,7 @@ public class SendCommand extends Command {
             }
         } catch (InvalidIndexException e) {
             e.showErrorMessage("SENT");
+            return;
         }
 
         assert sendEmailList != null : "sendEmailList in SendCommand is still null.";
