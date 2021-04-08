@@ -61,7 +61,7 @@ public class SendCommand extends Command {
                 draftEmail.setTime(String.valueOf(LocalDateTime.now().withNano(0)));
                 emails.deleteEmail(draftEmail);
                 emails.addToSent(draftEmail);
-                updateRecipientInboxes(draftEmail,emails, storage);
+                updateRecipientInboxes(draftEmail, emails, storage);
                 ui.printEmailSent(draftEmail);
             } catch (InvalidEmailAddressException | EmailNotExistException e) {
                 System.out.println(e.getMessage());
@@ -80,13 +80,13 @@ public class SendCommand extends Command {
 
         for (String recipient : recipients) {
             String sender = email.getFrom();
-            if(recipient.equals(sender)){
+            if (recipient.equals(sender)) {
                 recipientEmails = senderEmails;
                 recipientStorage = senderStorage;
-            }else{
+            } else {
                 recipientStorage = new Storage(recipient + ".json", recipient, "");
                 try {
-                    ArrayList<Email> emailList= recipientStorage.load();
+                    ArrayList<Email> emailList = recipientStorage.load();
                     recipientEmails = new EmailManager(emailList);
                 } catch (IOException | ParseException e) {
                     recipientEmails = new EmailManager();
@@ -97,10 +97,6 @@ public class SendCommand extends Command {
             recipientEmails.addToInbox(email);
             recipientStorage.updateAllTypeEmails(recipientEmails.getEmailsList());
         }
-    }
-
-    private void updateRecipientInbox(Email email, String recipient) {
-
     }
 
     private void checkRecipientsValidity(Email draftEmail)
