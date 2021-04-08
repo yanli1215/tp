@@ -27,7 +27,9 @@ public class SortCommandTest {
     private EmailManager emailManager = new EmailManager();
     private Ui ui = new Ui();
     private Storage storage = new Storage();
-    private Email email1, email2, email3;
+    private Email email1;
+    private Email email2;
+    private Email email3;
 
     @BeforeEach
     public void setUp() {
