@@ -28,7 +28,7 @@ public class SendCommand extends Command {
             return;
         }
 
-        ArrayList<Email> draftedEmails = EmailManager.getDraftEmails();
+        ArrayList<Email> draftedEmails = emails.getDraftEmails();
         if (draftedEmails.isEmpty()) {
             String feedback = "You have no emails to send.";
             ui.printFeedback(feedback);

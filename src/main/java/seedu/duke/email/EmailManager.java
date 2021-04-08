@@ -8,20 +8,20 @@ import static java.util.stream.Collectors.toList;
 public class EmailManager {
 
 
-    private static ArrayList<Email> emailsList = new ArrayList<>();
-    private static ArrayList<Email> listedEmailsList = null;
-    private static String listedType = "null";
+    private ArrayList<Email> emailsList = new ArrayList<>();
+    private ArrayList<Email> listedEmailsList = null;
+    private String listedType = "null";
 
-    public static ArrayList<Email> getEmailsList() {
+    public ArrayList<Email> getEmailsList() {
         return emailsList;
     }
 
-    public static void setListedEmailsList(ArrayList<Email> listedEmailsList) {
-        EmailManager.listedEmailsList = listedEmailsList;
+    public void setListedEmailsList(ArrayList<Email> listedEmailsList) {
+        this.listedEmailsList = listedEmailsList;
     }
 
-    public static void setEmailsList(ArrayList<Email> listedEmailsList) {
-        EmailManager.emailsList = listedEmailsList;
+    public void setEmailsList(ArrayList<Email> listedEmailsList) {
+        this.emailsList = listedEmailsList;
     }
 
     public EmailManager(ArrayList<Email> emailsList) {
@@ -96,7 +96,7 @@ public class EmailManager {
         return numberOfEmails;
     }
 
-    public static void printEmailByType(ArrayList<Email> emailTypeToPrint) {
+    public void printEmailByType(ArrayList<Email> emailTypeToPrint) {
         for (int i = 0; i < emailTypeToPrint.size(); i++) {
             System.out.println(i + 1 + ". " + emailTypeToPrint.get(i).getShortDescription());
         }
@@ -115,7 +115,7 @@ public class EmailManager {
         emailsList.sort(new TypeSenderSortingComparator());
     }
 
-    private static class TypeSenderSortingComparator implements Comparator<Email> {
+    private class TypeSenderSortingComparator implements Comparator<Email> {
         @Override
         public int compare(Email email1, Email email2) {
             return email1.getFrom().compareTo(email2.getFrom());
@@ -126,14 +126,14 @@ public class EmailManager {
         emailsList.sort(new TypeTimeSortingComparator());
     }
 
-    private static class TypeTimeSortingComparator implements Comparator<Email> {
+    private class TypeTimeSortingComparator implements Comparator<Email> {
         @Override
         public int compare(Email email1, Email email2) {
             return email1.getTime().compareTo(email2.getTime());
         }
     }
 
-    public static ArrayList<Email> getArchivedEmails() {
+    public ArrayList<Email> getArchivedEmails() {
         ArrayList<Email> archivesList = new ArrayList<>();
         for (Email email : emailsList) {
             if (email instanceof Archive) {
@@ -143,7 +143,7 @@ public class EmailManager {
         return archivesList;
     }
 
-    public static ArrayList<Email> getDeletedEmails() {
+    public ArrayList<Email> getDeletedEmails() {
         ArrayList<Email> deletedList = new ArrayList<>();
         for (Email email : emailsList) {
             if (email instanceof Deleted) {
@@ -153,7 +153,7 @@ public class EmailManager {
         return deletedList;
     }
 
-    public static ArrayList<Email> getDraftEmails() {
+    public ArrayList<Email> getDraftEmails() {
         ArrayList<Email> draftsList = new ArrayList<>();
         for (Email email : emailsList) {
             if (email instanceof Draft) {
@@ -163,7 +163,7 @@ public class EmailManager {
         return draftsList;
     }
 
-    public static ArrayList<Email> getInboxEmails() {
+    public ArrayList<Email> getInboxEmails() {
         ArrayList<Email> inboxList = new ArrayList<>();
         for (Email email : emailsList) {
             if (email instanceof Inbox) {
@@ -173,7 +173,7 @@ public class EmailManager {
         return inboxList;
     }
 
-    public static ArrayList<Email> getJunkEmails() {
+    public ArrayList<Email> getJunkEmails() {
         ArrayList<Email> junkList = new ArrayList<>();
         for (Email email : emailsList) {
             if (email instanceof Junk) {
@@ -183,7 +183,7 @@ public class EmailManager {
         return junkList;
     }
 
-    public static ArrayList<Email> getSentEmails() {
+    public ArrayList<Email> getSentEmails() {
         ArrayList<Email> sentList = new ArrayList<>();
         for (Email email : emailsList) {
             if (email instanceof Sent) {
@@ -193,11 +193,11 @@ public class EmailManager {
         return sentList;
     }
 
-    public static ArrayList<Email> getAllEmails() {
+    public ArrayList<Email> getAllEmails() {
         return emailsList;
     }
 
-    public static ArrayList<Email> getListedEmailsList() {
+    public ArrayList<Email> getListedEmailsList() {
         return listedEmailsList;
     }
 

@@ -185,13 +185,17 @@ public class Parser {
 
     /**
      * Converts a string containing multiple recipients to
-     * a list of recipients. Also ensures that the email
-     * addresses are valid emails.
+     * a list of recipients.
      *
      * @param recipientsString String containing multiple recipients
      * @return list of recipients
      */
     public static ArrayList<String> parseRecipients(String recipientsString) {
-        return new ArrayList<>(Arrays.asList(recipientsString.trim().split(";")));
+        String[] recipients = recipientsString.split(";");
+        for (int i = 0; i < recipients.length; i++) {
+            recipients[i] = recipients[i].trim();
+        }
+
+        return new ArrayList<>(Arrays.asList(recipients));
     }
 }
