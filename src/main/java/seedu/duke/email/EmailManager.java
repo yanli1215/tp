@@ -225,6 +225,11 @@ public class EmailManager {
         emailsList.add(email);
     }
 
+    public void addToInbox(Email e) {
+        Inbox email = new Inbox(e.getFrom(), e.getTo(), e.getSubject(), e.getTime(), e.getContent(), e.isRead());
+        emailsList.add(email);
+    }
+
     public ArrayList<Email> findByString(ArrayList<Email> emails, String filterString) {
         ArrayList<Email> filteredList = (ArrayList<Email>) emails.stream()
                 .filter((s) -> (s.getContent().toLowerCase().contains(filterString) || s.getSubject().toLowerCase()

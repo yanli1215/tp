@@ -1,7 +1,6 @@
 package seedu.duke.email;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Email {
     private String from;

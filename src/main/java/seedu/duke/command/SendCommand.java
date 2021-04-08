@@ -1,5 +1,6 @@
 package seedu.duke.command;
 
+import org.json.simple.parser.ParseException;
 import seedu.duke.email.EmailManager;
 import seedu.duke.exceptions.EmailNotExistException;
 import seedu.duke.exceptions.InvalidEmailAddressException;
@@ -10,6 +11,7 @@ import seedu.duke.utilities.Ui;
 import seedu.duke.email.Email;
 import seedu.duke.exceptions.InvalidIndexException;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -59,6 +61,7 @@ public class SendCommand extends Command {
                 draftEmail.setTime(String.valueOf(LocalDateTime.now().withNano(0)));
                 emails.deleteEmail(draftEmail);
                 emails.addToSent(draftEmail);
+                updateRecipientInboxes(draftEmail,emails, storage);
                 ui.printEmailSent(draftEmail);
             } catch (InvalidEmailAddressException | EmailNotExistException e) {
                 System.out.println(e.getMessage());
@@ -66,8 +69,38 @@ public class SendCommand extends Command {
                 System.out.println(draftEmail.getShortDescription());
                 System.out.println("");
             }
+            storage.updateAllTypeEmails(emails.getAllEmails());
         }
-        storage.updateAllTypeEmails(emails.getEmailsList());
+    }
+
+    private void updateRecipientInboxes(Email email, EmailManager senderEmails, Storage senderStorage) {
+        ArrayList<String> recipients = email.getTo();
+        EmailManager recipientEmails;
+        Storage recipientStorage;
+
+        for (String recipient : recipients) {
+            String sender = email.getFrom();
+            if(recipient.equals(sender)){
+                recipientEmails = senderEmails;
+                recipientStorage = senderStorage;
+            }else{
+                recipientStorage = new Storage(recipient + ".json", recipient, "");
+                try {
+                    ArrayList<Email> emailList= recipientStorage.load();
+                    recipientEmails = new EmailManager(emailList);
+                } catch (IOException | ParseException e) {
+                    recipientEmails = new EmailManager();
+                    e.printStackTrace();
+                }
+            }
+
+            recipientEmails.addToInbox(email);
+            recipientStorage.updateAllTypeEmails(recipientEmails.getEmailsList());
+        }
+    }
+
+    private void updateRecipientInbox(Email email, String recipient) {
+
     }
 
     private void checkRecipientsValidity(Email draftEmail)

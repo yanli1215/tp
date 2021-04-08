@@ -74,7 +74,7 @@ public class Storage {
      * @throws IOException    if failed to create directory 'data'.
      * @throws ParseException if file is corrupted.
      */
-    public JSONObject readJson() throws IOException, ParseException {
+    private JSONObject readJson() throws IOException, ParseException {
         String localDir = System.getProperty("user.dir");
         Path dirPath = Paths.get(localDir, "data");
         if (!Files.exists(dirPath)) {
@@ -96,7 +96,7 @@ public class Storage {
 
     }
 
-    public ArrayList<Email> parse(JSONObject jsonObject) throws NullPointerException {
+    private ArrayList<Email> parse(JSONObject jsonObject) throws NullPointerException {
         ArrayList<Email> allEmails = new ArrayList<>();
         ArrayList<String> emailType = new ArrayList<>();
         for (Object key : jsonObject.keySet()) {
