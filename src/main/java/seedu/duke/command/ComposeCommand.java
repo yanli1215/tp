@@ -48,19 +48,19 @@ public class ComposeCommand extends Command {
 
     private void checkSubjectValidity(String subject) {
         if (subject.isBlank()) {
-            Ui.showMissingSubjectMessage();
+            Ui.showMissingSubjectWarning();
         }
     }
 
     private void checkContentValidity(String content) {
         if (content.isBlank()) {
-            Ui.showMissingContentMessage();
+            Ui.showMissingContentWarning();
         }
     }
 
     private void checkEmailValidity(ArrayList<String> to) {
         if (!Parser.checkEmailsValidity(to)) {
-            Ui.showInvalidEmailAddressMessage();
+            Ui.showInvalidEmailAddressWarning();
         }
     }
 }

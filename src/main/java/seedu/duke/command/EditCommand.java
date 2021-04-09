@@ -54,7 +54,7 @@ public class EditCommand extends Command {
             String editType = in.nextLine().trim();
             processEditCommand(draftEmail, in, editType);
             storage.updateAllTypeEmails(emails.getEmailsList());
-            ui.printEmailEdited(editType);
+            ui.printEmailEditedMessage(editType);
         } catch (InvalidIndexException e) {
             e.showErrorMessage("EDIT");
             LOGGER.log(Level.SEVERE, "Exception occurred", e);
@@ -96,19 +96,19 @@ public class EditCommand extends Command {
 
     private void checkSubjectValidity(String subject) {
         if (subject.isBlank()) {
-            Ui.showMissingSubjectMessage();
+            Ui.showMissingSubjectWarning();
         }
     }
 
     private void checkContentValidity(String content) {
         if (content.isBlank()) {
-            Ui.showMissingContentMessage();
+            Ui.showMissingContentWarning();
         }
     }
 
     private void checkEmailValidity(ArrayList<String> to) {
         if (!Parser.checkEmailsValidity(to)) {
-            Ui.showInvalidEmailAddressMessage();
+            Ui.showInvalidEmailAddressWarning();
         }
     }
 }

@@ -35,21 +35,7 @@ public class SendCommand extends Command {
             return;
         }
 
-        Email[] sendEmailList = null;
-
-        try {
-            String args = Parser.removeCommand(userInput);
-            int[] indices = Parser.extractMultipleIndices(args);
-            sendEmailList = new Email[indices.length];
-            for (int i = 0; i < indices.length; i++) {
-                if (indices[i] <= 0 || indices[i] > draftedEmails.size()) {
-                    throw new InvalidIndexException();
-                }
-                sendEmailList[i] = draftedEmails.get(indices[i] - 1);
-            }
-        } catch (InvalidIndexException e) {
-            e.showErrorMessage("SENT");
-        }
+        Email[] sendEmailList = getEmailsToSend(draftedEmails);
 
         assert sendEmailList != null : "sendEmailList in SendCommand is still null.";
 
@@ -71,6 +57,24 @@ public class SendCommand extends Command {
             }
             storage.updateAllTypeEmails(emails.getAllEmails());
         }
+    }
+
+    private Email[] getEmailsToSend(ArrayList<Email> draftedEmails) {
+        Email[] sendEmailList = null;
+        try {
+            String args = Parser.removeCommand(userInput);
+            int[] indices = Parser.extractMultipleIndices(args);
+            sendEmailList = new Email[indices.length];
+            for (int i = 0; i < indices.length; i++) {
+                if (indices[i] <= 0 || indices[i] > draftedEmails.size()) {
+                    throw new InvalidIndexException();
+                }
+                sendEmailList[i] = draftedEmails.get(indices[i] - 1);
+            }
+        } catch (InvalidIndexException e) {
+            e.showErrorMessage("SENT");
+        }
+        return sendEmailList;
     }
 
     private void updateRecipientInboxes(Email email, EmailManager senderEmails, Storage senderStorage) {
@@ -114,13 +118,13 @@ public class SendCommand extends Command {
 
     private void checkSubjectValidity(String subject) {
         if (subject.isBlank()) {
-            Ui.showMissingSubjectMessage();
+            Ui.showMissingSubjectWarning();
         }
     }
 
     private void checkContentValidity(String content) {
         if (content.isBlank()) {
-            Ui.showMissingContentMessage();
+            Ui.showMissingContentWarning();
         }
     }
 }
