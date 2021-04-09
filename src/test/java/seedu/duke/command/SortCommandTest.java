@@ -17,6 +17,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class SortCommandTest {
     private final PrintStream standardOut = System.out;
@@ -26,36 +27,43 @@ public class SortCommandTest {
     private EmailManager emailManager = new EmailManager();
     private Ui ui = new Ui();
     private Storage storage = new Storage();
+    private Email email1;
+    private Email email2;
+    private Email email3;
 
     @BeforeEach
     public void setUp() {
         System.setOut(new PrintStream(outputStreamCaptor));
         ArrayList<String> to = new ArrayList<>();
         to.add("456@gmail.com");
-        emails.add(new Inbox("testC@gmail.com", to, "S1", "2020-4-23+01:00", "C1", false));
-        emails.add(new Inbox("testA@gmail.com", to, "S2", "2020-4-30+01:00", "C2", false));
-        emails.add(new Deleted("testB@gmail.com", to, "S3", "2019-4-23+03:00", "C3", false));
+        emails.add(email1 = new Inbox("testC@gmail.com", to, "S1", "2020-4-23+01:00", "C1", false));
+        emails.add(email2 = new Inbox("testA@gmail.com", to, "S2", "2020-4-30+01:00", "C2", false));
+        emails.add(email3 = new Deleted("testB@gmail.com", to, "S3", "2019-4-23+03:00", "C3", false));
         EmailManager.setEmailsList(emails);
     }
 
     @Test
-    void execute_SortTime_success() {
+    void execute_sortTime_success() {
         new SortCommand("sort time").execute(emailManager, ui, storage);
+        ArrayList<Email> sortedEmails = new ArrayList<Email>(Arrays.asList(email2, email1, email3));
         String expectedOutput = "Emails are sorted according to time";
         Assertions.assertEquals(expectedOutput, outputStreamCaptor.toString()
                 .trim());
+        Assertions.assertEquals(EmailManager.getAllEmails(), sortedEmails);
     }
 
     @Test
-    void execute_SortSender_success() {
+    void execute_sortSender_success() {
         new SortCommand("sort sender").execute(emailManager, ui, storage);
+        ArrayList<Email> sortedEmails = new ArrayList<Email>(Arrays.asList(email2, email3, email1));
         String expectedOutput = "Emails are sorted according to sender";
         Assertions.assertEquals(expectedOutput, outputStreamCaptor.toString()
                 .trim());
+        Assertions.assertEquals(EmailManager.getAllEmails(), sortedEmails);
     }
 
     @Test
-    void execute_InvalidType_fail() {
+    void execute_invalidType_fail() {
         new SortCommand("sort sendy").execute(emailManager, ui, storage);
         String expectedOutput = "OOPS!!! The type that you enter is invalid." + System.lineSeparator()
                 + "It must be one of: [sender, time]";
@@ -64,7 +72,7 @@ public class SortCommandTest {
     }
 
     @Test
-    void execute_EmptyType_fail() {
+    void execute_emptyType_fail() {
         new SortCommand("sort  ").execute(emailManager, ui, storage);
         String expectedOutput = "OOPS!!! The sort type is empty." + System.lineSeparator()
                 + "Please enter one of: [sender, time] after \"sort\".";

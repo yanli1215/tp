@@ -111,6 +111,10 @@ public class EmailManager {
         return listedType;
     }
 
+    /**
+     * Sort emails in overall email list according to
+     * lexicographic order of sender's email address.
+     */
     public void sortBySender() {
         emailsList.sort(new TypeSenderSortingComparator());
     }
@@ -122,6 +126,11 @@ public class EmailManager {
         }
     }
 
+    /**
+     * Sort emails in overall email list according to
+     * time received/drafted/sent where the newest are
+     * top in the list.
+     */
     public void sortByTime() {
         emailsList.sort(new TypeTimeSortingComparator());
     }
@@ -129,7 +138,7 @@ public class EmailManager {
     private static class TypeTimeSortingComparator implements Comparator<Email> {
         @Override
         public int compare(Email email1, Email email2) {
-            return email1.getTime().compareTo(email2.getTime());
+            return email2.getTime().compareTo(email1.getTime());
         }
     }
 
