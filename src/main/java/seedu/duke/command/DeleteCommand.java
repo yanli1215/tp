@@ -18,7 +18,7 @@ public class DeleteCommand extends Command {
 
     public void execute(EmailManager emails, Ui ui, Storage storage) {
 
-        ArrayList<Email> listedEmails = EmailManager.getListedEmailsList();
+        ArrayList<Email> listedEmails = emails.getListedEmailsList();
         if (listedEmails == null) {
             String feedback = "You have to list emails first" + System.lineSeparator()
                     + "=> list emails" + System.lineSeparator();

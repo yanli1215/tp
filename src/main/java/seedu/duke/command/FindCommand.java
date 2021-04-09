@@ -14,7 +14,7 @@ public class FindCommand extends Command {
     }
 
     public void execute(EmailManager emails, Ui ui, Storage storage) {
-        ArrayList<Email> listedEmails = EmailManager.getListedEmailsList();
+        ArrayList<Email> listedEmails = emails.getListedEmailsList();
         if (listedEmails == null) {
             String feedback = "You have to list emails first" + System.lineSeparator()
                     + "=> list emails" + System.lineSeparator();
@@ -27,7 +27,7 @@ public class FindCommand extends Command {
         if (findEmails.size() == 0) {
             System.out.println("No matching emails found.");
         } else {
-            EmailManager.printEmailByType(findEmails);
+            emails.printEmailByType(findEmails);
         }
 
     }

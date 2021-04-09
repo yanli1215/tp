@@ -21,6 +21,7 @@ import seedu.duke.exceptions.InvalidIndexException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.TreeSet;
 
 
 public class Parser {
@@ -68,6 +69,59 @@ public class Parser {
         }
     }
 
+    /**
+     * Checks if a single email address is valid.
+     *
+     * @param email String containing email address of recipient
+     * @return validity of email
+     */
+    public static boolean checkEmailValidity(String email) {
+        String trimmedEmail = email.trim();
+        if (!(trimmedEmail.endsWith("@outlook.com") || trimmedEmail.endsWith("@hotmail.com")
+                || trimmedEmail.endsWith("@gmail.com") || trimmedEmail.endsWith("@yahoo.com"))) {
+            return false;
+        }
+        if (trimmedEmail.startsWith("@")) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Checks if the arraylist of email addresses are valid.
+     *
+     * @param emails ArrayList of String containing multiple email addresses
+     * @return validity of email
+     */
+    public static boolean checkEmailsValidity(ArrayList<String> emails) {
+
+        for (String email : emails) {
+            if (!(email.endsWith("@outlook.com") || email.endsWith("@hotmail.com")
+                    || email.endsWith("@gmail.com") || email.endsWith("@yahoo.com"))) {
+                return false;
+            }
+            if (email.startsWith("@")) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static boolean loginCheckEmailsValidity(String email) {
+        if (!(email.endsWith("@outlook.com") || email.endsWith("@hotmail.com")
+                || email.endsWith("@gmail.com") || email.endsWith("@yahoo.com"))) {
+            Ui.showInvalidEmailAddressWarning();
+            return false;
+        }
+        if (email.startsWith("@")) {
+            Ui.showInvalidEmailAddressWarning();
+            return false;
+        }
+        return true;
+    }
+
     public static int extractIndex(String userInput) throws InvalidIndexException {
         try {
             String[] cmdArg = userInput.split(" ", 2);
@@ -86,15 +140,21 @@ public class Parser {
 
     public static int[] extractMultipleIndices(String userInput) throws InvalidIndexException {
         try {
+            TreeSet<Integer> set = new TreeSet<>();
             String[] indicesStr = userInput.split(" ");
-            int[] indices = new int[indicesStr.length];
             for (int i = 0; i < indicesStr.length; i++) {
-                indices[i] = Integer.parseInt(indicesStr[i].trim());
+                set.add(Integer.parseInt(indicesStr[i].trim()));
             }
-            return indices;
+            return intSetToArray(set);
         } catch (NumberFormatException e) {
             throw new InvalidIndexException();
         }
+    }
+
+    private static int[] intSetToArray(TreeSet<Integer> set) {
+        return set.stream()
+                .mapToInt(i -> i)
+                .toArray();
     }
 
     public static ArrayList<Email> getTypeToList(EmailManager emailManager, String userInput) {
@@ -130,6 +190,7 @@ public class Parser {
         return emailsToPrint;
     }
 
+
     /**
      * Converts a string containing multiple recipients to
      * a list of recipients.
@@ -138,6 +199,11 @@ public class Parser {
      * @return list of recipients
      */
     public static ArrayList<String> parseRecipients(String recipientsString) {
-        return new ArrayList<>(Arrays.asList(recipientsString.trim().split(";")));
+        String[] recipients = recipientsString.split(";");
+        for (int i = 0; i < recipients.length; i++) {
+            recipients[i] = recipients[i].trim();
+        }
+
+        return new ArrayList<>(Arrays.asList(recipients));
     }
 }

@@ -42,7 +42,7 @@ public class Mojo {
                 parser.parse(userCommand.trim());
                 parser.getCmd().execute(emails, ui, storage);
             } catch (AssertionError e) {
-                ui.showMessageForInvalidCommandInput();
+                ui.showInvalidCommandInputMessage();
             }
         }
     }

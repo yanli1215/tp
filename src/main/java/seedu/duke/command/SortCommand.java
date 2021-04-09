@@ -23,6 +23,7 @@ public class SortCommand extends Command {
 
         try {
             String sortType = this.getUserInput().toLowerCase().trim().substring(STARTINDEXOFSORTTYPE);
+            emails.setListedType("sorted");
             LOGGER.config("sortType might not be valid due to constant STARTINDEXOFSORTTYPE");
             LOGGER.info("sortType interpreted: " + sortType);
             if (sortType.equalsIgnoreCase("sender")) {

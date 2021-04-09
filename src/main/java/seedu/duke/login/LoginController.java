@@ -47,10 +47,10 @@ public class LoginController {
             loginUi.printErrorMessage("You already have an account. Please log in instead!");
             loginUi.getLoginInfo();
         }
-
         loginInfoFileManager.addLoginInfoForNewUser(loginInfo);
         return loginInfo;
     }
+
 
     public boolean checkUserIdExists(String userId) {
         for (LoginInfo loginInfo: loginInfoFileManager.retrieveLoginInfoList()) {

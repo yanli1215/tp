@@ -2,25 +2,33 @@
 'https://plantuml.com/class-diagram
 
 hide circle
+hide members
 skinparam classAttributeIconSize 0
 
-class Mojo
-class Ui
-class Parser
-class EmailManager
-class Command
-class Email
+allowmixing
+actor user
+database "hard disk"
 
-Mojo --|> EmailManager
-Mojo --|> Ui
-Mojo --|> Storage
-Mojo --|> Parser
-Mojo --|> Command
+Package " "<<Rectangle>>{
+    class Main
+    class Login
+    class Email
+    Package "Utilities"<<Rectangle>>{
+        class Parser
+        class Ui
+        class Storage
+    }
+}
 
-Command ..|> EmailManager
-Command ..|> Ui
-Command ..|> Storage
+user ..> Ui
+Ui --> Main
 
-EmailManager --|> Email
+Main --> Ui
+Main --> Login
+Main --> Email
+
+Main --> Storage
+Main --> Parser
+Storage ..> "hard disk"
 
 @enduml
