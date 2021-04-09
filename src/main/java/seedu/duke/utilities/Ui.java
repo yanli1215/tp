@@ -119,7 +119,11 @@ public class Ui {
     }
 
     public void printNumberOfEmails(int totalEmails, String emailType) {
-        System.out.println("You have a total of " + totalEmails + " " + emailType.toUpperCase() + " emails");
+        if (emailType.equals("allemails")) {
+            System.out.println("You have a total of " + totalEmails + " emails");
+        } else {
+            System.out.println("You have a total of " + totalEmails + " " + emailType.toUpperCase() + " emails");
+        }
     }
 
     public static void showInvalidIdMessage(String type) {
