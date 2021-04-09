@@ -28,14 +28,21 @@ public class SendCommand extends Command {
             return;
         }
 
-        ArrayList<Email> draftedEmails = EmailManager.getDraftEmails();
+        ArrayList<Email> draftedEmails = emails.getDraftEmails();
         if (draftedEmails.isEmpty()) {
             String feedback = "You have no emails to send.";
             ui.printFeedback(feedback);
             return;
         }
 
-        Email[] sendEmailList = getEmailsToSend(draftedEmails);
+        Email[] sendEmailList;
+
+        try {
+            sendEmailList = getEmailsToSend(draftedEmails);
+        } catch (InvalidIndexException e) {
+            e.showErrorMessage("SENT");
+            return;
+        }
 
         assert sendEmailList != null : "sendEmailList in SendCommand is still null.";
 
@@ -59,21 +66,18 @@ public class SendCommand extends Command {
         }
     }
 
-    private Email[] getEmailsToSend(ArrayList<Email> draftedEmails) {
+    private Email[] getEmailsToSend(ArrayList<Email> draftedEmails) throws InvalidIndexException {
         Email[] sendEmailList = null;
-        try {
-            String args = Parser.removeCommand(userInput);
-            int[] indices = Parser.extractMultipleIndices(args);
-            sendEmailList = new Email[indices.length];
-            for (int i = 0; i < indices.length; i++) {
-                if (indices[i] <= 0 || indices[i] > draftedEmails.size()) {
-                    throw new InvalidIndexException();
-                }
-                sendEmailList[i] = draftedEmails.get(indices[i] - 1);
+        String args = Parser.removeCommand(userInput);
+        int[] indices = Parser.extractMultipleIndices(args);
+        sendEmailList = new Email[indices.length];
+        for (int i = 0; i < indices.length; i++) {
+            if (indices[i] <= 0 || indices[i] > draftedEmails.size()) {
+                throw new InvalidIndexException();
             }
-        } catch (InvalidIndexException e) {
-            e.showErrorMessage("SENT");
+            sendEmailList[i] = draftedEmails.get(indices[i] - 1);
         }
+
         return sendEmailList;
     }
 

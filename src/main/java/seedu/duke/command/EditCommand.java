@@ -34,7 +34,7 @@ public class EditCommand extends Command {
             return;
         }
 
-        ArrayList<Email> draftedEmails = EmailManager.getDraftEmails();
+        ArrayList<Email> draftedEmails = emails.getDraftEmails();
         if (draftedEmails.isEmpty()) {
             String feedback = "You have no emails to edit.";
             ui.printFeedback(feedback);

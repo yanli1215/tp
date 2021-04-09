@@ -40,25 +40,28 @@ class SendCommandTest {
         emails.add(email1 = new Draft("testC@gmail.com", to, "S1", "2020-4-23+01:00", "C1", false));
         emails.add(email2 = new Draft("testA@gmail.com", to, "S2", "2020-4-30+01:00", "C2", false));
         emails.add(email3 = new Sent("testB@gmail.com", to, "S3", "2019-4-23+03:00", "C3", false));
-        EmailManager.setEmailsList(emails);
+        emailManager.setEmailsList(emails);
         emailManager.setListedType("draft");
     }
 
     @Test
     void execute_sendRecipient_success() {
         new SendCommand("send 1").execute(emailManager, ui, storage);
-        Email sentEmail1 = new Sent("testC@gmail.com", to, "S1", "2020-4-23+01:00", "C1", false);
+        String time = emailManager.getSentEmails().get(1).getTime();
+        Email sentEmail1 = new Sent("testC@gmail.com", to, "S1", time, "C1", false);
         ArrayList<Email> sentEmails = new ArrayList<>(Arrays.asList(email3, sentEmail1));
-        Assertions.assertEquals(EmailManager.getSentEmails(), sentEmails);
+        Assertions.assertEquals(emailManager.getSentEmails().toString(), sentEmails.toString());
     }
 
     @Test
     void execute_sendRecipients_success() {
         new SendCommand("send 1 2").execute(emailManager, ui, storage);
-        Email sentEmail1 = new Sent("testC@gmail.com", to, "S1", "2020-4-23+01:00", "C1", false);
-        Email sentEmail2 = new Sent("testA@gmail.com", to, "S2", "2020-4-30+01:00", "C2", false);
+        String time1 = emailManager.getSentEmails().get(1).getTime();
+        String time2 = emailManager.getSentEmails().get(2).getTime();
+        Email sentEmail1 = new Sent("testC@gmail.com", to, "S1", time1, "C1", false);
+        Email sentEmail2 = new Sent("testA@gmail.com", to, "S2", time2, "C2", false);
         ArrayList<Email> sentEmails = new ArrayList<Email>(Arrays.asList(email3, sentEmail1, sentEmail2));
-        Assertions.assertEquals(EmailManager.getSentEmails(), sentEmails);
+        Assertions.assertEquals(emailManager.getSentEmails().toString(), sentEmails.toString());
     }
 
     @Test
