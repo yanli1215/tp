@@ -14,18 +14,18 @@ to see the contributed code.
 
 ### Enhancements implemented
 #### 1. ComposeCommand: Composes email to be sent.
-The ComposeCommand allows user to write an email which will be saved into the draft folder upon completion
+The ComposeCommand allows user to write an email which will be saved as Draft upon completion
 
 #### 2. SendCommand: 
-The SendCommand allows users to send emails in that are draft folder
+The SendCommand allows users to send Draft emails 
 * Ensure that email addresses sent to must be of correct form (with Jalvin).
-* Ensure that the draft email list must be listed out first to prevent error on user's side.
+* Ensure that the Draft email list must be listed out first to prevent error on user's side.
 
 #### 3. EditCommand: 
-The EditCommand allows user to edit emails in draft folder
+The EditCommand allows user to edit Draft emails
 * Allows user to choose which part of the email he/she wants to edit
-* Saves the time of edit
-* Ensure that the draft email list must be listed out to first to prevent error on user's side.
+* Saves the timestamp of edited email
+* Ensure that the Draft email list must be listed out to first to prevent error on user's side.
 
 #### 4. SortCommand:
 The SortCommand sorts emails according to time or Lexicographic order of sender's email address
@@ -35,6 +35,10 @@ The SortCommand sorts emails according to time or Lexicographic order of sender'
 * The NumberCommand counts the number of emails according to type and prints it out to the user
 
 ### 6. Implemented checking of email validity
+
+### Contributions to team-based tasks
+* Actively provide suggestions for implementation of features
+* Facilitate weekly meetings on completing weekly tasks
 
 ### Contributions to documentation
 #### 1. User Guide

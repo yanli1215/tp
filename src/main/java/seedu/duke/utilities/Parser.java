@@ -17,10 +17,7 @@ import seedu.duke.command.SortCommand;
 import seedu.duke.command.TagCommand;
 import seedu.duke.email.Email;
 import seedu.duke.email.EmailManager;
-import seedu.duke.exceptions.EmailNotExistException;
-import seedu.duke.exceptions.InvalidEmailAddressException;
 import seedu.duke.exceptions.InvalidIndexException;
-import seedu.duke.login.LoginController;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -115,11 +112,11 @@ public class Parser {
     public static boolean loginCheckEmailsValidity(String email) {
         if (!(email.endsWith("@outlook.com") || email.endsWith("@hotmail.com")
                 || email.endsWith("@gmail.com") || email.endsWith("@yahoo.com"))) {
-            Ui.showInvalidEmailAddressMessage();
+            Ui.showInvalidEmailAddressWarning();
             return false;
         }
         if (email.startsWith("@")) {
-            Ui.showInvalidEmailAddressMessage();
+            Ui.showInvalidEmailAddressWarning();
             return false;
         }
         return true;
