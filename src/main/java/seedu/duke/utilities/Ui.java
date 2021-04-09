@@ -87,7 +87,7 @@ public class Ui {
         System.out.println("Emails are sorted according to " + sortType);
     }
 
-    public void printEmailEdited(String editType) {
+    public void printEmailEditedMessage(String editType) {
         System.out.println("Email \"" + editType + "\" successfully edited.");
     }
 
@@ -161,15 +161,15 @@ public class Ui {
         System.out.println("Draft not saved due to missing line");
     }
 
-    public static void showMissingSubjectMessage() {
+    public static void showMissingSubjectWarning() {
         System.out.println("Warning: No subject detected");
     }
 
-    public static void showMissingContentMessage() {
+    public static void showMissingContentWarning() {
         System.out.println("Warning: No content detected");
     }
 
-    public static void showInvalidEmailAddressMessage() {
+    public static void showInvalidEmailAddressWarning() {
         System.out.println("Warning: Incomplete email address or invalid email domain.");
         System.out.println("Supported Email domains are: [gmail.com, yahoo.com, outlook.com, hotmail.com]");
     }
