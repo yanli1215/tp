@@ -137,7 +137,7 @@ The sequence diagram roughly shows how the `compose` operation works.
 
 ### Target User Profile
 
-{Describe the target user profile}
+Busy HR Personnel
 
 ### Value Proposition
 
@@ -151,6 +151,12 @@ This will reduce the time spent on clearing emails and allow HR personnel to foc
 |Version| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
 |v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
+|v1.0|beginner|list all emails that I received, sent, draft etc|track my emails easily|
+|v1.0|beginner|delete emails|it can reduce clutter|
+|v1.0|beginner|archive emails|it can reduce clutter|
+|v1.0|beginner|compose emails|send/reply to others|
+|v1.0|beginner|count number of emails inbox|have a general idea about my total emails|
+|v1.0|beginner|mark email as read after opening the email|distinguish the read and unread emails easily|
 |v2.0|new user|register an account|log into MojoHR|
 |v2.0|beginner|log into my account|check my emails|
 |v2.0|medium user|edit my drafts|create a new draft and delete the previous one when the draft is wrong|
@@ -357,7 +363,7 @@ Test case: `find school`
 Expected: `No matching emails found.`
 
 
-## 5. Reset the Password
+### 5. Reset the Password
 Reset the password for the user's email account.
 The program will ask for the old password from user. 
 
@@ -366,7 +372,7 @@ If the old password is correct, the program will ask for the new password from u
 The number of wrong attempt is 3. 
 If the old password is wrong for 3 times, the program will output `Sorry your old password is wrong. Please try again!(0 times left!)` and back to main menu.
 
-### Test case 1: Typing wrong old password for 3 times
+#### Test case 1: Typing wrong old password for 3 times
 
 Input: `reset`
 
@@ -384,7 +390,7 @@ Input: `12223`
 
 Expected: `Sorry your old password is wrong. Please try again!(0 times left!)`
 
-### Test case 2: Typing old password correctly
+#### Test case 2: Typing old password correctly
 
 Input: `reset`
 
@@ -400,7 +406,7 @@ Expected: `Your password has changed successfully!`
 
 Then, you can exit the program and use the new password to login.
 
-## 6. Compose an email
+### 6. Compose an email
 Compose an email for the user which will be saved into draft upon completion.
 
 The program will ask for Receiver, Subject and Content whereas draft time will be saved automatically
@@ -433,5 +439,4 @@ user
 Expected: `Email saved to draft at 2021-04-01T13:00:00`
 
 The email is saved in draft and ready to be sent.
-
 

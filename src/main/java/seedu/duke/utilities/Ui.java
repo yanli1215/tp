@@ -41,11 +41,11 @@ public class Ui {
     }
 
     public String getResetPsw(String type) {
-        if (type == "new") {
+        if (type.equals("new")) {
             System.out.println(newPassword);
         }
 
-        if (type == "old") {
+        if (type.equals("old")) {
             System.out.println(oldPassword);
         }
         String inputLine = in.nextLine();
