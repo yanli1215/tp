@@ -25,7 +25,7 @@ public class ComposeCommand extends Command {
             ArrayList<String> to = Parser.parseRecipients(in.nextLine());
             String subject = in.nextLine().trim();
             String inputContent = in.nextLine().trim();
-            String content = inputContent + "\n";
+            String content = "";
             while (!inputContent.equals("/end")) {
                 content += inputContent + "\n";
                 inputContent = in.nextLine().trim();

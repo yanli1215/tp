@@ -74,7 +74,7 @@ public class Email {
     }
 
     public String toString() {
-        return getShortDescription() + "\n|| Content: " + getContent();
+        return getShortDescription() + "\n|| Content: \n" + getContent();
     }
 
     public String getShortDescription() {
