@@ -337,8 +337,9 @@ Format: `tag INDEX TAG1 TAG2 ...`
 * The `INDEX` **must be a positive integer** 1, 2, 3, … 
 * The `TAG#` is a single word label that user wants to add.
 * User can add multiple tags to their email.
-* This will overwrite the old tag(s).
-* User must `list TYPE` first before they can read an email.
+* New tags overwrite old tags.
+* To remove tags, leave the tag field empty, i.e. `tag INDEX`
+* User must `list TYPE` first before they can tag an email.
 
 Example of usage:
 ````
@@ -348,7 +349,7 @@ list draft
 ____________________________________________________________
 1. [Draft][UNREAD]
 || Subject: This is subject 3
-|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| From: 12312@gmail.com --> To: [test@yahoo.com]
 || Time: 2021-02-20T08:30:00
 || Tags: []
 2. [Draft][UNREAD]

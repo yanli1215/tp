@@ -99,21 +99,32 @@ public class Ui {
     public void printMenu() {
         System.out.println("Hello! I'm MojoHR\n" + logo + "What can I do for you?");
         System.out.println("> Use the keyword \"LIST (type) \" to print the emails by types\n"
-                + "!!! type must be one of: [allemails, inbox, archive, deleted, draft, junk, sent]!!!");
+                + "!!! type must be one of: [allemails, inbox, archive, deleted, draft, junk, sent] !!!");
         System.out.println("> Use the keyword \"READ (index) \" to open the selected email");
         System.out.println("> Use the keyword \"COMPOSE \" to create a draft email");
-        System.out.println("> Use the keyword \"SEND (index) \" to send email in the draft folder");
+        System.out.println("> Use the keyword \"EDIT (index)\" to edit email in the draft folder");
+        System.out.println("> Use the keyword \"SEND (index/ multiple indices) \" to send email(s) "
+                + "in the draft folder\n"
+                + "!!! indices should be separated with a space !!!");
         System.out.println("> Use the keyword \"DELETE (index) \" to delete the selected email");
         System.out.println("> Use the keyword \"FIND (keyword) \" to find the  email by keywords");
         System.out.println("> Use the keyword \"ARCHIVE (index) \" to move the selected email to the archive folder");
         System.out.println("> Use the keyword \"TAG (index) (tag1) (tag2)...\" to select the email for tagging labels");
+        System.out.println("> Use the keyword \"NUMBER (type)\" to count the emails by types\n"
+                + "!!! type must be one of: [allemails, inbox, archive, deleted, draft, junk, sent] !!!");
+        System.out.println("> Use the keyword \"SORT (type) \" to sort all emails by types\n"
+                + "!!! type must be one of: [time, sender] !!!");
         System.out.println("> Use the keyword \"RESET\" to reset the your account password");
         System.out.println("> Use the keyword \"HELP\" to print the menu");
         System.out.println("> Use the keyword \"BYE\" to exit");
     }
 
     public void printNumberOfEmails(int totalEmails, String emailType) {
-        System.out.println("You have a total of " + totalEmails + " " + emailType.toUpperCase() + " emails");
+        if (emailType.equals("allemails")) {
+            System.out.println("You have a total of " + totalEmails + " emails");
+        } else {
+            System.out.println("You have a total of " + totalEmails + " " + emailType.toUpperCase() + " emails");
+        }
     }
 
     public static void showInvalidIdMessage(String type) {

@@ -87,6 +87,7 @@ public class Email {
     }
 
     public void setTags(ArrayList<String> tags) {
+        assert tags != null;
         this.tags = tags;
     }
 }
