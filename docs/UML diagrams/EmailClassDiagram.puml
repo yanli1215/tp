@@ -1,6 +1,11 @@
 @startuml
+'https://plantuml.com/class-diagram
 
-package Email <<Rectangle>>{
+hide circle
+hide empty members
+skinparam classAttributeIconSize 0
+
+package email <<Rectangle>>{
 class Email
 class Archive
 class Deleted
@@ -18,25 +23,25 @@ class Email {
 - subject: String
 - time: String
 - content: String
-- tag: ArrayList<String>
 - isRead: boolean
+- tags: ArrayList<String>
++ boolean isRead()
 + void setRead(boolean isRead)
-+ void setFrom(String)
-+ void setTo(String)
-+ void setTo(ArrayList<String>)
-+ void setSubject(String)
-+ void setContent(String)
-+ void setTags(int[] indices)
 + String getFrom()
++ void setFrom(String from)
 + String getTo()
++ void setTo(ArrayList<String> to)
 + String getSubject()
++ void setSubject(String subject)
++ String getTime()
++ void setTime(String time)
 + String getContent()
++ void setContent(String content)
 - String getStatus()
 + String toString()
 + String getShortDescription()
-+ ArrayList<String> getTags
-+ static String[] getAvailableTags()
-- ArrayList<String> stringToList(String to)
++ ArrayList<String> getTags()
++ void setTags(int[] indices)
 }
 
 class EmailManager {
@@ -51,7 +56,7 @@ class EmailManager {
 + int getNumOfInboxEmails()
 + int getNumOfJunkEmails()
 + int getNumOfSentEmails()
-+ static void printEmailByType(ArrayList<Email>)
++ void printEmailByType(ArrayList<Email>)
 + void setListedType(String emailType)
 + String getListedType()
 + void sortBySender()
@@ -66,8 +71,10 @@ class EmailManager {
 + static ArrayList<Email> getListedEmailsList()
 + void deleteEmail(Email)
 + void addToDeleted(Email)
++ void addToSent(Email)
 + void addToArchive(Email)
 + void addToDraft(Email)
++ void addToInbox(Email)
 + ArrayList<Email> findByString(ArrayList<Email> emails, String filterString)
 
 }
@@ -78,7 +85,7 @@ Draft ---|> Email
 Inbox ---|> Email
 Junk ---|> Email
 Sent ---|> Email
-EmailManager ---> Email :uses
+EmailManager "1" *---> "*" Email: contains
 Command --left-> Email: uses
 Command --left-> EmailManager: uses
 
