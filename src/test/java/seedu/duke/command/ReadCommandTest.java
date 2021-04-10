@@ -41,7 +41,7 @@ public class ReadCommandTest {
                         + "|| From: 123@gmail.com --> To: [456@gmail.com]\n"
                         + "|| Time: 2012-01-01\n"
                         + "|| Tags: []\n"
-                        + "|| Content: C1" + System.lineSeparator()
+                        + "|| Content: \n"  + "C1" + System.lineSeparator()
                         + "____________________________________________________________",
                 outputStreamCaptor.toString().trim());
     }
