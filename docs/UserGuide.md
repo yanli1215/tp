@@ -206,7 +206,8 @@ ____________________________________________________________
 || From: 21312@gmail.com --> To: [12312@gmail.com]
 || Time: 2021-02-20T10:30:00
 || Tags: []
-|| Content: This is content for s5.
+|| Content: 
+This is content for s5.
 ____________________________________________________________
 ````
 
@@ -528,7 +529,7 @@ ____________________________________________________________
 
 ### sorting an email: `sort`
 
-Sorts email according to time or Lexicographic order of sender's email.
+Sorts order of emails according to time or Lexicographic order of sender's email.
 
 Format: `sort TYPE`
 
@@ -656,14 +657,17 @@ added to your sent box. However, the email cannot be seen in the inbox of the re
 
 ## Command Summary
 
-* List emails by types `list TYPE`
+* List emails by type `list TYPE`
 * Opening an email to see the content `read INDEX`
 * Composing an email: `compose`
-* Sending an email: `send INDEX`
+* Sending email(s): `send INDEX/MULTIPLE INDICES`
+* Edit an email: `edit INDEX`
 * Delete emails to junk box `delete INDEX`
 * Find emails by keywords `find KEYWORD`
 * Archive emails `archive INDEX`
 * Tagging an email: `tag INDEX`
+* Get number of emails by type `number TYPE`
+* Sort order of emails by type `sort TYPE`
 * Reset the account's password `reset`
 * Print help menu `help`
 * Exit application `bye`
@@ -673,11 +677,14 @@ Action | Format, Examples
 **list** | `list TYPE` e.g., `list inbox`
 **read** | `read INDEX` e.g., `read 1`
 **compose** | `compose`
-**send** | `send INDEX` e.g., `send 1`
+**send** | `send INDEX/MULTIPLE INDICES` e.g., `send 1`, `send 1 2`
+**edit** | `edit INDEX` e.g., `edit 1`
 **delete** | `delete INDEX` e.g., `delete 1`
 **find** | `find KEYWORD` e.g., `find content`
 **archive** | `archive INDEX` e.g., `archive 1`
 **tag** | `tag INDEX` e.g., `tag 1`
+**number** | `number TYPE` e.g., `number archive`
+**sort** | `sort TYPE` e.g., `sort time`
 **reset**| `reset`
 **help**| `help`
 **bye**| `bye`
@@ -688,19 +695,38 @@ Action | Format, Examples
 |log in               | Enter Choice: `1`  <br/> Email Address: `12321@gmail.com` <br/> Password:`5678`
 |Register as new user | Enter Choice: `2`  <br/> Email Address: `joey@gmail.com` <br/> Password:`9999`
 |Log out              | Enter Choice: `3`
-| **List
-Command**    |                                                                                                            |
-|emails               | `list emails`
+| **List Command**    |                                                                                                            |
+|all emails           | `list allemails`
 |inbox                | `list inbox`
 |archive              | `list archive`
 |deleted              | `list deleted`
 |draft                | `list draft`
 |junk                 | `list junk`
 |sent                 | `list sent`
+| **Compose Command** | 
+|compose              | `compose` <br> `example@gmail.com` <br> `example subject` <br> `example content` <br> `/end`
+| **Edit Command**    |
+|edit                 | `edit INDEX` 
+|*to*                 | Enter Choice: `to` <br> New receiver email address: `example@gmail.com` <br>
+|*subject*            | Enter Choice: `subject` <br> New subject: `example subject` <br>
+|*content*            | Enter Choice: `content` <br> New content: <br>`this is example content` <br> `/end`
+| **Send Command**    |
+|send                 | `send INDEX/MULTIPLE INDICES`
 | **Read Command**    |
 |read                 | `read INDEX`
 | **Tag Command**     |
 |tag                  | `tag INDEX TAG1 TAG2 ...`
+| **Number Command**  |
+|all emails           | `number allemails`
+|inbox                | `number inbox`
+|archive              | `number archive`
+|deleted              | `number deleted`
+|draft                | `number draft`
+|junk                 | `number junk`
+|sent                 | `number sent`
+| **Sort Command**    |
+|time                 | `sort time`
+|sender               | `sort sender`
 | **Help Command**    |
 |help                 | `help`
 | **Bye Command**     |

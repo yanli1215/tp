@@ -103,8 +103,9 @@ public class Ui {
         System.out.println("> Use the keyword \"READ (index) \" to open the selected email");
         System.out.println("> Use the keyword \"COMPOSE \" to create a draft email");
         System.out.println("> Use the keyword \"EDIT (index) \" to edit email in the draft folder");
-        System.out.println("> Use the keyword \"SEND (index/ multiple indices) \" to send email(s) in the " +
-                "draft folder\n" + "!!! indices should be separated with a space !!!");
+        System.out.println("> Use the keyword \"SEND (index/ multiple indices) \" "
+                + "to send email(s) in the draft folder\n"
+                + "!!! indices should be separated with a space !!!");
         System.out.println("> Use the keyword \"DELETE (index) \" to delete the selected email");
         System.out.println("> Use the keyword \"FIND (keyword) \" to find the  email by keywords");
         System.out.println("> Use the keyword \"ARCHIVE (index) \" to move the selected email to the archive folder");
