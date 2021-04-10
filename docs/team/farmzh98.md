@@ -45,5 +45,7 @@ The SortCommand sorts emails according to time or Lexicographic order of sender'
 * Add user stories
 * Add documentations for the following features: `compose`, `send`, `edit`, `sort`, `number`.
 
+<div style="page-break-after: always;"></div>
+
 #### 2. Developer Guide
 * Add Implementation for the following features: `compose`, `send`, `sort`.
