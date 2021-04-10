@@ -1,54 +1,55 @@
 # MojoHr User Guide
 
 ## Content Page
+
 1. [Introduction](#introduction)
 1. [Quick Start](#quick-start)
 1. [Logging in](#logging-in)
-   1. [Log in to Main Application](#log-in-to-main-application-1)
-   1. [Register as a New User](#register-as-a-new-user-2)
-   1. [Exit Application before log in](#exit-application-before-log-in-3)
+    1. [Log in to Main Application](#log-in-to-main-application-1)
+    1. [Register as a New User](#register-as-a-new-user-2)
+    1. [Exit Application before log in](#exit-application-before-log-in-3)
 1. [Features](#features)
-   1. [Listing an Email](#listing-an-email-list)
-   1. [Opening an Email](#opening-an-email-read)
-   1. [Deleting an Email](#deleting-an-email-delete) 
-   1. [Archiving an Email](#archiving-an-email-archive)
-   1. [Finding an Email](#finding-an-email-find)
-   1. [Tagging an Email](#tagging-an-email-tag)
-   1. [Composing an Email](#composing-an-email-compose)
-   1. [Sending an Email](#sending-an-email-send)
-   1. [Editing an Email](#editing-an-email-edit)
-   1. [Counting Number of Email](#count-number-of-email-number)
-   1. [Sorting an Email](#sorting-an-email-sort)
-   1. [Resetting the Password](#resetting-the-password-reset)
-   1. [Printing the Help Menu](#printing-the-help-menu-help)
-   1. [Exiting the Application](#exiting-the-application-bye)
+    1. [Listing an Email](#listing-an-email-list)
+    1. [Opening an Email](#opening-an-email-read)
+    1. [Deleting an Email](#deleting-an-email-delete)
+    1. [Archiving an Email](#archiving-an-email-archive)
+    1. [Finding an Email](#finding-an-email-find)
+    1. [Tagging an Email](#tagging-an-email-tag)
+    1. [Composing an Email](#composing-an-email-compose)
+    1. [Sending an Email](#sending-an-email-send)
+    1. [Editing an Email](#editing-an-email-edit)
+    1. [Counting Number of Email](#count-number-of-email-number)
+    1. [Sorting an Email](#sorting-an-email-sort)
+    1. [Resetting the Password](#resetting-the-password-reset)
+    1. [Printing the Help Menu](#printing-the-help-menu-help)
+    1. [Exiting the Application](#exiting-the-application-bye)
 1. [FAQ](#faq)
 1. [Command Summary](#command-summary)
 
 ## Introduction
 
-The HR department receives many emails from job seekers. A large portion of their day is spent clearing emails. Thus, our product seeks to allow the user to clear emails more efficiently by streamlining the process. This will reduce the time spent on clearing emails.
+The HR department receives many emails from job seekers. A large portion of their day is spent clearing emails. Thus,
+our product seeks to allow the user to clear emails more efficiently by streamlining the process. This will reduce the
+time spent on clearing emails.
 
 ## Quick Start
 
 1. Ensure that you have Java 11 or above installed.
-   
+
 2. Download the latest version of `MojoHr` from [here](https://github.com/AY2021S2-CS2113-W10-2/tp/releases).
-   
+
 3. Download the sample test datasets `data.zip` folder from [here](https://github.com/AY2021S2-CS2113-W10-2/tp/releases)
    and unzip it.
-   
-4. Make sure you put the folder `data` under the same path(folder) of `duke.jar`.
-   cd into the folder containing the JAR file
-   
+
+4. Make sure you put the folder `data` under the same path(folder) of `duke.jar`. cd into the folder containing the JAR
+   file
+
 5. `cd` Locate the file path of the JAR file and data folder that you have downloaded
-   
+
 6. Run the following command: `java -jar [JAR file name]`
 
-
-
-
 ## Logging in
+
 ### Log in to main application: `1`
 
 Format
@@ -59,6 +60,7 @@ Enter email address: `12312@gmail.com`
 Enter password: `5678`
 
 Example of usage:
+
 ```
  _________   _____   _____   _____
 |  _   _  | |  _  | |_   _| |  _  |
@@ -78,7 +80,9 @@ Enter email address:
 Enter password:
 5678
 ```
+
 ### Register as a new user: `2`
+
 Format
 `2`
 
@@ -87,6 +91,7 @@ Enter email address: `joey@gmail.com`
 Enter password: `joey987`
 
 Example of usage:
+
 ```
  _________   _____   _____   _____
 |  _   _  | |  _  | |_   _| |  _  |
@@ -106,11 +111,14 @@ joey@gmail.com
 Enter password:
 joey987
 ```
+
 ### Exit Application before log in: `3`
+
 Format
 `3`
 
 Example of usage:
+
 ```
  _________   _____   _____   _____
 |  _   _  | |  _  | |_   _| |  _  |
@@ -132,15 +140,19 @@ Logging off... Hope to see you again in MojoHr!
 ## Features
 
 ### listing an email: `list`
+
 list different types of emails
 
 Format: `list TYPE`
-* The `TYPE` refers to the type of emails they you want to display
-* `TYPES` are limited to `list allemails`, `list inbox`, `list archive`, `list deleted`, `list draft`, `list junk`, `list sent`
-* If you are a new user, you will have to compose some emails, if not email account is empty and `list TYPE` will return be empty 
 
+* The `TYPE` refers to the type of emails they you want to display
+* `TYPES` are limited to `list allemails`, `list inbox`, `list archive`, `list deleted`, `list draft`, `list junk`
+  , `list sent`
+* If you are a new user, you will have to compose some emails, if not email account is empty and `list TYPE` will return
+  be empty
 
 Example of usage
+
 ```____________________________________________________________
 Enter Command:
 list draft
@@ -172,6 +184,7 @@ Format: `read INDEX`
 * User must `list TYPE` first before they can read an email.
 
 Example of usage:
+
 ````
 ____________________________________________________________
 1. [Archive][UNREAD]
@@ -193,11 +206,13 @@ ____________________________________________________________
 || From: 21312@gmail.com --> To: [12312@gmail.com]
 || Time: 2021-02-20T10:30:00
 || Tags: []
-|| Content: This is content for s5.
+|| Content: 
+This is content for s5.
 ____________________________________________________________
 ````
 
 ### Deleting an email: `delete`
+
 Delete an email to the junk box or remove an email from junk box forever.
 
 Format: `delete INDEX`
@@ -205,11 +220,11 @@ Format: `delete INDEX`
 * The `INDEX` refers to the index number shown in the displayed email list.
 * The `INDEX` **must be a positive integer** 1, 2, 3, …
 
-* If the displayed email list is not junk emails, move the email at the specified `INDEX` to the junk box. 
+* If the displayed email list is not junk emails, move the email at the specified `INDEX` to the junk box.
 * If the displayed email list is junk emails, remove the email at the specified `INDEX` from the account forever.
 
+Example of usage:
 
-Example of usage: 
 ````
 ____________________________________________________________
 Enter Command:
@@ -241,7 +256,9 @@ ____________________________________________________________
 || Tags: []
 ____________________________________________________________
 ````
+
 ### Archiving an email: `archive`
+
 Archive a not-archived email to the archive box.
 
 Format: `archive INDEX`
@@ -251,7 +268,6 @@ Format: `archive INDEX`
 
 * If the displayed email list is not archived emails, move the email at the specified `INDEX` to the archive box.
 * If the displayed email list is archived emails, no action will be done.
-
 
 Example of usage:
 
@@ -287,8 +303,8 @@ ____________________________________________________________
 ____________________________________________________________
 ````
 
-
 ### Finding an email: `find`
+
 Find emails that contain a certain keyword.
 
 Format: `find KEYWORD`
@@ -297,8 +313,8 @@ Format: `find KEYWORD`
 * The `KEYWORD` can be any non-empty string.
 * The `KEYWORD` is case-ignored during the find.
 
-
 Example of usage:
+
 ````
 ____________________________________________________________
 Enter Command:
@@ -327,12 +343,13 @@ ____________________________________________________________
 ````
 
 ### tagging an email: `tag`
+
 Tag an email with labels
 
 Format: `tag INDEX TAG1 TAG2 ...`
 
 * The `INDEX` refers to the index number shown in the displayed email list.
-* The `INDEX` **must be a positive integer** 1, 2, 3, … 
+* The `INDEX` **must be a positive integer** 1, 2, 3, …
 * The `TAG#` is a single word label that user wants to add.
 * User can add multiple tags to their email.
 * New tags overwrite old tags.
@@ -340,6 +357,7 @@ Format: `tag INDEX TAG1 TAG2 ...`
 * User must `list TYPE` first before they can tag an email.
 
 Example of usage:
+
 ````
 ____________________________________________________________
 Enter Command:
@@ -364,6 +382,7 @@ ____________________________________________________________
 ````
 
 ### composing an email: `compose`
+
 Compose an email which will be saved to draft. The software will prompt user to enter the necessary details.
 
 Format: `compose`
@@ -372,6 +391,7 @@ Format: `compose`
 * User must enter `/end` to signify that it is the end of content
 
 Example of usage:
+
 ```
 ____________________________________________________________
 Enter Command:
@@ -381,8 +401,9 @@ Please enter the details below in the correct order:
 To:
 Subject:
 Content:
-You can send to multiple recipents by appending emails with ";"
+You can send to multiple recipents by appending email address with ";"
 e.g: Alice@gmail.com;Bob@gmail.com
+You should end content by typing "/end" in a newline
 ____________________________________________________________
 test@gmail.com
 testSubject
@@ -399,49 +420,51 @@ ____________________________________________________________
 ```
 
 ### sending an email: `send`
-Sends an email from draft
 
-Format: `send INDEX`
+Sends email(s) from draft
+
+Format: `send INDEX/MULTIPLE INDICES`
 
 * The `INDEX` refers to the index number of email in the draft list.
 * The `INDEX` **must be a positive integer** 1, 2, 3, …
+* The `MULTIPLE INDICES` refers to the option of sending multiple emails in the draft list by separating each index with
+  a space
 * User must `list draft` first before they can send an email
+* User must ensure that the email address of receiver exists in MojoHR's system.
 
 Example of usage:
+
 ```
 ____________________________________________________________
 Enter Command:
 list draft
 ____________________________________________________________
 1. [Draft][UNREAD]
-|| Subject: LilySubject
-|| From: 12312@gmail.com --> To: [lily@gmail.com]
-|| Time: 2021-03-30T20:15:06
+|| Subject: This is subject 3
+|| From: 12312@gmail.com --> To: [test@yahoo.com]
+|| Time: 2021-02-20T08:30:00
 || Tags: []
 2. [Draft][UNREAD]
-|| Subject: testing
-|| From: 12312@gmail.com --> To: [lolita@gmail.com, lolota@gmail.com]
-|| Time: 2021-03-30T22:48:58
+|| Subject: LilySubject
+|| From: 12312@gmail.com --> To: [lily@gmail.com]
+|| Time: 2021-03-30T15:30:09
 || Tags: []
 3. [Draft][UNREAD]
-|| Subject: testSubject
+|| Subject: lol
 || From: 12312@gmail.com --> To: [test@gmail.com]
-|| Time: 2021-04-02T18:50:14
-|| Tags: []
-4. [Draft][UNREAD]
-|| Subject: 
-|| From: 12312@gmail.com --> To: [no]
-|| Time: 2021-04-02T18:51:07
+|| Time: 2021-04-10T11:04:54
 || Tags: []
 ____________________________________________________________
 Enter Command:
-send 4
+send 1 3
 ____________________________________________________________
-Email successfully sent to: [no] at 2021-04-02T19:02:12.724156500
+Email successfully sent to: [test@yahoo.com] at 2021-04-10T11:05:05
+Email successfully sent to: [test@gmail.com] at 2021-04-10T11:05:05
 ____________________________________________________________
 ```
 
 ### Editing an email: `edit`
+
 Edits an email in draft
 
 Format: `edit INDEX`
@@ -450,10 +473,12 @@ Format: `edit INDEX`
 * The `INDEX` **must be a positive integer** 1, 2, 3, …
 * User must `list draft` first before they can send an email
 * The program will ask user if they want to edit the receiver's email, subject or content
-* User should enter `to`, `subject`, or `content` when prompted and immediately enter the parts that the user wish to edit
+* User should enter `to`, `subject`, or `content` when prompted and immediately enter the parts that the user wish to
+  edit
 * If user wants to edit content, remember to enter `/end` to signify that it is the end of content
 
 Example of usage:
+
 ```
 Enter Command:
 list draft
@@ -485,15 +510,16 @@ ____________________________________________________________
 ```
 
 ### count number of email: `number`
+
 Counts the number of a specific type of email
 
 Format: `number TYPE`
 
-* The `TYPE` refers to the types of email. 
-* Example of `TYPE`: inbox, archive, deleted, draft, junk, sent, and emails. 'Emails' refer to all emails
-
+* The `TYPE` refers to the types of email.
+* Example of `TYPE`: `inbox, archive, deleted, draft, junk, sent, and allemails. 'Emails' refer to all emails
 
 Example of usage:
+
 ```
 Enter Command:
 number draft
@@ -503,7 +529,8 @@ ____________________________________________________________
 ```
 
 ### sorting an email: `sort`
-Sorts email according to time or Lexicographic order of sender's email.
+
+Sorts order of emails according to time or Lexicographic order of sender's email.
 
 Format: `sort TYPE`
 
@@ -511,6 +538,7 @@ Format: `sort TYPE`
 * Types of sorting methods: sender, time
 
 Example of usage:
+
 ```
 Enter Command:
 sort time
@@ -539,18 +567,18 @@ ____________________________________________________________
 ```
 
 ### Resetting the password: `reset`
+
 Reset the password for the user's email account.
 
 Format: `reset`
 
 * The program will aks for the old password from user.
-* If the old password is correct, the program will ask for the new  password from user.
+* If the old password is correct, the program will ask for the new password from user.
 * The number of wrong attempt is 3.
 * If the old password is wrong for 3 times, the program will back to main menu asking for command.
 
-
-
 Example of usage:
+
 ```
 ____________________________________________________________
 Enter Command:
@@ -570,11 +598,13 @@ ____________________________________________________________
 ```
 
 ### Printing the help menu: `help`
+
 Displays the list of commands and how to use them
 
 Format: `help`
 
 Example of usage:
+
 ```
 ____________________________________________________________
 Enter Command:
@@ -603,11 +633,12 @@ ____________________________________________________________
 ```
 
 ### Exiting the application: `bye`
+
 Exits the application
 
 Format: `bye`
 
-Example of usage: 
+Example of usage:
 
 ```
 ____________________________________________________________
@@ -620,21 +651,24 @@ Logging off... Hope to see you again in MojoHr!
 
 ## FAQ
 
-**Q**: How can I send emails to others? 
+**Q**: How can I send emails to others?
 
 **A**: Firstly, you should compose an email as a draft. Then, send the draft by `send index`. The email you sent will be
 added to your sent box. However, the email cannot be seen in the inbox of the receiver yet.
 
 ## Command Summary
 
-* List emails by types `list TYPE`
+* List emails by type `list TYPE`
 * Opening an email to see the content `read INDEX`
 * Composing an email: `compose`
-* Sending an email: `send INDEX`
+* Sending email(s): `send INDEX/MULTIPLE INDICES`
+* Edit an email: `edit INDEX`
 * Delete emails to junk box `delete INDEX`
 * Find emails by keywords `find KEYWORD`
 * Archive emails `archive INDEX`
 * Tagging an email: `tag INDEX`
+* Get number of emails by type `number TYPE`
+* Sort order of emails by type `sort TYPE`
 * Reset the account's password `reset`
 * Print help menu `help`
 * Exit application `bye`
@@ -644,34 +678,56 @@ Action | Format, Examples
 **list** | `list TYPE` e.g., `list inbox`
 **read** | `read INDEX` e.g., `read 1`
 **compose** | `compose`
-**send** | `send INDEX` e.g., `send 1`
+**send** | `send INDEX/MULTIPLE INDICES` e.g., `send 1`, `send 1 2`
+**edit** | `edit INDEX` e.g., `edit 1`
 **delete** | `delete INDEX` e.g., `delete 1`
 **find** | `find KEYWORD` e.g., `find content`
 **archive** | `archive INDEX` e.g., `archive 1`
 **tag** | `tag INDEX` e.g., `tag 1`
+**number** | `number TYPE` e.g., `number archive`
+**sort** | `sort TYPE` e.g., `sort time`
 **reset**| `reset`
 **help**| `help`
 **bye**| `bye`
 
-
 | Command             | Example                                                                                                    |
 |---------------------|------------------------------------------------------------------------------------------------------------|
-| **Login**           |   
-|log in               | Enter Choice: `1`  <br/> Email Address: `12321@gmail.com` <br/> Password:`5678` 
-|Register as new user | Enter Choice: `2`  <br/> Email Address: `joey@gmail.com` <br/> Password:`9999`           
-|Log out              | Enter Choice: `3`    
+| **Login**           |
+|log in               | Enter Choice: `1`  <br/> Email Address: `12321@gmail.com` <br/> Password:`5678`
+|Register as new user | Enter Choice: `2`  <br/> Email Address: `joey@gmail.com` <br/> Password:`9999`
+|Log out              | Enter Choice: `3`
 | **List Command**    |                                                                                                            |
-|emails               | `list emails`
-|inbox                | `list inbox` 
-|archive              | `list archive`  
-|deleted              | `list deleted`   
-|draft                | `list draft`  
-|junk                 | `list junk`  
+|all emails           | `list allemails`
+|inbox                | `list inbox`
+|archive              | `list archive`
+|deleted              | `list deleted`
+|draft                | `list draft`
+|junk                 | `list junk`
 |sent                 | `list sent`
+| **Compose Command** | 
+|compose              | `compose` <br> `example@gmail.com` <br> `example subject` <br> `example content` <br> `/end`
+| **Edit Command**    |
+|edit                 | `edit INDEX` 
+|*to*                 | Enter Choice: `to` <br> New receiver email address: `example@gmail.com` <br>
+|*subject*            | Enter Choice: `subject` <br> New subject: `example subject` <br>
+|*content*            | Enter Choice: `content` <br> New content: <br>`this is example content` <br> `/end`
+| **Send Command**    |
+|send                 | `send INDEX/MULTIPLE INDICES`
 | **Read Command**    |
 |read                 | `read INDEX`
 | **Tag Command**     |
 |tag                  | `tag INDEX TAG1 TAG2 ...`
+| **Number Command**  |
+|all emails           | `number allemails`
+|inbox                | `number inbox`
+|archive              | `number archive`
+|deleted              | `number deleted`
+|draft                | `number draft`
+|junk                 | `number junk`
+|sent                 | `number sent`
+| **Sort Command**    |
+|time                 | `sort time`
+|sender               | `sort sender`
 | **Help Command**    |
 |help                 | `help`
 | **Bye Command**     |
