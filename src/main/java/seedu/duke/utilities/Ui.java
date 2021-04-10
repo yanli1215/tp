@@ -60,7 +60,7 @@ public class Ui {
         System.out.println("To:");
         System.out.println("Subject:");
         System.out.println("Content:");
-        System.out.println("You can send to multiple recipents by appending emails with \";\"");
+        System.out.println("You can send to multiple recipents by appending email address with \";\"");
         System.out.println("e.g: Alice@gmail.com;Bob@gmail.com");
         System.out.println("You should end content by typing \"/end\" in a newline");
         printDivider();

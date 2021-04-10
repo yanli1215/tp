@@ -380,8 +380,9 @@ Please enter the details below in the correct order:
 To:
 Subject:
 Content:
-You can send to multiple recipents by appending emails with ";"
+You can send to multiple recipents by appending email address with ";"
 e.g: Alice@gmail.com;Bob@gmail.com
+You should end content by typing "/end" in a newline
 ____________________________________________________________
 test@gmail.com
 testSubject
@@ -398,13 +399,16 @@ ____________________________________________________________
 ```
 
 ### sending an email: `send`
-Sends an email from draft
+Sends email(s) from draft
 
-Format: `send INDEX`
+Format: `send INDEX/MULTIPLE INDICES`
 
 * The `INDEX` refers to the index number of email in the draft list.
 * The `INDEX` **must be a positive integer** 1, 2, 3, …
+* The `MULTIPLE INDICES` refers to the option of sending multiple emails 
+  in the draft list by separating each index with a space   
 * User must `list draft` first before they can send an email
+* User must ensure that the email address of receiver exists in MojoHR's system.
 
 Example of usage:
 ```
@@ -413,30 +417,26 @@ Enter Command:
 list draft
 ____________________________________________________________
 1. [Draft][UNREAD]
-|| Subject: LilySubject
-|| From: 12312@gmail.com --> To: [lily@gmail.com]
-|| Time: 2021-03-30T20:15:06
+|| Subject: This is subject 3
+|| From: 12312@gmail.com --> To: [test@yahoo.com]
+|| Time: 2021-02-20T08:30:00
 || Tags: []
 2. [Draft][UNREAD]
-|| Subject: testing
-|| From: 12312@gmail.com --> To: [lolita@gmail.com, lolota@gmail.com]
-|| Time: 2021-03-30T22:48:58
+|| Subject: LilySubject
+|| From: 12312@gmail.com --> To: [lily@gmail.com]
+|| Time: 2021-03-30T15:30:09
 || Tags: []
 3. [Draft][UNREAD]
-|| Subject: testSubject
+|| Subject: lol
 || From: 12312@gmail.com --> To: [test@gmail.com]
-|| Time: 2021-04-02T18:50:14
-|| Tags: []
-4. [Draft][UNREAD]
-|| Subject: 
-|| From: 12312@gmail.com --> To: [no]
-|| Time: 2021-04-02T18:51:07
+|| Time: 2021-04-10T11:04:54
 || Tags: []
 ____________________________________________________________
 Enter Command:
-send 4
+send 1 3
 ____________________________________________________________
-Email successfully sent to: [no] at 2021-04-02T19:02:12.724156500
+Email successfully sent to: [test@yahoo.com] at 2021-04-10T11:05:05
+Email successfully sent to: [test@gmail.com] at 2021-04-10T11:05:05
 ____________________________________________________________
 ```
 
@@ -489,7 +489,7 @@ Counts the number of a specific type of email
 Format: `number TYPE`
 
 * The `TYPE` refers to the types of email. 
-* Example of `TYPE`: inbox, archive, deleted, draft, junk, sent, and emails. 'Emails' refer to all emails
+* Example of `TYPE`: `inbox, archive, deleted, draft, junk, sent, and allemails. 'Emails' refer to all emails
 
 
 Example of usage:

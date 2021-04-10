@@ -78,7 +78,7 @@ public class EditCommand extends Command {
             break;
         case "content":
             String inputContent = in.nextLine();
-            String content = inputContent + "\n";
+            String content = "";
             while (!inputContent.startsWith("/end")) {
                 content += inputContent + "\n";
                 inputContent = in.nextLine();
