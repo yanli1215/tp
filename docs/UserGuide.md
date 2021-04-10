@@ -1,4 +1,29 @@
-# User Guide
+# MojoHr User Guide
+
+## Content Page
+1. [Introduction](#introduction)
+1. [Quick Start](#quick-start)
+1. [Logging in](#logging-in)
+   1. [Log in to Main Application](#log-in-to-main-application-1)
+   1. [Register as a New User](#register-as-a-new-user-2)
+   1. [Exit Application before log in](#exit-application-before-log-in-3)
+1. [Features](#features)
+   1. [Listing an Email](#listing-an-email-list)
+   1. [Opening an Email](#opening-an-email-read)
+   1. [Deleting an Email](#deleting-an-email-delete) 
+   1. [Archiving an Email](#archiving-an-email-archive)
+   1. [Finding an Email](#finding-an-email-find)
+   1. [Tagging an Email](#tagging-an-email-tag)
+   1. [Composing an Email](#composing-an-email-compose)
+   1. [Sending an Email](#sending-an-email-send)
+   1. [Editing an Email](#editing-an-email-edit)
+   1. [Counting Number of Email](#count-number-of-email-number)
+   1. [Sorting an Email](#sorting-an-email-sort)
+   1. [Resetting the Password](#resetting-the-password-reset)
+   1. [Printing the Help Menu](#printing-the-help-menu-help)
+   1. [Exiting the Application](#exiting-the-application-bye)
+1. [FAQ](#faq)
+1. [Command Summary](#command-summary)
 
 ## Introduction
 
@@ -23,7 +48,7 @@ The HR department receives many emails from job seekers. A large portion of thei
 
 
 
-## Login Features
+## Logging in
 ### Log in to main application: `1`
 
 Format
@@ -104,7 +129,7 @@ Logging off... Hope to see you again in MojoHr!
 
 ```
 
-## Within Application Features 
+## Features
 
 ### listing an email: `list`
 list different types of emails
@@ -144,29 +169,31 @@ Format: `read INDEX`
 
 * The `INDEX` refers to the index number shown in the displayed email list.
 * The `INDEX` **must be a positive integer** 1, 2, 3, …
-* User must `list emails` first before they can read an email.
+* User must `list TYPE` first before they can read an email.
 
 Example of usage:
 ````
 ____________________________________________________________
-Enter Command:
-list inbox
-____________________________________________________________
-1. [Inbox][UNREAD]
-   || Subject: This is subject 1
-   || From: 21312@gmail.com --> To: [12312@gmail.com]
-   || Time: 2021-02-20T06:30:00
-   || Tags: [Important, Work]
+1. [Archive][UNREAD]
+|| Subject: This is subject 5
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T10:30:00
+|| Tags: []
+2. [Archive][UNREAD]
+|| Subject: This is subject 6
+|| From: 11312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T11:30:00
+|| Tags: []
 ____________________________________________________________
 Enter Command:
 read 1
 ____________________________________________________________
-[Inbox][READ]
-|| Subject: This is subject 1
+[Archive][READ]
+|| Subject: This is subject 5
 || From: 21312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T06:30:00
-|| Tags: [Important, Work]
-|| Content: Welcome to MOJO HR.
+|| Time: 2021-02-20T10:30:00
+|| Tags: []
+|| Content: This is content for s5.
 ____________________________________________________________
 ````
 
@@ -308,44 +335,31 @@ Format: `tag INDEX TAG1 TAG2 ...`
 * The `INDEX` **must be a positive integer** 1, 2, 3, … 
 * The `TAG#` is a single word label that user wants to add.
 * User can add multiple tags to their email.
-* This command overwrites the old tag(s).
-* User must `list emails` first before they can read an email.
+* New tags overwrite old tags.
+* To remove tags, leave the tag field empty, i.e. `tag INDEX`
+* User must `list TYPE` first before they can tag an email.
 
 Example of usage:
 ````
 ____________________________________________________________
 Enter Command:
-list inbox
+list draft
 ____________________________________________________________
-1. [Inbox][UNREAD]
-|| Subject: This is subject 1
-|| From: 21312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T06:30:00
+1. [Draft][UNREAD]
+|| Subject: This is subject 3
+|| From: 12312@gmail.com --> To: [test@yahoo.com]
+|| Time: 2021-02-20T08:30:00
+|| Tags: []
+2. [Draft][UNREAD]
+|| Subject: LilySubject
+|| From: 12312@gmail.com --> To: [lily@gmail.com]
+|| Time: 2021-03-30T15:30:09
 || Tags: []
 ____________________________________________________________
 Enter Command:
-tag 1
+tag 1 CS2113 PE
 ____________________________________________________________
-You have selected this email:
-[Inbox][UNREAD]
-|| Subject: This is subject 1
-|| From: 21312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T06:30:00
-|| Tags: []
-____________________________________________________________
-These are the available tags: 
-1. Important
-2. Family
-3. Friends
-4. School
-5. Work
-6. Travels
-Select the indices of the tag you want to add.
-e.g. Type "1 2 6" to add the tags Important, Family, Travels
-____________________________________________________________
-tag 1 5
-____________________________________________________________
-You have successfully set the following tags [Important, Work]
+You have successfully set the following tags [CS2113, PE]
 ____________________________________________________________
 ````
 
@@ -653,7 +667,11 @@ Action | Format, Examples
 |deleted              | `list deleted`   
 |draft                | `list draft`  
 |junk                 | `list junk`  
-|sent                 | `list sent`  
+|sent                 | `list sent`
+| **Read Command**    |
+|read                 | `read INDEX`
+| **Tag Command**     |
+|tag                  | `tag INDEX TAG1 TAG2 ...`
 | **Help Command**    |
 |help                 | `help`
 | **Bye Command**     |

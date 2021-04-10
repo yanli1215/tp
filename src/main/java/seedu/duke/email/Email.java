@@ -1,7 +1,6 @@
 package seedu.duke.email;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Email {
     private String from;
@@ -88,6 +87,7 @@ public class Email {
     }
 
     public void setTags(ArrayList<String> tags) {
+        assert tags != null;
         this.tags = tags;
     }
 }

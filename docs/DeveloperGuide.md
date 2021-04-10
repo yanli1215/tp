@@ -1,9 +1,39 @@
 # MojoHr Developer Guide
 
+## Content Page
+1. [Design](#Design)
+    1. [Architecture](#architecture)
+    1. [Utilities Component](#utilities-component)
+    1. [Login Component](#login-component)
+    1. [Email Component](#email-component)
+1. [Implementation](#implementation)
+    1. [ListCommand](#listcommand)
+    1. [TagCommand](#tagcommand)
+    1. [ComposeCommand](#composecommand)
+1. [Product Scope](#product-scope)
+    1. [Target User Profile](#target-user-profile)
+    1. [Value Proposition](#value-proposition)
+1. [User Stories](#user-stories)
+1. [Non-Functional Requirements](#non-functional-requirements)
+    1. [Performance and Scalability](#performance-and-scalability)
+    1. [Portability and Compatibility](#portability-and-compatibility)
+    1. [Reliability, Availability, Maintainability](#reliability-availability-maintainability)
+    1. [Security](#security)
+    1. [Usability](#usability)
+1. [Glossary](#glossary)
+1. [Instructions for Manual Testing](#instructions-for-manual-testing)
+    1. [Log into System](#log-into-system)
+    1. [Register New User](#2-register-new-user)
+    1. [Exit Application](#3-exit-application)
+    1. [Find Emails by Keyword](#4-find-emails-by-keyword)
+    1. [Reset the Password](#5-reset-the-password)
+    1. [Compose an Email](#6-compose-an-email)
+  
 ## Design
 
 ### Architecture
 ![Architect class diagram](UML diagrams/OverviewClassDiagram.png)
+
 The Architecture Diagram above gives an overview of the different components in the application. 
 Details of the individual components are given below.  
 
@@ -25,16 +55,11 @@ For these four components,
 * The Command component exposes its functionality through different command classes that inherit from a base Command class.
 
 **How the architecture components interact with each other**
-![Architect sequence diagram](Sequence Diagrams/OverviewSequenceDiagram.png)
-The Sequence Diagram above shows how the components interact with each other for a command.
-1. `Mojo` uses the `LoginController` to get the user's userID and password.
-2. `Mojo` sends the user's info to the `Storage`, which will retrieve the existing emails from hard disks.
-3. `Mojo` updates the `EmailManager` with the retrieved emails
-4. `Mojo` gets the user's input from `Ui`
-5. `Mojo` sends the input to `Parser` which then return the respective `Command` class according to user's input
-6. `Mojo` executes the command.
 
-***Due to a limitation of PlantUML, the lifeline did not end at the end of the destroy marker**
+The Sequence Diagram below shows how the components interact with each other where the user issues the command `send 1`
+![Architect sequence diagram](Sequence Diagrams/OverviewSequenceDiagram.png)
+
+The sections below give more details of each component.
 
 ### Utilities Component
 The Utilities component contains the main classes that run the main functions of Mojo.
@@ -59,7 +84,7 @@ The Login Component consists of 5 components.
 * <code> LoginController </code> The LoginController handles the login process and control logic of the login process.
 * <code> LoginManager </code> The LoginManager provides the logic to verify the user login details
 * <code> LoginUi </code> The LoginUi defines the display and gets input from the user. LoginUi extends the functionality of the Ui class
-* <code> LoginInfo </code> The LoginInfo contains the atrributes and methods of each LoginInfo object from a particular user logging into MojoHR application
+* <code> LoginInfo </code> The LoginInfo contains the attributes and methods of each LoginInfo object from a particular user logging into MojoHR application
 * <code> LoginInfoFileManager </code> The LoginInfoFileManager is responsible for the logic that handles the storage and retrieval of login information
 
 ### Email Component
@@ -94,14 +119,9 @@ The sequence diagram shows how the <code>list (type)</code> operation work.
 ![ListCommand Sequence Diagram](Sequence Diagrams/ListCommand.png)
 
 ### TagCommand
-`TagCommand` allows the user to tag a specific email with the a number of tags.
-1. `TagCommand` first finds out which email the user chose to be tagged by searching through the listedEmailList for the index given.
-2. `TagCommand` will list the available tags that the users will choose from by calling `printTag()` on `Ui`
-3. `TagCommand` then pass the user's input to the `parser` to extract the index
-4. `TagCommand` sets the tag to the email through `EmailManager`
-5. `TagCommand` updates the hard disk through `Storage`.
+`TagCommand` allows the user to tag a specific email with a number of tags.
 
-The sequence diagram shows how the <code> list(type) </code> operation work.
+The sequence diagram shows how the <code> tag </code> operation work.
 ![Tag Sequence Diagram](Sequence Diagrams/TagSequenceDiagram.png)
 
 ### ComposeCommand
@@ -113,17 +133,17 @@ The sequence diagram roughly shows how the `compose` operation works.
 ![ComposeCommand Sequence Diagram](Sequence Diagrams/ComposeCommand.png)
 
 
-## Product scope
+## Product Scope
 
-### Target user profile
+### Target User Profile
 
-{Describe the target user profile}
+Busy HR Personnel
 
-### Value proposition
+### Value Proposition
 
 The HR department receives many emails from job seekers. 
-A large portion of their day is spent clearing emails. Thus, our product seeks to allow the user to clear emails more efficiently by streamlining the process. This will reduce the time spent on clearing emails.
-and allow HR personnel to focus on more productive things
+A large portion of their day is spent clearing emails. Thus, our product seeks to allow the user to clear emails more efficiently by streamlining the process. 
+This will reduce the time spent on clearing emails and allow HR personnel to focus on more productive things
 (from clearing emails to classifying important emails).
 
 ## User Stories
@@ -131,6 +151,12 @@ and allow HR personnel to focus on more productive things
 |Version| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
 |v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
+|v1.0|beginner|list all emails that I received, sent, draft etc|track my emails easily|
+|v1.0|beginner|delete emails|it can reduce clutter|
+|v1.0|beginner|archive emails|it can reduce clutter|
+|v1.0|beginner|compose emails|send/reply to others|
+|v1.0|beginner|count number of emails inbox|have a general idea about my total emails|
+|v1.0|beginner|mark email as read after opening the email|distinguish the read and unread emails easily|
 |v2.0|new user|register an account|log into MojoHR|
 |v2.0|beginner|log into my account|check my emails|
 |v2.0|medium user|edit my drafts|create a new draft and delete the previous one when the draft is wrong|
@@ -142,17 +168,17 @@ and allow HR personnel to focus on more productive things
 
 ## Non-Functional Requirements
 
-### Performance and scalability
+### Performance and Scalability
 
 * Constraint: Multi-User
   
-The product allows user to choose to login to different accounts upon start up of software
+The product allows user to choose to log in to different accounts upon start up of software
 
 * Constraint: Typing-Preferred
 
 The software is targeted for user who prefers typing as means of input
 
-### Portability and compatibility
+### Portability and Compatibility
 
 * Constraint: Platform-Independent
 
@@ -162,7 +188,7 @@ The software is runnable on the Windows, Linux, and OS-X platforms.
 
 The software is written and tested in Java 11.
 
-### Reliability, availability, maintainability
+### Reliability, Availability, Maintainability
 
 ### Security
 
@@ -179,7 +205,7 @@ The local storage file cannot be modified by user directly.
 ## Instructions for manual testing
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
 
-### Logging into system 
+### Log into System 
 
 #### 1. Login
 ##### Test case 1.0 : When correct login information is provided
@@ -291,7 +317,7 @@ Email address must have "@" and cannot have empty string in front or behind
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ````
 
-#### 3. Exits Application
+#### 3. Exit Application
 ##### Test case 3.0: Allow the user to exit the system
 When the correct choice format is chosen, user will be able to exit the system
 
@@ -318,7 +344,7 @@ You need to enter an integer! Please try again!
 ```
 
 
-### Finding emails by keyword
+### 4. Find Emails by Keyword
 Print all emails that contains the keyword, and if there is no email contains the keyword, outputs `No matching emails found.`
 
 Test case: `find subject 10`
@@ -337,7 +363,7 @@ Test case: `find school`
 Expected: `No matching emails found.`
 
 
-##Resetting the password
+### 5. Reset the Password
 Reset the password for the user's email account.
 The program will ask for the old password from user. 
 
@@ -346,7 +372,7 @@ If the old password is correct, the program will ask for the new password from u
 The number of wrong attempt is 3. 
 If the old password is wrong for 3 times, the program will output `Sorry your old password is wrong. Please try again!(0 times left!)` and back to main menu.
 
-###Test case 1: Typing wrong old password for 3 times
+#### Test case 1: Typing wrong old password for 3 times
 
 Input: `reset`
 
@@ -364,7 +390,7 @@ Input: `12223`
 
 Expected: `Sorry your old password is wrong. Please try again!(0 times left!)`
 
-###Test case 2: Typing old password correctly
+#### Test case 2: Typing old password correctly
 
 Input: `reset`
 
@@ -380,7 +406,7 @@ Expected: `Your password has changed successfully!`
 
 Then, you can exit the program and use the new password to login.
 
-##Compose an email
+### 6. Compose an email
 Compose an email for the user which will be saved into draft upon completion.
 
 The program will ask for Receiver, Subject and Content whereas draft time will be saved automatically
@@ -413,5 +439,4 @@ user
 Expected: `Email saved to draft at 2021-04-01T13:00:00`
 
 The email is saved in draft and ready to be sent.
-
 

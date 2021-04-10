@@ -50,12 +50,12 @@ public class Ui {
     }
 
     public String getResetPsw(String type) {
-        if (type == "new") {
+        if (type.equals("new")) {
             printPwdRequest();
             System.out.println(newPassword);
         }
 
-        if (type == "old") {
+        if (type.equals("old")) {
             System.out.println(oldPassword);
         }
         String inputLine = in.nextLine();
@@ -72,7 +72,7 @@ public class Ui {
         System.out.println("Content:");
         System.out.println("You can send to multiple recipents by appending emails with \";\"");
         System.out.println("e.g: Alice@gmail.com;Bob@gmail.com");
-        System.out.println("You should end content by typing \"/end\"");
+        System.out.println("You should end content by typing \"/end\" in a newline");
         printDivider();
     }
 
@@ -97,7 +97,7 @@ public class Ui {
         System.out.println("Emails are sorted according to " + sortType);
     }
 
-    public void printEmailEdited(String editType) {
+    public void printEmailEditedMessage(String editType) {
         System.out.println("Email \"" + editType + "\" successfully edited.");
     }
 
@@ -109,28 +109,39 @@ public class Ui {
     public void printMenu() {
         System.out.println("Hello! I'm MojoHR\n" + logo + "What can I do for you?");
         System.out.println("> Use the keyword \"LIST (type) \" to print the emails by types\n"
-                + "!!! type must be one of: [allemails, inbox, archive, deleted, draft, junk, sent]!!!");
+                + "!!! type must be one of: [allemails, inbox, archive, deleted, draft, junk, sent] !!!");
         System.out.println("> Use the keyword \"READ (index) \" to open the selected email");
         System.out.println("> Use the keyword \"COMPOSE \" to create a draft email");
-        System.out.println("> Use the keyword \"SEND (index of draft) \" to send email in the draft folder");
+        System.out.println("> Use the keyword \"EDIT (index)\" to edit email in the draft folder");
+        System.out.println("> Use the keyword \"SEND (index/ multiple indices) \" to send email(s) "
+                + "in the draft folder\n"
+                + "!!! indices should be separated with a space !!!");
         System.out.println("> Use the keyword \"DELETE (index) \" to delete the selected email");
         System.out.println("> Use the keyword \"FIND (keyword) \" to find the  email by keywords");
         System.out.println("> Use the keyword \"ARCHIVE (index) \" to move the selected email to the archive folder");
-        System.out.println("> Use the keyword \"TAG (index)\" to select the email for tagging labels");
+        System.out.println("> Use the keyword \"TAG (index) (tag1) (tag2)...\" to select the email for tagging labels");
+        System.out.println("> Use the keyword \"NUMBER (type)\" to count the emails by types\n"
+                + "!!! type must be one of: [allemails, inbox, archive, deleted, draft, junk, sent] !!!");
+        System.out.println("> Use the keyword \"SORT (type) \" to sort all emails by types\n"
+                + "!!! type must be one of: [time, sender] !!!");
         System.out.println("> Use the keyword \"RESET\" to reset the your account password");
         System.out.println("> Use the keyword \"HELP\" to print the menu");
         System.out.println("> Use the keyword \"BYE\" to exit");
     }
 
     public void printNumberOfEmails(int totalEmails, String emailType) {
-        System.out.println("You have a total of " + totalEmails + " " + emailType.toUpperCase() + " emails");
+        if (emailType.equals("allemails")) {
+            System.out.println("You have a total of " + totalEmails + " emails");
+        } else {
+            System.out.println("You have a total of " + totalEmails + " " + emailType.toUpperCase() + " emails");
+        }
     }
 
     public static void showInvalidIdMessage(String type) {
         System.out.println("OOPS!!! The Email ID that you " + type + " is invalid.");
     }
 
-    public void showMessageForInvalidCommandInput() {
+    public void showInvalidCommandInputMessage() {
         System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(!");
     }
 
@@ -165,5 +176,22 @@ public class Ui {
 
     public void printGoodBye() {
         System.out.println("Logging off... Hope to see you again in MojoHr!");
+    }
+
+    public static void showMissingInputMessage() {
+        System.out.println("Draft not saved due to missing line");
+    }
+
+    public static void showMissingSubjectWarning() {
+        System.out.println("Warning: No subject detected");
+    }
+
+    public static void showMissingContentWarning() {
+        System.out.println("Warning: No content detected");
+    }
+
+    public static void showInvalidEmailAddressWarning() {
+        System.out.println("Warning: Incomplete email address or invalid email domain.");
+        System.out.println("Supported Email domains are: [gmail.com, yahoo.com, outlook.com, hotmail.com]");
     }
 }

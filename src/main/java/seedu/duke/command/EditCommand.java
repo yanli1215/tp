@@ -5,7 +5,6 @@ import seedu.duke.email.EmailManager;
 import seedu.duke.utilities.Parser;
 import seedu.duke.utilities.Storage;
 import seedu.duke.utilities.Ui;
-import seedu.duke.email.Draft;
 import seedu.duke.email.Email;
 import seedu.duke.exceptions.InvalidIndexException;
 
@@ -35,7 +34,7 @@ public class EditCommand extends Command {
             return;
         }
 
-        ArrayList<Email> draftedEmails = EmailManager.getDraftEmails();
+        ArrayList<Email> draftedEmails = emails.getDraftEmails();
         if (draftedEmails.isEmpty()) {
             String feedback = "You have no emails to edit.";
             ui.printFeedback(feedback);
@@ -55,7 +54,7 @@ public class EditCommand extends Command {
             String editType = in.nextLine().trim();
             processEditCommand(draftEmail, in, editType);
             storage.updateAllTypeEmails(emails.getEmailsList());
-            ui.printEmailEdited(editType);
+            ui.printEmailEditedMessage(editType);
         } catch (InvalidIndexException e) {
             e.showErrorMessage("EDIT");
             LOGGER.log(Level.SEVERE, "Exception occurred", e);
@@ -70,19 +69,22 @@ public class EditCommand extends Command {
         case "to":
             ArrayList<String> to = Parser.parseRecipients(in.nextLine());
             draftEmail.setTo(to);
+            checkEmailValidity(to);
             break;
         case "subject":
             String subject = in.nextLine();
             draftEmail.setSubject(subject);
+            checkSubjectValidity(subject);
             break;
         case "content":
             String inputContent = in.nextLine();
             String content = inputContent + "\n";
-            while (!inputContent.startsWith("/end")) { //user unable to change contents of previous lines
+            while (!inputContent.startsWith("/end")) {
                 content += inputContent + "\n";
                 inputContent = in.nextLine();
             }
             draftEmail.setContent(content);
+            checkContentValidity(content);
             break;
         default:
             throw new InvalidTypeException();
@@ -90,5 +92,23 @@ public class EditCommand extends Command {
 
         String time = String.valueOf(LocalDateTime.now().withNano(0));
         draftEmail.setTime(time);
+    }
+
+    private void checkSubjectValidity(String subject) {
+        if (subject.isBlank()) {
+            Ui.showMissingSubjectWarning();
+        }
+    }
+
+    private void checkContentValidity(String content) {
+        if (content.isBlank()) {
+            Ui.showMissingContentWarning();
+        }
+    }
+
+    private void checkEmailValidity(ArrayList<String> to) {
+        if (!Parser.checkEmailsValidity(to)) {
+            Ui.showInvalidEmailAddressWarning();
+        }
     }
 }
