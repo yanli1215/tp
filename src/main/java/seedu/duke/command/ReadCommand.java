@@ -20,22 +20,23 @@ public class ReadCommand extends Command {
 
         if (listedEmails == null) {
             String feedback = "You have to list emails first" + System.lineSeparator()
-                    + "=> list emails";
+                    + "=> list allemails";
             ui.printFeedback(feedback);
             return;
         }
+
         try {
             int index = Parser.extractIndex(userInput);
             if (index <= 0 || index > listedEmails.size()) {
                 throw new InvalidIndexException();
             }
             Email email = listedEmails.get(index - 1);
+            assert email != null;
             email.setRead(true);
             storage.updateAllTypeEmails(emails.getAllEmails());
             ui.printFeedback(email.toString());
         } catch (InvalidIndexException e) {
             e.showErrorMessage("READ");
         }
-
     }
 }
