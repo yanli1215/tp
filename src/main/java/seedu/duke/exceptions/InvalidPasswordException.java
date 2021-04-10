@@ -4,14 +4,12 @@ public class InvalidPasswordException extends Exception {
 
     private int passwordConditionViolated = 0;
 
-    public InvalidPasswordException(int conditionViolated)
-    {
+    public InvalidPasswordException(int conditionViolated) {
         super("Invalid Password: ");
         this.passwordConditionViolated = conditionViolated;
     }
 
-    public String printMessage()
-    {
+    public String printMessage() {
         switch (passwordConditionViolated) {
         // Password length should be between 8 to 15 characters
         case 1:

@@ -1,6 +1,20 @@
 package seedu.duke.utilities;
 
-import seedu.duke.command.*;
+import seedu.duke.command.ArchiveCommand;
+import seedu.duke.command.Command;
+import seedu.duke.command.ComposeCommand;
+import seedu.duke.command.DeleteCommand;
+import seedu.duke.command.EditCommand;
+import seedu.duke.command.ExitCommand;
+import seedu.duke.command.FindCommand;
+import seedu.duke.command.HelpCommand;
+import seedu.duke.command.ListCommand;
+import seedu.duke.command.NumberCommand;
+import seedu.duke.command.ReadCommand;
+import seedu.duke.command.ResetCommand;
+import seedu.duke.command.SendCommand;
+import seedu.duke.command.SortCommand;
+import seedu.duke.command.TagCommand;
 import seedu.duke.email.Email;
 import seedu.duke.email.EmailManager;
 import seedu.duke.exceptions.InvalidIndexException;
@@ -197,20 +211,19 @@ public class Parser {
     }
 
 
-    /** A utility function to check whether a password is valid or not
-     * Password should not contain any space.
-     * Password should contain at least one digit(0-9).
-     * Password length should be between 8 to 15 characters.
-     * Password should contain at least one lowercase letter(a-z).
-     * Password should contain at least one uppercase letter(A-Z).
-     * Password should contain at least one special character ( @, #, %, &, !, $, etc….).
-     * @param password
-     * @throws InvalidPasswordException
+    /**
+     * A utility function to check whether a password is valid or not.
+     *
+     * @param password the new password entered by the user
+     * @throws InvalidPasswordException if password not satisfy any one of the following requests
+     *      * Password should not contain any space.
+     *      * Password should contain at least one digit(0-9).
+     *      * Password length should be between 8 to 15 characters.
+     *      * Password should contain at least one lowercase letter(a-z).
+     *      * Password should contain at least one uppercase letter(A-Z).
+     *      * Password should contain at least one special character ( @, #, %, &, !, $, etc….)
      */
-    public static void isValid(String password)
-            throws InvalidPasswordException
-    {
-
+    public static void isValid(String password) throws InvalidPasswordException {
         // password length is between 8 and 15
         if (!((password.length() >= 8)
                 && (password.length() <= 15))) {

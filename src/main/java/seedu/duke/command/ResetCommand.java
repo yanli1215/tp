@@ -43,7 +43,11 @@ public class ResetCommand extends Command {
             }
             if (!isMatchPwd) {
                 n--;
-                System.out.println("Sorry your old password is wrong. Please try again!(" + n + " times left!)");
+                if (n == 0) {
+                    System.out.println("Sorry your old password is wrong for 3 times. Go back to the main page.");
+                } else {
+                    System.out.println("Sorry your old password is wrong. Please try again!(" + n + " times left!)");
+                }
                 ui.printDivider();
             } else {
                 break;
