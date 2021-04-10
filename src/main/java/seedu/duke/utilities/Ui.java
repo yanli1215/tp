@@ -19,6 +19,16 @@ public class Ui {
     private static final String oldPassword = "Please enter your old password:";
     private static final String newPassword = "Please enter your new password:";
 
+    public void printPwdRequest() {
+        printDivider();
+        System.out.println("Please be careful!\n"
+                + "     * Password should not contain any space.\n"
+                + "     * Password should contain at least one digit(0-9).\n"
+                + "     * Password length should be between 8 to 15 characters.\n"
+                + "     * Password should contain at least one lowercase letter(a-z).\n"
+                + "     * Password should contain at least one uppercase letter(A-Z).\n"
+                + "     * Password should contain at least one special character ( @, #, %, &, !, $, etc….).");
+    }
 
     public Ui() {
         this(System.in, System.out);
@@ -42,6 +52,7 @@ public class Ui {
 
     public String getResetPsw(String type) {
         if (type.equals("new")) {
+            printPwdRequest();
             System.out.println(newPassword);
         }
 
