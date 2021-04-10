@@ -3,8 +3,9 @@
 
 hide circle
 skinparam classAttributeIconSize 0
+hide empty members
 
-package commands <<rectangle>>{
+package command <<rectangle>>{
 class Command
 class ArchiveCommand
 class ComposeCommand
