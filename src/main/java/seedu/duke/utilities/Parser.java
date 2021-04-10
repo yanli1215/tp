@@ -1,26 +1,15 @@
 package seedu.duke.utilities;
 
-import seedu.duke.command.ArchiveCommand;
-import seedu.duke.command.Command;
-import seedu.duke.command.ComposeCommand;
-import seedu.duke.command.DeleteCommand;
-import seedu.duke.command.EditCommand;
-import seedu.duke.command.ExitCommand;
-import seedu.duke.command.FindCommand;
-import seedu.duke.command.HelpCommand;
-import seedu.duke.command.ListCommand;
-import seedu.duke.command.NumberCommand;
-import seedu.duke.command.ReadCommand;
-import seedu.duke.command.ResetCommand;
-import seedu.duke.command.SendCommand;
-import seedu.duke.command.SortCommand;
-import seedu.duke.command.TagCommand;
+import seedu.duke.command.*;
 import seedu.duke.email.Email;
 import seedu.duke.email.EmailManager;
 import seedu.duke.exceptions.InvalidIndexException;
+import seedu.duke.exceptions.InvalidPasswordException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class Parser {
@@ -153,5 +142,97 @@ public class Parser {
      */
     public static ArrayList<String> parseRecipients(String recipientsString) {
         return new ArrayList<>(Arrays.asList(recipientsString.trim().split(";")));
+    }
+
+
+    /** A utility function to check whether a password is valid or not
+     * Password should not contain any space.
+     * Password should contain at least one digit(0-9).
+     * Password length should be between 8 to 15 characters.
+     * Password should contain at least one lowercase letter(a-z).
+     * Password should contain at least one uppercase letter(A-Z).
+     * Password should contain at least one special character ( @, #, %, &, !, $, etc….).
+     * @param password
+     * @throws InvalidPasswordException
+     */
+    public static void isValid(String password)
+            throws InvalidPasswordException
+    {
+
+        // password length is between 8 and 15
+        if (!((password.length() >= 8)
+                && (password.length() <= 15))) {
+            throw new InvalidPasswordException(1);
+        }
+
+        // contain space
+        if (password.contains(" ")) {
+            throw new InvalidPasswordException(2);
+        }
+        if (true) {
+            int count = 0;
+
+            // check digits from 0 to 9
+            for (int i = 0; i <= 9; i++) {
+
+                // to convert int to string
+                String str1 = Integer.toString(i);
+
+                if (password.contains(str1)) {
+                    count = 1;
+                }
+            }
+            if (count == 0) {
+                throw new InvalidPasswordException(3);
+            }
+        }
+
+        // for special characters
+        Pattern p = Pattern.compile("[^A-Za-z0-9]");
+        Matcher m = p.matcher(password);
+        boolean isContain = m.find();
+        if (!isContain) {
+            throw new InvalidPasswordException(4);
+        }
+
+        if (true) {
+            int count = 0;
+
+            // checking capital letters
+            for (int i = 65; i <= 90; i++) {
+
+                // type casting
+                char c = (char)i;
+
+                String str1 = Character.toString(c);
+                if (password.contains(str1)) {
+                    count = 1;
+                }
+            }
+            if (count == 0) {
+                throw new InvalidPasswordException(5);
+            }
+        }
+
+        if (true) {
+            int count = 0;
+
+            // checking small letters
+            for (int i = 90; i <= 122; i++) {
+
+                // type casting
+                char c = (char)i;
+                String str1 = Character.toString(c);
+
+                if (password.contains(str1)) {
+                    count = 1;
+                }
+            }
+            if (count == 0) {
+                throw new InvalidPasswordException(6);
+            }
+        }
+
+        // The password is valid
     }
 }
