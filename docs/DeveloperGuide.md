@@ -11,6 +11,8 @@
     1. [ListCommand](#listcommand)
     1. [TagCommand](#tagcommand)
     1. [ComposeCommand](#composecommand)
+    1. [DeleteCommand](#deletecommand)
+
 1. [Product Scope](#product-scope)
     1. [Target User Profile](#target-user-profile)
     1. [Value Proposition](#value-proposition)
@@ -148,6 +150,12 @@ automatically.
 
 The sequence diagram roughly shows how the `compose` operation works.
 ![ComposeCommand Sequence Diagram](Sequence Diagrams/ComposeCommand.png)
+
+### DeleteCommand
+`delete INDEX` allows the user to delete a specific email and move it to the delete folder
+
+The sequence diagram shows how the <code> delete </code> operation work.
+![Tag Sequence Diagram](Sequence Diagrams/DeleteCommand.png)
 
 ## Product Scope
 
