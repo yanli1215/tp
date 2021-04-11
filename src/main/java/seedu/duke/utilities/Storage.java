@@ -49,17 +49,16 @@ public class Storage {
      * data folder.
      */
     public void init() {
-        if(createDirectory()){
+        if (createDirectory()) {
             loadResources();
         }
     }
 
     private void loadResources() {
-        String[] files = {
-                "/LoginInfo.txt",
-                "/12312@gmail.com.json",
-                "/test@gmail.com.json",
-                "/test@yahoo.com.json"
+        String[] files = {"/LoginInfo.txt",
+                          "/12312@gmail.com.json",
+                          "/test@gmail.com.json",
+                          "/test@yahoo.com.json"
         };
 
         for (String file : files) {
@@ -132,8 +131,7 @@ public class Storage {
     /**
      * Creates the data folder if it does not exist.
      *
-     * @return true if folder is created (i.e. folder does
-     * not exist), false otherwise.
+     * @return true if folder is created (i.e. folder does not exist), false otherwise.
      */
     private boolean createDirectory() {
         String localDir = System.getProperty("user.dir");
