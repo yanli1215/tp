@@ -10,6 +10,8 @@
     1. [ListCommand](#listcommand)
     1. [TagCommand](#tagcommand)
     1. [ComposeCommand](#composecommand)
+    1. [DeleteCommand](#deletecommand)
+
 1. [Product Scope](#product-scope)
     1. [Target User Profile](#target-user-profile)
     1. [Value Proposition](#value-proposition)
