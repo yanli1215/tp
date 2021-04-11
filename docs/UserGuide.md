@@ -662,6 +662,12 @@ Logging off... Hope to see you again in MojoHr!
 **A**: Users are not advised to edit data files as it would potentially corrupt them. Furthermore, in future versions,
 data files should be encrypted for security purpose.
 
+**Q**: What are the supported email domains?
+
+**A**: The supported email domains for the current version of software are 
+[gmail.com, yahoo.com, outlook.com, hotmail.com]. More email domains would be supported
+in future versions.
+
 ## Command Summary
 
 * List emails by type `list TYPE`
