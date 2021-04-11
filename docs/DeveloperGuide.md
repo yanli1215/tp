@@ -190,20 +190,32 @@ The software is written and tested in Java 11.
 
 ### Reliability, Availability, Maintainability
 
-### Security
-
- * Constraint: Non-editable Local Storage File
-
-The local storage file cannot be modified by user directly.
+Constraint: No-Remote-Server 
+Remote server is not needed for the current version of software
 
 ### Usability
+It is easy to use the product. There is a user guide provided for users to familiarise themselves with the product.
 
 ## Glossary
 
-* *glossary item* - Definition
+* *json file* - Definition
 
 ## Instructions for manual testing
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+This section explains the instructions on how to test the app manually
+
+:information_source: **Note:** These instructions only provide a starting point for testers to work on; 
+testers are expected to do more *exploratory* testing.
+
+### Launch and shutdown
+1. Ensure that Java 11 is installed.
+2. Download the latest version of `MojoHR` from [here](https://github.com/AY2021S2-CS2113-W10-2/tp/releases/latest).
+3. Copy the jar file to the folder you want to use as the home folder for `MojoHR`.
+4. Open your Command Line Terminal in the folder where the jar file is located, and run
+   it with `java -jar Mojo.jar`.
+5. Type the command in the command box and press Enter to execute it. e.g. typing `list archive` 
+   and pressing Enter will show the list of archived emails.
+6. To terminate the app, use the `bye` command. Interrupt the Command Line Terminal with `Ctrl+C` 
+   or closing the terminal is also allowed.
 
 ### Log into System 
 
@@ -267,7 +279,7 @@ Registers a new user, when the formatting provided is correct
 
 **Test case:**
 
-Enter choice: 2
+Enter choice: `2`
 
 Enter email address: `mary@gmail.com`
 
@@ -323,14 +335,14 @@ When the correct choice format is chosen, user will be able to exit the system
 
 **Test case**
 
-Enter choice: 3
+Enter choice: `3`
 
 Expected:
 ```
 Logging off... Hope to see you again in MojoHr!
 ```
 
-#### Test case 3.1: Incorrect Choice Format
+##### Test case 3.1: Incorrect Choice Format
 When an incorrect format of choice is shown, error message will be displayed
 
 Enter choice: `three`
@@ -344,12 +356,16 @@ You need to enter an integer! Please try again!
 ```
 
 
-### 4. Find Emails by Keyword
-Print all emails that contains the keyword, and if there is no email contains the keyword, outputs `No matching emails found.`
+#### 4. Find Emails by Keyword
+##### Test case 4.0: Finds keyword that exist in email system
+Print all emails that contains the keyword.
 
-Test case: `find subject 10`
+**Test case**: 
+
+`find subject 10`
 
 Expected: 
+
 ````
 1. [Deleted][UNREAD]
 || Subject: This is subject 10
@@ -358,21 +374,41 @@ Expected:
 || Tags: []
 ````
 
-Test case: `find school`
+##### Test case 4.1: Finds keyword that does not exist in email system
+When the keyword typed does not exist in the email system, a message will be displayed.
 
-Expected: `No matching emails found.`
+**Test case**: 
 
+`find school`
 
-### 5. Reset the Password
+Expected: 
+
+`No matching emails found.`
+
+#### 5. Reset the Password
 Reset the password for the user's email account.
-The program will ask for the old password from user. 
+The program will ask for the old password from user.
 
-If the old password is correct, the program will ask for the new password from user and outputs`Your password has changed successfully!`
+##### Test case 5.1: Typing old password correctly
+If the old password is correct, the program will ask for the new password from user and outputs a message upon completion
 
-The number of wrong attempt is 3. 
-If the old password is wrong for 3 times, the program will output `Sorry your old password is wrong. Please try again!(0 times left!)` and back to main menu.
+Input: `reset`
 
-#### Test case 1: Typing wrong old password for 3 times
+Expected: `Please enter your old password:`
+
+Input: `5678`
+
+Expected: `Please enter your new password:`
+
+Input: `1234`
+
+Expected: `Your password has changed successfully!`
+
+Then, you can exit the program and use the new password to login.
+
+##### Test case 5.2: Typing wrong old password for 3 times
+The number of wrong attempt is 3.
+If the old password is wrong for 3 times, the program will output a message and return to main menu.
 
 Input: `reset`
 
@@ -390,42 +426,31 @@ Input: `12223`
 
 Expected: `Sorry your old password is wrong. Please try again!(0 times left!)`
 
-#### Test case 2: Typing old password correctly
+#### 6. Compose an email
+Compose an email for the user which will be saved into draft upon completion. The program will ask for Receiver, Subject and Content whereas draft time will be saved automatically
 
-Input: `reset`
+Input:
 
-Expected: `Please enter your old password:`
-
-Input: `5678`
-
-Expected: `Please enter your new password:`
-
-Input: `1234`
-
-Expected: `Your password has changed successfully!`
-
-Then, you can exit the program and use the new password to login.
-
-### 6. Compose an email
-Compose an email for the user which will be saved into draft upon completion.
-
-The program will ask for Receiver, Subject and Content whereas draft time will be saved automatically
-
-Input: `compose`
+`compose`
 
 Expected:
 ```
+____________________________________________________________
 Please enter the details below in the correct order  
 To:
 Subject:
 Content:
-You can send to multiple recipents by appending emails with ;
+You can send to multiple recipents by appending email address with ";"
 e.g: Alice@gmail.com;Bob@gmail.com
+You should end content by typing "/end" in a newline
+____________________________________________________________
 ```
+
+#### Test case 6.0: Correct input
 
 Input: 
 ```
-testing@gmail.com
+correctDomain@gmail.com
 testSubject
 Dear Sir,
 
@@ -438,5 +463,45 @@ user
 
 Expected: `Email saved to draft at 2021-04-01T13:00:00`
 
-The email is saved in draft and ready to be sent.
+#### Test case 6.1: Unsupported email domain
 
+Input:
+
+```
+wrongDomain@yaya.com
+testSubject
+Dear Sir,
+
+This is a test content.
+
+regards,
+user
+/end
+```
+
+Expected:
+
+```
+Warning: Incomplete email address or invalid email domain.
+Supported Email domains are: [gmail.com, yahoo.com, outlook.com, hotmail.com]
+____________________________________________________________
+Email saved to draft at 2021-04-12T01:06:23
+____________________________________________________________
+```
+
+### Saving data
+Data for all accounts' email addresses and passwords are stored in `LoginInfo.txt`, 
+whereas data of each email account is stored in its own json file.
+
+Details of Files:
+* The json file will be automatically created when creating an account in our software.
+* Each json file contains the account's email address, password, and all emails.
+* Are automatically loaded when MojoHR starts.
+* Are automatically updated upon commands that would cause a change in the file,
+  such as creating an account, sending or deleting an email.
+
+**Note**: Testers are not advised to manually modify any data files unless they become familiar.
+This is to prevent data files from corrupting.
+
+## Attribution
+The format of this User Guide was adapted from [AddressBook Level 3(AB3) Developer Guide](https://github.com/se-edu/addressbook-level3/blob/master/docs/DeveloperGuide.md).

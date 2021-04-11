@@ -655,8 +655,12 @@ Logging off... Hope to see you again in MojoHr!
 
 **Q**: How can I send emails to others?
 
-**A**: Firstly, you should compose an email as a draft. Then, send the draft by `send index`. The email you sent will be
-added to your sent box. However, the email cannot be seen in the inbox of the receiver yet.
+**A**: Firstly, you should compose an email as a draft. Then, send the draft by `send index`.
+
+**Q**: Can I edit the data files outside the software?
+
+**A**: Users are not advised to edit data files as it would potentially corrupt them. 
+Furthermore, in future versions, data files should be encrypted for security purpose.
 
 ## Command Summary
 
