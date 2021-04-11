@@ -43,10 +43,9 @@ time spent on clearing emails.
 3. Download the sample test datasets `data.zip` folder from [here](https://github.com/AY2021S2-CS2113-W10-2/tp/releases)
    and unzip it.
 
-4. Make sure you put the folder `data` under the same path(folder) of `duke.jar`. cd into the folder containing the JAR
-   file
+4. Make sure you put the folder `data` under the same path(folder) of `duke.jar`. 
 
-5. `cd` Locate the file path of the JAR file and data folder that you have downloaded
+5. `cd` to locate the file path of the JAR file and data folder that you have downloaded
 
 6. Run the following command: `java -jar [JAR file name]`
 
@@ -656,7 +655,7 @@ Logging off... Hope to see you again in MojoHr!
 **Q**: How can I send emails to others?
 
 **A**: Firstly, you should compose an email as a draft. Then, send the draft by `send index`. The email you sent will be
-added to your sent box. However, the email cannot be seen in the inbox of the receiver yet.
+added to your sent box.
 
 ## Command Summary
 
@@ -717,6 +716,12 @@ Action | Format, Examples
 |send                 | `send INDEX/MULTIPLE INDICES`
 | **Read Command**    |
 |read                 | `read INDEX`
+| **Delete Command**    |
+|delete                 | `delete INDEX`
+| **Archive Command**    |
+|archive                 | `archive INDEX`
+| **Find Command**    |
+|find                 | `find KEYWORD`
 | **Tag Command**     |
 |tag                  | `tag INDEX TAG1 TAG2 ...`
 | **Number Command**  |
@@ -730,6 +735,8 @@ Action | Format, Examples
 | **Sort Command**    |
 |time                 | `sort time`
 |sender               | `sort sender`
+| **Reset Command**    |
+|reset                | `reset`
 | **Help Command**    |
 |help                 | `help`
 | **Bye Command**     |
