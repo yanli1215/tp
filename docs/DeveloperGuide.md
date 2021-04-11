@@ -222,7 +222,8 @@ It is easy to use the product. There is a user guide provided for users to famil
 
 ## Glossary
 
-* *json file* - Definition
+* *json file* -  A file that stores simple data structures and objects in JavaScript Object Notation (JSON) format. 
+In this software, it is used to store details of an email account.
 
 ## Instructions for manual testing
 
