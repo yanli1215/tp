@@ -132,6 +132,12 @@ The details needed are receiver email, subject and content. The time the draft w
 The sequence diagram roughly shows how the `compose` operation works.
 ![ComposeCommand Sequence Diagram](Sequence Diagrams/ComposeCommand.png)
 
+# DeleteCommand
+`delete INDEX` allows the user to delete a specific email and move it to the delete folder
+
+The sequence diagram shows how the <code> delete </code> operation work.
+![Tag Sequence Diagram](Sequence Diagrams/DeleteCommand.png)
+
 
 ## Product Scope
 
