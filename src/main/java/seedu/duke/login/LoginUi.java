@@ -1,5 +1,7 @@
 package seedu.duke.login;
 
+import seedu.duke.exceptions.InvalidPasswordException;
+import seedu.duke.utilities.Parser;
 import seedu.duke.utilities.Ui;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -11,12 +13,18 @@ public class LoginUi extends Ui {
         Boolean loginMatch;
         LoginInfo loginInfo;
         while (true) {
-            loginInfo = getUserInputForLogin();
-            loginMatch = loginCheckEmailsValidity(loginInfo.getUserId());
-            if (loginMatch == false) {
-                continue;
+            try {
+                loginInfo = getUserInputForLogin();
+                loginMatch = loginCheckEmailsValidity(loginInfo.getUserId());
+                Parser.isValid(loginInfo.getPassword());
+                if (loginMatch == false) {
+                    continue;
+                }
+                break;
+            } catch (InvalidPasswordException e) {
+                System.out.print(e.getMessage());
+                System.out.println(e.printMessage());
             }
-            break;
         }
         return loginInfo;
     }
