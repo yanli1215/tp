@@ -710,9 +710,9 @@ Action | Format, Examples
 |compose              | `compose` <br> `example@gmail.com` <br> `example subject` <br> `example content` <br> `/end`
 | **Edit Command**    |
 |edit                 | `edit INDEX` 
-|*to*                 | Enter Choice: `to` <br> New receiver email address: `example@gmail.com` <br>
-|*subject*            | Enter Choice: `subject` <br> New subject: `example subject` <br>
-|*content*            | Enter Choice: `content` <br> New content: <br>`this is example content` <br> `/end`
+|*to*                 |`to` <br> `newExample@gmail.com` <br>
+|*subject*            |`subject` <br> `new example subject` <br>
+|*content*            |`content` <br>`this is new example content` <br> `/end`
 | **Send Command**    |
 |send                 | `send INDEX/MULTIPLE INDICES`
 | **Read Command**    |
