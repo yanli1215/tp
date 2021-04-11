@@ -1,5 +1,6 @@
 # MojoHR User Guide
 =======
+
 # MojoHr User Guide
 
 ## Content Page
@@ -659,8 +660,8 @@ Logging off... Hope to see you again in MojoHr!
 
 **Q**: Can I edit the data files outside the software?
 
-**A**: Users are not advised to edit data files as it would potentially corrupt them. 
-Furthermore, in future versions, data files should be encrypted for security purpose.
+**A**: Users are not advised to edit data files as it would potentially corrupt them. Furthermore, in future versions,
+data files should be encrypted for security purpose.
 
 ## Command Summary
 
@@ -702,7 +703,8 @@ Action | Format, Examples
 |log in               | Enter Choice: `1`  <br/> Email Address: `12321@gmail.com` <br/> Password:`5678`
 |Register as new user | Enter Choice: `2`  <br/> Email Address: `joey@gmail.com` <br/> Password:`9999`
 |Log out              | Enter Choice: `3`
-| **List Command**    |                                                                                                            |
+| **List
+Command**    |                                                                                                            |
 |all emails           | `list allemails`
 |inbox                | `list inbox`
 |archive              | `list archive`
@@ -710,10 +712,10 @@ Action | Format, Examples
 |draft                | `list draft`
 |junk                 | `list junk`
 |sent                 | `list sent`
-| **Compose Command** | 
+| **Compose Command** |
 |compose              | `compose` <br> `example@gmail.com` <br> `example subject` <br> `example content` <br> `/end`
 | **Edit Command**    |
-|edit                 | `edit INDEX` 
+|edit                 | `edit INDEX`
 |*to*                 |`to` <br> `newExample@gmail.com` <br>
 |*subject*            |`subject` <br> `new example subject` <br>
 |*content*            |`content` <br>`this is new example content` <br> `/end`
