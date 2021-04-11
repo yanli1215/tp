@@ -46,9 +46,6 @@ public class SortCommandTest {
     void execute_sortTime_success() {
         new SortCommand("sort time").execute(emailManager, ui, storage);
         ArrayList<Email> sortedEmails = new ArrayList<Email>(Arrays.asList(email2, email1, email3));
-        String expectedOutput = "Emails are sorted according to time";
-        Assertions.assertEquals(expectedOutput, outputStreamCaptor.toString()
-                .trim());
         Assertions.assertEquals(emailManager.getAllEmails(), sortedEmails);
     }
 
@@ -56,9 +53,6 @@ public class SortCommandTest {
     void execute_sortSender_success() {
         new SortCommand("sort sender").execute(emailManager, ui, storage);
         ArrayList<Email> sortedEmails = new ArrayList<Email>(Arrays.asList(email2, email3, email1));
-        String expectedOutput = "Emails are sorted according to sender";
-        Assertions.assertEquals(expectedOutput, outputStreamCaptor.toString()
-                .trim());
         Assertions.assertEquals(emailManager.getAllEmails(), sortedEmails);
     }
 

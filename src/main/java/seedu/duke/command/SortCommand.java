@@ -1,10 +1,12 @@
 package seedu.duke.command;
 
 import com.sun.jdi.InvalidTypeException;
+import seedu.duke.email.Email;
 import seedu.duke.email.EmailManager;
 import seedu.duke.utilities.Storage;
 import seedu.duke.utilities.Ui;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -35,6 +37,8 @@ public class SortCommand extends Command {
             }
             storage.updateAllTypeEmails(emails.getEmailsList());
             ui.printEmailsSorted(sortType);
+            ArrayList<Email> emailsToPrint = emails.getAllEmails();
+            emails.printEmailByType(emailsToPrint);
         } catch (InvalidTypeException e) {
             ui.showMessageForInvalidSortTypeInput();
             LOGGER.severe("sortType is wrong.");
