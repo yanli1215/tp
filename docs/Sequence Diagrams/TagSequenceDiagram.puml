@@ -5,6 +5,7 @@ participant ":TagCommand" as TagCommand
 participant "<<class>>\n:Parser" as Parser
 participant ":EmailManager" as EmailManager
 participant ":Email" as Email
+hide footbox
 
 [-> TagCommand: execute()
 activate TagCommand
