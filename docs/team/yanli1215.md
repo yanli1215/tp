@@ -60,7 +60,50 @@ The find command `find KEYWORD`allows users to find emails that containing certa
 4. update the new password in account.json file
 5. update the new password in the loginInfo.txt file;
 
-  
+#### 6. Synchronise the data in hard disk after modifying(Data Storage)
+1. Design the structure of the json file to store emails for an email account as below:
+````
+   {
+    "password": "Aaaa123--",
+    "deleted": [ ],
+    "junk": [ ],
+    "archive": [ ],
+    "drafts": [ ],
+    "inbox": [ ],
+    "sent": [ ],
+    "account": "123@gmail.com"
+    }
+````
+Design the structure of the email in json file as below:
+````
+    {
+      "read": "x",
+      "subject": "This is subject 7",
+      "from": "12312@gmail.com",
+      "to": [
+        "12332@gmail.com"
+      ],
+      "time": "2021-02-20T12:30:00",
+      "content": "This is content for s7.",
+      "tags": [
+        "CS2113",
+        "IMPT"
+      ]
+    }
+````
+2. Load the data from json file to ArrayList with the help of `googlecode.json-simple` package;
+````
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+   ````
+3. Save the updated data back to the user's json file;
+* Password: After resetting the new password, both user account's json file and loginInfo.txt will be updated. 
+
+
+* Emails: Write a method to rewrite the whole new ArrayList of emails back to a Json Object, which should be called after command like: delete, archive, send, tag...
+
 
 ### Documentation
 #### 1. User Guide
@@ -68,4 +111,9 @@ The find command `find KEYWORD`allows users to find emails that containing certa
 
 #### 2. Developer Guide
 * Added documentation (Architecture, Implementation, Manual Testing) for features `delete`, `archive`, `find`, `reset`
-  
+
+
+### Contributions to team-based tasks
+1. Necessary general code enhancements
+2. Maintaining the issue tracker
+3. Updating user/developer docs that are not specific to a feature(e.g. user stories, quick start)
