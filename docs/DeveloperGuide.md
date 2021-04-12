@@ -1,6 +1,7 @@
 # MojoHr Developer Guide
 
 ## Content Page
+
 1. [Design](#Design)
     1. [Architecture](#architecture)
     1. [Utilities Component](#utilities-component)
@@ -10,6 +11,8 @@
     1. [ListCommand](#listcommand)
     1. [TagCommand](#tagcommand)
     1. [ComposeCommand](#composecommand)
+    1. [DeleteCommand](#deletecommand)
+
 1. [Product Scope](#product-scope)
     1. [Target User Profile](#target-user-profile)
     1. [Value Proposition](#value-proposition)
@@ -28,31 +31,36 @@
     1. [Find Emails by Keyword](#4-find-emails-by-keyword)
     1. [Reset the Password](#5-reset-the-password)
     1. [Compose an Email](#6-compose-an-email)
-  
+
 ## Design
 
 ### Architecture
+
 ![Architect class diagram](UML diagrams/OverviewClassDiagram.png)
 
-The Architecture Diagram above gives an overview of the different components in the application. 
-Details of the individual components are given below.  
+The Architecture Diagram above gives an overview of the different components in the application. Details of the
+individual components are given below.
 
-Mojo class controls the overall logic for the application. 
-It is responsible for 
+Mojo class controls the overall logic for the application. It is responsible for
+
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
 The rest of the App consists of 4 components:
+
 * Login: Links the user to their account.
 * Email: Stores and manages the user's email.
-* Utilities: Consists of Ui, Storage and Parser helper class. Ui interacts with the user. Storage reads data from, and writes data to the hard disk. Parser parse user's input into instructions that can be understood by the application.
+* Utilities: Consists of Ui, Storage and Parser helper class. Ui interacts with the user. Storage reads data from, and
+  writes data to the hard disk. Parser parse user's input into instructions that can be understood by the application.
 * Command: In charge of executing the user's request.
 
 For these four components,
+
 * The Login component exposes its functionality through the LoginController class.
 * The Email component exposes its functionality through the EmailManager class
 * The Utilities component consists of Ui, Storage and Parser classes.
-* The Command component exposes its functionality through different command classes that inherit from a base Command class.
+* The Command component exposes its functionality through different command classes that inherit from a base Command
+  class.
 
 **How the architecture components interact with each other**
 
@@ -62,11 +70,13 @@ The Sequence Diagram below shows how the components interact with each other whe
 The sections below give more details of each component.
 
 ### Utilities Component
+
 The Utilities component contains the main classes that run the main functions of Mojo.
 
 ![Utility diagram](UML diagrams/Utilities.jpeg)
 
-The Utilities Class Diagram given above shows how the classes in the Utilities component interact with each other and classes from other component.
+The Utilities Class Diagram given above shows how the classes in the Utilities component interact with each other and
+classes from other component.
 
 The Utilities Component consists for 3 classes.
 
@@ -74,13 +84,14 @@ The Utilities Component consists for 3 classes.
 * `Storage`: Reads data from, and writes data to, the local disk.
 * `Ui`: Handles the input and output of the application.
 
-
 ### Login Component
+
 The login component consists of the classes that run the main functions of the Login user Interface
 ![Login Component Class Diagram](UML diagrams/LoginComponentClassDiagram.png)
 The **Login Class Diagram** give above shows how the classes in the Login Component interact with each other
 
 The Login Component consists of 5 components.
+
 * <code> LoginController </code> The LoginController handles the login process and control logic of the login process.
 * <code> LoginManager </code> The LoginManager provides the logic to verify the user login details
 * <code> LoginUi </code> The LoginUi defines the display and gets input from the user. LoginUi extends the functionality of the Ui class
@@ -88,11 +99,13 @@ The Login Component consists of 5 components.
 * <code> LoginInfoFileManager </code> The LoginInfoFileManager is responsible for the logic that handles the storage and retrieval of login information
 
 ### Email Component
+
 The email component consists of classes that are involved with all the emails
 ![Email Component Class Diagram](UML diagrams/EmailClassDiagram.png)
 The **Login Class Diagram** give above shows how the classes in the Email Component interact with each other
 
 The Email Component consists of 8 components.
+
 * <code> Email </code> is the parent class to the other email classes and contains all the information that is required in an email
 * <code> Archive </code> inherits from Email
 * <code> Deleted </code> inherits from Email
@@ -104,34 +117,45 @@ The Email Component consists of 8 components.
 
 ## Implementation
 
-### ListCommand 
+### ListCommand
+
 There are seven variations of the <code> list </code> command.
+
 1. List by All email(s)
-2. List by Archived email(s) 
+2. List by Archived email(s)
 3. List by Deleted email(s)
-4. List by Draft(s) email(s) 
+4. List by Draft(s) email(s)
 5. List by Inbox email(s)
 6. List by Junk email(s)
 7. List by Sent email(s)
 
-The sequence diagram shows how the <code>list (type)</code> operation work. 
+The sequence diagram shows how the <code>list (type)</code> operation work.
 
 ![ListCommand Sequence Diagram](Sequence Diagrams/ListCommand.png)
 
 ### TagCommand
+
 `TagCommand` allows the user to tag a specific email with a number of tags.
 
 The sequence diagram shows how the <code> tag </code> operation work.
 ![Tag Sequence Diagram](Sequence Diagrams/TagSequenceDiagram.png)
 
 ### ComposeCommand
-When the `compose` command is entered, the software will prompt user to enter the necessary details and save them to draft.
 
-The details needed are receiver email, subject and content. The time the draft was composed would be saved automatically.
+When the `compose` command is entered, the software will prompt user to enter the necessary details and save them to
+draft.
+
+The details needed are receiver email, subject and content. The time the draft was composed would be saved
+automatically.
 
 The sequence diagram roughly shows how the `compose` operation works.
 ![ComposeCommand Sequence Diagram](Sequence Diagrams/ComposeCommand.png)
 
+### DeleteCommand
+`delete INDEX` allows the user to delete a specific email and move it to the delete folder
+
+The sequence diagram shows how the <code> delete </code> operation work.
+![Tag Sequence Diagram](Sequence Diagrams/DeleteCommand.png)
 
 ## Product Scope
 
@@ -141,9 +165,9 @@ Busy HR Personnel
 
 ### Value Proposition
 
-The HR department receives many emails from job seekers. 
-A large portion of their day is spent clearing emails. Thus, our product seeks to allow the user to clear emails more efficiently by streamlining the process. 
-This will reduce the time spent on clearing emails and allow HR personnel to focus on more productive things
+The HR department receives many emails from job seekers. A large portion of their day is spent clearing emails. Thus,
+our product seeks to allow the user to clear emails more efficiently by streamlining the process. This will reduce the
+time spent on clearing emails and allow HR personnel to focus on more productive things
 (from clearing emails to classifying important emails).
 
 ## User Stories
@@ -171,7 +195,7 @@ This will reduce the time spent on clearing emails and allow HR personnel to foc
 ### Performance and Scalability
 
 * Constraint: Multi-User
-  
+
 The product allows user to choose to log in to different accounts upon start up of software
 
 * Constraint: Typing-Preferred
@@ -190,25 +214,42 @@ The software is written and tested in Java 11.
 
 ### Reliability, Availability, Maintainability
 
-### Security
-
- * Constraint: Non-editable Local Storage File
-
-The local storage file cannot be modified by user directly.
+Constraint: No-Remote-Server Remote server is not needed for the current version of software
 
 ### Usability
 
+It is easy to use the product. There is a user guide provided for users to familiarise themselves with the product.
+
 ## Glossary
 
-* *glossary item* - Definition
+* *json file* -  A file that stores simple data structures and objects in JavaScript Object Notation (JSON) format. 
+In this software, it is used to store details of an email account.
 
 ## Instructions for manual testing
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
 
-### Log into System 
+This section explains the instructions on how to test the app manually. Testers are advised to use
+the account "12312@gmail.com" as the UserGuide and DeveloperGuide uses examples from this email account.
+
+:information_source: **Note:** These instructions only provide a starting point for testers to work on; testers are
+expected to do more *exploratory* testing.
+
+### Launch and shutdown
+
+1. Ensure that Java 11 is installed.
+2. Download the latest version of `MojoHR` from [here](https://github.com/AY2021S2-CS2113-W10-2/tp/releases/latest).
+3. Copy the jar file to the folder you want to use as the home folder for `MojoHR`.
+4. Open your Command Line Terminal in the folder where the jar file is located, and run it with `java -jar Mojo.jar`.
+5. Type the command in the command box and press Enter to execute it. e.g. typing `list archive`
+   and pressing Enter will show the list of archived emails.
+6. To terminate the app, use the `bye` command. Interrupt the Command Line Terminal with `Ctrl+C`
+   or closing the terminal is also allowed.
+
+### Log into System
 
 #### 1. Login
+
 ##### Test case 1.0 : When correct login information is provided
+
 Logs into the system when correct email address and password is provided by the user
 
 **Test case**:
@@ -220,6 +261,7 @@ Enter email address: `12312@gmail.com`
 Enter password: `5678`
 
 Expected:
+
 ```` Hello! I'm MojoHR
   _________   _____   _____   _____
  |  _   _  | |  _  | |_   _| |  _  |
@@ -242,7 +284,9 @@ Expected:
  ____________________________________________________________
  Enter Command: 
 ````
+
 ##### Test case 1.1: When wrong login information is provided
+
 When wrong email address and password is provided by the user
 
 **Test case**
@@ -253,7 +297,8 @@ Enter email address: `abc`
 
 Enter password: `000`
 
-Expected: 
+Expected:
+
 ```
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  Error Message: 
@@ -262,18 +307,21 @@ Expected:
 ```
 
 #### 2. Register New User
+
 ##### Test case 2.0: Correctly registers a user
+
 Registers a new user, when the formatting provided is correct
 
 **Test case:**
 
-Enter choice: 2
+Enter choice: `2`
 
 Enter email address: `mary@gmail.com`
 
 Enter password: `1234`
 
 Expected:
+
 ```` Hello! I'm MojoHR
   _________   _____   _____   _____
  |  _   _  | |  _  | |_   _| |  _  |
@@ -298,6 +346,7 @@ Expected:
 ````
 
 ##### Test case 2.1: Incorrect Registration Format provided by a User
+
 Error message shown, when the formatting provided is not correct
 
 **Test case**
@@ -309,6 +358,7 @@ Enter email address: `hi`
 Enter password: `1234`
 
 Expected
+
 ````
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Error Message: 
@@ -318,24 +368,29 @@ Email address must have "@" and cannot have empty string in front or behind
 ````
 
 #### 3. Exit Application
+
 ##### Test case 3.0: Allow the user to exit the system
+
 When the correct choice format is chosen, user will be able to exit the system
 
 **Test case**
 
-Enter choice: 3
+Enter choice: `3`
 
 Expected:
+
 ```
 Logging off... Hope to see you again in MojoHr!
 ```
 
-#### Test case 3.1: Incorrect Choice Format
+##### Test case 3.1: Incorrect Choice Format
+
 When an incorrect format of choice is shown, error message will be displayed
 
 Enter choice: `three`
 
 Expected:
+
 ```
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Error Message: 
@@ -343,36 +398,76 @@ You need to enter an integer! Please try again!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ```
 
+#### 4. Find Emails by Keyword
 
-### 4. Find Emails by Keyword
-Print all emails that contains the keyword, and if there is no email contains the keyword, outputs `No matching emails found.`
+##### Test case 4.0: Finds keyword that exist in email system
 
-Test case: `find subject 10`
+Print all emails that contains the keyword.
 
-Expected: 
+**Test case**:
+`list allemails`
+
+`find subject 11`
+
+Expected:
+
 ````
 1. [Deleted][UNREAD]
-|| Subject: This is subject 10
-|| From: 21312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T15:30:00
+|| Subject: This is subject 11
+|| From: 21312@gmail.com --> To: [12312@gmail.com, 12313@gmail.com, 12314@gmail.com]
+|| Time: 2021-02-20T16:30:00
 || Tags: []
 ````
 
-Test case: `find school`
+##### Test case 4.1: Finds keyword that does not exist in email system
 
-Expected: `No matching emails found.`
+When the keyword typed does not exist in the email system, a message will be displayed.
 
+**Test case**:
 
-### 5. Reset the Password
-Reset the password for the user's email account.
-The program will ask for the old password from user. 
+`find school`
 
-If the old password is correct, the program will ask for the new password from user and outputs`Your password has changed successfully!`
+Expected:
 
-The number of wrong attempt is 3. 
-If the old password is wrong for 3 times, the program will output `Sorry your old password is wrong. Please try again!(0 times left!)` and back to main menu.
+`No matching emails found.`
 
-#### Test case 1: Typing wrong old password for 3 times
+#### 5. Reset the Password
+
+Reset the password for the user's email account. The program will ask for the old password from user.
+
+##### Test case 5.1: Typing old password correctly
+
+If the old password is correct, the program will ask for the new password from user and outputs a message upon
+completion
+
+Input: `reset`
+
+Expected: `Please enter your old password:`
+
+Input: `5678`
+
+Expected: 
+````
+Please be careful!
+     * Password should not contain any space.
+     * Password should contain at least one digit(0-9).
+     * Password length should be between 8 to 15 characters.
+     * Password should contain at least one lowercase letter(a-z).
+     * Password should contain at least one uppercase letter(A-Z).
+     * Password should contain at least one special character ( @, #, %, &, !, $, etc….).
+Please enter your new password:
+````
+
+Input: `Aa12312-`
+
+Expected: `Your password has changed successfully!`
+
+Then, you can exit the program and use the new password to login.
+
+##### Test case 5.2: Typing wrong old password for 3 times
+
+The number of wrong attempt is 3. If the old password is wrong for 3 times, the program will output a message and return
+to main menu.
 
 Input: `reset`
 
@@ -388,44 +483,37 @@ Expected: `Sorry your old password is wrong. Please try again!(1 times left!)`
 
 Input: `12223`
 
-Expected: `Sorry your old password is wrong. Please try again!(0 times left!)`
+Expected: `Sorry your old password is wrong for 3 times. Go back to the main page.`
 
-#### Test case 2: Typing old password correctly
+#### 6. Compose an email
 
-Input: `reset`
+Compose an email for the user which will be saved into draft upon completion. The program will ask for Receiver, Subject
+and Content whereas draft time will be saved automatically
 
-Expected: `Please enter your old password:`
+Input:
 
-Input: `5678`
-
-Expected: `Please enter your new password:`
-
-Input: `1234`
-
-Expected: `Your password has changed successfully!`
-
-Then, you can exit the program and use the new password to login.
-
-### 6. Compose an email
-Compose an email for the user which will be saved into draft upon completion.
-
-The program will ask for Receiver, Subject and Content whereas draft time will be saved automatically
-
-Input: `compose`
+`compose`
 
 Expected:
+
 ```
+____________________________________________________________
 Please enter the details below in the correct order  
 To:
 Subject:
 Content:
-You can send to multiple recipents by appending emails with ;
+You can send to multiple recipents by appending email address with ";"
 e.g: Alice@gmail.com;Bob@gmail.com
+You should end content by typing "/end" in a newline
+____________________________________________________________
 ```
 
-Input: 
+#### Test case 6.0: Correct input
+
+Input:
+
 ```
-testing@gmail.com
+correctDomain@gmail.com
 testSubject
 Dear Sir,
 
@@ -438,5 +526,50 @@ user
 
 Expected: `Email saved to draft at 2021-04-01T13:00:00`
 
-The email is saved in draft and ready to be sent.
+#### Test case 6.1: Unsupported email domain
 
+Input:
+
+```
+wrongDomain@yaya.com
+testSubject
+Dear Sir,
+
+This is a test content.
+
+regards,
+user
+/end
+```
+
+Expected:
+
+```
+Warning: Incomplete email address or invalid email domain.
+Supported Email domains are: [gmail.com, yahoo.com, outlook.com, hotmail.com]
+____________________________________________________________
+Email saved to draft at 2021-04-12T01:06:23
+____________________________________________________________
+```
+
+### Saving data
+
+Data for all accounts' email addresses and passwords are stored in `LoginInfo.txt`, whereas data of each email account
+is stored in its own json file.
+
+Details of Files:
+
+* The json file will be automatically created when creating an account in our software.
+* Each json file contains the account's email address, password, and all emails.
+* Are automatically loaded when MojoHR starts.
+* Are automatically updated upon commands that would cause a change in the file, such as creating an account, sending or
+  deleting an email.
+
+**Note**: Testers are not advised to manually modify any data files unless they become familiar. This is to prevent data
+files from corrupting.
+
+## Attribution
+
+The format of this User Guide was adapted
+from [AddressBook Level 3(AB3) Developer Guide](https://github.com/se-edu/addressbook-level3/blob/master/docs/DeveloperGuide.md)
+.
