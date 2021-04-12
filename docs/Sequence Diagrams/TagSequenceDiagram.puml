@@ -2,7 +2,7 @@
 'https://plantuml.com/sequence-diagram
 
 participant ":TagCommand" as TagCommand
-participant ":Parser" as Parser
+participant "<<class>>\n:Parser" as Parser
 participant ":EmailManager" as EmailManager
 participant ":Email" as Email
 
