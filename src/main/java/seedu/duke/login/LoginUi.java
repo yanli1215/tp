@@ -3,12 +3,21 @@ package seedu.duke.login;
 import seedu.duke.exceptions.InvalidPasswordException;
 import seedu.duke.utilities.Parser;
 import seedu.duke.utilities.Ui;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
 import static seedu.duke.utilities.Parser.loginCheckEmailsValidity;
 
+/**
+ * This class is responsible for the logic of getting input and output from the user for their login information.
+ */
 public class LoginUi extends Ui {
 
+    /**
+     * Get userInput for new accounts, ensures the emails and password matches format required.
+     * @return LoginInfo provided by user
+     */
     public LoginInfo getNewUserLoginInfo() {
         Boolean loginMatch;
         LoginInfo loginInfo;
@@ -29,6 +38,11 @@ public class LoginUi extends Ui {
         return loginInfo;
     }
 
+    /**
+     * Gets the user choice on whether they will like to log in, register or exit application.
+     *
+     * @return login information
+     */
     public LoginInfo getLoginInfo() {
         LoginController loginController = new LoginController();
         LoginInfo loginInfo = null;
@@ -60,6 +74,9 @@ public class LoginUi extends Ui {
         return loginInfo;
     }
 
+    /**
+     * Prints the Login Menu.
+     */
     public void printLoginMenu() {
         System.out.println(super.logo);
         System.out.println("Select either 1 or 2 or 3 (use numbers):\n"
@@ -70,6 +87,11 @@ public class LoginUi extends Ui {
         System.out.println("Enter choice:");
     }
 
+    /**
+     * Gets userInput for various purpose such a registering an email account and password.
+     *
+     * @return new LoginInfo Object contains email address and password
+     */
     public LoginInfo getUserInputForLogin() {
         Scanner sc = new Scanner(System.in);
         String userId;

@@ -41,7 +41,7 @@
 The Architecture Diagram above gives an overview of the different components in the application. Details of the
 individual components are given below.
 
-Mojo class controls the overall logic for the application. It is responsible for
+Main class controls the overall logic for the application. It is responsible for
 
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
@@ -86,7 +86,7 @@ The Utilities Component consists for 3 classes.
 
 ### Login Component
 
-The login component consists of the classes that run the main functions of the Login user Interface
+The login component consists of the classes that run the main functions of the Login user interface.
 ![Login Component Class Diagram](UML diagrams/LoginComponentClassDiagram.png)
 The **Login Class Diagram** give above shows how the classes in the Login Component interact with each other
 

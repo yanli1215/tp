@@ -160,6 +160,14 @@ public class Parser {
                 .toArray();
     }
 
+    /**
+     * Gets the email type that the users wants to print and
+     * retrieve the specific emails using the email manager.
+     *
+     * @param emailManager emailManager object that handles all the emails in the application
+     * @param userInput    type of email(s) that the user wants to print
+     * @return an array list of the specified emails to be printed
+     */
     public static ArrayList<Email> getTypeToList(EmailManager emailManager, String userInput) {
         String[] cmdArg = userInput.split(" ", 2);
         String emailType = cmdArg[1].trim().toLowerCase();
@@ -216,12 +224,13 @@ public class Parser {
      *
      * @param password the new password entered by the user
      * @throws InvalidPasswordException if password not satisfy any one of the following requests
-     *      * Password should not contain any space.
-     *      * Password should contain at least one digit(0-9).
-     *      * Password length should be between 8 to 15 characters.
-     *      * Password should contain at least one lowercase letter(a-z).
-     *      * Password should contain at least one uppercase letter(A-Z).
-     *      * Password should contain at least one special character ( @, #, %, &, !, $, etc….)
+     *                                  * Password should not contain any space.
+     *                                  * Password should contain at least one digit(0-9).
+     *                                  * Password length should be between 8 to 15 characters.
+     *                                  * Password should contain at least one lowercase letter(a-z).
+     *                                  * Password should contain at least one uppercase letter(A-Z).
+     *                                  * Password should contain at least one special character
+     *                                  ( @, #, %, &, !, $, etc….)
      */
     public static void isValid(String password) throws InvalidPasswordException {
         // password length is between 8 and 15
@@ -267,7 +276,7 @@ public class Parser {
             for (int i = 65; i <= 90; i++) {
 
                 // type casting
-                char c = (char)i;
+                char c = (char) i;
 
                 String str1 = Character.toString(c);
                 if (password.contains(str1)) {
@@ -286,7 +295,7 @@ public class Parser {
             for (int i = 90; i <= 122; i++) {
 
                 // type casting
-                char c = (char)i;
+                char c = (char) i;
                 String str1 = Character.toString(c);
 
                 if (password.contains(str1)) {
