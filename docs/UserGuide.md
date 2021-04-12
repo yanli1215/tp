@@ -1,5 +1,6 @@
 # MojoHR User Guide
 =======
+
 # MojoHr User Guide
 
 ## Content Page
@@ -214,15 +215,15 @@ ____________________________________________________________
 
 ### Deleting an email: `delete`
 
-Delete an email to the junk box or remove an email from junk box forever.
+Delete an email to the delete box or remove an email from delete box forever.
 
 Format: `delete INDEX`
 
 * The `INDEX` refers to the index number shown in the displayed email list.
 * The `INDEX` **must be a positive integer** 1, 2, 3, …
 
-* If the displayed email list is not junk emails, move the email at the specified `INDEX` to the junk box.
-* If the displayed email list is junk emails, remove the email at the specified `INDEX` from the account forever.
+* If the displayed email list is not delete emails, move the email at the specified `INDEX` to the junk box.
+* If the displayed email list is delete emails, remove the email at the specified `INDEX` from the account forever.
 
 Example of usage:
 
@@ -232,18 +233,23 @@ Enter Command:
 list inbox
 ____________________________________________________________
 1. [Inbox][UNREAD]
-|| Subject: This is subject 1
-|| From: 21312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T06:30:00
+|| Subject: S1
+|| From: testC@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
 || Tags: []
 2. [Inbox][UNREAD]
-|| Subject: This is subject 2
-|| From: 21312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T07:30:00
+|| Subject: S2
+|| From: testA@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
+|| Tags: []
+3. [Inbox][UNREAD]
+|| Subject: S1
+|| From: testC@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
 || Tags: []
 ____________________________________________________________
 Enter Command:
-delete 2
+delete 3
 ____________________________________________________________
 Move this email to deleted folder
 ____________________________________________________________
@@ -251,9 +257,34 @@ Enter Command:
 list deleted
 ____________________________________________________________
 1. [Deleted][UNREAD]
-|| Subject: This is subject 2
+|| Subject: This is subject 3
 || From: 21312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T07:30:00
+|| Time: 2021-02-20T08:30:00
+|| Tags: [CS2113]
+2. [Deleted][UNREAD]
+|| Subject: This is subject 4
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T09:30:00
+|| Tags: [School]
+3. [Deleted][UNREAD]
+|| Subject: This is subject 8
+|| From: 12312@gmail.com --> To: [11111@gmail.com]
+|| Time: 2021-02-20T13:30:00
+|| Tags: [IMPT]
+4. [Deleted][UNREAD]
+|| Subject: This is subject 11
+|| From: 21312@gmail.com --> To: [12312@gmail.com, 12313@gmail.com, 12314@gmail.com]
+|| Time: 2021-02-20T16:30:00
+|| Tags: []
+5. [Deleted][UNREAD]
+|| Subject: This is subject 1
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T06:30:00
+|| Tags: []
+6. [Deleted][UNREAD]
+|| Subject: S1
+|| From: testC@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
 || Tags: []
 ____________________________________________________________
 ````
@@ -278,9 +309,14 @@ Enter Command:
 list inbox
 ____________________________________________________________
 1. [Inbox][UNREAD]
-|| Subject: This is subject 1
-|| From: 21312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T06:30:00
+|| Subject: S1
+|| From: testC@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
+|| Tags: []
+2. [Inbox][UNREAD]
+|| Subject: S2
+|| From: testA@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
 || Tags: []
 ____________________________________________________________
 Enter Command:
@@ -292,14 +328,24 @@ Enter Command:
 list archive
 ____________________________________________________________
 1. [Archive][UNREAD]
+|| Subject: This is subject 5
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T10:30:00
+|| Tags: []
+2. [Archive][UNREAD]
 || Subject: This is subject 6
 || From: 11312@gmail.com --> To: [12312@gmail.com]
 || Time: 2021-02-20T11:30:00
 || Tags: []
-2. [Archive][UNREAD]
-|| Subject: This is subject 1
+3. [Archive][UNREAD]
+|| Subject: This is subject 4
 || From: 21312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T06:30:00
+|| Time: 2021-02-20T09:30:00
+|| Tags: []
+4. [Archive][UNREAD]
+|| Subject: S2
+|| From: testA@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
 || Tags: []
 ____________________________________________________________
 ````
@@ -309,7 +355,6 @@ ____________________________________________________________
 Find emails that contain a certain keyword.
 
 Format: `find KEYWORD`
-
 * The `KEYWORD` refers to the keyword that the email's subject or content should contain.
 * The `KEYWORD` can be any non-empty string.
 * The `KEYWORD` is case-ignored during the find.
@@ -321,24 +366,34 @@ ____________________________________________________________
 Enter Command:
 list deleted
 ____________________________________________________________
-1. [Deleted][UNREAD]
-|| Subject: This is subject 9
+1. [Archive][UNREAD]
+|| Subject: This is subject 5
 || From: 21312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T14:30:00
+|| Time: 2021-02-20T10:30:00
 || Tags: []
-2. [Deleted][UNREAD]
-|| Subject: This is subject 10
+2. [Archive][UNREAD]
+|| Subject: This is subject 6
+|| From: 11312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T11:30:00
+|| Tags: []
+3. [Archive][UNREAD]
+|| Subject: This is subject 4
 || From: 21312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T15:30:00
+|| Time: 2021-02-20T09:30:00
+|| Tags: []
+4. [Archive][UNREAD]
+|| Subject: S2
+|| From: testA@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
 || Tags: []
 ____________________________________________________________
 Enter Command:
-find 10
+find 11
 ____________________________________________________________
 1. [Deleted][UNREAD]
-|| Subject: This is subject 10
-|| From: 21312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T15:30:00
+|| Subject: This is subject 11
+|| From: 21312@gmail.com --> To: [12312@gmail.com, 12313@gmail.com, 12314@gmail.com]
+|| Time: 2021-02-20T16:30:00
 || Tags: []
 ____________________________________________________________
 ````
@@ -450,17 +505,11 @@ ____________________________________________________________
 || From: 12312@gmail.com --> To: [lily@gmail.com]
 || Time: 2021-03-30T15:30:09
 || Tags: []
-3. [Draft][UNREAD]
-|| Subject: lol
-|| From: 12312@gmail.com --> To: [test@gmail.com]
-|| Time: 2021-04-10T11:04:54
-|| Tags: []
 ____________________________________________________________
 Enter Command:
-send 1 3
+send 1
 ____________________________________________________________
-Email successfully sent to: [test@yahoo.com] at 2021-04-10T11:05:05
-Email successfully sent to: [test@gmail.com] at 2021-04-10T11:05:05
+Email successfully sent to: [test@yahoo.com] at 2021-04-12T17:08:17
 ____________________________________________________________
 ```
 
@@ -481,23 +530,14 @@ Format: `edit INDEX`
 Example of usage:
 
 ```
+____________________________________________________________
 Enter Command:
 list draft
 ____________________________________________________________
 1. [Draft][UNREAD]
 || Subject: LilySubject
 || From: 12312@gmail.com --> To: [lily@gmail.com]
-|| Time: 2021-03-30T20:15:06
-|| Tags: []
-2. [Draft][UNREAD]
-|| Subject: testing
-|| From: 12312@gmail.com --> To: [lolita@gmail.com, lolota@gmail.com]
-|| Time: 2021-03-30T22:48:58
-|| Tags: []
-3. [Draft][UNREAD]
-|| Subject: testSubject
-|| From: 12312@gmail.com --> To: [test@gmail.com]
-|| Time: 2021-04-02T18:50:14
+|| Time: 2021-03-30T15:30:09
 || Tags: []
 ____________________________________________________________
 Enter Command:
@@ -505,7 +545,7 @@ edit 1
 ____________________________________________________________
 What would you like to edit? It must be one of [to, subject, content].
 to
-test2@gmail.com
+test@gmail.com
 Email "to" successfully edited.
 ____________________________________________________________
 ```
@@ -522,16 +562,17 @@ Format: `number TYPE`
 Example of usage:
 
 ```
-Enter Command:
-number draft
 ____________________________________________________________
-You have a total of 3 DRAFT emails
+Enter Command:
+number inbox
+____________________________________________________________
+You have a total of 3 INBOX emails
 ____________________________________________________________
 ```
 
 ### sorting an email: `sort`
 
-Sorts order of emails according to time or Lexicographic order of sender's email.
+Sorts order of emails according to time or Lexicographic order of sender's email and prints them out.
 
 Format: `sort TYPE`
 
@@ -541,28 +582,80 @@ Format: `sort TYPE`
 Example of usage:
 
 ```
+____________________________________________________________
 Enter Command:
 sort time
 ____________________________________________________________
 Emails are sorted according to time
-____________________________________________________________
-Enter Command:
-list archive
-____________________________________________________________
-1. [Archive][UNREAD]
-|| Subject: This is subject 4
-|| From: 21312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T09:30:00
+1. [Inbox][UNREAD]
+|| Subject: S1
+|| From: testC@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
 || Tags: []
-2. [Archive][UNREAD]
+2. [Inbox][UNREAD]
+|| Subject: S2
+|| From: testA@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
+|| Tags: []
+3. [Inbox][UNREAD]
+|| Subject: S1
+|| From: testC@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
+|| Tags: []
+4. [Draft][UNREAD]
+|| Subject: LilySubject
+|| From: 12312@gmail.com --> To: [lily@gmail.com]
+|| Time: 2021-03-30T15:30:09
+|| Tags: []
+5. [Deleted][UNREAD]
+|| Subject: This is subject 11
+|| From: 21312@gmail.com --> To: [12312@gmail.com, 12313@gmail.com, 12314@gmail.com]
+|| Time: 2021-02-20T16:30:00
+|| Tags: []
+6. [Deleted][UNREAD]
+|| Subject: This is subject 8
+|| From: 12312@gmail.com --> To: [11111@gmail.com]
+|| Time: 2021-02-20T13:30:00
+|| Tags: [IMPT]
+7. [Sent][UNREAD]
+|| Subject: This is subject 7
+|| From: 12312@gmail.com --> To: [12332@gmail.com]
+|| Time: 2021-02-20T12:30:00
+|| Tags: [CS2113, IMPT]
+8. [Archive][UNREAD]
+|| Subject: This is subject 6
+|| From: 11312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T11:30:00
+|| Tags: []
+9. [Archive][UNREAD]
 || Subject: This is subject 5
 || From: 21312@gmail.com --> To: [12312@gmail.com]
 || Time: 2021-02-20T10:30:00
 || Tags: []
-3. [Archive][UNREAD]
-|| Subject: This is subject 6
-|| From: 11312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T11:30:00
+10. [Deleted][UNREAD]
+|| Subject: This is subject 4
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T09:30:00
+|| Tags: [School]
+11. [Archive][UNREAD]
+|| Subject: This is subject 4
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T09:30:00
+|| Tags: []
+12. [Deleted][UNREAD]
+|| Subject: This is subject 3
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T08:30:00
+|| Tags: [CS2113]
+13. [Draft][UNREAD]
+|| Subject: This is subject 3
+|| From: 12312@gmail.com --> To: [test@yahoo.com]
+|| Time: 2021-02-20T08:30:00
+|| Tags: []
+14. [Deleted][UNREAD]
+|| Subject: This is subject 1
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T06:30:00
 || Tags: []
 ____________________________________________________________
 ```
@@ -591,11 +684,19 @@ Sorry your old password is wrong. Please try again!(2 times left!)
 ____________________________________________________________
 Please enter your old password:
 5678
+____________________________________________________________
+Please be careful!
+* Password should not contain any space.
+* Password should contain at least one digit(0-9).
+* Password length should be between 8 to 15 characters.
+* Password should contain at least one lowercase letter(a-z).
+* Password should contain at least one uppercase letter(A-Z).
+* Password should contain at least one special character ( @, #, %, &, !, $, etc….).
 Please enter your new password:
-12315
+Aa12312
+____________________________________________________________
 Your password has changed successfully!
 ____________________________________________________________
-
 ```
 
 ### Printing the help menu: `help`
@@ -654,8 +755,18 @@ Logging off... Hope to see you again in MojoHr!
 
 **Q**: How can I send emails to others?
 
-**A**: Firstly, you should compose an email as a draft. Then, send the draft by `send index`. The email you sent will be
-added to your sent box.
+**A**: Firstly, you should compose an email as a draft. Then, send the draft by `send index`.
+
+**Q**: Can I edit the data files outside the software?
+
+**A**: Users are not advised to edit data files as it would potentially corrupt them. Furthermore, in future versions,
+data files should be encrypted for security purpose.
+
+**Q**: What are the supported email domains?
+
+**A**: The supported email domains for the current version of software are 
+[gmail.com, yahoo.com, outlook.com, hotmail.com]. More email domains would be supported
+in future versions.
 
 ## Command Summary
 
@@ -697,7 +808,8 @@ Action | Format, Examples
 |log in               | Enter Choice: `1`  <br/> Email Address: `12321@gmail.com` <br/> Password:`5678`
 |Register as new user | Enter Choice: `2`  <br/> Email Address: `joey@gmail.com` <br/> Password:`9999`
 |Log out              | Enter Choice: `3`
-| **List Command**    |                                                                                                            |
+| **List
+Command**    |                                                                                                            |
 |all emails           | `list allemails`
 |inbox                | `list inbox`
 |archive              | `list archive`
@@ -705,13 +817,13 @@ Action | Format, Examples
 |draft                | `list draft`
 |junk                 | `list junk`
 |sent                 | `list sent`
-| **Compose Command** | 
+| **Compose Command** |
 |compose              | `compose` <br> `example@gmail.com` <br> `example subject` <br> `example content` <br> `/end`
 | **Edit Command**    |
-|edit                 | `edit INDEX` 
-|*to*                 | Enter Choice: `to` <br> New receiver email address: `example@gmail.com` <br>
-|*subject*            | Enter Choice: `subject` <br> New subject: `example subject` <br>
-|*content*            | Enter Choice: `content` <br> New content: <br>`this is example content` <br> `/end`
+|edit                 | `edit INDEX`
+|*to*                 |`to` <br> `newExample@gmail.com` <br>
+|*subject*            |`subject` <br> `new example subject` <br>
+|*content*            |`content` <br>`this is new example content` <br> `/end`
 | **Send Command**    |
 |send                 | `send INDEX/MULTIPLE INDICES`
 | **Read Command**    |

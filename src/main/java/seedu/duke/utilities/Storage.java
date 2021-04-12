@@ -62,15 +62,17 @@ public class Storage {
         };
 
         for (String file : files) {
-            InputStream in = getClass().getResourceAsStream("/data" + file);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-            String outputPath = System.getProperty("user.dir") + File.separator + "data" + File.separator + file;
             try {
+                InputStream in = getClass().getResourceAsStream("/data" + file);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+
+                String outputPath = System.getProperty("user.dir") + File.separator + "data" + File.separator + file;
                 FileWriter writer = new FileWriter(outputPath);
-                System.out.println();
-                writer.write(reader.lines().collect(Collectors.joining(System.lineSeparator())));
-                if (file.equals("/LoginInfo.txt")) {    // log in file requires a '\n' at the end
-                    writer.write(System.lineSeparator());
+
+                String line = reader.readLine();
+                while (!line.equals("")) {
+                    writer.write(line + System.lineSeparator());
+                    line = reader.readLine();
                 }
                 writer.flush();
             } catch (IOException e) {
