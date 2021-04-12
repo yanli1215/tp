@@ -10,9 +10,13 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class LoginInfoFileManager {
     private File loginInfoFile;
 
+    /**
+     * Handles the database(LoginInfo.txt) of user's LoginInfo
+     */
     public LoginInfoFileManager() {
         loginInfoFile = new File("data/LoginInfo.txt");
         Path dirPath = Paths.get("data");
@@ -33,7 +37,10 @@ public class LoginInfoFileManager {
         }
     }
 
-    // Register new user
+    /**
+     * Registers a new user by writing the information into the file
+     * @param loginInfo new user LoginInfo object
+     */
     public void addLoginInfoForNewUser(LoginInfo loginInfo) {
         try {
             FileWriter fw = new FileWriter(loginInfoFile, true);
@@ -44,7 +51,10 @@ public class LoginInfoFileManager {
         }
     }
 
-    //Retrieve user login info
+    /**
+     * Retrieves the user LoginInfo from the LoginInfo.txt file
+     * @return an ArrayList of LoginInfo from the test file
+     */
     public ArrayList<LoginInfo> retrieveLoginInfoList() {
         ArrayList<LoginInfo> loginInfoList = new ArrayList<>();
         try {
@@ -59,7 +69,11 @@ public class LoginInfoFileManager {
         return loginInfoList;
     }
 
-    //update user login info
+    /**
+     * updates the uses's Login Info into the LoginInfo.txt file
+     * @param loginInfoList
+     * @throws IOException
+     */
     public void writeToTxt(ArrayList<LoginInfo> loginInfoList) throws IOException {
         FileWriter fw = new FileWriter(loginInfoFile, false);
         for (LoginInfo loginInfo : loginInfoList) {
