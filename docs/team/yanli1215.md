@@ -21,7 +21,7 @@ This will help reduce the time spent on clearing emails and allow the user to fo
     3. Find emails by keywords;
     4. Reset the password;
     
-Refer to this [link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=jalvinchan&sort=groupTitle&sortWithin=title&since=&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false)
+Refer to this [link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=yanli&sort=groupTitle&sortWithin=title&since=2021-03-05&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false)
 to see the contributed code.
 
 ### Enhancements implemented
