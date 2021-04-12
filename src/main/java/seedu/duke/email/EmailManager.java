@@ -96,6 +96,11 @@ public class EmailManager {
         return numberOfEmails;
     }
 
+    /**
+     * Method to print the emails base on the Array list containing the specified email to print.
+     *
+     * @param emailTypeToPrint Array list with the specified type of emails to be printed
+     */
     public void printEmailByType(ArrayList<Email> emailTypeToPrint) {
         for (int i = 0; i < emailTypeToPrint.size(); i++) {
             System.out.println(i + 1 + ". " + emailTypeToPrint.get(i).getShortDescription());
@@ -142,6 +147,11 @@ public class EmailManager {
         }
     }
 
+    /**
+     * Retrieve email of Archive type and add it to an arrayList.
+     *
+     * @return archivesList,  an arrayList containing emails of the archived type
+     */
     public ArrayList<Email> getArchivedEmails() {
         ArrayList<Email> archivesList = new ArrayList<>();
         for (Email email : emailsList) {
@@ -152,6 +162,11 @@ public class EmailManager {
         return archivesList;
     }
 
+    /**
+     * Retrieve emails of the Deleted type and and add it to an arrayList.
+     *
+     * @return deletedList, an arrayList containing emails of the deleted type
+     */
     public ArrayList<Email> getDeletedEmails() {
         ArrayList<Email> deletedList = new ArrayList<>();
         for (Email email : emailsList) {
@@ -162,6 +177,11 @@ public class EmailManager {
         return deletedList;
     }
 
+    /**
+     * Retrieve emails of the Draft type and and add it to an arrayList.
+     *
+     * @return draftList, an arrayList containing emails of the deleted type
+     */
     public ArrayList<Email> getDraftEmails() {
         ArrayList<Email> draftsList = new ArrayList<>();
         for (Email email : emailsList) {
@@ -172,6 +192,11 @@ public class EmailManager {
         return draftsList;
     }
 
+    /**
+     * Retrieve emails of the Inbox type and and add it to an arrayList.
+     *
+     * @return inboxList, an arrayList containing emails of the deleted type
+     */
     public ArrayList<Email> getInboxEmails() {
         ArrayList<Email> inboxList = new ArrayList<>();
         for (Email email : emailsList) {
@@ -182,6 +207,11 @@ public class EmailManager {
         return inboxList;
     }
 
+    /**
+     * Retrieve emails of the Junk type and and add it to an arrayList.
+     *
+     * @return junkList, an arrayList containing emails of the deleted type
+     */
     public ArrayList<Email> getJunkEmails() {
         ArrayList<Email> junkList = new ArrayList<>();
         for (Email email : emailsList) {
@@ -192,6 +222,11 @@ public class EmailManager {
         return junkList;
     }
 
+    /**
+     * Retrieve emails of the sent type and and add it to an arrayList.
+     *
+     * @return sentList, an arrayList containing emails of the deleted type
+     */
     public ArrayList<Email> getSentEmails() {
         ArrayList<Email> sentList = new ArrayList<>();
         for (Email email : emailsList) {
@@ -202,6 +237,11 @@ public class EmailManager {
         return sentList;
     }
 
+    /**
+     * Retrieve  all  and and add it to an arrayList.
+     *
+     * @return emailsList, an arrayList containing all emails
+     */
     public ArrayList<Email> getAllEmails() {
         return emailsList;
     }

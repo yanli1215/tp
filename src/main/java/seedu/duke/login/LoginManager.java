@@ -16,6 +16,12 @@ public class LoginManager {
         loginInfoFileManager = new LoginInfoFileManager();
     }
 
+    /**
+     * Verifies that login info provided by user matches the database (LoginInfo.txt)
+     *
+     * @param providedLoginInfo loginInfo object containing email and password
+     * @throws WrongLoginInfoException throws exception if userInput contains wrong email address of password
+     */
     public void verifyLoginInfo(LoginInfo providedLoginInfo) throws WrongLoginInfoException {
         ArrayList<LoginInfo> loginInfoList = loginInfoFileManager.retrieveLoginInfoList();
         for (LoginInfo loginInfo : loginInfoList) {
