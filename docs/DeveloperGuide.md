@@ -404,16 +404,17 @@ You need to enter an integer! Please try again!
 Print all emails that contains the keyword.
 
 **Test case**:
+`list allemails`
 
-`find subject 10`
+`find subject 11`
 
 Expected:
 
 ````
 1. [Deleted][UNREAD]
-|| Subject: This is subject 10
-|| From: 21312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T15:30:00
+|| Subject: This is subject 11
+|| From: 21312@gmail.com --> To: [12312@gmail.com, 12313@gmail.com, 12314@gmail.com]
+|| Time: 2021-02-20T16:30:00
 || Tags: []
 ````
 
@@ -444,9 +445,19 @@ Expected: `Please enter your old password:`
 
 Input: `5678`
 
-Expected: `Please enter your new password:`
+Expected: 
+````
+Please be careful!
+     * Password should not contain any space.
+     * Password should contain at least one digit(0-9).
+     * Password length should be between 8 to 15 characters.
+     * Password should contain at least one lowercase letter(a-z).
+     * Password should contain at least one uppercase letter(A-Z).
+     * Password should contain at least one special character ( @, #, %, &, !, $, etc….).
+Please enter your new password:
+````
 
-Input: `1234`
+Input: `Aa12312-`
 
 Expected: `Your password has changed successfully!`
 
@@ -471,7 +482,7 @@ Expected: `Sorry your old password is wrong. Please try again!(1 times left!)`
 
 Input: `12223`
 
-Expected: `Sorry your old password is wrong. Please try again!(0 times left!)`
+Expected: `Sorry your old password is wrong for 3 times. Go back to the main page.`
 
 #### 6. Compose an email
 
