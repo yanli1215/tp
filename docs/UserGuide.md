@@ -41,14 +41,9 @@ time spent on clearing emails.
 
 2. Download the latest version of `MojoHr` from [here](https://github.com/AY2021S2-CS2113-W10-2/tp/releases).
 
-3. Download the sample test datasets `data.zip` folder from [here](https://github.com/AY2021S2-CS2113-W10-2/tp/releases)
-   and unzip it.
+3. `cd` to locate the file path of the JAR file that you have downloaded
 
-4. Make sure you put the folder `data` under the same path(folder) of `duke.jar`. 
-
-5. `cd` to locate the file path of the JAR file and data folder that you have downloaded
-
-6. Run the following command: `java -jar [JAR file name]`
+4. Run the following command: `java -jar [JAR file name]`
 
 ## Logging in
 
