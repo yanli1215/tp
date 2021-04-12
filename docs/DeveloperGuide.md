@@ -227,7 +227,8 @@ In this software, it is used to store details of an email account.
 
 ## Instructions for manual testing
 
-This section explains the instructions on how to test the app manually
+This section explains the instructions on how to test the app manually. Testers are advised to use
+the account "12312@gmail.com" as the UserGuide and DeveloperGuide uses examples from this email account.
 
 :information_source: **Note:** These instructions only provide a starting point for testers to work on; testers are
 expected to do more *exploratory* testing.
