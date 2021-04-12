@@ -505,17 +505,11 @@ ____________________________________________________________
 || From: 12312@gmail.com --> To: [lily@gmail.com]
 || Time: 2021-03-30T15:30:09
 || Tags: []
-3. [Draft][UNREAD]
-|| Subject: lol
-|| From: 12312@gmail.com --> To: [test@gmail.com]
-|| Time: 2021-04-10T11:04:54
-|| Tags: []
 ____________________________________________________________
 Enter Command:
-send 1 3
+send 1
 ____________________________________________________________
-Email successfully sent to: [test@yahoo.com] at 2021-04-10T11:05:05
-Email successfully sent to: [test@gmail.com] at 2021-04-10T11:05:05
+Email successfully sent to: [test@yahoo.com] at 2021-04-12T17:08:17
 ____________________________________________________________
 ```
 
@@ -536,23 +530,14 @@ Format: `edit INDEX`
 Example of usage:
 
 ```
+____________________________________________________________
 Enter Command:
 list draft
 ____________________________________________________________
 1. [Draft][UNREAD]
 || Subject: LilySubject
 || From: 12312@gmail.com --> To: [lily@gmail.com]
-|| Time: 2021-03-30T20:15:06
-|| Tags: []
-2. [Draft][UNREAD]
-|| Subject: testing
-|| From: 12312@gmail.com --> To: [lolita@gmail.com, lolota@gmail.com]
-|| Time: 2021-03-30T22:48:58
-|| Tags: []
-3. [Draft][UNREAD]
-|| Subject: testSubject
-|| From: 12312@gmail.com --> To: [test@gmail.com]
-|| Time: 2021-04-02T18:50:14
+|| Time: 2021-03-30T15:30:09
 || Tags: []
 ____________________________________________________________
 Enter Command:
@@ -560,7 +545,7 @@ edit 1
 ____________________________________________________________
 What would you like to edit? It must be one of [to, subject, content].
 to
-test2@gmail.com
+test@gmail.com
 Email "to" successfully edited.
 ____________________________________________________________
 ```
@@ -577,16 +562,17 @@ Format: `number TYPE`
 Example of usage:
 
 ```
-Enter Command:
-number draft
 ____________________________________________________________
-You have a total of 3 DRAFT emails
+Enter Command:
+number inbox
+____________________________________________________________
+You have a total of 3 INBOX emails
 ____________________________________________________________
 ```
 
 ### sorting an email: `sort`
 
-Sorts order of emails according to time or Lexicographic order of sender's email.
+Sorts order of emails according to time or Lexicographic order of sender's email and prints them out.
 
 Format: `sort TYPE`
 
@@ -596,28 +582,80 @@ Format: `sort TYPE`
 Example of usage:
 
 ```
+____________________________________________________________
 Enter Command:
 sort time
 ____________________________________________________________
 Emails are sorted according to time
-____________________________________________________________
-Enter Command:
-list archive
-____________________________________________________________
-1. [Archive][UNREAD]
-|| Subject: This is subject 4
-|| From: 21312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T09:30:00
+1. [Inbox][UNREAD]
+|| Subject: S1
+|| From: testC@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
 || Tags: []
-2. [Archive][UNREAD]
+2. [Inbox][UNREAD]
+|| Subject: S2
+|| From: testA@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
+|| Tags: []
+3. [Inbox][UNREAD]
+|| Subject: S1
+|| From: testC@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
+|| Tags: []
+4. [Draft][UNREAD]
+|| Subject: LilySubject
+|| From: 12312@gmail.com --> To: [lily@gmail.com]
+|| Time: 2021-03-30T15:30:09
+|| Tags: []
+5. [Deleted][UNREAD]
+|| Subject: This is subject 11
+|| From: 21312@gmail.com --> To: [12312@gmail.com, 12313@gmail.com, 12314@gmail.com]
+|| Time: 2021-02-20T16:30:00
+|| Tags: []
+6. [Deleted][UNREAD]
+|| Subject: This is subject 8
+|| From: 12312@gmail.com --> To: [11111@gmail.com]
+|| Time: 2021-02-20T13:30:00
+|| Tags: [IMPT]
+7. [Sent][UNREAD]
+|| Subject: This is subject 7
+|| From: 12312@gmail.com --> To: [12332@gmail.com]
+|| Time: 2021-02-20T12:30:00
+|| Tags: [CS2113, IMPT]
+8. [Archive][UNREAD]
+|| Subject: This is subject 6
+|| From: 11312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T11:30:00
+|| Tags: []
+9. [Archive][UNREAD]
 || Subject: This is subject 5
 || From: 21312@gmail.com --> To: [12312@gmail.com]
 || Time: 2021-02-20T10:30:00
 || Tags: []
-3. [Archive][UNREAD]
-|| Subject: This is subject 6
-|| From: 11312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T11:30:00
+10. [Deleted][UNREAD]
+|| Subject: This is subject 4
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T09:30:00
+|| Tags: [School]
+11. [Archive][UNREAD]
+|| Subject: This is subject 4
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T09:30:00
+|| Tags: []
+12. [Deleted][UNREAD]
+|| Subject: This is subject 3
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T08:30:00
+|| Tags: [CS2113]
+13. [Draft][UNREAD]
+|| Subject: This is subject 3
+|| From: 12312@gmail.com --> To: [test@yahoo.com]
+|| Time: 2021-02-20T08:30:00
+|| Tags: []
+14. [Deleted][UNREAD]
+|| Subject: This is subject 1
+|| From: 21312@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-02-20T06:30:00
 || Tags: []
 ____________________________________________________________
 ```
