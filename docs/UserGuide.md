@@ -86,11 +86,19 @@ Enter password:
 ### Register as a new user: `2`
 
 **Constrains for Creating of New Account(s)**
-1. The supported email domains for the current version of software are 
-[gmail.com, yahoo.com, outlook.com, hotmail.com]. 
 
-2. Password Constrains are:
-<insert password constrains here>
+**1. Supported email domains for the current version of software are:**
+
+* gmail.com, yahoo.com, outlook.com, hotmail.com.
+
+**2. Password Constrains are:**
+
+* Password should not contain any space.
+* Password should contain at least one digit(0-9).
+* Password length should be between 8 to 15 characters.
+* Password should contain at least one lowercase letter(a-z).
+* Password should contain at least one uppercase letter(A-Z).
+* Password should contain at least one special character ( @, #, %, &, !, $, etc….).
 
 Format
 `2`
