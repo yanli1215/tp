@@ -70,13 +70,13 @@ public class Storage {
                 FileWriter writer = new FileWriter(outputPath);
 
                 String line = reader.readLine();
-                while (!line.equals("")) {
+                while (line != null) {
                     writer.write(line + System.lineSeparator());
                     line = reader.readLine();
                 }
                 writer.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (IOException | NullPointerException e) {
+                System.out.println("Error loading resources...");
             }
         }
     }
