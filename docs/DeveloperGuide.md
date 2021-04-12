@@ -264,29 +264,39 @@ Enter password: `5678`
 
 Expected:
 
-```
+````
 Hello! I'm MojoHR
-  _________   _____   _____   _____
- |  _   _  | |  _  | |_   _| |  _  |
- | | | | | | | | | |   | |   | | | |
- | | | | | | | |_| |  _| |   | |_| |
- |_| |_| |_| |_____| |___|   |_____|
- What can I do for you?
- > Use the keyword "LIST (type) " to print the emails by types
-!!! type must be one of: [allemails, inbox, archive, deleted, draft, junk, sent]!!!
- > Use the keyword "READ (index) " to open the selected email
- > Use the keyword "COMPOSE " to create a draft email
- > Use the keyword "SEND (index of draft) " to send email in the draft folder
- > Use the keyword "DELETE (index) " to delete the selected email
- > Use the keyword "FIND (keyword) " to find the  email by keywords
- > Use the keyword "ARCHIVE (index) " to move the selected email to the archive folder
- > Use the keyword "TAG (index)" to select the email for tagging labels
- > Use the keyword "RESET" to reset the your account password
- > Use the keyword "HELP" to print the menu
- > Use the keyword "BYE" to exit
- ____________________________________________________________
- Enter Command: 
-```
+ _________   _____   _____   _____
+|  _   _  | |  _  | |_   _| |  _  |
+| | | | | | | | | |   | |   | | | |
+| | | | | | | |_| |  _| |   | |_| |
+|_| |_| |_| |_____| |___|   |_____|
+What can I do for you?
+> Use the keyword "LIST (type) " to print the emails by types
+!!! type must be one of: [allemails, inbox, archive, deleted, draft, junk, sent] !!!
+> Use the keyword "READ (index) " to open the selected email
+> Use the keyword "COMPOSE " to create a draft email
+> Use the keyword "EDIT (index) " to edit email in the draft folder
+> Use the keyword "SEND (index/ multiple indices) " to send email(s) in the draft folder
+!!! indices should be separated with a space !!!
+> Use the keyword "DELETE (index) " to delete the selected email
+> Use the keyword "FIND (keyword) " to find the  email by keywords
+> Use the keyword "ARCHIVE (index) " to move the selected email to the archive folder
+> Use the keyword "TAG (index) (tag1) (tag2)..." to select the email for tagging labels
+> Use the keyword "NUMBER (type)" to count the emails by types
+!!! type must be one of: [allemails, inbox, archive, deleted, draft, junk, sent] !!!
+> Use the keyword "SORT (type) " to sort all emails by types
+!!! type must be one of: [time, sender] !!!
+> Use the keyword "RESET" to reset the your account password
+> Use the keyword "HELP" to print the menu
+> Use the keyword "BYE" to exit
+____________________________________________________________
+Enter Command:
+````
+
+
+
+
 
 ##### Test case 1.1: When wrong login information is provided
 
@@ -302,12 +312,17 @@ Enter password: `000`
 
 Expected:
 
-```
+````
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  Error Message: 
  Wrong UserID and/or Password. Please try again!
  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-```
+````
+
+
+
+
+
 
 #### 2. Register New User
 
@@ -326,29 +341,39 @@ Enter password: `1234`
 Expected:
 
 
-```
+````
 Hello! I'm MojoHR
-  _________   _____   _____   _____
- |  _   _  | |  _  | |_   _| |  _  |
- | | | | | | | | | |   | |   | | | |
- | | | | | | | |_| |  _| |   | |_| |
- |_| |_| |_| |_____| |___|   |_____|
- What can I do for you?
- > Use the keyword "LIST (type) " to print the emails by types
-!!! type must be one of: [allemails, inbox, archive, deleted, draft, junk, sent]!!!
- > Use the keyword "READ (index) " to open the selected email
- > Use the keyword "COMPOSE " to create a draft email
- > Use the keyword "SEND (index of draft) " to send email in the draft folder
- > Use the keyword "DELETE (index) " to delete the selected email
- > Use the keyword "FIND (keyword) " to find the  email by keywords
- > Use the keyword "ARCHIVE (index) " to move the selected email to the archive folder
- > Use the keyword "TAG (index)" to select the email for tagging labels
- > Use the keyword "RESET" to reset the your account password
- > Use the keyword "HELP" to print the menu
- > Use the keyword "BYE" to exit
- ____________________________________________________________
- Enter Command: 
-```
+ _________   _____   _____   _____
+|  _   _  | |  _  | |_   _| |  _  |
+| | | | | | | | | |   | |   | | | |
+| | | | | | | |_| |  _| |   | |_| |
+|_| |_| |_| |_____| |___|   |_____|
+What can I do for you?
+> Use the keyword "LIST (type) " to print the emails by types
+!!! type must be one of: [allemails, inbox, archive, deleted, draft, junk, sent] !!!
+> Use the keyword "READ (index) " to open the selected email
+> Use the keyword "COMPOSE " to create a draft email
+> Use the keyword "EDIT (index) " to edit email in the draft folder
+> Use the keyword "SEND (index/ multiple indices) " to send email(s) in the draft folder
+!!! indices should be separated with a space !!!
+> Use the keyword "DELETE (index) " to delete the selected email
+> Use the keyword "FIND (keyword) " to find the  email by keywords
+> Use the keyword "ARCHIVE (index) " to move the selected email to the archive folder
+> Use the keyword "TAG (index) (tag1) (tag2)..." to select the email for tagging labels
+> Use the keyword "NUMBER (type)" to count the emails by types
+!!! type must be one of: [allemails, inbox, archive, deleted, draft, junk, sent] !!!
+> Use the keyword "SORT (type) " to sort all emails by types
+!!! type must be one of: [time, sender] !!!
+> Use the keyword "RESET" to reset the your account password
+> Use the keyword "HELP" to print the menu
+> Use the keyword "BYE" to exit
+____________________________________________________________
+Enter Command:
+````
+
+
+
+
 
 ##### Test case 2.1: Incorrect Registration Format provided by a User
 
