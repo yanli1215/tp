@@ -75,6 +75,7 @@ public class Storage {
                 }
                 writer.flush();
             } catch (IOException | NullPointerException e) {
+                ;   // If no resource file then start afresh
             }
         }
     }
