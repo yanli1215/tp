@@ -262,7 +262,8 @@ Enter password: `5678`
 
 Expected:
 
-```` Hello! I'm MojoHR
+```
+Hello! I'm MojoHR
   _________   _____   _____   _____
  |  _   _  | |  _  | |_   _| |  _  |
  | | | | | | | | | |   | |   | | | |
@@ -283,7 +284,7 @@ Expected:
  > Use the keyword "BYE" to exit
  ____________________________________________________________
  Enter Command: 
-````
+```
 
 ##### Test case 1.1: When wrong login information is provided
 
@@ -322,7 +323,8 @@ Enter password: `1234`
 
 Expected:
 
-```` Hello! I'm MojoHR
+```
+Hello! I'm MojoHR
   _________   _____   _____   _____
  |  _   _  | |  _  | |_   _| |  _  |
  | | | | | | | | | |   | |   | | | |
@@ -343,7 +345,7 @@ Expected:
  > Use the keyword "BYE" to exit
  ____________________________________________________________
  Enter Command: 
-````
+```
 
 ##### Test case 2.1: Incorrect Registration Format provided by a User
 
@@ -359,13 +361,13 @@ Enter password: `1234`
 
 Expected
 
-````
+```
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Error Message: 
 Please enter a valid email address! 
 Email address must have "@" and cannot have empty string in front or behind
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-````
+```
 
 #### 3. Exit Application
 
