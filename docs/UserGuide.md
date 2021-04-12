@@ -85,6 +85,13 @@ Enter password:
 
 ### Register as a new user: `2`
 
+**Constrains for Creating of New Account(s)**
+1. The supported email domains for the current version of software are 
+[gmail.com, yahoo.com, outlook.com, hotmail.com]. 
+
+2. Password Constrains are:
+<insert password constrains here>
+
 Format
 `2`
 
