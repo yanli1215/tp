@@ -632,6 +632,14 @@ Format: `reset`
 * If the old password is correct, the program will ask for the new password from user.
 * The number of wrong attempt is 3.
 * If the old password is wrong for 3 times, the program will back to main menu asking for command.
+* The new password should meet the following requirements:
+   1. Password should not be the same as the old one.
+   2. Password should not contain any space.
+   3. Password should contain at least one digit(0-9).
+   4. Password length should be between 8 to 15 characters.
+   5. Password should contain at least one lowercase letter(a-z).
+   6. Password should contain at least one uppercase letter(A-Z).
+   7. Password should contain at least one special character ( @, #, %, &, !, $, etc….)
 
 Example of usage:
 
