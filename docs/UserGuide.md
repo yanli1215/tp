@@ -1,5 +1,6 @@
 # MojoHR User Guide
 =======
+
 # MojoHr User Guide
 
 ## Content Page
@@ -653,8 +654,18 @@ Logging off... Hope to see you again in MojoHr!
 
 **Q**: How can I send emails to others?
 
-**A**: Firstly, you should compose an email as a draft. Then, send the draft by `send index`. The email you sent will be
-added to your sent box.
+**A**: Firstly, you should compose an email as a draft. Then, send the draft by `send index`.
+
+**Q**: Can I edit the data files outside the software?
+
+**A**: Users are not advised to edit data files as it would potentially corrupt them. Furthermore, in future versions,
+data files should be encrypted for security purpose.
+
+**Q**: What are the supported email domains?
+
+**A**: The supported email domains for the current version of software are 
+[gmail.com, yahoo.com, outlook.com, hotmail.com]. More email domains would be supported
+in future versions.
 
 ## Command Summary
 
@@ -696,7 +707,8 @@ Action | Format, Examples
 |log in               | Enter Choice: `1`  <br/> Email Address: `12321@gmail.com` <br/> Password:`5678`
 |Register as new user | Enter Choice: `2`  <br/> Email Address: `joey@gmail.com` <br/> Password:`9999`
 |Log out              | Enter Choice: `3`
-| **List Command**    |                                                                                                            |
+| **List
+Command**    |                                                                                                            |
 |all emails           | `list allemails`
 |inbox                | `list inbox`
 |archive              | `list archive`
@@ -704,13 +716,13 @@ Action | Format, Examples
 |draft                | `list draft`
 |junk                 | `list junk`
 |sent                 | `list sent`
-| **Compose Command** | 
+| **Compose Command** |
 |compose              | `compose` <br> `example@gmail.com` <br> `example subject` <br> `example content` <br> `/end`
 | **Edit Command**    |
-|edit                 | `edit INDEX` 
-|*to*                 | Enter Choice: `to` <br> New receiver email address: `example@gmail.com` <br>
-|*subject*            | Enter Choice: `subject` <br> New subject: `example subject` <br>
-|*content*            | Enter Choice: `content` <br> New content: <br>`this is example content` <br> `/end`
+|edit                 | `edit INDEX`
+|*to*                 |`to` <br> `newExample@gmail.com` <br>
+|*subject*            |`subject` <br> `new example subject` <br>
+|*content*            |`content` <br>`this is new example content` <br> `/end`
 | **Send Command**    |
 |send                 | `send INDEX/MULTIPLE INDICES`
 | **Read Command**    |
