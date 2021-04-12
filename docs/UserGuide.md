@@ -189,27 +189,35 @@ Example of usage:
 
 ````
 ____________________________________________________________
-1. [Archive][UNREAD]
-|| Subject: This is subject 5
-|| From: 21312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T10:30:00
+Enter Command:
+list Inbox
+____________________________________________________________
+1. [Inbox][UNREAD]
+|| Subject: S1
+|| From: testC@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
 || Tags: []
-2. [Archive][UNREAD]
-|| Subject: This is subject 6
-|| From: 11312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T11:30:00
+2. [Inbox][UNREAD]
+|| Subject: S2
+|| From: testA@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
+|| Tags: []
+3. [Inbox][UNREAD]
+|| Subject: S1
+|| From: testC@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
 || Tags: []
 ____________________________________________________________
 Enter Command:
 read 1
 ____________________________________________________________
-[Archive][READ]
-|| Subject: This is subject 5
-|| From: 21312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T10:30:00
+[Inbox][READ]
+|| Subject: S1
+|| From: testC@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
 || Tags: []
 || Content: 
-This is content for s5.
+C1
 ____________________________________________________________
 ````
 
@@ -416,18 +424,20 @@ Example of usage:
 
 ````
 ____________________________________________________________
-Enter Command:
-list draft
-____________________________________________________________
-1. [Draft][UNREAD]
-|| Subject: This is subject 3
-|| From: 12312@gmail.com --> To: [test@yahoo.com]
-|| Time: 2021-02-20T08:30:00
+1. [Inbox][READ]
+|| Subject: S1
+|| From: testC@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
 || Tags: []
-2. [Draft][UNREAD]
-|| Subject: LilySubject
-|| From: 12312@gmail.com --> To: [lily@gmail.com]
-|| Time: 2021-03-30T15:30:09
+2. [Inbox][UNREAD]
+|| Subject: S2
+|| From: testA@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
+|| Tags: []
+3. [Inbox][UNREAD]
+|| Subject: S1
+|| From: testC@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
 || Tags: []
 ____________________________________________________________
 Enter Command:
