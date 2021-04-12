@@ -63,7 +63,7 @@ public class Storage {
 
         for (String file : files) {
             try {
-                InputStream in = getClass().getResourceAsStream("/data" + file);
+                InputStream in = getClass().getResourceAsStream(File.separator + "data" + file);
                 BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 
                 String outputPath = System.getProperty("user.dir") + File.separator + "data" + File.separator + file;
