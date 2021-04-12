@@ -75,9 +75,6 @@ public class Storage {
                 }
                 writer.flush();
             } catch (IOException | NullPointerException e) {
-                System.out.println("Error loading resources...");
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         }
     }
