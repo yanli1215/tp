@@ -214,15 +214,15 @@ ____________________________________________________________
 
 ### Deleting an email: `delete`
 
-Delete an email to the junk box or remove an email from junk box forever.
+Delete an email to the delete box or remove an email from delete box forever.
 
 Format: `delete INDEX`
 
 * The `INDEX` refers to the index number shown in the displayed email list.
 * The `INDEX` **must be a positive integer** 1, 2, 3, …
 
-* If the displayed email list is not junk emails, move the email at the specified `INDEX` to the junk box.
-* If the displayed email list is junk emails, remove the email at the specified `INDEX` from the account forever.
+* If the displayed email list is not delete emails, move the email at the specified `INDEX` to the junk box.
+* If the displayed email list is delete emails, remove the email at the specified `INDEX` from the account forever.
 
 Example of usage:
 
@@ -309,7 +309,6 @@ ____________________________________________________________
 Find emails that contain a certain keyword.
 
 Format: `find KEYWORD`
-
 * The `KEYWORD` refers to the keyword that the email's subject or content should contain.
 * The `KEYWORD` can be any non-empty string.
 * The `KEYWORD` is case-ignored during the find.
