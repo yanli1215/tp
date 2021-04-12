@@ -8,11 +8,21 @@ import seedu.duke.email.Email;
 
 import java.util.ArrayList;
 
+/**
+ * Allows user to print the specific email type they would like to check.
+ */
 public class ListCommand extends Command {
     public ListCommand(String s) {
         super(s);
     }
 
+    /**
+     * Retrieve the email type the user wants to print and get the email manager to print the specified email type.
+     *
+     * @param emails email object
+     * @param ui ui object
+     * @param storage storage object
+     */
     @Override
     public void execute(EmailManager emails, Ui ui, Storage storage) {
         try {

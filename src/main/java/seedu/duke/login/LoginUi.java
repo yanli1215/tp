@@ -10,12 +10,12 @@ import java.util.Scanner;
 import static seedu.duke.utilities.Parser.loginCheckEmailsValidity;
 
 /**
- * This class is responsible for the logic of getting input and output from the user for their login information
+ * This class is responsible for the logic of getting input and output from the user for their login information.
  */
 public class LoginUi extends Ui {
 
     /**
-     * Get userInput for new accounts, ensures the emails and password matches format required
+     * Get userInput for new accounts, ensures the emails and password matches format required.
      * @return LoginInfo provided by user
      */
     public LoginInfo getNewUserLoginInfo() {
@@ -39,7 +39,7 @@ public class LoginUi extends Ui {
     }
 
     /**
-     * Gets the user choice on whether they will like to log in, register or exit application
+     * Gets the user choice on whether they will like to log in, register or exit application.
      *
      * @return login information
      */
@@ -74,8 +74,8 @@ public class LoginUi extends Ui {
         return loginInfo;
     }
 
-    /***
-     * Prints the Login Menu
+    /**
+     * Prints the Login Menu.
      */
     public void printLoginMenu() {
         System.out.println(super.logo);
@@ -88,7 +88,7 @@ public class LoginUi extends Ui {
     }
 
     /**
-     * Gets userInput for various purpose such a registering an email account  and password
+     * Gets userInput for various purpose such a registering an email account and password.
      *
      * @return new LoginInfo Object contains email address and password
      */

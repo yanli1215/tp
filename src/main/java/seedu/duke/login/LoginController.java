@@ -9,29 +9,29 @@ import java.util.Scanner;
  */
 public class LoginController {
     /**
-     * Provides login to verify login details provided by the user
+     * Provides login to verify login details provided by the user.
      *
      * @see LoginManager
      */
     private LoginManager loginManager;
     /**
-     * A loginUi object responsible for handling input/output to the user
+     * A loginUi object responsible for handling input/output to the user.
      *
      * @see LoginUi
      */
     private LoginUi loginUi;
     /**
-     * A Login info object responsible for storing the details of the user such as password and email address
+     * A Login info object responsible for storing the details of the user such as password and email address.
      */
     private LoginInfo loginInfo;
 
     /**
-     * An object that handles database(LoginInfo.txt) for the LoginInfo provided by the users
+     * An object that handles database(LoginInfo.txt) for the LoginInfo provided by the users.
      */
     private LoginInfoFileManager loginInfoFileManager;
 
     /**
-     * Creates a new LoginController Object that instantiates the LoginManager, LoginUi and LoginInfoFileManager object
+     * Creates a new LoginController Object that instantiates the LoginManager, LoginUi and LoginInfoFileManager object.
      */
     public LoginController() {
         loginManager = new LoginManager();
@@ -41,7 +41,8 @@ public class LoginController {
 
     /**
      * runs the login controller by getting information from the user and verifying with our database,
-     * verifies the login information and returns the login information only if the user provided a correct login information.
+     * verifies the login information and returns the login information
+     * only if the user provided a correct login information.
      *
      * @return A LoginInfo object containing the email address and password that has been verified to be correct
      */
@@ -67,7 +68,7 @@ public class LoginController {
     }
 
     /**
-     * Gets the necessary information needed to create a new account and adds the new user
+     * Gets the necessary information needed to create a new account and adds the new user.
      *
      * @return login info provided by the user
      */
@@ -83,7 +84,7 @@ public class LoginController {
     }
 
     /**
-     * Checks if email address already exists for an existing account
+     * Checks if email address already exists for an existing account.
      *
      * @param userId The email address of the new user to be added
      * @return true if the email address of the new user to be added doesn't yet exist; false otherwise

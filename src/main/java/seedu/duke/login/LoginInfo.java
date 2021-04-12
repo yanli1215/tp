@@ -1,21 +1,22 @@
 package seedu.duke.login;
 
 /**
- * This class is responsible for modelling Login Information which contains the atrributes and methods of each LoginInfo Object
+ * This class is responsible for modelling Login Information which contains the
+ * attributes and methods of each LoginInfo Object.
  * from a particular user logging into MojoHr
  */
 public class LoginInfo {
     /**
-     * A string declared as userId represents the email address entered during the user login process
+     * A string declared as userId represents the email address entered during the user login process.
      */
     private String userId;
     /**
-     * A string declared as password represents the password entered from the user logging in
+     * A string declared as password represents the password entered from the user logging in.
      */
     private String password;
 
     /**
-     * Constructor which constructs the LoginInfo object
+     * Constructor which constructs the LoginInfo object.
      * @param userId The email address entered by the user during the login process
      * @param password The password entered by the user during the login process
      */
@@ -25,15 +26,15 @@ public class LoginInfo {
     }
 
     /**
-     * password password to set
-     * @param password
+     * password password to set.
+     * @param password Password used for Log in
      */
     public void setPassword(String password) {
         this.password = password;
     }
 
     /**
-     *
+     *Gets the password.
      * @return String representing the password of the {@LoginInfo} object
      */
     public String getPassword() {
@@ -41,7 +42,7 @@ public class LoginInfo {
     }
 
     /**
-     *
+     *Gets the email address.
      * @return String representing the email address of the {@LoginInfo} object
      */
     public String getUserId() {
@@ -53,10 +54,10 @@ public class LoginInfo {
     }
 
     /**
-     *
+     *checks the two object of LoginInfo objects.
      * @param obj The object which will be evaluated
      * @return The boolean value representing whether or not the parameter is a {@code LoginInfo} object and if it is,
-     * whether or not this LoginInfo object matches {@LoginInfo} object within the method's parameters
+     *          whether or not this LoginInfo object matches {@LoginInfo} object within the method's parameters
      */
     @Override
     public boolean equals(Object obj) {

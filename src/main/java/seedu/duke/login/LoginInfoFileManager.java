@@ -38,7 +38,7 @@ public class LoginInfoFileManager {
     }
 
     /**
-     * Registers a new user by writing the information into the file
+     * Registers a new user by writing the information into the file.
      * @param loginInfo new user LoginInfo object
      */
     public void addLoginInfoForNewUser(LoginInfo loginInfo) {
@@ -69,11 +69,6 @@ public class LoginInfoFileManager {
         return loginInfoList;
     }
 
-    /**
-     * updates the uses's Login Info into the LoginInfo.txt file
-     * @param loginInfoList
-     * @throws IOException
-     */
     public void writeToTxt(ArrayList<LoginInfo> loginInfoList) throws IOException {
         FileWriter fw = new FileWriter(loginInfoFile, false);
         for (LoginInfo loginInfo : loginInfoList) {
