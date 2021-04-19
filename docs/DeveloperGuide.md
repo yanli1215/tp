@@ -187,7 +187,7 @@ time spent on clearing emails and allow HR personnel to focus on more productive
 |v2.0|beginner|log into my account|check my emails|
 |v2.0|medium user|edit my drafts|create a new draft and delete the previous one when the draft is wrong|
 |v2.0|medium user|tag emails by self-defined tags|group related emails together and find them easily|
-|v2.0|medium user|sort emails by the sender|find all the emails sent by my supervisor|
+|v2.0|medium user|sort emails by the time|organize emails according to the time he received or sent|
 |v2.0|medium user|find emails by keywords|get what email I want more efficiently|
 |v2.0|expert user|send messages in bulk|finish more tasks more quickly|
 |v2.0|expert user|reset the password|change the password to whatever I want|

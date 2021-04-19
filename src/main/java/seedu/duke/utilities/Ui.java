@@ -27,7 +27,7 @@ public class Ui {
                 + "     * Password length should be between 8 to 15 characters.\n"
                 + "     * Password should contain at least one lowercase letter(a-z).\n"
                 + "     * Password should contain at least one uppercase letter(A-Z).\n"
-                + "     * Password should contain at least one special character ( @, #, %, &, !, $, etc….).");
+                + "     * Password should contain at least one special character ( @, #, %, &, !, $, etc...).");
     }
 
     public Ui() {
@@ -59,6 +59,7 @@ public class Ui {
         if (type.equals("old")) {
             System.out.println(oldPassword);
         }
+        System.out.println("(You can type \"exit\" to go back to the main page)");
         String inputLine = in.nextLine();
         while (inputLine.trim().isEmpty()) {
             inputLine = in.nextLine();

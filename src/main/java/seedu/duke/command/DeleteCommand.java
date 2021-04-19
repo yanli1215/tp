@@ -21,7 +21,7 @@ public class DeleteCommand extends Command {
         ArrayList<Email> listedEmails = emails.getListedEmailsList();
         if (listedEmails == null) {
             String feedback = "You have to list emails first" + System.lineSeparator()
-                    + "=> list emails" + System.lineSeparator();
+                    + "=> list allemails" + System.lineSeparator();
             ui.printFeedback(feedback);
             return;
         }

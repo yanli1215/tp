@@ -37,7 +37,7 @@ public class InvalidPasswordException extends Exception {
 
         // Password should contain at least one lowercase letter(a-z)
         case 7:
-            return ("New password should be the same as the old one");
+            return ("New password should not be the same as the old one");
         default:
             return ("");
         }

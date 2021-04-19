@@ -18,12 +18,20 @@ public class ResetCommand extends Command {
         while (n > 0) {
             String userInputPwd = ui.getResetPsw("old");
             String oldPwd = storage.getPwd();
+            if(userInputPwd.toLowerCase().equals("exit")) {
+                System.out.println("Go back to the main page!");
+                break;
+            }
             // if the old password is correct
             if (userInputPwd.trim().equals(oldPwd.trim())) {
                 isMatchPwd = true;
                 while (true) {
                     try {
                         String newPwd = ui.getResetPsw("new").trim();
+                        if(newPwd.toLowerCase().equals("exit")) {
+                            System.out.println("Go back to the main page!");
+                            break;
+                        }
                         if (newPwd.equals(oldPwd.trim())) {
                             throw new InvalidPasswordException(7);
                         }

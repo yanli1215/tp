@@ -241,7 +241,7 @@ Format: `delete INDEX`
 * The `INDEX` refers to the index number shown in the displayed email list.
 * The `INDEX` **must be a positive integer** 1, 2, 3, …
 
-* If the displayed email list is not delete emails, move the email at the specified `INDEX` to the junk box.
+* If the displayed email list is not delete emails, move the email at the specified `INDEX` to the delete box.
 * If the displayed email list is delete emails, remove the email at the specified `INDEX` from the account forever.
 
 Example of usage:
@@ -689,13 +689,13 @@ Format: `reset`
 
 * The program will aks for the old password from user.
 * If the old password is correct, the program will ask for the new password from user.
-* The number of wrong attempt is 3.
-* If the old password is wrong for 3 times, the program will back to main menu asking for command.
+* The number of wrong attempts is 3.
+* If the old password is wrong for 3 times, the program will go back to main menu.
 * The new password should meet the following requirements:
    1. Password should not be the same as the old one.
    2. Password should not contain any space.
    3. Password should contain at least one digit(0-9).
-   4. Password length should be between 8 to 15 characters.
+   4. Password length should be between 8 and 15 characters.
    5. Password should contain at least one lowercase letter(a-z).
    6. Password should contain at least one uppercase letter(A-Z).
    7. Password should contain at least one special character ( @, #, %, &, !, $, etc….)
